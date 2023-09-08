@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.page {
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-sm {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.item img {
+    max-width: 100% ;
+}
+
+.back-link a {
+    font-size: 24px;
+    line-height: 1.2em;
+    color: blue;
+    text-decoration: underline;
+}
+
+.back-link a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+
+.head h1 {
+    text-transform: uppercase;
+}
+
+.projects-list {
+    margin-top: 50px;
+}
+
+.projects-list__item {
+    margin: 30px 0 0;
+}
+
+.projects-list__item:first-child {
+    margin-top: 0;
+}
+
+.projects-list__item a {
+    font-size: 24px;
+    line-height: 1.2em;
+    color: #212121;
+    text-decoration: underline;
+}
+
+.projects-list__item a:hover {
+    color: #212121;
+    text-decoration: none;
+}
