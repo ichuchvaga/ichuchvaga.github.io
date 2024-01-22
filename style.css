@@ -63,3 +63,17 @@ body {
     color: #212121;
     text-decoration: none;
 }
+
+.code-examples {
+    margin: 50px 0;
+
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+}
+
+.code-examples__subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
