@@ -64,7 +64,7 @@ module.exports = {
   // Where to compile the bundle
   // By default the output directory is `dist`
   output: {
-    path: path.join(__dirname, "../dist"),
+    path: path.join(__dirname, "../public/js"),
     filename: "[name].js"
   },
   devServer: {
