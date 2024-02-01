@@ -1,0 +1,121 @@
+.search-popover-section
+	margin-top: 31px
+
+	&:first-child
+		margin-top: 0
+	
+.search-popover
+	position: absolute
+	top: 100%
+	left: 0
+	right: 0
+	background-color: #fff
+	z-index: 100
+	border-color: #f4f4f4
+	border-style: solid
+	border-width: 0px 1px 1px
+	box-shadow: 0 6px 29px 0 rgba(26, 27, 27, 0.07)
+	padding: 31px 34px 30px
+	color: #1a1b1b
+	font-size: 14px
+	line-height: 20px
+	font-weight: normal
+	width: 100%
+
+	&__title
+		font-weight: 900
+		text-transform: uppercase
+		line-height: 20px
+		margin-bottom: 9px
+
+.search-product
+	display: flex
+	width: 100%
+	flex-direction: row
+	flex-wrap: nowrap
+	justify-content: flex-start
+	align-items: center
+	font-size: 14px
+	line-height: 20px
+	margin-top: 15px
+
+	&__title
+		a
+			text-decoration: none
+			color: #1a1b1b
+
+			&:hover
+				text-decoration: none
+				color: #0046be
+
+	&:first-child
+		margin-top: 0
+
+	&__img
+		width: 74px
+		height: 74px
+		flex-shrink: 0
+		border: 1px solid #f4f4f4
+		font-size: 0
+		line-height: 72px
+		text-align: center
+
+		img
+			max-height: 72px
+			vertical-align: middle
+
+	&__main
+		padding-left: 20px
+
+	&__price
+		padding-top: 2px
+		
+		&-current
+			font-size: 18px
+			line-height: 26px
+			font-weight: 900
+
+		&-old
+			color: #9a9a9a
+			position: relative
+			display: inline-block
+			margin-left: 14px
+
+			&:before
+				content: ''
+				display: block
+				height: 1px
+				background-color: #1a1b1b
+				position: absolute
+				top: 50%
+				left: 0
+				right: 0
+				margin-top: -2px
+
+.search-products
+	font-size: 0
+	line-height: 0
+	padding-top: 4px
+
+.search-links
+	list-style: none
+	margin: 0
+	padding: 0
+
+	li
+		display: block
+		padding: 0
+		margin: 6px 0 0
+		font-size: 14px
+		line-height: 20px
+
+		&:first-child
+			margin-top: 0
+
+	a
+		text-decoration: none
+		color: #1a1b1b
+
+		&:hover
+			text-decoration: none
+			color: #0046be

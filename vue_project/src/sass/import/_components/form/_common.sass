@@ -1,0 +1,162 @@
+/**
+ * Form elements
+ */
+*::-webkit-input-placeholder,
+*:-moz-placeholder,
+*::-moz-placeholder,
+*:-ms-input-placeholder
+	color: #fff
+	opacity: 1
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none
+	margin: 0
+
+input[type='number']
+	-moz-appearance: textfield
+
+input:not([type=checkbox]):not([type=radio]),
+textarea
+	appearance: none
+
+input:focus,
+button:focus,
+a:focus
+	outline: none
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #fff
+body input:required:valid,
+body textarea:required:valid
+	color: #fff
+
+.form
+	box-shadow: none
+	border-radius: 0
+	border: 0
+	background-color: transparent
+	background-image: none
+	margin: 0
+	padding: 0
+
+.form-group
+	margin-bottom: 25px
+
+.help-block
+	display: none
+	font-size: 14px
+	line-height: 1.2em
+	margin-top: 0.6em
+
+div.has-error
+	color: #E80F31
+	font-size: 14px
+	text-align: left
+
+	.help-block
+		display: block
+
+.form-header
+	font-size: 20px
+	line-height: 1.2em
+	font-weight: normal
+	text-align: center
+	margin-bottom: 2.05em
+
+.form-submit-line
+	margin-top: 31px
+
+.agreement
+	font-size: 16px
+	line-height: 24px
+
+	a
+		color: #fff
+		text-decoration: none
+		display: inline
+		border-bottom: 1px solid #fff
+
+		&:hover
+			text-decoration: none
+			color: #0046be
+			border-color: #0046be
+
+.inline-form
+	color: #fff
+	background-color: #b59666
+	padding: 30px 60px 40px 29px
+
+	.agreement
+		margin-top: 4px
+		max-width: 700px
+
+		.checkbox__text
+			color: #d7c7b2
+
+	.checkbox__icon
+		border-color: #e2d5c2
+
+		&:after
+			background-image: url("/img/icons/checkmark-light.png")
+
+	&__title
+		font-size: 32px
+		line-height: 38px
+		font-weight: 300
+		margin-bottom: 0.40625em
+
+	&__fields
+		display: flex
+		flex-direction: row
+		flex-wrap: nowrap
+		width: 100%
+
+		.form-group
+			width: 297px
+			margin-right: 15px
+
+		.form-submit-group
+			margin-left: 31px
+			width: 172px
+
+	.form-control
+		color: #fff
+		border-color: #e2d5c2
+
+		&::placeholder
+			color: #fff
+
+		&:focus
+			border-color: #fff
+
+	.btn
+		font-size: 13px
+		letter-spacing: 0.07em
+		padding-left: 8px
+		padding-right: 8px
+		padding-bottom: 11px
+
+	.form-submit-group
+		.btn
+			width: 100%
+			text-align: center
+
+// .form-inverse
+// 	background-color: #b59666
+// 	color: #fff
+// 	font-weight: 400
+
+// 	.select2-container--default
+// 		.select2-selection--single
+// 			border-color: #947a53
+
+@media screen and (max-width: 767px)
+	/**/
+	.form-group
+		margin-bottom: 22px
+
+	.agreement
+		font-size: 12px
+		line-height: 18px

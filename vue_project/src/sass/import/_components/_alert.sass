@@ -1,0 +1,32 @@
+.alert
+	background: #f8f8f8
+	padding: 26px 24px 24px 24px	
+
+	&__text
+		font-size: 14px
+		line-height: 20px
+		font-weight: normal
+		color: #1a1b1b
+
+.alert-sm
+	padding: 11px 24px 9px 58px
+
+.alert--info
+	padding-left: 74px
+	position: relative
+
+	&:before
+		content: ''
+		display: block
+		width: 30px
+		height: 30px
+		background: transparent url("/img/icons/sprite.png") no-repeat -170px -80px
+		position: absolute
+		top: 30px
+		left: 30px
+
+	&.alert-sm
+		padding-left: 58px
+		&:before
+			top: 15px
+			left: 15px

@@ -1,0 +1,19 @@
+[
+	{
+		"id": "0",
+		"title": "Бункер для сбора отработанного тонера HP CE265A",
+		"sku": "844-313",
+		"stock_status": 1,
+		"rating": 0,
+		"ratingTotal": 0,
+		"price": "322,02",
+		"priceOld": "410",
+		"priceWh": "300,02",
+		"priceWhMin": "100",
+		"wholesale": false,
+		"discount": true,
+		"discountValue": "30%",
+		"color": "#1864e5",
+		"img": "/img/products/menu-0.jpg"
+	}
+]

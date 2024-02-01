@@ -1,0 +1,60 @@
+<div class="benefits">
+	<div class="container">
+	  <div class="benefits__whitebox">
+		<div class="benefits-list" v-if="$vssWidth > 767">
+		  <div class="benefits-list__inner">
+
+			<div class="benefit-card" v-for="item in items">
+			  <div class="benefit-card__icon">
+				  <img :src="item.icon" alt="">
+				</div>
+			  <div class="benefit-card__title">{{ item.title }}</div>
+			  <div class="benefit-card__descr">{{ item.descr }}</div>
+			</div>			
+
+		  </div>
+		</div>
+
+		<div class="benefits-detail-view" v-if="false">
+			<a href="#" @click.prevent="" class="benefits-detail-view__close"></a>
+
+			<div class="benefits-detail-card">
+				<div class="benefits-detail-card__icon">
+					<img src="/img/benefit-md-1.png" alt="">
+				</div>
+				<div class="benefits-detail-card__main">
+					<div class="benefits-detail-card__title h3">Нестандартные заказы</div>
+					<div class="benefits-detail-card__descr">Подбираем заказы под ваши запросы и пожелания:</div>
+					<div class="benefits-detail-card__additional-descr">
+						<ul>
+							<li>работаем с нестандартными заказами;</li>
+							<li>не ограничиваемся ассортиментом, представленным в каталоге;</li>
+							<li>по запросу, наши менеджеры подберут товар, удовлетворяющий именно Вашим пожеланиям.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="nav-arrows-inline"><a class="nav-arrow-inline prev" href="javascript:void(0);"></a><a class="nav-arrow-inline next" href="javascript:void(0);"></a></div>
+		</div>
+
+		<div class="benefits-carousel" v-if="$vssWidth <= 767">
+			<div class="benefits-carousel__inner">
+				
+
+				<VueSlickCarousel v-bind="settings">
+					<div class="benefit-card" v-for="(item, index) in items" :key="'benefit-'+index">
+						<div class="benefit-card__icon">
+							<img :src="item.icon" alt="">
+							</div>
+						<div class="benefit-card__title">{{ item.title }}</div>
+						<div class="benefit-card__descr">{{ item.descr }}</div>
+					</div>
+				</VueSlickCarousel>
+
+			</div>
+		</div>
+		
+	  </div>
+	</div>
+</div>

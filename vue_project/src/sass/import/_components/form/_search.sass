@@ -1,0 +1,49 @@
+.search-bar
+	display: block
+	position: relative
+	padding-right: 62px
+
+	&__input
+		display: block
+		border-width: 1px 0 1px 1px
+		border-style: solid
+		border-color: #f4f4f4
+		height: 40px
+		line-height: 38px
+		font-weight: normal
+		font-size: 14px
+		color: #1a1b1b
+		background-color: #fff
+		border-radius: 2px 0 0 2px
+		width: 100%
+		padding: 0 16px
+
+		&::placeholder
+			color: #9a9a9a
+
+	&__btn
+		width: 62px
+		display: block
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		background: #ffe400
+		border-radius: 2px
+		transition: background-color .3s ease
+
+		&:hover
+			background-color: #ffeb0d
+
+		&:before
+			content: ''
+			display: block
+			width: 18px
+			height: 18px
+			background: transparent url("/img/icons/sprite.png") -151px -35px
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			margin: auto

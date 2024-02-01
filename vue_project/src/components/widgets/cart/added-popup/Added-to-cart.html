@@ -1,0 +1,32 @@
+<div class="added-to-cart-popup">
+	<div class="added-to-cart-popup-header">
+		<span class="added-to-cart-popup-header__icon"></span>Товар добавлен в корзину
+	</div>
+
+	<div class="added-to-cart-popup-body">
+		<div class="added-to-cart-delivery">
+			<div class="added-to-cart-delivery__title">Бесплатная доставка</div>
+			<div class="added-to-cart-delivery__text">До бесплатной курьерской доставки <strong>осталось 2 500 руб.</strong></div>
+		</div>
+
+		<div class="added-to-cart-range">
+			<vue-slider 
+				v-model="addedToCartValue" 
+				:min="0"
+				:max="3000"
+				:tooltip="'always'"
+				:disabled="true"
+				:height="11"
+				:dotOptions="{
+					disabled: true
+				}"
+			></vue-slider>
+
+			<span class="added-to-cart-range__max-value">3 000</span>
+		</div>
+
+		<div class="added-to-cart-popup__btn">
+			<a href="cart.html" class="btn">Перейти в корзину</a>
+		</div>
+	</div>
+</div>

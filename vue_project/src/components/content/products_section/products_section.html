@@ -1,0 +1,33 @@
+<div class="products-section offers">
+	<div class="container">
+		<div class="heading">
+		<div class="heading__l">
+			<div class="title">{{ title }}</div>
+		</div>
+		<div class="heading__r">
+			<!--div class="nav-arrows-inline"><a class="nav-arrow-inline prev" href="javascript:void(0);" ref="prevSlide"></a><a class="nav-arrow-inline next" href="javascript:void(0);" ref="nextSlide"></a></div-->
+		</div>
+		</div>
+
+		<div class="products-carousel-outer">
+			<equalizer
+				:classes="['product']"
+				:config="{
+					0: undefined
+				}"
+			>
+			
+				<div class="products-carousel">
+					<VueSlickCarousel v-bind="settings">
+						<div class="products-carousel__item" v-for="product in items" :key="product.id"
+						v-bind:product="product">
+							<Product :product="product"></Product>
+						</div>
+					</VueSlickCarousel>
+				</div>
+
+			</equalizer>
+		</div>
+
+	</div>
+</div>

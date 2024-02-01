@@ -1,0 +1,87 @@
+.breadcrumbs
+	font-size: 0
+	line-height: 0
+	text-align: left
+	margin-bottom: 36px
+
+	ul
+		list-style: none
+		margin: 0
+		padding: 0
+
+		& > li
+			display: inline-block
+			vertical-align: top
+			color: #9a9a9a			
+
+			&:before
+				content: '/'
+				display: inline-block
+				vertical-align: top
+				font-size: 14px
+				line-height: 1.2em
+				margin: 0 4px
+				color: #1a1b1b
+
+			&:first-child
+				&:before
+					content: unset
+					display: none
+
+			a, span
+				font-size: 14px
+				line-height: 1.2em
+
+			a
+				color: #1a1b1b
+				text-decoration: none
+
+				&:hover
+					color: #0046be
+					text-decoration: none
+		
+.breadcrumb-mobile
+	display: none
+	margin-bottom: 6px
+
+.breadcrumbs--tablet
+	display: none
+
+@media screen and (max-width: 1230px)
+	/**/
+	.breadcrumbs--tablet
+		display: block
+
+@media screen and (max-width: 767px)
+	/**/
+	.breadcrumbs
+		display: none
+
+	.breadcrumb-mobile
+		display: block
+		font-size: 0
+		line-height: 0
+
+		a
+			color: #1a1b1b
+			text-decoration: none
+			font-size: 14px
+			line-height: 20px
+			display: inline-block
+			vertical-align: baseline
+			position: relative
+			padding-left: 12px
+
+			&:before
+				content: ''
+				display: block
+				width: 4px
+				height: 8px
+				background: transparent url('/img/icons/sprite.png') no-repeat -196px -182px
+				position: absolute
+				top: 6px
+				left: 0
+
+			&:hover
+				color: #0046be
+				text-decoration: none

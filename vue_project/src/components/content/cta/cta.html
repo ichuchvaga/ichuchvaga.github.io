@@ -1,0 +1,22 @@
+<div class="cta">
+	<div class="container">
+		<div class="cta__wrapper">
+		<div class="cta__text">
+			<div class="cta__title h3">{{ title }}</div>
+			<div class="cta__descr">Дарим скидку <span>10%</span> на ваш заказ по&nbsp;промокоду <span>«ДОМ»</span></div>
+			<div class="cta__btn"><a class="btn btn-blue" href="javascript:void(0);" @click.prevent="showDiscountModal">Подробнее</a></div>
+		</div>
+		<div class="cta__img"></div>
+		</div>
+	</div>
+
+	<Modal
+	name="discount-modal"
+	:height="'auto'"
+	:width="360"
+	:maxWidth="360"
+	:adaptive="true"
+	>
+	<DiscountModal :closeHandler="hideDiscountModal"/>	
+	</Modal>
+</div>

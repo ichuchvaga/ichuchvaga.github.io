@@ -1,0 +1,17 @@
+[
+	{
+		"title": "Распродажа",
+		"url": "",
+		"icon": "sale"
+	},
+	{
+		"title": "Акции и спецпредложения",
+		"url": "",
+		"icon": "special-offers"
+	},
+	{
+		"title": "Бесплатная доставка",
+		"url": "",
+		"icon": "delivery"
+	}
+]

@@ -1,0 +1,79 @@
+.checkbox
+	display: block
+	position: relative
+	text-align: left
+	min-height: 20px
+	
+	&__label
+		display: block
+		font-weight: normal
+		margin: 0
+		padding: 0
+		cursor: pointer
+
+	&__icon
+		display: block
+		width: 20px
+		height: 20px
+		background-color: #fff
+		border: 1px solid #e9e9e9
+		border-radius: 2px
+		position: absolute
+		top: 0
+		left: 0
+		font-size: 0
+		line-height: 0
+		//transition: all .3s ease
+
+		&:after
+			content: ''
+			display: block
+			width: 12px
+			height: 9px
+			background: transparent url("/img/icons/sprite.png") no-repeat -153px -80px
+			position: absolute
+			top: 5px
+			left: 3px
+			opacity: 0
+			transition: opacity .15s ease
+
+	&__content
+		display: block
+		position: relative
+
+	&__text
+		color: #000
+		padding-top: 2px
+		padding-left: 30px
+		user-select: none
+		display: block
+		font-size: 14px
+		line-height: 1.2em
+		font-weight: normal
+
+		a
+			display: inline
+			color: #000
+			transition: all .15s ease
+			text-decoration: underline
+
+			&:hover
+				color: #0046be
+				text-decoration: underline
+
+	input[type="checkbox"]
+		display: none
+
+		&:checked + .checkbox
+			&__content
+				.checkbox__icon
+					background-color: #ffe20d
+					border-color: #ffe20d
+
+					&:after
+						opacity: 1
+
+	&:hover
+		.checkbox
+			&__icon
+				border-color: #1a1a1a

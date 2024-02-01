@@ -1,0 +1,136 @@
+.recent-news
+	padding-top: 75px
+	padding-bottom: 56px
+
+.news-list
+	width: 100%
+
+	&__inner
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: flex-start
+		align-items: flex-start
+		margin: 0 -12px
+
+	&__item
+		padding: 0 12px 23px
+		width: 33.33%
+		flex-shrink: 0
+		flex-grow: 0
+
+		&.wide
+			width: 66.67%
+
+			.news-card
+				padding-top: 40.58154235145386%
+
+.news-card
+	display: block
+	height: 0
+	width: 100%
+	padding-top: 83.59375%
+	background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
+	position: relative
+
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(141,46,135,1) 100%)
+		z-index: 1
+		opacity: 0.8
+		transition: opacity .3s ease
+	
+	&__content
+		display: block
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 2
+		padding-left: 27px
+		padding-right: 27px
+		padding-bottom: 20px
+		color: #fff
+
+	&__date
+		position: relative
+		font-size: 12px
+		line-height: 1.2em
+		font-weight: normal
+		padding-left: 19px
+		display: block
+		margin-bottom: 7px
+
+		&:before
+			content: ''
+			display: block
+			width: 13px
+			height: 12px
+			background: transparent url("/img/icons/sprite.png") no-repeat -175px -35px
+			position: absolute
+			top: 0
+			left: 0
+
+	&__title
+		display: block
+		font-size: 16px
+		line-height: 22px
+		font-weight: bold
+		margin-bottom: 0.25em
+
+	&__descr
+		display: block
+		font-size: 13px
+		line-height: 20px
+		font-weight: normal
+
+	&:hover
+		&:after
+			opacity: 1
+
+.news-list
+	&__item
+		&:nth-child(5n+2),
+		&:nth-child(5n+5)
+			.news-card
+				&:after
+					background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,70,190,1) 100%)
+
+@media screen and (max-width: 1230px)
+	/**/
+	.recent-news
+		padding-top: 50px
+		padding-bottom: 31px
+
+		.heading
+			&__l
+				width: 100%
+			&__r
+				display: none
+
+	.news-list
+		&__item
+			width: 50%
+
+			&.wide
+				width: 50%
+
+				.news-card
+					padding-top: 83.5195530726257%
+
+@media screen and (max-width: 767px)
+	/**/
+	.news-list
+		&__item
+			width: 100%
+
+			&.wide
+				width: 100%

@@ -1,0 +1,132 @@
+// base.sass
+html
+	box-sizing: border-box
+
+*,
+*::before,
+*::after
+	box-sizing: inherit
+
+button, input, optgroup, select, textarea
+	font-family: $regular
+
+html, body
+	height: auto
+	min-height: 100%
+
+body
+	min-width: 320px
+	position: relative
+	background: #fff
+	font-size: 16px
+	line-height: 1.25em
+	color: #1a1b1b
+	font-family: $regular
+	font-weight: 400
+	opacity: 1
+
+img
+	max-width: 100%
+	height: auto
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.img-circle
+	border-radius: 50%
+
+.img-fluid
+	display: block
+	+size(100%)
+
+small, .small
+	font-size: 85%
+
+a
+	color: #999
+	text-decoration: none
+	transition: color 0.25s ease
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active
+		color: #000
+		text-decoration: none
+ul
+	list-style: none
+	padding: 0
+
+address
+	font-style: normal
+
+b, strong
+	font-weight: 700
+
+.text-center
+	text-align: center
+.text-left
+	text-align: left
+.text-right
+	text-align: right
+.text-upper
+	text-transform: uppercase
+
+.font-regular
+	font-weight: 400
+.font-medium
+	font-weight: 500
+.font-bold
+	font-weight: 700
+.font-italic
+	font-style: italic
+
+.valign-wrapper
+
+	&:before
+		display: inline-block
+		height: 100%
+		vertical-align: middle
+		content: ""
+
+.relative
+	position: relative
+
+.left
+	float: left
+
+.right
+	float: right
+
+.clearfix
+
+	&:before,
+	&:after
+		content: ""
+		display: block
+
+	&:after
+		clear: both
+
+.hidden
+	display: none
+
+.invisible
+	visibility: hidden
+	opacity: 0
+
+.link
+	display: inline
+	border-bottom: 1px solid #c6c6c6
+	font-size: 14px
+	line-height: 1.2em
+	color: #1a1b1b
+	text-decoration: none
+	transition: all .3s ease
+
+	&:hover
+		text-decoration: none
+		color: #0046be
+		border-color: #0046be

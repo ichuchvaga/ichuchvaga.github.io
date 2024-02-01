@@ -1,0 +1,127 @@
+.cart-popover
+	width: 584px
+
+	&.popover
+		padding: 31px 35px 34px
+
+	&__title
+		margin: 0
+
+	&__products
+		max-height: 344px
+		overflow: auto
+
+.popover-cart-product
+	display: flex
+	width: 100%
+	flex-direction: row
+	justify-content: flex-start
+	align-items: center
+	flex-wrap: nowrap
+
+	border-top: 1px solid #f4f4f4
+	padding: 20px 0
+
+	&:first-child
+		border-top: none
+
+	&__img
+		width: 74px
+		height: 74px
+		border: 1px solid #f4f4f4
+		border-radius: 2px
+		line-height: 72px
+		text-align: center
+		flex-shrink: 0
+
+	&__description
+		width: 283px
+		padding-left: 20px
+		padding-right: 20px
+		font-size: 14px
+		line-height: 20px
+
+	&__qty
+		width: 113px
+		flex-shrink: 0
+
+		.quantity
+			width: 100%
+			
+	&__remove
+		width: 42px
+		flex-shrink: 0
+		font-size: 0
+		line-height: 0
+		text-align: right
+
+		.icon
+			vertical-align: middle
+
+	&__name
+		a
+			text-decoration: none
+			color: #1a1b1b
+
+			&:hover
+				text-decoration: none
+				color: #0046be
+
+	&__price
+		padding-top: 3px
+
+		&-current
+			font-size: 18px
+			line-height: 26px
+			font-weight: 900
+
+		&-old
+			color: #9a9a9a
+			position: relative
+			display: inline-block
+			margin-left: 12px
+
+			&:before
+				content: ''
+				display: block
+				height: 1px
+				background-color: #1a1b1b
+				position: absolute
+				top: 50%
+				left: 0
+				right: 0
+				margin-top: -2px
+
+.cart-popover-bottom
+	display: flex
+	flex-direction: row
+	flex-wrap: nowrap
+	width: 100%
+	justify-content: flex-start
+	align-items: flex-end
+	border-top: 1px solid #f4f4f4
+	padding-top: 31px
+
+	&__total
+		padding-bottom: 2px
+
+		&-caption
+			font-size: 14px
+			line-height: 20px
+			font-weight: bold
+			margin-bottom: 8px
+		
+		&-value
+			font-size: 30px
+			line-height: 1em
+			font-weight: 900
+
+	&__btn
+		margin-left: auto
+		text-align: right
+		width: 50%
+		max-width: 224px
+
+		.btn
+			width: 100%
+			text-align: center

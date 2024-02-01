@@ -1,0 +1,49 @@
+.pagination
+	font-size: 0
+	line-height: 0
+	text-align: center
+	margin: 0
+	padding: 0 90px
+	overflow: hidden
+	list-style: none
+	position: relative
+
+	li
+		display: inline-block
+		vertical-align: top
+		font-size: 13px
+		line-height: 26px
+		letter-spacing: 0.07em
+		font-weight: 300
+
+	a, span
+		display: block
+		width: auto
+		padding-top: 2px
+		padding-right: 18px
+		padding-left: 18px
+		background-color: transparent
+		transition: all 0.25s		
+
+	a
+		text-decoration: underline
+		color: #909090
+
+		&:hover,
+		&:active,
+		&:focus
+			color: $color-primary
+
+	span
+		color: #ab8548
+		font-weight: 900
+
+	&--prev
+		position: absolute
+		top: 0
+		left: 0
+
+	&--next
+		position: absolute
+		top: 0
+		right: 0

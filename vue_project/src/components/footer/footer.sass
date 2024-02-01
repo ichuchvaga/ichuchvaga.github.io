@@ -1,0 +1,279 @@
+.footer
+	background-color: #1b1b1b
+	color: #fff
+	padding: 78px 0 0
+	font-size: 15px
+	line-height: 23px
+	font-weight: 300
+
+	.social-icons
+		margin-top: 66px
+
+.footer-title
+	text-transform: uppercase
+	font-weight: normal
+	font-size: 15px
+	line-height: 1.2em
+	margin-bottom: 17px
+
+.footer-main
+	display: flex
+	width: 100%
+	flex-direction: row
+	justify-content: flex-start
+	align-items: flex-start
+	padding-bottom: 76px
+
+	&__col
+		padding-right: 15px
+
+		&:nth-child(1)
+			width: 292px
+			flex-shrink: 0
+		&:nth-child(2)
+			width: 240px
+			flex-shrink: 0
+		&:nth-child(3)
+			width: 306px
+			flex-shrink: 0
+
+.footer-col2
+	padding-left: 0
+
+.footer-bottom
+	border-top: 1px solid #303030
+	padding-top: 17px
+	padding-bottom: 16px
+
+	&__l
+		text-align: left
+	&__r
+		text-align: right
+
+.footer-nav
+	list-style: none
+	margin: 0
+	padding: 0
+
+	li
+		margin-top: 9px
+		&:first-child
+			margin-top: 0
+
+	a
+		text-decoration: none
+		color: #fff
+		display: inline
+		border-bottom: 1px solid #6c6c6c
+		transition: all .3s ease
+		
+		&:hover
+			color: #4f4f4f
+			text-decoration: none
+			border-color: #4f4f4f
+
+.footer-address
+	position: relative
+	padding-left: 17px
+	margin-bottom: 9px
+
+	&:before
+		content: ''
+		display: block
+		width: 10px
+		height: 15px
+		background: transparent url("/img/icons/sprite.png") no-repeat 0 0
+		position: absolute
+		top: 2px
+		left: 0
+		
+.footer-phone
+	margin-bottom: 9px
+
+	a
+		display: block
+		position: relative
+		padding-left: 18px
+		text-decoration: none
+		color: #fff
+
+		&:before
+			content: ''
+			display: block
+			width: 11px
+			height: 12px
+			background: transparent url("/img/icons/sprite.png") no-repeat -15px 0
+			position: absolute
+			top: 4px
+			left: 0
+
+.footer-email
+	margin-bottom: 9px
+
+	a
+		display: block
+		position: relative
+		padding-left: 18px
+		text-decoration: none
+		color: #fff
+
+		&:before
+			content: ''
+			display: block
+			width: 11px
+			height: 9px
+			background: transparent url("/img/icons/sprite.png") no-repeat -31px 0
+			position: absolute
+			top: 6px
+			left: 0
+
+.dev
+	a
+		color: #fff
+		display: inline
+		border-bottom: 1px solid #777777
+		text-decoration: none
+
+		&:hover
+			color: #4f4f4f
+			border-color: #4f4f4f
+			text-decoration: none
+
+.footer-tab-trigger
+	display: none
+	
+	text-transform: uppercase
+	font-weight: normal
+	font-size: 15px
+	line-height: 1.2em
+	margin-bottom: 17px
+	position: relative
+	color: #fff
+	text-decoration: none
+
+	&:hover,
+	&.active
+		color: #fff
+		text-decoration: none
+
+	&:after
+		content: ''
+		display: block
+		width: 8px
+		height: 4px
+		background: transparent url("/img/icons/sprite.png") no-repeat -127px 0
+		position: absolute
+		top: 21px
+		right: 0
+		transition: all .3s ease
+		transform: rotate(0deg)
+
+	&.active
+		&:after
+			transform: rotate(180deg)
+
+@media screen and (max-width: 1230px)
+	/**/
+	.footer
+		font-size: 14px
+		line-height: 20px
+		padding-top: 51px
+
+		.social-icons
+			margin-top: 82px
+
+	.footer-title
+		font-size: 14px
+		line-height: 20px
+		margin-bottom: 13px
+
+	.footer-main
+		padding-bottom: 0
+
+		&__col
+			&:nth-child(1)
+				width: 33.33%
+			&:nth-child(2)
+				width: 33.33%
+			&:nth-child(3)
+				width: 33.33%
+
+	.footer-col2
+		padding-left: 15px
+
+	.footer-address,
+	.footer-phone,
+	.footer-email
+		margin-bottom: 14px
+
+	.footer-bottom
+		margin-top: 8px
+
+@media screen and (max-width: 767px)
+	/**/
+	.footer-col1
+		width: 100%
+		flex: 0 0 100%
+
+	.footer-col2
+		width: 100%
+		flex: 0 0 100%
+
+	.footer-main
+		flex-direction: column
+		justify-content: flex-start
+		align-items: flex-start
+
+		&__col
+			padding-right: 0
+			border-bottom: 1px solid #323232
+
+			p
+				margin-bottom: 16px
+
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3)
+				width: 100%
+
+	.footer-tab-content
+		display: none
+		
+		&.active
+			display: block
+
+	.footer-tab-trigger
+		display: block
+		margin-bottom: 3px
+		padding-top: 15px
+		padding-bottom: 15px
+
+	.footer-title--hidden-xs
+		display: none
+
+	.footer-contacts
+		padding-top: 17px
+		padding-bottom: 12px
+
+	.footer-address, .footer-phone, .footer-email
+		margin-bottom: 10px
+
+	.footer
+		padding-top: 22px
+		padding-bottom: 11px
+
+		.social-icons
+			margin-top: 16px
+
+	.footer-bottom
+		padding-top: 16px
+		padding-bottom: 8px
+		&__r
+			text-align: left
+			padding-top: 3px
+
+	.footer-nav
+		padding-bottom: 16px
+
+		li
+			margin-top: 12px

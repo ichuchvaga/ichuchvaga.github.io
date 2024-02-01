@@ -1,0 +1,112 @@
+.subscription
+	background: #1864e5 url("/img/subscribe-bg.png") no-repeat center center
+	background-size: contain
+	color:#fff
+	padding-top: 34px
+	padding-bottom: 39px
+
+	&__bg-1
+		display: none
+	&__bg-2
+		display: none
+
+.subscription-form
+	margin: 0 auto
+	max-width: 818px
+
+	&__wrapper
+		display: flex
+		flex-direction: row
+		flex-wrap: nowrap
+		justify-content: flex-start
+		align-items: center
+		width: 100%
+	&__col1
+		flex-shrink: 0
+		width: 428px
+		text-align: left
+		padding-right: 48px
+
+	&__col2
+		width: 390px
+		flex-shrink: 0
+
+	&__title
+		color: #fff
+		text-align: inherit
+		margin: 0 0 7px
+
+@media screen and (max-width: 991px)
+	/**/
+	.subscription
+		background-image: none
+		position: relative
+		padding-top: 44px
+		padding-bottom: 51px
+
+		&__bg-1
+			display: block
+			width: 105px
+			height: 174px
+			position: absolute
+			top: 0
+			left: 0
+			background: transparent url("/img/subscribe-bg-left-tablet.png")
+			z-index: 1
+
+		&__bg-2
+			display: block
+			width: 171px
+			height: 189px
+			position: absolute
+			top: 0
+			right: 0
+			background: transparent url("/img/subscribe-bg-right-tablet.png")
+			z-index: 1
+
+		.container
+			position: relative
+			z-index: 2
+
+	.subscription-form
+		&__wrapper
+			flex-direction: column
+			justify-content: flex-start
+			align-items: flex-start
+			padding-left: 27px
+
+		&__col1
+			width: 100%
+			padding-right: 0
+		&__col2
+			width: 100%
+			margin-top: 18px
+
+		.form-group--subscribe
+			max-width: 390px
+
+@media screen and (max-width: 767px)
+	/**/
+	.subscription
+		padding-top: 29px
+		padding-bottom: 35px
+
+		&__bg-1
+			display: none
+
+		&__bg-2
+			width: 87px
+			height: 87px
+			background: transparent url("/img/subscribe-bg-right-mobile.png")
+
+	.subscription-form
+		&__wrapper
+			padding-left: 0
+
+		&__title
+			font-size: 22px
+			line-height: 30px
+			margin-bottom: 9px
+
+		&__col2
+			margin-top: 16px

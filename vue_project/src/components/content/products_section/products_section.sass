@@ -1,0 +1,77 @@
+.products-section
+	background-color: #fff
+	padding-top: 75px
+	padding-bottom: 80px
+	
+	.slick-arrow
+		display: inline-block
+		vertical-align: top
+		width: 20px
+		height: 11px
+		background-color: transparent
+		background-repeat: no-repeat
+		background-image: url("/img/icons/sprite.png")
+		transition: all .15s ease
+		opacity: .38
+		margin: 0
+		font-size: 0
+		line-height: 0
+		position: absolute
+		top: -39px
+
+		&.slick-prev
+			background-position: -145px -16px
+			right: 44px
+
+		&.slick-next
+			background-position: -170px -16px
+			right: 10px
+
+		&:hover
+			opacity: 1
+
+		&.slick-disabled
+			opacity: .1
+			cursor: default
+			
+			&:hover
+				opacity: .1
+
+.products-carousel-outer
+	position: relative
+
+.products-carousel
+	margin: 0 -10px
+
+	&__item
+		padding-left: 10px
+		padding-right: 10px
+
+		&:focus
+			outline: none
+
+	.slick-slide
+		& > div
+			&:focus
+				outline: none
+
+@media screen and (max-width: 1230px)
+	/**/
+	.products-carousel
+		&__item
+			width: 305px !important
+
+@media screen and (max-width: 767px)
+	/**/
+	.products-carousel
+		margin-left: -4px
+		margin-right: -4px
+
+		&__item
+			width: 145px !important
+			padding-left: 4px
+			padding-right: 4px
+
+	.products-section
+		.nav-arrows-inline
+			display: none

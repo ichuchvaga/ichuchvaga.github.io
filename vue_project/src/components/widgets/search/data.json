@@ -1,0 +1,47 @@
+[
+	{
+		"title":"Товары",
+		"type": "products",
+		"items": [
+			{
+				"title": "Инженерная бумага в рулонах Секретарь длинное название вафельное OFFICECLEAN",
+				"price": "1 300, 10",
+				"priceOld": "2 600",
+				"img": "/img/search/popover/img1.jpg",
+				"discount": true
+			},
+			{
+				"title": "Инженерная бумага в рулонах XEROX Architect",
+				"price": "300, 10",
+				"priceOld": "",
+				"img": "/img/search/popover/img2.jpg",
+				"discount": false
+			},
+			{
+				"title": "Бумага для заметок самоклеящаяся PRINTSTICK, 75х75 мм",
+				"price": "1 300, 10",
+				"priceOld": "2 600",
+				"img": "/img/search/popover/img3.jpg",
+				"discount": true
+			}
+		]
+	},
+	{
+		"title":"Категории",
+		"type": "default",
+		"items": [
+			{
+				"title": "Бумага для полноцветной печати",
+				"url": ""
+			},
+			{
+				"title": "Офисная бумага",
+				"url": ""
+			},
+			{
+				"title": "Фотобумага",
+				"url": ""
+			}
+		]
+	}
+]

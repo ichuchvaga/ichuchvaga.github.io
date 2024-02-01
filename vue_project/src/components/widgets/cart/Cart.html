@@ -1,0 +1,37 @@
+<div class="popover cart-popover" v-show="isActive">
+	<div class="cart-popover__title h3">В корзине 6 товаров</div>
+
+	<div class="cart-popover__products">
+		<div class="popover-cart-product" v-for="(p, index) in products" :key="'cart-popover-product' + index">
+			<div class="popover-cart-product__img">
+				<img :src="p.img" :alt="p.title">
+			</div>
+			<div class="popover-cart-product__description">
+				<div class="popover-cart-product__name">
+					<a href="#">{{ p.title }}</a>
+				</div>
+				<div class="popover-cart-product__price">
+					<span class="popover-cart-product__price-current">{{ p.price }} руб.</span><span class="popover-cart-product__price-old" v-if="p.discount">{{ p.priceOld }} руб.</span>
+				</div>
+			</div>
+			<div class="popover-cart-product__qty">
+				<Quantity />
+			</div>
+			<div class="popover-cart-product__remove">
+				<a href="#">
+					<span class="icon icon-remove-black"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="cart-popover-bottom">
+		<div class="cart-popover-bottom__total">
+			<div class="cart-popover-bottom__total-caption">Итого</div>
+			<div class="cart-popover-bottom__total-value">2 703, 30 руб.</div>
+		</div>
+		<div class="cart-popover-bottom__btn">
+			<a href="#" class="btn">Перейти в корзину</a>
+		</div>
+	</div>
+</div>

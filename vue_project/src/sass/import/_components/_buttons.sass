@@ -1,0 +1,102 @@
+/**
+ * Buttons styles
+ */
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"]
+	-webkit-appearance: inherit
+
+button
+	padding: 0
+	border: 0
+	outline: none
+	cursor: pointer
+
+.btn
+	display: inline-block
+	vertical-align: baseline
+	cursor: pointer
+	line-height: 1.2em
+	font-family: $regular
+	font-weight: 400
+	border-radius: 2px
+	border: 2px solid #ffe20d
+	box-shadow: none
+	outline: none
+	text-decoration: none
+	text-align: center
+	color: #1a1b1b
+	text-transform: none
+	background-color: #ffe20d
+
+	font-size: 16px
+	padding: 9px 19px 8px
+
+	transition: background-color 0.25s ease, color 0.25s ease
+
+	&:hover
+		background-color: #ffeb0d
+		border-color: #ffeb0d
+		color: #1a1b1b
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active
+		color: #1a1b1b
+
+	&.active
+		background-color: #ffeb0d
+		border-color: #ffeb0d
+
+	&.disabled
+		background-color: #e9e9e9
+		color: #9a9a9a
+		pointer-events: none
+		cursor: default
+
+	&.btn-blue
+		border: 2px solid #0046be
+		background-color: #0046be
+		color: #fff
+
+		&:hover
+			background-color: #0252db
+			border-color: #0252db
+
+		&:hover,
+		&:focus,
+		&:active,
+		&.active
+			color: #fff
+
+		&.active
+			background-color: #0252db
+			border-color: #0252db
+
+	&.btn-buy-with-icon
+		width: 62px
+		height: 34px
+		font-size: 0
+		line-height: 34px
+		padding: 0
+		text-align: center
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			width: 18px
+			height: 18px
+			background: transparent url("/img/icons/sprite.png") -82px -80px
+
+	&.btn-block
+		width: 100%
+		padding-left: 1em
+		padding-right: 1em
+		text-align: center
+
+@media screen and (max-width: 767px)
+	/**/

@@ -1,0 +1,64 @@
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+		<div class="col col-12 col-md-9 footer-col1">
+			<div class="footer-main">
+			<div class="footer-main__col">
+				<div class="footer-title footer-title--hidden-xs">С нами выгодно</div>
+				<a class="footer-tab-trigger" href="javascript:void(0);" @click.prevent="tab1 = !tab1" :class="{'active': tab1}">С нами выгодно</a>
+				<div class="footer-tab-content" :class="{'active': tab1}">
+					<ul class="footer-nav">
+						<li v-for="item, index in navColumn1">
+							<a 
+							 v-bind:href="item.url"
+							>{{ item.title }}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-main__col">
+				<div class="footer-title footer-title--hidden-xs">Покупателю</div>
+				<a class="footer-tab-trigger" href="javascript:void(0);" @click.prevent="tab2 = !tab2" :class="{'active': tab2}">Покупателю</a>
+				<div class="footer-tab-content" :class="{'active': tab2}">
+				<ul class="footer-nav">
+					<li v-for="item, index in navColumn2">
+						<a 
+						 v-bind:href="item.url"
+						>{{ item.title }}</a>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class="footer-main__col">
+				<div class="footer-title footer-title--hidden-xs">О компании</div>
+				<a class="footer-tab-trigger" href="javascript:void(0);" @click.prevent="tab3 = !tab3" :class="{'active': tab3}">О компании</a>
+				<div class="footer-tab-content" :class="{'active': tab3}">
+				<p>"Секретарь" - динамично развивающаяся компания, специализирующаяся на корпоративных продажах, успешно работает на российском рынке канцелярских и офисных товаров с 2004 года. На данный момент офисы компании обслуживают клиентов во многих областях. </p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="col col-12 col-md-3 footer-col2">
+			<div class="footer-contacts">
+			<div class="footer-title">Наши контакты</div>
+			<div class="footer-address">418 123, Смоленск, Полярная ул., дом 31В</div>
+			<div class="footer-phone"><a href="tel:+74843979498">+7 (4843) 979-498 (обработка заказов)</a></div>
+			<div class="footer-email"><a href="mailto:mail@c-e.ru">mailto:mail@c-e.ru</a></div>
+			<div class="social-icons"><a class="social-icon vk" href="javascript:void(0);"></a><a class="social-icon fb" href="javascript:void(0);"></a><a class="social-icon tw" href="javascript:void(0);"></a></div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+		<div class="row">
+			<div class="col col-12 col-md-6 footer-bottom__l">
+			<div class="copyright">&copy; Компания "Секретарь" 2004 - 2024</div>
+			</div>
+			<div class="col col-12 col-md-6 footer-bottom__r">
+			<div class="dev">Редизайн сайта: EspireStudio</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</footer>

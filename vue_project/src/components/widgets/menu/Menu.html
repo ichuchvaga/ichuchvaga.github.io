@@ -1,0 +1,54 @@
+<div class="menu" v-if="isActive">
+	<div class="container">
+		<div class="menu__wrapper">
+			<div class="menu__main">
+				<div class="row">
+					<div class="col col-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="menu-root-items theme--grey">
+							<ul>
+								<li v-for="item, index in root_items" 
+									:class="{'active': index == 0}" 
+									v-if="!item.type">
+									<a 
+									href="#" 
+									class="menu-link-w-icon" 
+									:class="{'menu-link--with-arrow': !item.noarrow}"
+									>{{ item.title }}<span class="menu-link-arrow"></span></a>
+								</li>
+								<li v-else class="menu-item-sep"></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col col-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="menu-col1">
+							<ul>
+								<li v-for="item in level2_items">
+									<a 
+									href="#" 
+									class="menu-link"
+									:class="{'menu-link--with-arrow': !item.noarrow}"
+									>{{ item.title }}<span class="menu-link-arrow"></span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col col-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="menu-col2">
+							<ul>
+								<li v-for="item in level3_items">
+									<a href="#" class="menu-link">{{ item.title }}</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="menu__product">
+				<Product :product="product_data" />
+			</div>
+		</div>
+	</div>
+</div>

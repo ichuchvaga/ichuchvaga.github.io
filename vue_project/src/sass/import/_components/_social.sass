@@ -1,0 +1,99 @@
+.social-icons
+	font-size: 0
+	line-height: 0
+
+.social-icon
+	display: inline-block
+	vertical-align: middle
+	margin-right: 15px
+	transition: all .3s ease
+	position: relative
+
+	//&:hover
+		//opacity: 0.7
+
+	&:before
+		content: ''
+		display: block
+		background-image: url("/img/icons/sprite.png")
+		background-color: transparent
+		background-repeat: no-repeat
+		position: absolute
+		top: 0
+		left: 0
+		opacity: 1
+		transition: opacity .3s ease
+
+	&:after
+		content: ''
+		display: block
+		background-image: url("/img/icons/sprite.png")
+		background-color: transparent
+		background-repeat: no-repeat
+		position: absolute
+		top: 0
+		left: 0
+		opacity: 0
+		transition: opacity .3s ease
+
+	&.vk
+		width: 22px
+		height: 14px
+		
+		&:before
+			width: 22px
+			height: 14px
+			background-position: -51px 0
+
+		&:after
+			width: 22px
+			height: 14px
+			background-position: -82px -182px
+	
+	&.fb
+		width: 12px
+		height: 26px
+
+		&:before
+			width: 12px
+			height: 26px
+			background-position: -80px 0
+			
+		&:after
+			width: 12px
+			height: 26px
+			background-position: -111px -182px
+
+	&.tw
+		width: 22px
+		height: 19px
+
+		&:before
+			width: 22px
+			height: 19px
+			background-position: -99px 0
+
+		&:after
+			width: 22px
+			height: 19px
+			background-position: -130px -182px
+
+	&:hover
+		&:before
+			opacity: 0
+		&:after
+			opacity: 1
+
+.social-icons--grey
+	.social-icon
+		&.vk
+			&:before
+				background-position: 0 -182px
+		
+		&.fb
+			&:before
+				background-position: -29px -182px
+
+		&.tw
+			&:before
+				background-position: -48px -182px
