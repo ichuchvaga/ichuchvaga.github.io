@@ -38,7 +38,7 @@
         <div class="container">
           <div class="header-main__wrapper">
             <div class="header-main__logo">
-              <a href="/"><img src="/img/logo.png" alt=""></a>
+              <a href="/"><img src="/vue_project/public/img/logo.png" alt=""></a>
             </div>
             <div class="header-main__search">
               <form action="" class="search-form" ref="searchPopoverTrigger">
@@ -151,7 +151,7 @@
 
             <div class="header-m-top__b">
               <a href="/">
-                <img src="/img/logo-m.png" alt="">
+                <img src="/vue_project/public/img/logo-m.png" alt="">
               </a>
             </div>
 
@@ -198,7 +198,7 @@
         </div>
         <div class="auth-popover__img">
           <a href="#">
-            <img src="/img/auth-b.png" alt="">		
+            <img src="/vue_project/public/img/auth-b.png" alt="">		
           </a>
         </div>
       </div>

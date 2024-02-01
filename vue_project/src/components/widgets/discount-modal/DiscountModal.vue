@@ -4,7 +4,7 @@
 
 		<div class="discount-modal-text">
 			<div class="discount-modal-text__icon">
-				<img src="/img/icons/discount.png" alt="">
+				<img src="/vue_project/public/img/icons/discount.png" alt="">
 			</div>
 			<div class="discount-modal-text__value">Получите <span>скидку 5%</span><br>на любые покупки!</div>			
 		</div>

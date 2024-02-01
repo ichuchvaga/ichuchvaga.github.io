@@ -1,29 +1,29 @@
 [
 	{
 		"title": "Dolce Costo - <br>канцелярские товары <br>по лучшим ценам!",
-		"img": "/img/special-offers/img1.png",
-		"bg": "/img/special-offers/img1-bg.png",
+		"img": "/vue_project/public/img/special-offers/img1.png",
+		"bg": "/vue_project/public/img/special-offers/img1-bg.png",
 		"url": "",
 		"type": "1"
 	},
 	{
 		"title": "Аптечки<br> Office-Force",
-		"img": "/img/special-offers/img2.png",
-		"bg": "/img/special-offers/img2-bg.png",
+		"img": "/vue_project/public/img/special-offers/img2.png",
+		"bg": "/vue_project/public/img/special-offers/img2-bg.png",
 		"url": "",
 		"type": "2"
 	},
 	{
 		"title": "Всегда<br> на заряде",
-		"img": "/img/special-offers/img3.png",
-		"bg": "/img/special-offers/img3-bg.png",
+		"img": "/vue_project/public/img/special-offers/img3.png",
+		"bg": "/vue_project/public/img/special-offers/img3-bg.png",
 		"url": "",
 		"type": "2"
 	},
 	{
 		"title": "Бумага подарочная<br> GRANDGIFT",
-		"img": "/img/special-offers/img4.png",
-		"bg": "/img/special-offers/img4-bg.png",
+		"img": "/vue_project/public/img/special-offers/img4.png",
+		"bg": "/vue_project/public/img/special-offers/img4-bg.png",
 		"url": "",
 		"type": "3"
 	}

@@ -16,7 +16,7 @@
 				"discount": false,
 				"discountValue": "10%",
 				"color": "",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "1",
@@ -33,7 +33,7 @@
 				"wholesale": false,
 				"discountValue": "10%",
 				"color": "#00a49a",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "2",
@@ -50,7 +50,7 @@
 				"discount": true,
 				"discountValue": "50%",
 				"color": "#8d2e87",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "3",
@@ -67,7 +67,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "4",
@@ -84,7 +84,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			}
 		],
 		"products2": [
@@ -103,7 +103,7 @@
 				"discount": false,
 				"discountValue": "10%",
 				"color": "",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "1",
@@ -120,7 +120,7 @@
 				"discount": true,
 				"discountValue": "50%",
 				"color": "#8d2e87",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "2",
@@ -137,7 +137,7 @@
 				"wholesale": false,
 				"discountValue": "10%",
 				"color": "#00a49a",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "3",
@@ -154,7 +154,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "4",
@@ -171,7 +171,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			}
 		],
 		"products3": [
@@ -190,7 +190,7 @@
 				"discount": false,
 				"discountValue": "10%",
 				"color": "",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "1",
@@ -207,7 +207,7 @@
 				"discount": true,
 				"discountValue": "50%",
 				"color": "#8d2e87",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "2",
@@ -224,7 +224,7 @@
 				"wholesale": false,
 				"discountValue": "10%",
 				"color": "#00a49a",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "3",
@@ -241,7 +241,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "4",
@@ -258,7 +258,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			}
 		],
 		"products4": [
@@ -277,7 +277,7 @@
 				"discount": false,
 				"discountValue": "10%",
 				"color": "",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "1",
@@ -294,7 +294,7 @@
 				"wholesale": false,
 				"discountValue": "10%",
 				"color": "#00a49a",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "2",
@@ -311,7 +311,7 @@
 				"discount": true,
 				"discountValue": "50%",
 				"color": "#8d2e87",
-				"img": "/img/products/img2.jpg"
+				"img": "/vue_project/public/img/products/img2.jpg"
 			},
 			{
 				"id": "3",
@@ -328,7 +328,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			},
 			{
 				"id": "4",
@@ -345,7 +345,7 @@
 				"discount": true,
 				"discountValue": "30%",
 				"color": "#1864e5",
-				"img": "/img/products/img1.jpg"
+				"img": "/vue_project/public/img/products/img1.jpg"
 			}
 		]
 	}

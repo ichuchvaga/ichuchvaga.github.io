@@ -2,26 +2,26 @@
 	{
 		"title": "Быстрая доставка и обработка заказов",
 		"descr": "Мы предлагаем вам быструю обработку ваших заказов и доставку",
-		"icon": "/img/benefit-1.png"
+		"icon": "/vue_project/public/img/benefit-1.png"
 	},
 	{
 		"title": "Индивидуальный подход к клиентам",
 		"descr": "Мы всегда осуществляем индивидуальный подход к каждому нашему клиенту",
-		"icon": "/img/benefit-2.png"
+		"icon": "/vue_project/public/img/benefit-2.png"
 	},
 	{
 		"title": "Профессионализм сотрудников",
 		"descr": "В нашей команде работают добросовестные сотрудники и профессионалы",
-		"icon": "/img/benefit-3.png"
+		"icon": "/vue_project/public/img/benefit-3.png"
 	},
 	{
 		"title": "Нестандартные заказы",
 		"descr": "Подбираем заказы под ваши запросы и пожелания",
-		"icon": "/img/benefit-4.png"
+		"icon": "/vue_project/public/img/benefit-4.png"
 	},
 	{
 		"title": "Современный рынок товаров",
 		"descr": "Умеем оперативно реагировать на изменения современного рынка",
-		"icon": "/img/benefit-5.png"
+		"icon": "/vue_project/public/img/benefit-5.png"
 	}
 ]

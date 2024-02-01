@@ -21,7 +21,7 @@ const product_of_the_day = {
 	"discount": false,
 	"discountValue": "10%",
 	"color": "",
-	"img": "/img/products/img1.jpg",
+	"img": "/vue_project/public/img/products/img1.jpg",
 	"product_of_the_day": true
 };
 

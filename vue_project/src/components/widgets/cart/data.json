@@ -1,41 +1,41 @@
 [
 	{
-		"img": "/img/cart/popover/img1.jpg",
+		"img": "/vue_project/public/img/cart/popover/img1.jpg",
 		"title": "Полотно техническое вафельное OFFICECLEAN",
 		"price": "1 300, 10",
 		"priceOld": "2 600",
 		"discount": true
 	},
 	{
-		"img": "/img/cart/popover/img2.jpg",
+		"img": "/vue_project/public/img/cart/popover/img2.jpg",
 		"title": "Щетка для обуви",
 		"price": "103, 10",
 		"priceOld": "",
 		"discount": false
 	},
 	{
-		"img": "/img/cart/popover/img1.jpg",
+		"img": "/vue_project/public/img/cart/popover/img1.jpg",
 		"title": "Полотно техническое вафельное OFFICECLEAN приятное",
 		"price": "1 300, 10",
 		"priceOld": "2 600",
 		"discount": true
 	},
 	{
-		"img": "/img/cart/popover/img1.jpg",
+		"img": "/vue_project/public/img/cart/popover/img1.jpg",
 		"title": "Полотно техническое вафельное OFFICECLEAN",
 		"price": "1 300, 10",
 		"priceOld": "2 600",
 		"discount": true
 	},
 	{
-		"img": "/img/cart/popover/img2.jpg",
+		"img": "/vue_project/public/img/cart/popover/img2.jpg",
 		"title": "Щетка для обуви",
 		"price": "103, 10",
 		"priceOld": "",
 		"discount": false
 	},
 	{
-		"img": "/img/cart/popover/img1.jpg",
+		"img": "/vue_project/public/img/cart/popover/img1.jpg",
 		"title": "Полотно техническое вафельное OFFICECLEAN приятное",
 		"price": "1 300, 10",
 		"priceOld": "2 600",

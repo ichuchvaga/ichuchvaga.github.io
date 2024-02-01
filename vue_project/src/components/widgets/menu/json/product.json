@@ -14,6 +14,6 @@
 		"discount": true,
 		"discountValue": "30%",
 		"color": "#1864e5",
-		"img": "/img/products/menu-0.jpg"
+		"img": "/vue_project/public/img/products/menu-0.jpg"
 	}
 ]
