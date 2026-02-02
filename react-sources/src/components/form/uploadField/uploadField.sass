@@ -1,0 +1,366 @@
+@import "src/styles/imports"
+	
+// Upload Photos Page
+
+.upload-widget
+	font-family: $montserrat
+	border: 1px solid #BDBDBD
+	padding: 15px 32px 15px 15px
+	width: 100%
+	display: flex
+	flex-direction: row
+	flex-wrap: nowrap
+	justify-content: space-between
+
+	&__dropzone
+		width: 350px
+		position: relative
+		padding-top: 100%
+
+	&__body
+		width: 350px
+		margin-left: 32px
+		padding-top: 19px
+		text-align: center
+
+.dropzone
+	position: relative
+	border: none
+	background-color: #F9F9F9
+	font-size: 0
+
+	transition: border-color .15s
+	text-align: center
+
+	&__in
+		position: absolute
+		// top: 0
+		// right: 0
+		// bottom: 0
+		// left: 0
+		margin: auto
+		
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+
+	&__icon
+		display: block
+		width: 50px
+		height: 67px
+		margin-left: auto
+		margin-right: auto
+
+		background-color: transparent
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-image: url("/src/img/icons/upload-arrow.png")
+		background-image: url("/src/img/icons/upload-arrow.svg")
+
+	&__label
+		width: 200px
+		display: inline-block
+		vertical-align: top
+		margin-left: auto
+		margin-right: auto
+		font-size: 18px
+		line-height: 1.25em
+		color: #4F4F4F
+		font-weight: 400
+		margin-top: 16px
+
+	&__border-h
+		&:before,
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			right: 0
+			height: 1px
+			background-color: transparent
+			background-image: url("/src/img/icons/upload-border-h.png")
+			background-position: 0 0
+			background-repeat: repeat-x
+
+		&:before
+			top: 0
+		&:after
+			bottom: 0
+
+	&__border-v
+		&:before,
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			top: 0
+			bottom: 0
+			width: 1px
+			background-color: transparent
+			background-image: url("/src/img/icons/upload-border-v.png")
+			background-position: 0 0
+			background-repeat: repeat-y
+
+		&:before
+			left: 0
+		&:after
+			right: 0
+
+	&:hover,
+	&--isActive
+		.dropzone
+			&__border-h
+				&:before,
+				&:after
+					background-position: 0 -4px
+
+			&__border-v
+				&:before,
+				&:after
+					background-position: -4px 0
+
+	&:focus
+		outline: none
+
+
+.upload-widget
+	&__descr
+		font-size: 16px
+		line-height: 23px
+		font-weight: 400
+		font-style: italic
+		color: #828282
+		margin-top: 10px
+
+.file-input-wrapper
+	border-bottom: 2px solid #ddd
+	padding-bottom: 26px
+
+.file-input
+	position: relative
+	overflow: hidden
+	margin-top: 0
+
+	input[type="file"]
+
+	.btn
+		padding-left: 52px
+		padding-right: 52px
+
+.upload-progress
+	margin-top: 33px
+
+	.h4
+		font-weight: 600
+		color: $text-primary
+		margin-bottom: 17px
+
+.upload-progress-card
+	padding-top: 33px
+	margin-top: 33px
+	border-top: 2px solid #ddd
+
+	&:first-child
+		margin-top: 0
+		padding-top: 0
+		border-top: none
+
+	&__in
+		width: 100%
+		position: relative
+		padding-left: 69px
+		padding-bottom: 10px
+		margin-bottom: 31px	
+
+		&:before
+			content: ""
+			display: block
+			width: 50px
+			height: 38px
+			background-repeat: no-repeat
+			background-position: 0 0
+			background-color: transparent
+			background-image: url("/src/img/icons/thumb.png")
+			background-image: url("/src/img/icons/thumb.svg")
+			position: absolute
+			top: 2px
+			left: 0
+
+	&__details
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		font-size: 0
+		margin-bottom: 11px
+		padding-right: 18px
+
+	&__filename
+		display: inline-block
+		vertical-align: top
+		
+		font-weight: 600
+		color: $text-primary
+		font-size: 16px
+		line-height: 1.25em
+		word-wrap: break-word
+		margin-right: 1.375em
+		max-width: calc(100% - 1.375em)
+		text-align: left
+
+	&__size
+		display: inline-block
+		vertical-align: top
+		font-weight: normal
+		color: #4F4F4F
+		font-size: 16px
+		line-height: 1.25em
+
+	&__status
+		font-size: 16px
+		color: #828282
+		font-weight: 600
+		line-height: 1.25em
+		text-align: left
+		display: block
+		margin-top: 10px
+
+	&__delete
+		box-shadow: none
+		border: none
+		border-radius: 0
+		background-color: transparent
+
+		display: inline-block
+		vertical-align: baseline
+		margin-left: 16px
+
+		font-size: 16px
+		line-height: 1.25em
+		font-weight: 600
+		color: #A9A9A9
+
+		position: absolute
+		right: 0
+		top: -1px
+
+		transition: color .15s
+
+		&:hover,
+		&:active,
+		&:focus
+			color: $text-primary
+			text-decoration: underline
+
+	&__percentage-line
+		width: 100%
+		height: 9px
+		border-radius: 2px
+		background-color: #c3c3c3
+		position: relative
+		z-index: 0
+
+		.completed
+			display: block
+			width: 0
+			height: 100%
+
+			position: absolute
+			top: 0
+			left: 0
+			border-radius: 2px
+
+			background-color: #56CCF2
+			transition: all .3s
+			z-index: 1
+			
+
+	&.state-error
+		.upload-progress-card__status
+			color: #EB5757
+
+		.upload-progress-card__percentage-line
+			.completed
+				background-color: #EB5757
+
+	&.state-completed
+		.upload-progress-card__status
+			color: #219653
+
+		.upload-progress-card__percentage-line
+			.completed
+				background-color: #27AE60
+
+.file-input-mobile
+	text-align: right
+	float: right
+
+	.icon
+		margin-left: 13px
+		margin-right: 0
+		position: relative
+		top: -4px
+
+@media screen and (min-width: 1025px)
+	/**/
+	.file-input-mobile
+		display: none
+
+@media screen and (max-width: 1024px)
+	/**/
+	.upload-widget
+		border: none
+		padding: 0 0 25px 0
+
+		&__body
+			width: 100%
+			margin-left: 0
+			padding-top: 0
+
+		&__dropzone
+			display: none
+
+		&__descr
+			margin-top: 4px
+
+	.file-input-wrapper
+		width: 100%
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: space-between
+		border-width: 1px
+		padding-bottom: 35px
+
+		&__l
+			text-align: left
+
+		&__r
+			width: 310px
+			flex-shrink: 0
+			padding-top: 15px
+
+	label[for="upload-input"]
+		margin-bottom: 0.33333em
+
+	.upload-progress
+		margin-top: 34px
+		padding-bottom: 24px
+		border-bottom: 1px solid #BDBDBD
+
+	.form-group.form-group--filter
+		padding-top: 3px
+
+@media screen and (max-width: 767px)
+	/**/
+	.file-input-wrapper__l
+		width: 100%
+
+	.file-input-wrapper__r
+		width: 100%
+		float: left
+		text-align: left
+		margin-top: 24px
+
+	.filter-control .form-control
+		width: 100%

@@ -1,0 +1,122 @@
+@import "src/styles/imports"
+
+/* Edit / Create page */
+.template-params
+	display: flex
+	flex-direction: row
+	flex-wrap: nowrap
+	width: 100%
+	align-items: flex-end
+	margin-bottom: 31px
+
+	&__name
+		width: 420px
+		padding-right: 20px
+
+		.form-control
+			font-weight: normal
+
+			&::placeholder
+				font-weight: normal
+
+	&__theme
+		width: 233px
+		padding-right: 21px
+
+	&__color
+		width: 334px
+		padding-right: 20px
+
+	&__button
+		width: 213px
+
+		.btn.btn-primary
+			border: 1px solid #BDBDBD
+			height: 34px
+			line-height: 32px
+			padding-top: 0
+			padding-bottom: 0
+			
+			&:hover,
+			&:active,
+			&:focus,
+			&:not(:disabled):not(.disabled).active,
+			&:not(:disabled):not(.disabled):active
+				border: 1px solid #BDBDBD
+
+	.form-group
+		margin-bottom: 0
+
+.template-edit-form
+	padding-top: 36px
+	.form-group.form-group--filter
+		margin-top: 29px
+
+@media only screen and (max-width : 1200px)
+	/**/
+	.template-edit-form
+		.form-group
+			margin-bottom: 38px
+		
+		.form-group.form-group-checkbox
+			margin-top: 22px
+			margin-bottom: 22px
+
+	.template-params
+		flex-wrap: wrap
+		margin-bottom: 41px
+
+		&__name
+			width: 100%
+			margin-bottom: 36px
+			padding-right: 0
+		
+		&__theme
+			width: 30%
+
+		&__color
+			width: auto
+			flex-grow: 1
+
+		&__button
+			flex-shrink: 0
+
+			.btn
+				padding-left: 10px
+				padding-right: 10px
+				width: 100%
+
+		.form-group
+			margin-bottom: 0
+
+@media only screen and (max-width : 767px)
+	/**/
+	.template-params
+		&__theme
+			width: 50%
+
+		&__color
+			width: 50%
+			padding-right: 0
+
+		&__button
+			margin-top: 22px
+			width: 50%
+			padding-right: 20px
+
+@media only screen and (max-width : 550px)
+	/**/
+	.template-params
+		&__theme
+			width: 100%
+			padding-right: 0
+
+		&__color
+			width: 100%
+			padding-right: 0
+			margin-top: 36px
+
+		&__button
+			width: 100%
+			padding-right: 0
+			margin-top: 44px

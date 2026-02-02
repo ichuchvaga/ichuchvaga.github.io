@@ -1,0 +1,80 @@
+@import "src/styles/imports"
+	
+// Checkbox
+.checkbox-field
+	font-size: 0
+
+	input[type="checkbox"]
+		&:checked
+			& + .checkbox-field__text
+				&:after
+					opacity: 1
+
+	label
+		cursor: pointer
+		margin: 0
+		padding: 0
+
+	&__text
+		display: block
+		position: relative
+		padding-top: 0
+		padding-bottom: 13px
+		padding-left: 32px
+
+		cursor: pointer
+		font-family: $montserrat
+		font-size: 16px
+		line-height: 1.25em
+		color: $text-primary
+		font-weight: 600
+		//font-weight: normal
+
+		&:before
+			content: ""
+			display: block
+			width: 23px
+			height: 23px
+			background-color: transparent
+			background-repeat: no-repeat
+			background-position: 0 0
+			background-image: url("/src/img/icons/checkbox.png")
+			background-image: url("/src/img/icons/checkbox.svg")
+			background-size: 23px 23px
+			position: absolute
+			top: 0
+			left: 0
+
+		&:after
+			content: ""
+			display: block
+			width: 9px
+			height: 8px
+			background-color: transparent
+			background-repeat: no-repeat
+			background-position: 0 0
+			background-image: url("/src/img/icons/checkbox-active.png")
+			background-image: url("/src/img/icons/checkbox-active.svg")
+			background-size: 9px 8px
+
+			transition: opacity .15s
+			opacity: 0
+			position: absolute
+			top: 6px
+			left: 5px
+
+.form-group.form-group-checkbox
+	margin-top: 30px
+	margin-bottom: 16px
+
+.checkboxes-inline
+	font-size: 0
+	text-align: left	
+
+	.form-group.form-group-checkbox
+		display: inline-block
+		vertical-align: top
+		width: auto
+		margin-top: 0
+		margin-bottom: 0
+		margin-right: 27px

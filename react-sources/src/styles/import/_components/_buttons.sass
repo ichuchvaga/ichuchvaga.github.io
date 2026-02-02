@@ -1,0 +1,93 @@
+/**
+ * Buttons styles
+ */
+
+.btn
+	position: relative
+	display: inline-block
+	vertical-align: baseline
+	font-size: 18px
+	line-height: 1.2em
+	font-family: $regular
+	font-weight: 600
+	text-decoration: none
+	border-radius: 0
+	border: none
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s
+	padding-top: 8px
+	padding-bottom: 11px
+	padding-left: 1.5rem
+	padding-right: 1.5rem
+
+	&:before
+		content: ''
+		display: inline-block
+		vertical-align: middle
+		height: 100%
+		width: 0
+		font-size: 0
+
+	&:hover,
+	&:active,
+	&:focus
+		text-decoration: none
+
+	&.btn-primary
+		color: #fff
+		background-color: $text-primary
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:not(:disabled):not(.disabled).active,
+		&:not(:disabled):not(.disabled):active
+			background-color: lighten($text-primary, 10%)
+			border: none
+			color: #fff
+
+		&:focus,
+		&:not(:disabled):not(.disabled):active:focus
+			box-shadow: none
+
+	&.btn-default
+		color: #fff
+		background-color: #806B88
+
+		&:hover,
+		&:active,
+		&:focus
+			background-color: lighten(#806B88, 10%)
+
+	&.btn-outline
+		/* White button with blue border */
+		color: $text-primary
+		background-color: #fff
+		border: 1px solid $text-primary
+
+		&:hover,
+		&:active,
+		&:focus
+			color: #fff
+			border-color: $text-primary
+			background-color: $text-primary
+
+	&.btn-grey
+		background-color: rgb(189,189,189)
+		color: #333333
+		transition: background-color .15s
+
+		&:hover,
+		&:active,
+		&:focus
+			background-color: rgb(215,215,215)
+
+			color: #333333
+
+	&.btn-red
+		color: #fff
+		background-color: #EB5757
+
+		&:hover,
+		&:active,
+		&:focus
+			background-color: lighten(#EB5757, 10%)

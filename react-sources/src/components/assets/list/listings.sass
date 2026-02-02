@@ -1,0 +1,174 @@
+@import "src/styles/imports"
+
+.listings
+	padding-bottom: 66px
+
+.listings-card
+	width: 100%
+	position: relative
+	border: 1px solid #BDBDBD
+	margin: 0 0 21px
+
+	&__img
+		width: 250px
+		position: absolute
+		left: -1px
+		top: -1px
+		bottom: -1px
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: cover
+		background-color: #bdbdbd
+
+	&__main
+		margin-left: 249px
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+	&__main-top
+		width: 100%
+		padding: 58px 40px 54px
+		text-align: center
+		font-weight: 300
+		font-family: $montserrat
+		font-size: 18px
+		line-height: 1.222222222222222em
+		color: $text-primary
+
+	&__main-bottom
+		width: 100%
+		border-top: 1px solid #BDBDBD
+		padding: 17px 40px 15px
+		text-align: center
+		font-size: 0
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			height: 100%
+			width: 0
+			font-size: 0
+			line-height: 0
+
+		.btn
+			width: 210px
+			display: inline-block
+			vertical-align: middle
+			text-align: center
+			margin: 20px 0 20px
+
+			&:nth-child(1)
+				margin-right: 29px
+
+	&__buttons
+		display: inline-block
+		vertical-align: middle
+		width: 100%
+
+	&__title
+		font-family: $montserrat
+		font-weight: 600
+		color: $text-primary
+		word-wrap: break-word
+		margin-top: 0
+		margin-bottom: 0.375em
+
+	&__address-line
+		padding-top: 0
+		margin-bottom: 15px
+
+
+.listings-form
+	select.form-control
+		color: #BDBDBD
+
+	.form-group
+		padding-top: 3px
+		margin-bottom: 50px
+
+		label
+			margin-bottom: 0.4444444444444444em
+			font-size: 18px
+
+.listings-button-line
+	padding-top: 3px
+	margin-bottom: 54px
+
+.templates-page
+	.listings-card__title
+		max-width: 285px
+		margin-left: auto
+		margin-right: auto
+
+@media only screen and (max-width : 991px)
+	/**/
+	.listings
+		padding-bottom: 0
+
+	.listings-card
+		&__main
+			&-top
+				padding-top: 56px
+				padding-bottom: 56px
+
+@media only screen and (max-width : 867px)
+	/**/
+	.listings-card
+		&__img
+
+		&__main
+
+			&-top
+
+			&-bottom
+				width: 100%
+				padding-left: 20px
+				padding-right: 20px
+
+				.btn
+					width: 48%
+					&:first-child
+						margin-right: 4%
+
+@media only screen and (max-width : 767px)
+	/**/
+	.listings-card__main-top
+		padding-left: 20px
+		padding-right: 20px
+
+	.listings-card__main-bottom
+		padding-top: 24px
+		padding-bottom: 12px
+		padding-left: 0
+		padding-right: 0
+		text-align: left
+
+		.btn
+			width: 100%
+			max-width: 210px
+			margin-top: 10px
+			margin-bottom: 10px
+			display: block
+			margin-left: auto
+			margin-right: auto
+
+			&:first-child
+				margin-right: auto
+
+	.listings-card__img
+		width: 100%
+		position: static
+		padding-bottom: 68.8%
+		border-width: 0 0 1px 0
+
+	.listings-card__main
+		margin-left: 0
+		margin-top: 0
+
+@media only screen and (max-width : 414px)
+	/**/
+	.listings-card__main-r .btn
+		max-width: 100%
+		margin-top: 18px

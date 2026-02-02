@@ -1,0 +1,169 @@
+@import "src/styles/imports"
+
+.pages-grid
+	overflow: hidden
+	
+	&__in
+		padding-bottom: 10px
+		width: 100%
+		font-size: 0
+		padding-left: 7px
+		padding-right: 7px
+		background-color: #F2F2F2
+
+	&__title
+		font-family: $montserrat
+		font-weight: 600
+		font-size: 18px
+		line-height: 1.25em
+		color: $text-primary
+		margin-bottom: 7px
+
+.pages-grid-item
+	display: inline-block
+	vertical-align: top
+	padding-left: 7px
+	padding-right: 7px
+	padding-top: 10px
+	padding-bottom: 10px
+	width: 100%
+	height: 100%
+	position: relative
+
+	&__img
+		position: relative
+		width: 100%
+		height: 100%
+
+		background-position: center center
+		background-size: cover
+		background-repeat: no-repeat
+
+		img
+			width: 100%
+			height: auto
+
+	&__name
+		display: block
+		background-color: #fff
+		color: $text-primary
+		font-family: $regular
+		font-weight: 600
+		font-size: 18px
+		line-height: 1.25em
+		text-align: center
+		padding-top: 14px
+		padding-bottom: 16px
+		padding-left: 12px
+		padding-right: 12px
+		
+		position: absolute
+		bottom: 0
+		left: 7px
+		right: 7px
+		z-index: 1
+
+.check-control
+	display: block
+	width: 35px
+	height: 35px
+	background-color: #BDBDBD
+	transition: background-color .15s
+	font-size: 0
+	line-height: 35px
+	text-align: center
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 1
+
+	&:hover
+		background-color: lighten(#BDBDBD, 10%)
+
+	.icon
+		display: inline-block
+		vertical-align: middle
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: auto
+
+		+size(27px)
+		background-image: url("/src/img/icons/icon-check-grey.png")
+		background-image: url("/src/img/icons/icon-check-grey.svg")
+		background-position: 0 0
+
+	&--active
+		background-color: #27AE61
+
+		&:hover
+			background-color: lighten(#27AE61, 10%)
+
+		.icon
+			background-image: url("/src/img/icons/icon-check-white.png")
+			background-image: url("/src/img/icons/icon-check-white.svg")
+
+.preview-button
+	display: block
+	width: 35px
+	height: 35px
+	background-color: #372E5E
+	transition: background-color .15s
+	font-size: 0
+	line-height: 35px
+	text-align: center
+	position: absolute
+	top: 0
+	right: 0
+	z-index: 1
+
+	&:hover
+		background-color: lighten(#372E5E, 10%)
+
+	.icon
+		display: inline-block
+		vertical-align: middle
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: auto
+
+		+size(23px)
+		background-image: url("/src/img/icons/icon-preview.png")
+		background-image: url("/src/img/icons/icon-preview.svg")
+		background-position: 0 0
+
+@media only screen and (max-width : 1200px)
+	/**/
+	// .pages-grid__in
+	// 	display: flex
+	// 	flex-direction: row
+	// 	flex-wrap: wrap
+	// 	justify-content: space-between
+	// 	padding-left: 10px
+	// 	padding-right: 10px
+
+	.pages-grid-item
+		&__name
+			word-wrap: break-word
+
+		img
+			width: 100%
+
+@media only screen and (max-width : 767px)
+	/**/
+	.pages-grid-item
+		//width: calc(33.33% - 13px)
+
+		&__name
+			font-size: 16px
+
+@media only screen and (max-width : 550px)
+	/**/
+	.pages-grid-item
+		&__name
+			font-size: 14px

@@ -1,0 +1,243 @@
+/**
+ * Form elements
+ */
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none
+	margin: 0
+
+input[type='number']
+	-moz-appearance: textfield
+
+input:not([type=checkbox]):not([type=radio]),
+textarea
+	appearance: none
+
+input:focus,
+button:focus,
+a:focus
+	outline: none
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #c0c0c0
+body input:required:valid,
+body textarea:required:valid
+	color: hsl(0, 0%, 0%)
+
+fieldset
+	padding: 0
+	margin: 0
+	border: 0
+
+.form-group
+	margin-bottom: 23px
+
+	label
+		font-family: $montserrat
+		font-size: 16px
+		line-height: 1.2em
+		font-weight: normal
+		color: $text-primary
+
+	.label-text-muted
+		color: #828282
+
+	&.required
+		label
+			&:after
+				content: "\0020\002a"
+				color: #EB5757
+
+.form-control
+	margin: 0
+	border-radius: 0
+	height: 34px
+	box-shadow: none
+	border: 1px solid #BDBDBD
+	font-family: $regular
+	font-weight: 400
+	font-size: 18px
+	line-height: 32px
+	color: $text-primary
+	padding-left: 6px
+	padding-right: 6px
+
+	&:focus
+		color: $text-primary
+		border-color: #BDBDBD
+		box-shadow: none
+
+	&::-webkit-input-placeholder
+		color: #BDBDBD
+		font-weight: 600
+
+	&:-moz-placeholder
+		color: #BDBDBD
+		font-weight: 600
+
+	&::-moz-placeholder
+		color: #BDBDBD
+		font-weight: 600
+
+	&:-ms-input-placeholder
+		color: #BDBDBD
+		font-weight: 600
+
+textarea.form-control
+	height: 102px
+	min-height: 102px
+	max-height: 102px
+	min-width: 100%
+	max-width: 100%
+	width: 100%
+	resize: none
+
+.form-group__label-wrapper
+	label
+		float: left
+		width: 50%
+		padding-top: 1px
+
+	.form-group__link-r
+		float: right
+		width: 50%
+		text-align: right
+
+/* Input style */
+.form-element
+	&.error
+		.help-block
+			display: block
+
+	.help-block
+		margin-top: 3px
+
+.error
+	.help-block
+		color: #f64312 !important
+
+	.input
+		border-color: #f64312 !important
+
+.input
+	display: block
+	padding: 0 35px
+	margin: 0
+	+size(100%, 60px)
+	font-size: 16px
+	font-weight: 300
+	line-height: 58px
+	border-radius: 10px
+	border: 1px solid #eaeaea
+	background-color: #fff
+	color: hsl(0, 0%, 0%)
+	transition: border-color 0.3s
+	&.input-size-sm
+		padding: 0 18px
+
+	&::placeholder
+		color: #c0c0c0
+
+	&:focus
+		border-color: #aaa
+
+textarea.input
+	padding:
+		top: 20px
+		bottom: 20px
+	height: 226px
+	line-height: 1em
+	resize: none
+	outline: none
+
+.help-block
+	display: none
+	color: hsl(0, 0%, 0%)
+	font-size: 10px
+	line-height: 1.2em
+	padding-left: 18px
+
+.form-buttons
+	margin-top: 49px
+
+	.btn
+		padding-left: 85px
+		padding-right: 51px
+
+	.icon
+		vertical-align: middle
+		line-height: 38px
+		margin-left: 25px
+
+.form
+	h2
+		color: $text-primary
+		margin-bottom: 1.625em
+
+.form-bottom-actions
+	margin-top: 50px
+
+	&__l
+		text-align: left
+		float: left
+		width: 50%
+
+	&__r
+		text-align: right
+		float: right
+		width: 50%
+
+.edit-form
+	padding-bottom: 80px
+
+	label
+		font-size: 18px
+		line-height: 1.222222222222222em
+		font-weight: 600
+		
+
+	.form-group__link-r .link
+		font-size: 18px
+		line-height: 1.222222222222222em
+		font-weight: 600
+
+	.form-buttons
+		margin-top: 46px
+
+		.btn
+			padding-left: 60px
+			padding-right: 60px
+
+
+@media only screen and (max-width : 599px)
+	/**/
+	.form-buttons
+		text-align: center !important
+
+@media screen and (max-width: 480px)
+	/**/
+	.form-control
+		font-size: 16px
+	
+	.form-bottom-actions
+		.link
+			font-size: 16px
+
+		&__l,
+		&__r
+			width: 100%
+			float: none
+			text-align: left
+			margin-top: 15px
+
+	.edit-form
+		padding-bottom: 48px
+		
+		.form-group__link-r .link
+			font-size: 16px
+
+		label
+			font-size: 16px

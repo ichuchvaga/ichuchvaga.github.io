@@ -1,0 +1,205 @@
+@import "src/styles/imports"
+	
+/**
+ * Header styles
+ */
+
+.header
+	padding-top: 42px
+
+	.navbar
+		padding-top: 27px
+
+	.nav-item
+		padding-left: 6px
+		padding-right: 6px
+
+	.nav-link
+		font-family: $regular
+		font-size: 18px
+		line-height: 1.2em
+		color: #372E5E
+		text-transform: uppercase
+		text-decoration: none
+
+		&:hover,
+		&:active,
+		&:focus
+			color: #372E5E
+			text-decoration: underline
+
+	.dropdown-toggle::after
+		border: none
+		margin-left: 0
+		vertical-align: middle
+		width: 16px
+		height: 10px
+		background-color: transparent
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-image: url("/src/img/icons/arrow-down.png")
+		background-image: url("/src/img/icons/arrow-down.svg")
+		margin-left: 22px
+		position: relative
+		top: -3px
+		transition: all .15s
+		transform: rotate(0deg)
+
+	.nav-item.dropdown.show
+		.dropdown-toggle::after
+			transform: rotate(180deg)
+
+	.dropdown-item
+		transition: none
+
+	.dropdown-item.active,
+	.dropdown-item:active
+		background-color: $text-primary
+
+	.navbar-toggler
+		width: 50px
+		height: 50px
+		border: 1px solid #bcbcbc
+		border-radius: 0
+		padding-left: 0
+		padding-right: 0
+		padding-top: 11px
+		padding-bottom: 14px
+
+	.navbar-toggler-icon
+		position: relative
+		width: 34px
+		height: 23px
+		font-size: 0
+
+		.line
+			display: block
+			width: 100%
+			height: 3px
+			background-color: $text-primary
+
+			position: absolute
+			left: 0
+			right: 0
+
+		.line1
+			top: 0
+
+		.line2
+			top: 10px
+
+		.line3
+			bottom: 0
+
+@media (min-width: 992px)
+	.header .navbar-toggler
+		display: none
+
+@media (max-width: 1200px)
+	/**/
+	.header
+		.nav-link
+			font-size: 15px
+
+		.navbar
+			padding-top: 18px
+
+		&__l
+			flex: 0 0 25%
+			max-width: 25%
+		&__r
+			flex: 0 0 75%
+			max-width: 75%
+
+@media (max-width: 991px)
+	/**/
+	.header
+		padding-top: 30px
+		padding-bottom: 4px
+
+		&__l
+			flex: 0 0 100%
+			max-width: 100%
+
+		&__r
+			flex: 0 0 100%
+			max-width: 100%
+
+		.container
+			position: relative
+
+		.navbar-toggler
+			position: absolute
+			right: 44px
+			top: 50%
+			margin-top: -25px
+
+		.navbar-nav
+			padding-top: 1.5em
+			padding-bottom: 1.5em
+			margin-left: auto
+			margin-right: 0
+			width: 280px
+
+		.navbar
+			padding-right: 0
+			padding-top: 0
+			padding-bottom: 0
+
+		.navbar-collapse
+			position: absolute
+			top: 100%
+			right: 0
+			width: 340px
+			padding-left: 30px
+			padding-right: 30px
+			background: #f7f7f7
+			z-index: 100
+
+	.nav-links__item
+		padding-left: 15px
+		padding-right: 15px
+		line-height: 1.25em
+		height: auto
+		padding-top: 12px
+		padding-bottom: 12px
+
+@media only screen and (max-width : 599px)
+	/**/
+	.header .navbar-toggler
+		right: 22px
+
+	.nav-links
+		display: block
+		display: flex
+		flex-wrap: wrap
+		flex-direction: row
+		font-size: 0
+
+	.nav-links__item
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		margin-bottom: 15px
+
+@media only screen and (max-width : 480px)
+	/**/
+	.header
+		&__l
+			width: 75%
+			max-width: 75%
+			flex: 0 0 75%
+
+@media only screen and (max-width : 414px)
+	/**/
+	.header .navbar-collapse
+		padding-left: 22px
+		padding-right: 22px
+		width: 100%
+
+	.header .navbar-nav
+		width: 100%
+
+	.header .nav-link
+		padding-top: 0.64rem
+		padding-bottom: 0.64rem

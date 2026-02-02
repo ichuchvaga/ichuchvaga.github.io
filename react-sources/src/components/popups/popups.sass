@@ -1,0 +1,204 @@
+@import "src/styles/imports"
+	
+/* Popup style */
+
+.customModal
+	max-width: 830px
+	padding: 0
+
+.popup
+	margin-left: auto
+	margin-right: auto
+	background-color: #fff
+	text-align: center
+	color: $text-primary
+	font-family: $montserrat
+	font-size: 22px
+	position: relative
+
+	&__heading
+		margin-top: 0
+		color: $text-primary
+		font-weight: 600
+
+	&__text
+		font-size: 22px
+		line-height: 1.22em
+		font-weight: normal
+
+	&__button
+		margin-top: 49px
+		.btn
+			padding-left: 32px
+			padding-right: 32px
+			font-weight: normal
+
+	&__return-link
+		margin-top: 19px
+
+		.link
+			font-weight: 600
+
+	&__form
+		text-align: left
+		margin-top: 54px
+
+	&__actions
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: stretch
+		align-items: center
+		width: 100%
+		padding-top: 10px
+
+		&-l
+			width: 50%
+			text-align: left
+
+		&-r
+			width: 50%
+			text-align: right
+
+		.btn
+			padding-left: 30px
+			padding-right: 30px
+
+
+	.checkboxes-inline
+		padding-bottom: 4px
+
+	.form-group--filter
+		margin-bottom: 13px
+
+	.form-group.form-group-checkbox
+		margin-top: 35px
+
+		.checkbox-field
+			padding-top: 2px
+			&:first-child
+				padding-top: 0
+
+.popup-close
+	background-color: transparent
+	background-image: url("/src/img/icons/icon-popup-close.png")
+	background-image: url("/src/img/icons/icon-popup-close.svg")
+	background-size: 24px 24px
+	background-repeat: no-repeat
+	position: absolute
+	right: 10px
+	top: 10px
+
+	display: block
+	width: 24px
+	height: 24px
+
+	transition: opacity .15s
+
+	&:hover
+		opacity: 0.75
+
+.popup--default
+	width: 830px
+	padding-top: 39px
+	padding-bottom: 47px
+	padding-left: 40px
+	padding-right: 40px
+
+	&.popup-template-permissions
+		padding-bottom: 28px
+
+.popup--template-img
+	max-width: 650px
+	margin-left: auto
+	margin-right: auto
+	padding: 6px 5px
+
+.popup-template-delete
+	.popup__button
+		margin-top: 35px
+
+.popup-close-button-whitebox
+	display: block
+	width: 54px
+	height: 54px
+	position: absolute
+	top: 0
+	right: 0
+	background-color: #fff
+
+	&:before
+		content: ''
+		display: block
+		background-color: transparent
+		background-image: url("/src/img/icons/icon-popup-close.png")
+		background-image: url("/src/img/icons/icon-popup-close.svg")
+		background-size: 24px 24px
+		background-repeat: no-repeat
+		position: absolute
+		left: 50%
+		top: 50%
+		margin-top: -12px
+		margin-left: -12px
+
+		display: block
+		width: 24px
+		height: 24px
+
+		transition: opacity .15s
+
+	&:hover:before
+		opacity: 0.75
+
+.popup-page-img
+	max-height: 90%
+	width: auto
+
+.popup-page-caption
+	text-align: left
+	font-size: 14px
+	line-height: 1.25em
+	font-weight: 600
+	letter-spacing: normal
+	color: $text-primary
+	margin-top: 1.571428571428571em
+	margin-bottom: 1.214285714285714em
+	padding-left: 8px
+	padding-right: 8px
+
+.access-permissions-defaults
+	margin-top: 35px
+	margin-bottom: 15px
+
+.popup
+	.access-permissions-defaults
+		.form-group.form-group-checkbox
+			margin-top: 0
+			margin-bottom: 2px
+
+@media screen and (max-width: 991px)
+	/**/
+	.popup--default
+		width: 100%
+		padding-left: 22px
+		padding-right: 22px
+
+@media screen and (max-width: 767px)
+	/**/
+	.popup__text
+		font-size: 18px
+
+	.popup
+		.checkboxes-inline
+			.form-group.form-group-checkbox
+				width: 100%
+				margin-right: 0
+				margin-top: 0
+
+	.popup__actions-l,
+	.popup__actions-r
+		width: 100%
+		text-align: left
+
+	.popup__actions-r
+		margin-top: 30px

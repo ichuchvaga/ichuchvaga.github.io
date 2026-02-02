@@ -1,0 +1,91 @@
+@import "src/styles/imports"
+	
+/* Filter input */
+.filter-control
+	position: relative
+
+	border: 1px solid #BDBDBD
+
+	.form-control
+		border: none
+		background: transparent
+		float: none
+		position: relative
+		overflow: hidden
+		width: auto
+		font-size: 18px
+		font-weight: normal
+		height: 30px
+		line-height: 30px
+		min-width: 50%
+		margin-left: 3px
+
+		&::placeholder
+			font-weight: normal
+
+	&__body
+		padding-bottom: 1px
+		padding-right: 33px
+
+	&__search-icon
+		display: block
+		width: 31px
+		position: absolute
+		top: 0px
+		bottom: 0px
+		right: 0px
+		border-radius: 0
+		border-style: solid
+		border-color: #BDBDBD
+		border-width: 0 0 0 1px
+		box-shadow: none
+		cursor: pointer
+		background-color: transparent
+		background-repeat: no-repeat
+		background-position: center center
+		background-image: url('/src/img/icons/search.png')
+		background-image: url('/src/img/icons/search.svg')
+
+.filter-control-option
+	float: left
+	border-radius: 4px
+	background: #F2F2F2
+	border: 1px solid #BDBDBD
+	font-family: $regular
+	font-weight: 600
+	font-size: 18px
+	line-height: 1.125em
+	text-align: center
+	color: $text-primary
+	padding-top: 3px
+	padding-bottom: 5px
+	padding-left: 37px
+	padding-right: 53px
+	position: relative
+	margin: 1px 0 0 1px
+
+	.icon
+		position: absolute
+		right: 5px
+		top: 50%
+		margin-top: -9px
+
+		transition: all .3s
+		transform: rotate(0deg)
+
+	&:hover
+		.icon
+			transform: rotate(90deg)
+
+.form-group
+	.filter-control
+		margin-top: 1px
+
+@media screen and (max-width: 480px)
+	/**/
+	.filter-control-option
+		font-size: 16px
+
+	.filter-control .form-control
+		&::placeholder
+			font-size: 14px
