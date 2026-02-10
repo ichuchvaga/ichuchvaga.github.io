@@ -1,0 +1,307 @@
+// В этом файле должны быть стили для БЭМ-блока main-projects, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-projects {
+
+  $block-name:                &; // #{$block-name}__element
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__gallery {
+    width: 572px;
+    flex-shrink: 0;
+    padding-top: 12px;
+  }
+
+  &__text {
+    max-width: 520px;
+
+    p {
+      margin-bottom: 29px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 600;
+    margin-bottom: 27px;
+
+    &-line-1 {
+      color: $orange;
+      margin-bottom: 2px;
+    }
+
+    &-line-2 {
+      font-size: 87px;
+      line-height: 88px;
+      position: relative;
+      
+      &::after {
+        content: '';
+        display: block;
+        background: transparent url("../img/main-projects-title-bg.svg") no-repeat 0 0;
+        position: absolute;
+        bottom: -19px;
+        left: 3px;
+        z-index: 1;
+        width: 568px;
+        height: 66px;
+      }
+
+      span {
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    &-line-3 {
+      position: relative;
+      z-index: 2;
+      margin-top: 2px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 71px;
+
+    .btn {
+      margin-right: 20px;
+    }
+  }
+
+  .download-links {
+    margin-top: 29px; 
+  }
+}
+
+.download-links {
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+  }
+}
+
+.download-link {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  width: 282px;
+
+  &__inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F5F5F5;
+    text-decoration: none;
+    color: $black;
+    padding: 22px 18px 20px 21px;
+    height: 100%;
+  }
+
+  &__main {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 40px;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 15px;
+
+    .icon {
+      fill: currentColor;
+    }
+  }
+
+  &__meta {
+    font-size: 16px;
+    line-height: 28px;
+    color: #7E7E7E;
+    margin-top: 1px;
+  }
+
+  &--sm {
+    width: 241px;
+    
+    .download-link {
+      &__icon {
+        margin-right: 16px;
+      }
+      
+      &__main {
+        font-size: 16px;
+        line-height: 18px;
+      }
+
+      &__meta {
+        font-size: 12px;
+        line-height: 14px;
+        margin-top: 6px;
+      }
+    }
+  }
+}
+
+.download-links--compact {
+  .download-links__inner {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: -9px;
+    display: block;
+  }
+
+  .download-link {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    padding-bottom: 9px;
+
+    &__inner {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    &__icon {
+      width: 18px;
+      height: 22px;
+      margin-right: 10px;
+
+      .icon {
+        width: 18px;
+        height: 22px;
+      }
+    }
+
+    &__main {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .download-links {
+    &__inner {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: -10px;
+    }
+  }
+
+  .download-link {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 10px;
+    width: 100%;
+
+    &__inner {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 10px;
+      padding-bottom: 11px;
+    }
+
+    &__icon {
+      width: 25px;
+
+      .icon {
+        width: 25px;
+        height: 30px;
+      }
+    }
+
+    &__main {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__meta {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  .main-projects {
+    &__wrapper {
+      display: block;
+    }
+
+    &__gallery {
+      width: 100%;
+      padding-top: 35px;
+    }
+
+    &__title {
+      font-size: 36px;
+      line-height: 1.2em;
+      margin-bottom: 20px;
+
+      &-line-2 {
+        font-size: 50px;
+        line-height: 56px;
+        display: inline-block;
+
+        &::after {
+          height: 24px;
+          background: #F5F5F5;
+          clip-path: polygon(0px 0px, calc(100% - 12px) 0px, 100% 100%, 0px 100%);
+          width: auto;
+          left: 2px;
+          right: -20px;
+          bottom: 0;
+        }
+      }
+
+      &-line-3 {
+        margin-top: 1px;
+      }
+    }
+
+    &__buttons {
+      display: none;
+    }
+
+    .download-links {
+      margin-top: 28px;
+    }
+  }
+
+  .download-link--sm {
+    .download-link {
+      &__inner {
+        padding: 12px 15px 12px;
+      }
+
+      &__meta {
+        margin-top: 4px;
+      }
+
+      &__icon {
+        margin-right: 14px;
+      }
+    }
+  }
+}

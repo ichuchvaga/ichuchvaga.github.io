@@ -1,0 +1,80 @@
+//- Все примеси в этом файле должны начинаться c имени блока (service-manufacturing)
+
+mixin service-manufacturing(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +service-manufacturing('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' service-manufacturing--' + modsList[i].trim();
+      }
+    }
+
+  .section.service-manufacturing.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .service-manufacturing__wrapper
+        .service-manufacturing__main
+          .section-heading.section-heading--bottom-line
+            h2 #[span Высококачественное] <br>производство
+
+          .service-manufacturing__intro
+            p Качество готовой продукции – наш ключевой приоритет. Эта цель достигается за счет солидной  материально-технической базы, квалифицированных кадров, соблюдения  технологий производства.
+
+          .service-manufacturing__text
+            p Также на заводе реализована сложная система контроля качества каждой  единицы товара. Мы отгружаем клиентам из Смоленска только ту продукцию, которая действительно достойна, чтобы эксплуатироваться по назначению.
+
+        .service-manufacturing__image
+          img(src="img/manuf-img.jpg" alt="")
+
+          .svc-manuf-label
+            .svc-manuf-label__icon
+              img(src="img/service-manuf-circle.svg" alt="")
+            .svc-manuf-label__title 33 года
+            .svc-manuf-label__descr на рынке
+
+      -
+        var benefits = [
+          {
+            icon: "service-manuf-icon1.svg",
+            img: "service-manuf-img1.svg",
+            title: "Работаем с юридическими лицами",
+            descr: "Документацию выполняем сами или по чертежам заказчика, все моменты строго соблюдаем"
+          },
+          {
+            icon: "service-manuf-icon2.svg",
+            img: "service-manuf-img2.svg",
+            title: "Разрабатываем конструкторскую документацию",
+            descr: "Документацию выполняем сами или по чертежам заказчика, все моменты строго соблюдаем"
+          },
+          {
+            icon: "service-manuf-icon3.svg",
+            img: "service-manuf-img3.svg",
+            title: "Оплата по безналичному расчету",
+            descr: "Документацию выполняем сами или по чертежам заказчика, все моменты строго соблюдаем"
+          }
+        ];
+
+      .svc-manuf-benefits
+        .svc-manuf-benefits__list
+          each item in benefits
+            - var iconUrl = 'img/' + item.icon;
+            - var imgUrl = 'img/' + item.img;
+            .svc-manuf-benefits__item
+              .svc-manuf-benefit
+                .svc-manuf-benefit__icon
+                  img(src=iconUrl alt="")
+                .svc-manuf-benefit__title #{item.title}
+
+                .svc-manuf-benefit__hover
+                  .svc-manuf-benefit__title #{item.title}
+                  .svc-manuf-benefit__descr #{item.descr}
+                  .svc-manuf-benefit__img
+                    img(src=imgUrl alt="")

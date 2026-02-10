@@ -1,0 +1,38 @@
+//- Все примеси в этом файле должны начинаться c имени блока (okl-manufacturers)
+
+mixin okl-manufacturers(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +okl-manufacturers('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' okl-manufacturers--' + modsList[i].trim();
+      }
+    }
+  
+  include ./okl-manufacturers.data.pug
+
+  .section.okl-manufacturers(class=allMods)&attributes(attributes)
+    .container
+      h2.section-title ОКЛ с применением кабельной  продукции "Конкорд" 
+
+      .section-content
+        .text-md
+          p Разработанные совместно с производителями несущих систем:
+
+        .okl-manuf-list
+          .okl-manuf-list__in
+            each item in olkManufItems
+              - var imgUrl = 'img/' + item;
+
+              .okl-manuf-list__item
+                a(href="#").okl-manuf-logo
+                  img(src=imgUrl alt="")

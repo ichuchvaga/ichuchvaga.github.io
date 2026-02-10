@@ -1,0 +1,57 @@
+// В этом файле должны быть стили для БЭМ-блока main-nav, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-nav-inner {
+
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+  z-index: 10;
+
+  // первый уровень
+  &__list {
+    margin: 0 -13px 0;
+    padding: 0;
+    list-style: none;
+
+    // настольный вид списка
+    @media (min-width: $menu-desktop-width) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding: 0 13px;
+
+    &--active {
+
+      & > #{$block-name}__link {
+        color: #fff;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #f34b1a;
+    }
+  }
+
+  &__item.active > .main-nav__link {
+    color: #f34b1a;
+  }
+}

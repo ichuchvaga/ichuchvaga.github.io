@@ -1,0 +1,239 @@
+// В этом файле должны быть стили для БЭМ-блока about, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.about {
+
+  $block-name:                &; // #{$block-name}__element
+}
+
+
+.geo-stats {
+  width: 100%;
+
+  &__in {
+    margin-left: -20px;
+    margin-right: -20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.geo-stats-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__image {
+    font-size: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  &__number {
+    font-size: 97px;
+    line-height: 1em;
+    font-weight: 600;
+    color: $blue;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+    flex-shrink: 0;
+    margin-left: 15px;
+  }
+}
+
+.geo-stats__item {
+  &:nth-child(1) {
+    .geo-stats-card__text {
+      width: 193px;
+    }
+  }
+
+  &:nth-child(2) {
+    width: 400px;
+
+    .geo-stats-card__text {
+      width: 138px;
+    }
+  }
+
+  &:nth-child(3) {
+    width: 329px;
+
+    .geo-stats-card__text {
+      width: 193px;
+    }
+  }
+}
+
+.geo-map {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: -97px;
+  left: -194px;
+  width: 1200px;
+
+  & > img {
+    width: 100%;
+    height: 683px;
+  }
+}
+
+/*.geo-points {
+  position: absolute;
+  top: 238px;
+  left: 240px;
+
+  img {
+    width: 541px;
+    height: 358px;
+  }
+}*/
+
+.geo-distances {
+  position: absolute;
+  top: 74px;
+  right: 0;
+  z-index: 4;
+  display: flex;
+}
+
+.distance {
+  margin-left: 22px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &__city {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #7E7E7E;
+    margin-bottom: 1px;
+  }
+
+  &__value {
+    font-size: 30px;
+    line-height: 1em;
+    font-weight: 600;
+    color: $black;
+  }
+}
+
+.geo-map-mobile {
+  display: none;
+}
+
+@media (max-width: $screen-xl - 1) {
+
+  .info-section--geo .info-section__additional {
+    height: 304px;
+  }
+
+  .geo-map {
+    display: none;
+    width: 423px;
+    left: 0;
+    top: 0;
+
+    & > img {
+      height: 366px;
+    }
+  } 
+
+  .geo-map-mobile {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: -64px;
+    left: 0;
+    right: -15px;
+
+    & > img {
+      max-width: 643px;
+      width: 643px;
+      height: 366px;
+    }
+  }
+
+  .geo-distances {
+    top: 25px;
+  }
+
+  .geo-stats {
+    margin-bottom: -4px;
+    
+    &__in {
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-left: -14px;
+      margin-right: -14px;
+    }
+
+    &__item {
+      padding-left: 14px;
+      padding-right: 14px;
+      max-width: 33.33%;
+
+      &:nth-child(2) {
+        width: auto;
+      }
+
+      &:nth-child(3) {
+        width: auto;
+      }
+    }
+  }
+
+  .geo-stats-card {
+    display: block;
+
+    &__image {
+      display: none;
+    }
+
+    &__number {
+      font-size: 40px;
+      line-height: 1em;
+      margin-bottom: 1px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 0;
+      max-width: calc(100% + 14px);
+    }
+  }
+
+  .distance {
+    margin-left: 16px;
+    
+    &__city {
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 2px;
+    }
+
+    &__value {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}

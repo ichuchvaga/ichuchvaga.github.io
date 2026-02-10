@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mobile-panel)
+
+mixin mobile-panel(mods, appendRequest)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +mobile-panel('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' mobile-panel--' + modsList[i].trim();
+      }
+    }
+
+  .mobile-panel(class=allMods)&attributes(attributes)
+    block mobile-panel
+    .mobile-panel__inner
+      a.mobile-panel__item.mobile-panel__catalog(href='catalog.html')
+        svg(width='32', height='30')
+          use(xlink:href='img/sprite.svg#catalog')
+        | Каталог
+      a.mobile-panel__item.mobile-panel__email(href='mailto:')
+        svg(width='35', height='25')
+          use(xlink:href='img/sprite.svg#mail2')
+        | Написать
+      a.mobile-panel__item.mobile-panel__whatsapp(href='wa:')
+        img(src='img/whatsapp.png', alt='')
+        | WhatsApp
+      a.mobile-panel__item.mobile-panel__phone(href='tel:')
+        svg(width='28', height='28')
+          use(xlink:href='img/sprite.svg#phone2')
+        | Позвонить
+      a.mobile-panel__item.mobile-panel__menu(href='#')
+        svg(width='36', height='29')
+          use(xlink:href='img/sprite.svg#bars')
+        | Меню

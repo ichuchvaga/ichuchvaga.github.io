@@ -1,0 +1,94 @@
+// В этом файле должны быть стили для БЭМ-блока read-more, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.read-more {
+  $block-name: &; // #{$block-name}__element
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 36px;
+  }
+
+  &__slider {
+    position: relative;
+
+    .swiper {
+      margin: -43px;
+      padding: 43px;
+    }
+  }
+
+  &__button {
+    display: none;
+  }
+
+  &--vacancies {
+    #{$block-name}__title {
+      text-align: center;
+    }
+
+    #{$block-name}__button {
+      display: flex;
+      width: 298px;
+      margin: 49px auto 0;
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    &__title {
+      font-size: 32px;
+      line-height: 48px;
+      margin-bottom: 22px;
+    }
+
+    &__slider {
+      padding-bottom: 27px;
+
+      .swiper {
+        margin: -23px -15px;
+        padding: 23px 15px 27px;
+      }
+
+      .nav-arrows {
+        display: none;
+      }
+    }
+
+    &__button {
+      margin: 36px auto 0;
+      width: 274px;
+      max-width: 100%;
+      display: flex;
+    }
+
+    &--vacancies {
+      #{$block-name}__button {
+        margin-top: 22px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__title {
+      font-size: 30px;
+      line-height: 36px;
+      margin-bottom: 23px;
+    }
+
+    &__button {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    &--vacancies {
+      #{$block-name}__button {
+        width: 100%;
+      }
+    }
+  }
+}

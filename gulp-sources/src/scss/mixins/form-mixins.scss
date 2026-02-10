@@ -1,0 +1,77 @@
+@mixin field-text {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  margin: 0;
+  line-height: $line-height;
+  font-family: inherit;
+  background-color: #fff;
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  //border: 1px solid #e7e7e9;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  min-height: 50px;
+  padding: 14px 20px 0;
+  font-weight: 400;
+  font-size: 16px;
+
+  transition: all .3s;
+
+  &:focus {
+    @include field-focus;
+  }
+
+  &[disabled],
+  &[readonly] {
+    cursor: not-allowed;
+    background-color: $gray;
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &[type='color'] {
+    padding: 0;
+  }
+
+  &::placeholder {
+    color: $text-color-muted;
+    opacity: 1;
+  }
+}
+
+
+@mixin field-help-text {
+  display: none;
+  padding-top: 0.4em;
+  padding-left: 21px;
+  font-size: 12px;
+  line-height: 1.2em;
+  color: $text-color-muted;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+@mixin field-focus {
+  outline: 0;
+  // border-color: #a6a7a6;
+  border-color: $black;
+  //box-shadow: 0 0 0 2px rgba($color-main, $opacity);
+}
+
+
+@mixin field-name {
+  display: block;
+  margin-bottom: 0.4em;
+  line-height: $line-height;
+  font-weight: 700;
+}

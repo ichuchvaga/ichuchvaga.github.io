@@ -1,0 +1,62 @@
+// В этом файле должны быть стили для БЭМ-блока img-banners, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.img-banners {
+
+  $block-name:                &; // #{$block-name}__element
+
+  padding-top: 100px;
+
+  &__wrapper {
+    font-size: 0;
+    line-height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    // margin-left: -14px;
+    // margin-right: -14px;
+    margin-bottom: -28px;
+  }
+}
+
+.img-banner {
+  display: block;
+  // margin-left: 14px;
+  // margin-right: 14px;
+  // margin-bottom: 28px;
+  // width: calc(50% - 28px);
+}
+
+.img-banners-slider {
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  
+  .nav-dots {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .img-banners {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: $screen-lg - 1) {
+  .img-banners {
+    &__wrapper {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: -20px;
+    }
+  }
+  
+  .img-banner {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: center;
+  }
+}

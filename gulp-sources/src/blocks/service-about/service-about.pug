@@ -1,0 +1,39 @@
+//- Все примеси в этом файле должны начинаться c имени блока (service-about)
+
+mixin service-about(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +service-about('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' service-about--' + modsList[i].trim();
+      }
+    }
+
+  .service-about.section.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .section-heading.section-heading--bottom-line
+        h2 #[span «Конкорд» — ведущая компания] <br> по металлообработке
+
+      .section-content
+        .service-about__wrapper
+          .service-about__col1
+            .service-about__intro
+              p Конкорд имеет богатый опыт и инновационный подход, предоставляет высококачественные решения в области металлообработки для различных отраслей промышленности.
+
+          .service-about__col2
+            .service-about__text
+              p Оказываем комплексные услуги по металлообработке в г. Смоленске Работаем с такими металлами как:
+
+              ul
+                li Углеродистая и нержавеющая сталь;
+                li Легированная сталь;
+                li Цветные металлы и другими необходимыми материалами в производственных процессах.

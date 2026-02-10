@@ -1,0 +1,40 @@
+mixin where-to-buy()
+	//- Вызов:
+		+where-to-buy()
+	//- подключаем файл со структурой данных блока
+	include where-to-buy.data.pug
+
+	div.section.where-to-buy&attributes(attributes)
+		.container
+			.section-heading.section-heading--2columns
+				.section-heading__text
+					h2.section-title Где купить
+
+				.section-heading__links
+					a(href="where-to-buy.html" class="btn btn--main btn--with-icon")
+						span.btn__text Все дилеры
+						span.btn__icon
+							+icon("btn-arrow-right")(width="14" height="14")
+
+			.section-content
+				.dealers
+					.dealers__in
+						each dealer in dealers
+							- var imgUrl = 'img/' + dealer.img;
+							.dealers__item
+								.dealer-img
+									img(src=imgUrl alt="")
+
+					.section-bottom-btn
+						a(href="where-to-buy.html" class="btn btn--main btn--with-icon")
+							span.btn__text Все дилеры
+							span.btn__icon
+								+icon("btn-arrow-right")(width="14" height="14")
+
+				.load-more
+					a(class="btn btn--outline-with-icon" href="javascript:void(0);" data-modal="open" data-modal-target="#modal-dealer")
+						span.btn__icon
+							+icon('dealers-black')(width="22" height="22")
+						span.btn__text Стать дилером
+
+				block

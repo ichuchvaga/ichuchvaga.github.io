@@ -1,0 +1,345 @@
+// В этом файле должны быть стили для БЭМ-блока production, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.production {
+
+  $block-name: &; // #{$block-name}__element
+
+  padding-top: 87px;
+  padding-bottom: calc((100vh - 612px) / 2);
+  position: relative;
+
+  &__bg {
+    display: block;
+    height: 396px;
+    width: 100%;
+    position: absolute;
+    top: 509px;
+    left: 0;
+    right: 0;
+    background: transparent url("../img/production-bg-pattern.png") repeat-x 0 0;
+    z-index: 1;
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  @media (max-height: 899px) {
+    padding-top: 60px;
+  }
+
+  @media (max-width: $screen-lg - 1) {
+    padding-top: 50px;
+
+    &__title {
+      // font-size: 36px;
+      // line-height: 44px;
+      font-size: 30px;
+      line-height: 1.222em;
+    }
+  }
+}
+
+.prod-listing {
+  padding-top: 7px;
+
+  @media (max-width: $screen-lg - 1) {
+    padding-top: 23px;
+    padding-bottom: 100px;
+
+    .pin-spacer {
+      margin-top: 20px !important;
+
+      &:first-child {
+        margin-top: 0 !important;
+      }
+
+      &:last-child {
+        margin-bottom: 88px !important;
+      }
+    }
+  }
+}
+
+.prod-card {
+  position: relative;
+  z-index: 2;
+  color: $black;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  padding: 0 76px 0;
+  margin: 100px 0 0;
+  min-height: 612px;
+  background-color: #fff;
+  clip-path: polygon(calc(100% - 50px) 0%, 100% 40px, 100% 100%, 50px 100%, 0% calc(100% - 40px), 0 0);
+
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 40px 0 0 50px;
+    border-color: transparent transparent transparent #ffffff;
+    transform: rotate(0deg);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 50px 40px 0;
+    border-color: transparent #FFFFFF transparent transparent;
+    transform: rotate(0deg);
+  }
+
+  //&:first-child {
+  //  margin-top: 0;
+  //}
+
+  &__main {
+    width: 58%;
+    flex: none;
+  }
+
+  &__title {
+    color: currentColor;
+    text-transform: uppercase;
+    margin: 0 0 17px;
+  }
+
+  &__text {
+    color: currentColor;
+  }
+
+  &__benefits {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  &__image {
+    margin-top: auto;
+    padding-top: 50px;
+    margin-right: -76px;
+    font-size: 0;
+    line-height: 0;
+    //flex-shrink: 0;
+    flex: 1;
+    
+    text-align: center;
+
+    img {
+      max-width: 350px;
+    }
+  }
+
+  &__btn {
+    margin-top: 35px;
+  }
+
+  &--past {
+    background-color: $blue;
+    color: #fff;
+    border: 1px solid #fff;
+
+    .prod-card-benefit {
+      &__icon {
+        .icon {
+          fill: #fff;
+        }
+      }
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+
+  @media (max-height: 899px) {
+    min-height: 512px;
+  }
+
+  @media (max-width: $screen-lg - 1) {
+    flex-direction: column-reverse;
+    padding: 25px 25px;
+    gap: 20px;
+    justify-content: start;
+    align-items: start;
+    min-height: 0;
+    clip-path: polygon(calc(100% - 30px) 0, 100% 23px, 100% 100%, 30px 100%, 0 calc(100% - 23px), 0 0);
+
+    &__image {
+      margin: 0 auto;
+      padding-top: 0;
+
+      img {
+        max-height: 100px;
+        display: block;
+      }
+    }
+
+    &__main {
+      width: auto;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 1.25em;
+      margin-bottom: 14px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 19px;
+
+      &.text-md p {
+        margin-bottom: 19px;
+      }
+    }
+
+    &__benefits {
+      padding: 0;
+    }
+
+    &__btn {
+      margin-top: 22px;
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    &::after {
+      border-width: 0 30px 23px 0;
+    }
+
+    &::before {
+      border-width: 23px 0 0 30px;
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.prod-card-benefit {
+  position: relative;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+
+  &__icon {
+
+    font-size: 0;
+    line-height: 0;
+
+    .icon {
+      fill: $black;
+    }
+
+    .icon--production-term {
+      width: 59px;
+      height: 53px;
+    }
+
+    .icon--production-warranty {
+      width: 45px;
+      height: 56px;
+    }
+  }
+
+  &__main {
+    padding-left: 12px;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__text-sm {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: -1px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 1px;
+    background-color: $black;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -25px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    &::after {
+      content: unset;
+      display: none;
+    }
+  }
+
+  @media (max-width: $screen-lg - 1) {
+      margin-right: 24px;
+
+    &::after {
+      right: -12px;
+    }
+
+    &__icon {
+      .icon {
+        &--production-term {
+          width: 42px;
+          height: 38px;
+        }
+
+        &--production-warranty {
+          width: 32px;
+          height: 40px;
+        }
+      }
+    }
+
+    &__main {
+      padding-left: 8px;
+    }
+
+    &__title {
+      font-size: 26px;
+      line-height: 24px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}

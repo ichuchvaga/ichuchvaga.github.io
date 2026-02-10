@@ -1,0 +1,70 @@
+//- Все примеси в этом файле должны начинаться c имени блока (subcategory)
+
+mixin subcategory(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +subcategory('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' subcategory--' + modsList[i].trim();
+      }
+    }
+  
+  include ./subcategory.data.pug
+
+  .subcategory(class=allMods)&attributes(attributes)
+    .container
+      +breadcrumbs()
+        +breadcrumbs-item('Главная', 'index.html')
+        +breadcrumbs-item('Каталог', 'catalog.html')
+        +breadcrumbs-item('NUMнг(А)-LS')
+        
+    .subcategory__main
+      +hero-category()
+      
+      .subcat-products
+        .container
+          h2.section-title товары категории
+
+          +tabs([
+            {
+              'id': 'tab00',
+              'text': 'Трехжильный',
+              'isActive': true,
+            },
+            {
+              'id': 'tab01',
+              'text': 'Четырехжильный',
+            },
+            {
+              'id': 'tab02',
+              'text': 'Пятижильный',
+            },
+            {
+              'id': 'tab03',
+              'text': 'Двужильный',
+            },
+            ], '')
+            
+            +tabs-item('tab00', true, '')
+              +products-listing(products)
+
+            +tabs-item('tab01', false, '')
+              +products-listing(products_tab2)
+
+            +tabs-item('tab02', false, '')
+              +products-listing(products_tab3)
+
+            +tabs-item('tab03', false, '')
+              +products-listing(products_tab4)
+
+
+    +category-description()(id="details")

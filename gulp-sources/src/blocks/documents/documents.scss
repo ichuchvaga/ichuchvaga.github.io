@@ -1,0 +1,520 @@
+// В этом файле должны быть стили для БЭМ-блока documents, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.documents {
+
+  $block-name:                &; // #{$block-name}__element 
+
+  padding-bottom: 100px;
+}
+
+.icon--docs-availability {
+  width: 54px;
+  height: 65px;
+}
+
+.icon--docs-certificates {
+  width: 54px;
+  height: 57px;
+}
+
+.icon--docs-sout {
+  width: 57px;
+  height: 65px;
+}
+
+.docs-group-compact {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  clip-path: polygon(0 0,calc(100% - 48px) 0,100% 38px,100% 100%,100% 100%,0 100%,0 100%,0 0); 
+  color: $black;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 24px 50px 24px 31px;
+  min-height: 125px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__icon {
+    font-size: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 19px;
+  }
+
+  .circle-link {
+    width: 22px;
+    height: 22px;
+    line-height: 0;
+    padding: 6px 7px 6px 8px;
+    margin-left: 8px;
+
+    .icon {
+      width: 7px;
+      height: 10px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &-text {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &-icon {
+      display: inline-block;
+      vertical-align: baseline;
+    }
+  }
+
+  &__descr {
+    color: #7E7E7E;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 5px;
+  }
+
+  &:hover {
+    color: $black;
+
+    .circle-link {
+      background-color: $orange-hover;
+    }
+  }
+}
+
+.docs-layout {
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .col {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.docs-group {
+  background-color: #fff;
+  clip-path: polygon(0 0,calc(100% - 48px) 0,100% 38px,100% 100%,100% 100%,0 100%,0 100%,0 0); 
+  color: $black;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 32px 30px 31px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.docs-group-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+
+  &__title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    font-size: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    width: 54px;
+    height: 62px;
+    margin-right: 30px;
+  }
+
+  &__descr {
+    color: #7E7E7E;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 5px;
+  }
+}
+
+.docs-group-content {
+  margin-top: 31px;
+  padding-top: 30px;
+  padding-bottom: 37px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.docs-item {
+  margin-top: 15px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.docs-link-default {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: $black;
+  text-decoration: none;
+  background-color: #F5F5F5;
+  padding: 20px 25px 20px 22px;
+
+  &__filetype {
+    font-size: 0;
+    line-height: 0;
+    fill: currentColor;
+    width: 40px;
+    height: 48px;
+    margin-right: 22px;
+  }
+
+  &__info {
+    padding-right: 15px;
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 20px;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  &__meta {
+    color: #7E7E7E;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  &__download {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+    padding: 7px;
+    margin-left: auto;
+    transition: background-color .25s ease;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: background-color .25s ease;
+    }
+  }
+
+  &:hover {
+    .docs-link-default__download {
+      background-color: $orange-hover;
+
+      .icon {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.docs-intro-text {
+  margin-top: -14px;
+  margin-bottom: 41px;
+}
+
+.docs-group--sout {
+  .docs-group-content {
+    padding-bottom: 0;
+  }
+}
+
+.docs-group-content--two-columns {
+  .row {
+    margin-left: -16px;
+    margin-right: -15px;
+  }
+
+  .col {
+    padding-left: 16px;
+    padding-right: 15px;
+  }
+}
+
+.certificate-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: $black;
+  text-decoration: none;
+  background-color: #F5F5F5;
+  padding: 22px 22px 21px;
+
+  &__icon {
+    font-size: 0;
+    line-height: 0;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      fill: $orange;
+    }
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+} 
+
+.docs-layout--certificates {
+  .docs-item {
+    margin-top: 10px;
+  }
+
+  .docs-group-content {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .documents {
+    padding-bottom: 60px;
+  }
+  
+  .docs-layout {
+    .col {
+      margin-top: 20px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .docs-group {
+    padding: 20px;
+    clip-path: polygon(0 0,calc(100% - 30px) 0,100% 23px,100% 100%,100% 100%,0 100%,0 100%,0 0); 
+  }
+
+  .docs-group-head {
+    // align-items: flex-start;
+    justify-content: flex-start;
+
+    .icon--docs {
+      width: 35px;
+      height: 40px;
+    }
+
+    &__icon {
+      // padding-top: 5px;
+      width: 50px;
+      height: 40px;
+      font-size: 0;
+      line-height: 0;
+      margin-right: 0;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &__descr {
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 2px;
+    }
+  } 
+
+  .docs-group-content {
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
+  .docs-group-compact {
+    align-items: flex-start;
+    padding: 25px 20px 20px;
+    min-height: 115px;
+    clip-path: polygon(0 0,calc(100% - 30px) 0,100% 23px,100% 100%,100% 100%,0 100%,0 100%,0 0); 
+
+    &__icon {
+      width: 50px;
+      height: 45px;
+      padding-top: 5px;
+      margin-right: 0;
+    }
+
+    &__main {
+      width: calc(100% - 50px);
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 26px;
+
+      &-text {
+        display: block;
+        line-height: 26px;
+      }
+
+      &-icon {
+        line-height: 26px;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 1px;
+      }
+    }
+
+    &__descr {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  
+  .icon--docs-availability {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon--docs-certificates {
+    width: 38px;
+    height: 40px;
+  }
+
+  .icon--docs-sale {
+    width: 35px;
+    height: 40px;
+  }
+
+  .icon--docs-sout {
+    width: 35px;
+    height: 40px;
+  }
+
+  .icon--docs-okl {
+    width: 38px;
+    height: 40px;
+  }
+
+  .icon--docs-iso {
+    width: 38px;
+    height: 40px;
+  }
+
+  .docs-item {
+    margin-top: 10px;
+  }
+
+  .docs-link-default {
+    padding: 11px 13px 9px 13px;
+    min-height: 60px;
+    align-items: flex-start;
+
+    &__name {
+      line-height: 19px;
+    }
+
+    &__meta {
+      margin-top: 1px;
+    }
+
+    &__filetype {
+      width: 25px;
+      height: 30px;
+      margin-right: 12px;
+      margin-bottom: 2px;
+      margin-top: 4px;
+
+      .icon {
+        width: 25px;
+        height: 30px;
+      }
+    }
+
+    &__download {
+      width: 24px;
+      height: 24px;
+      padding: 5px 6px 6px;
+      margin-top: 7px;
+
+      .icon {
+        width: 12px;
+        height: 13px;
+      }
+    }
+  }
+
+  .docs-intro-text {
+    margin-bottom: 23px;
+    display: none;
+  }
+
+  .docs-group--sout {
+    .docs-group-head {
+      &__icon {
+        width: 48px;
+      }
+
+      &__main {
+        margin-right: -12px;
+        letter-spacing: -0.02em;
+      }
+    }
+
+    .col {
+      margin-top: 10px;
+    }
+  }
+
+  .docs-layout--certificates {
+    .docs-item {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .docs-group-head {
+      align-items: flex-start;
+
+      &__icon {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .certificate-link {
+    padding: 14px 14px;
+
+    &__icon {
+      margin-right: 13px;
+    }
+  }
+}

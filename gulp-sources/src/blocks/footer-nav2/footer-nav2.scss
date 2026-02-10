@@ -1,0 +1,77 @@
+// В этом файле должны быть стили для БЭМ-блока footer-nav, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.footer-nav2 {
+
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+  z-index: 10;
+  margin-top: 57px;
+
+  // первый уровень
+  &__list {
+    margin: 0 -12px -20px -13px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 13px;
+    padding-right: 12px;
+
+    &--active {
+
+      & > #{$block-name}__link {
+        color: #000;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #222221;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 17px;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      z-index: 1;
+      text-decoration: none;
+      color: $color-main;
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    margin-top: 0;
+    
+    &__wrapper {
+      display: block;
+    }
+    
+    &__list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__item {
+      margin-top: 13px;
+    }
+
+    &__link {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}

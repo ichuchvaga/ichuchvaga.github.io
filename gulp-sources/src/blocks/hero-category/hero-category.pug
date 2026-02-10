@@ -1,0 +1,100 @@
+//- Все примеси в этом файле должны начинаться c имени блока (hero-category)
+
+mixin hero-category(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +hero-category('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' hero-category--' + modsList[i].trim();
+      }
+    }
+
+  .hero-category(class=allMods)&attributes(attributes)
+    .container
+      .hero-category__wrapper
+        .hero-category__image
+          img(src="img/hero-category.jpg" alt="")
+
+          .hero-category__label
+            .warranty-label
+              .warranty-label__icon
+                +icon('warranty-small')
+
+              .warranty-label__content
+                .warranty-label__line-1 5 лет
+                .warranty-label__line-2 гарантия
+
+        .hero-category__main
+          .hero-category__prod-type Силовой кабель
+          h1.hero-category__h1 NUMнг(А)-LS
+          .hero-category__short-description  ТУ 3521-001-12350648-2009 | 5x16-0,66 | EAK 180222 РФ
+
+          .hero-category__image-mobile
+            img(src="img/hero-category.jpg" alt="")
+
+            .hero-category__label
+              .warranty-label
+                .warranty-label__icon
+                  +icon('warranty-small')
+
+                .warranty-label__content
+                  .warranty-label__line-1 5 лет
+                  .warranty-label__line-2 гарантия
+
+          .hero-category__params-mobile
+            .cat-param
+              .cat-param__caption Категория размещения
+              .cat-param__value 3 и 4 по ГОСТ 15150
+
+            .cat-param
+              .cat-param__caption Класс пожарной опасности
+              .cat-param__value П1б.8.2.2.2 по ГОСТ 31565
+          
+          .hero-category__text
+            p Кабели силовые, предназначенные для передачи и распределения  электроэнергии в стационарных установках на номинальное переменное  напряжение 0,66 кВ частотой 50 Гц. 
+            p Кабель является функциональным и конструктивным аналогом  изделий NYM® (VDE 0250). Отличительной особенностью данных изделий  является современный внешний вид и высокая технологичность монтажа.
+
+          a(href="#details").js-scroll-to.link-dash Показать полностью характеристики
+
+          -
+            var links = [
+              {
+                title: "Сертификаты",
+                meta: "PDF, 134.55 KB"
+              },
+              {
+                title: "Руководство по&nbsp;эксплуатации",
+                meta: "PDF, 134.55 KB"
+              }
+            ];
+
+          .download-links-wrap
+            .download-links
+              .download-links__inner
+                each pdf_link in links
+                  .download-link.download-link--sm
+                    a(href="#").download-link__inner
+                      .download-link__icon
+                        +icon('pdf')(width="40" height="48")
+
+                      .download-link__main
+                        .download-link__text !{pdf_link.title}
+                        .download-link__meta #{pdf_link.meta}
+
+            .hero-category__params
+              .cat-param
+                .cat-param__caption Категория размещения
+                .cat-param__value 3 и 4 по ГОСТ 15150
+
+              .cat-param
+                .cat-param__caption Класс пожарной опасности
+                .cat-param__value П1б.8.2.2.2 по ГОСТ 31565

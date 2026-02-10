@@ -1,0 +1,296 @@
+// В этом файле должны быть стили для БЭМ-блока field-text, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-text {
+
+  $block-name: &; // #{$block-name}__element
+
+  display: block;
+  margin-bottom: 20px;
+
+  &__name {
+    font-weight: 400;
+    font-size: 16px;
+    color: $gray-darkest;
+    position: absolute;
+    top: 14px;
+    left: 21px;
+    margin: 0;
+    transition: all .3s;
+    pointer-events: none;
+  }
+
+  &__input-wrap {
+    display: block;
+    position: relative;
+  }
+
+  &__input {
+    @include field-text;
+
+    @at-root textarea#{&} {
+      height: auto;
+      min-height: 116px;
+      resize: vertical;
+      padding-top: 22px;
+    }
+
+    &:not(:placeholder-shown) + #{$block-name}__name,
+    &:focus + #{$block-name}__name {
+      font-size: 12px;
+      top: 6px;
+    }
+  }
+
+  &__input[type="tel"] {
+    &::placeholder {
+      color: $black;
+    }
+
+    &:focus::placeholder {
+      color: $black;
+    }
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+
+  &__input.error {
+    border-color: #FF5656;
+    
+    & ~ .field-text__help-text {
+      color: #FF5656;
+      display: block;
+    }
+  }
+
+  &__password-toggle {
+    color: #aeb0b7;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    &-hide {
+      display: none;
+    }
+
+    &.active &-hide {
+      display: block;
+    }
+
+    &.active &-show {
+      display: none;
+    }
+  }
+
+
+  &--error,
+  &.is-invalid {
+
+    /*#{$block-name}__name,
+    #{$block-name}__input,
+    #{$block-name}__help-text {
+      color: $color-danger;
+    }*/
+
+    #{$block-name}__input {
+      border-color: $color-danger;
+      //background-color: lighten($color-danger, 35%);
+    }
+
+    .error {
+      color: $color-danger;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      display: block;
+      margin-top: 5px;
+      padding-left: 23px;
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    margin-bottom: 19px;
+
+    &__name {
+      left: 25px;
+      top: 14px;
+    }
+
+    &__input {
+      padding: 14px 23px 0;
+      font-size: 16px;
+      line-height: 14px;
+      // min-height: 51px;
+
+      &:not(:placeholder-shown) + #{$block-name}__name,
+      &:focus + #{$block-name}__name {
+        top: 3px;
+      }
+
+      @at-root textarea#{&} {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    margin-bottom: 20px;
+
+    &__name {
+      top: 14px;
+      left: 19px;
+
+      &[data-mobile] {
+        font-size: 0;
+
+        &:before {
+          content: attr(data-mobile);
+          font-size: 16px;
+          transition: all .3s;
+        }
+      }
+    }
+
+    &__input {
+      font-size: 16px;
+      padding: 14px 18px 0;
+      line-height: 14px;
+      min-height: 50px;
+
+      &:not(:placeholder-shown) + #{$block-name}__name,
+      &:focus + #{$block-name}__name
+      {
+        /*font-size: 10px;
+        top: 8px;
+        left: 19px;*/
+
+        &[data-mobile] {
+          font-size: 0;
+
+          &:before {
+            font-size: 10px;
+          }
+        }
+      }
+
+      @at-root textarea#{&} {
+        padding-top: 24px;
+      }
+    }
+  }
+}
+
+
+.inline-fields {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .submit-btn {
+    margin-left: 20px;
+  }
+
+  .field-text {
+    width: 220px;
+    margin-bottom: 0;
+  }
+}
+
+.form-submit {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 40px;
+
+  &__agreement {
+    margin-left: 30px;
+    max-width: 314px;
+  }
+
+  .agreement {
+    line-height: 15px;
+  }
+}
+
+.fields {
+  .row {
+    margin-left: -11px;
+    margin-right: -11px;
+  }
+
+  .col {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+}
+
+@media (max-width: $screen-xl - 1) {
+  .form-submit {
+    display: block;
+    margin-top: 30px;
+
+    &__btn {
+      .btn {
+        width: 100%;
+        text-align: center;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  
+    &__agreement {
+      margin-left: 0;
+      margin-top: 17px;
+      margin-bottom: -4px;
+      max-width: 100%;
+    }
+
+    .agreement {
+      line-height: 16px;
+    }
+  }
+
+  .inline-fields {
+    display: block;
+
+    .field-text {
+      width: 100%;
+    }
+
+    .submit-btn {
+      margin-left: 0;
+      margin-top: 20px;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.form--white {
+  .field-text {
+    &__input {
+      border-color: #CDCDCD;
+
+      &.error {
+        color: #ff5656;
+        border-color: #ff5656;
+      }
+    }
+  }
+}

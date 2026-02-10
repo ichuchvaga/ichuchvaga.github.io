@@ -1,0 +1,34 @@
+mixin manufacturing()
+  //- Вызов:
+    +manufacturing()
+
+  div.section.manufacturing&attributes(attributes)
+    .container
+      .manufacturing__wrapper
+        .manufacturing__img
+          img(src="img/manufacturing.jpg" alt="")
+
+          .years-label
+            .years-label__icon
+              img(src="img/manufacturing-cable-icon.svg" alt="" width="71" height="71")
+
+            .years-label__text 33 года
+            .years-label__text-sm на рынке
+
+        .manufacturing__content
+          h2.section-title.manufacturing__title #[span Производство] кабельных изделий
+
+          .text-md
+            p ООО «Конкорд» обеспечивает полный технологический цикл производства  кабельных изделий: от волочения проволоки до наложения наружных покровов на основе сшитых и вулканизированных материалов. Основные группы производимых изделий:
+
+          ul.list
+            li Силовые кабели для стационарной прокладки до 1 кВ на основе ПВХ и безгалогенных композиций;
+            li Контрольные кабели на основе ПВХ и безгалогенных композиций;
+            li Гибкие силовые кабели до 0,66 кВ на основе резин и термоэластопластов, и гибкие кабели до 1 кВ на основе ПВХ;
+            li Провода с ПВХ покровами.
+
+          .manufacturing__btn
+            a(href="catalog.html").btn.btn--main.btn--with-icon
+              span.btn__text Перейти в каталог
+              span.btn__icon
+                +icon('btn-arrow-right')(width="14" height="14")

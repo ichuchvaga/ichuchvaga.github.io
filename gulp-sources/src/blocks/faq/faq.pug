@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (faq)
+
+mixin faq(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +faq('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' faq--' + modsList[i].trim();
+      }
+    }
+
+  include ./faq.data.pug
+
+  .faq.section.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .faq-list
+        .faq-list__inner
+          each item, idx in faqItems
+            - var itemClass = (idx == 1) ? '' : 'faq-tab--collapsed';
+
+            .faq-tab(class=itemClass)
+              a(href="javascript:void(0);").faq-tab-head
+                .faq-tab-head__icon
+                  +icon('faq-question')(width="40" height="39")
+                .faq-tab-head__text #{item.q}
+                .faq-tab-head__expand
+                  +icon('faq-expand')(width="24" height="24")
+
+              .faq-tab-panel
+                .faq-tab-panel__inner.text-md
+                  p #{item.a}
+
+      block

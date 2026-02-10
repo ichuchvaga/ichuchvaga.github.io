@@ -1,0 +1,37 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-range)
+
+mixin field-range(props, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +field-range('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-range--' + modsList[i].trim();
+      }
+    }
+
+  .field-range(class=allMods)&attributes(attributes)
+    +field-text({
+      mods: 'range, range-from',
+      val: '',
+      attrs: {
+        name: props.name + '[]',
+        placeholder: props.placeholders[0],
+      }
+    })
+    +field-text({
+      mods: 'range, range-to',
+      val: '',
+      attrs: {
+        name: props.name + '[]',
+        placeholder: props.placeholders[1],
+      }
+    })

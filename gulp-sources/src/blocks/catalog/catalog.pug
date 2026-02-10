@@ -1,0 +1,57 @@
+//- Все примеси в этом файле должны начинаться c имени блока (catalog)
+
+mixin catalog(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +catalog('Текст', 'some-mod')
+
+  include ./catalog.data.pug
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' catalog--' + modsList[i].trim();
+      }
+    }
+
+  .catalog(class=allMods)&attributes(attributes)
+    each cat in categories
+      - var imgUrl = 'img/' + cat.img;
+
+      .catalog-category(id=cat.id)
+        //-a(href="subcategory.html")
+        .catalog-category__name
+          span.catalog-category__name-text
+            |#{cat.name}
+            span.catalog-category__name-icon
+              .circle-link
+                +icon('circle-arrow')(width="24" height="24")
+
+        .category-nav
+          .row
+            .col.col-6.col-lg-3
+              each catLink in cat.linksCol1
+                .category-nav__item
+                  a(href="subcategory.html").category-nav__link #{catLink}
+
+            .col.col-6.col-lg-3
+              each catLink in cat.linksCol2
+                .category-nav__item
+                  a(href="subcategory.html").category-nav__link #{catLink}
+            .col.col-6.col-lg-3
+              each catLink in cat.linksCol3
+                .category-nav__item
+                  a(href="subcategory.html").category-nav__link #{catLink}
+            .col.col-6.col-lg-3
+              each catLink in cat.linksCol4
+                .category-nav__item
+                  a(href="subcategory.html").category-nav__link #{catLink}
+
+        .catalog-category__img
+          img(src=imgUrl alt="")

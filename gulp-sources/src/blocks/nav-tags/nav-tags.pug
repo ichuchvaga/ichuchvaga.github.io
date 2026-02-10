@@ -1,0 +1,39 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-hero)
+
+mixin nav-tags(params, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +main-events('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' nav-tags--' + modsList[i].trim();
+      }
+    }
+
+    var itemsList = params.items || [];
+
+  .nav-tags(class=allMods data-container=params.container)&attributes(attributes)
+    .nav-tags__inner
+      .nav-tags__list
+        each item, idx in itemsList
+          - var itemClass =  (idx == 0) ? 'active' : '';
+          .nav-tag
+            a(href="#" class=itemClass data-tag=(idx == 0 ? 'all' : item)).nav-tag__link #{item}
+
+        .nav-tag.nav-tag--more
+          a(href="#").nav-tag__link.js-nav-tag-more
+            .nav-tag__more-icon
+    //-
+      .nav-tags__more
+        .nav-tags__list
+          each item, idx in params.moreItems
+            .nav-tag
+              a(href="#").nav-tag__link #{item}

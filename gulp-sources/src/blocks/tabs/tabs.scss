@@ -1,0 +1,203 @@
+// В этом файле должны быть стили для БЭМ-блока tabs, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.tabs {
+  $block-name: &; // #{$block-name}__element
+
+  position: relative;
+
+  &__links {
+    // display: flex;
+    // flex-wrap: wrap;
+    // padding: 0;
+    // list-style: none;
+    // gap: 41px;
+    // margin: 0 0 35px;
+    // justify-content: start;
+
+    li {
+      margin-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .no-js & {
+      display: none;
+    }
+
+    @media (max-width: $screen-md - 1) {
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+  }
+
+  &__link-wrap {
+    position: relative;
+    border: none;
+    flex: 0 0 auto;
+
+    &--active {
+      color: $text-color;
+
+      #{$block-name}__link {
+        color: #313132;
+        border-bottom: 1px solid $black;
+      }
+
+      #{$block-name}__image {
+        display: none;
+
+        &--active {
+          display: block;
+        }
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      margin: 0;
+
+      &:not(:last-child) {
+        border-right: none;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    line-height: 18px;
+    text-align: center;
+    transition-property: color;
+    font-weight: 400;
+    font-size: 20px;
+    color: #7E7E7E;
+    transition: all .3s;
+    display: block;
+    padding-bottom: 7px;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      color: $black;
+    }
+
+    @media (max-width: $screen-xl - 1) {
+      font-size: 16px;
+      padding-bottom: 2px;
+    }
+  }
+
+  &__link-text-mobile {
+    display: none;
+
+    @media (max-width: $screen-md - 1) {
+      display: block;
+
+      & + #{$block-name}__link-text {
+        display: none;
+      }
+    }
+  }
+
+  &__image {
+    width: auto;
+    margin-bottom: 10px;
+
+    &--active {
+      display: none;
+    }
+  }
+
+  &__content-wrapper {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+
+    & > li {
+      margin-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      border-top: none;
+    }
+  }
+
+  &__content-item {
+
+    .js & {
+      display: none;
+    }
+
+    & > *:last-child { // stylelint-disable-line  selector-combinator-blacklist
+      margin-bottom: 0;
+    }
+
+    &--active {
+
+      .js & {
+        display: block;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+
+  }
+
+  @media (max-width: $screen-md - 1) {
+  }
+}
+
+
+.tab-links {
+  &__inner {
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-right: 30px;
+    display: flex;
+    justify-content: start;
+    gap: 41px;
+    //padding-bottom: 19px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    scrollbar-color: rgba(159, 159, 159, 0.5) transparent;
+    scrollbar-width: thin;
+  }
+
+  &__outer-wrapper {
+    position: relative;
+    margin-right: -15px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 34px;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(transparent),
+        to(#f5f5f5)
+      );
+      background: linear-gradient(90deg, transparent, #f5f5f5);
+      pointer-events: none;
+    }
+
+  }
+}

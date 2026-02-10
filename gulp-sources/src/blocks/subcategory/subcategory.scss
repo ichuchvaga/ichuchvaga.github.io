@@ -1,0 +1,201 @@
+// В этом файле должны быть стили для БЭМ-блока subcategory, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.subcategory {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .breadcrumbs {
+    margin-bottom: 21px;
+  }
+}
+
+
+.subcat-products {
+  padding-top: 84px;
+  padding-bottom: 100px;
+
+  .section-title {
+    text-align: left;
+    margin-bottom: 34px;
+    font-size: 40px;
+    line-height: 1.2em;
+  }
+}
+
+.products-listing {
+  overflow: hidden;
+
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+
+    &--more {
+      margin-top: 20px;
+      overflow: hidden;
+      transition: height 0.3s ease;
+
+      &.collapsed {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        overflow: hidden;
+
+        & + .products-listing__in-more:before {
+          content: attr(data-text-open);
+        }
+      }
+    }
+  }
+
+  &__in-more {
+    margin: 20px auto 0;
+    display: block;
+    width: fit-content;
+
+    &:before {
+      content: attr(data-text-close);
+    }
+  }
+
+  &__item {
+    padding: 0 10px 20px;
+    width: 305px;
+  }
+}
+
+.product-card {
+  display: block;
+  color: $black;
+  text-decoration: none;
+  position: relative;
+  height: 100%;
+  background-color: #fff;
+  padding: 30px 83px 28px 25px;
+  clip-path: polygon(0 0, calc(100% - 42px) 0%, 100% 32px, 100% 100%, 42px 100%, 0% calc(100% - 32px), 0 0);
+
+  &__category {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  &__name {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  &__image {
+    display: flex;
+    align-items: end;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    right: 0;
+    width: 83px;
+    padding-right: 33px;
+    text-align: right;
+
+    img {
+      max-height: 100%;
+      vertical-align: bottom;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .subcategory {
+    &__main {
+      background-color: #fff;
+    }
+
+    .benefits {
+      padding-top: 20px;
+      padding-bottom: 0;
+    }
+
+    .category-description {
+      padding-top: 57px;
+    }
+  }
+
+  .subcat-products {
+    padding-top: 53px;
+    padding-bottom: 60px;
+    background-color: #f5f5f5;
+
+    .section-title {
+      font-size: 30px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+    }
+  }
+
+  .products-listing {
+    &__item {
+      width: 50%;
+    }
+  }
+
+  .product-card {
+    clip-path: polygon(0 0, calc(100% - 24px) 0%, 100% 18px, 100% 100%, 24px 100%, 0% calc(100% - 18px), 0 0);
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  .product-card {
+    padding-left: 15px;
+    padding-top: 17px;
+    padding-bottom: 15px;
+    padding-right: 30px;
+
+    &__image {
+      top: 18px;
+      padding-right: 15px;
+      width: 48px;
+
+      img {
+        position: absolute;
+        bottom: 0;
+        right: 15px;
+        // max-height: 100%;
+        max-height: 52px;
+      }
+    }
+
+    &__category {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &__name {
+      font-size: 14px;
+      line-height: 22px;
+      min-height: 44px;
+    }
+  }
+
+  .products-listing {
+    &__in {
+      margin-left: -5px;
+      margin-right: -6px;
+      margin-bottom: -11px;
+    }
+
+    &__item {
+      padding-left: 5px;
+      padding-right: 6px;
+      padding-bottom: 11px;
+    }
+  }
+}

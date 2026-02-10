@@ -1,0 +1,24 @@
+mixin img-banners()
+  //- Вызов:
+    +img-banners()
+
+  div.section.img-banners.bg-gray&attributes(attributes)
+    .container
+      //-.img-banners__wrapper
+        a(href="okl.html").img-banner
+          img(src="img/banner-concord-okl.jpg?v=1" alt="")
+        a(href="#").img-banner
+          img(src="img/banner-contract.jpg?v=2" alt="")
+
+      .img-banners-slider
+        .swiper
+          .swiper-wrapper
+            .swiper-slide
+              a(href="okl.html").img-banner
+                img(src="img/banner-concord-okl.jpg?v=1" alt="")
+            .swiper-slide
+              a(href="#").img-banner
+                img(src="img/banner-contract.jpg?v=2" alt="")
+
+        +nav-arrows
+        .nav-dots

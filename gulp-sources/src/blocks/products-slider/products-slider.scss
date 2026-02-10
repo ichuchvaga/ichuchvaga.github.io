@@ -1,0 +1,27 @@
+// В этом файле должны быть стили для БЭМ-блока products-slider, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.products-slider {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+  
+  &__in {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  &__item {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .products-slider {
+    .nav-arrows {
+      left: -15px;
+      right: -15px;
+    }
+  }  
+}

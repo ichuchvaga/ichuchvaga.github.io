@@ -1,0 +1,202 @@
+//- Все примеси в этом файле должны начинаться c имени блока (service-offer)
+
+mixin service-offer(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +service-offer('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' service-offer--' + modsList[i].trim();
+      }
+    }
+
+  -
+    var items = [
+      {
+        title: "Заготовительные работы",
+        img: "service-offer-1.png",
+        num: "01"
+      },
+      {
+        title: "Слесарно-сборочные работы",
+        img: "service-offer-2.png",
+        num: "01"
+      },
+      {
+        title: "Токарная и фрезерная обработка на универсальных станках и ЧПУ",
+        img: "service-offer-3.png",
+        num: "01"
+      }
+    ];
+
+    var itemsTab2 = [
+      {
+        title: "Заготовительные работы Вкладка2",
+        img: "service-offer-1.png",
+        num: "01"
+      },
+      {
+        title: "Слесарно-сборочные работы Вкладка2",
+        img: "service-offer-2.png",
+        num: "01"
+      },
+      {
+        title: "Токарная и фрезерная обработка на универсальных станках и ЧПУ Вкладка2",
+        img: "service-offer-3.png",
+        num: "01"
+      }
+    ]
+
+  .service-offer.section(class=allMods)&attributes(attributes)
+    .container
+      .section-heading.section-heading--with-progress-line
+        .section-heading__main
+          h2 #[span полный цикл услуг] <br> по работе с металлом
+
+        .section-heading__progress
+          .progress-status
+            .progress-status__current 01
+            .progress-status__line
+            .progress-status__total 10
+
+    .section-content
+      .offer-slider
+        .offer-slider__tab-links
+          a(href="#" data-id="0").offer-tab-link.active
+            span.offer-tab-link__title Обработка металла
+            span.offer-tab-link__descr Услуги по металлообработке под заказ и в рамках техпроцесса изготовления металлоконструкций
+
+          a(href="#" data-id="1").offer-tab-link
+            span.offer-tab-link__title Изготовление деталей
+            span.offer-tab-link__descr Услуги по металлообработке под заказ и в рамках техпроцесса изготовления металлоконструкций
+          
+        
+        - var offerIndex = 0;
+        .offer-slider__wrapper
+          .offer-slider__tab-content
+            .offer-tab(data-id="0").active
+              .swiper
+                .swiper-wrapper
+                  each item, idx in items
+                    - var imgUrl = 'img/' + item.img;
+                    
+
+                    .swiper-slide
+                      a(href="#" data-id=offerIndex).offer-card.js-offer-popup-trigger(style="background-image: url('"+imgUrl+"')")
+                        .offer-card__number #{item.num}
+                        .offer-card__title #{item.title}
+                        .offer-card__plus
+                          +icon('service-offer-plus')
+
+                    - offerIndex++;
+
+              .offer-slider__nav
+                .nav-arrows.nav-arrows--inline.nav-arrows--lg
+                  a(href="javascript:void(0);" class="nav-arrow prev")
+                    +icon('nav-arrow-prev-type2')(width='24', height='24')
+                    
+                  a(href="javascript:void(0);" class="nav-arrow next")
+                    +icon('nav-arrow-next-type2')(width='24', height='24')
+
+            .offer-tab(data-id="1")
+              .swiper
+                .swiper-wrapper
+                  each item, idx in itemsTab2
+                    - var imgUrl = 'img/' + item.img;
+
+                    .swiper-slide
+                      a(href="#" data-id=offerIndex).offer-card.js-offer-popup-trigger(style="background-image: url('"+imgUrl+"')")
+                        .offer-card__number #{item.num}
+                        .offer-card__title #{item.title}
+                        .offer-card__plus
+                          +icon('service-offer-plus')
+
+              .offer-slider__nav
+                .nav-arrows.nav-arrows--inline.nav-arrows--lg
+                  a(href="javascript:void(0);" class="nav-arrow prev")
+                    +icon('nav-arrow-prev-type2')(width='24', height='24')
+                    
+                  a(href="javascript:void(0);" class="nav-arrow next")
+                    +icon('nav-arrow-next-type2')(width='24', height='24')
+
+        
+
+    - var offerPopupIndex = 0;
+    - const popupItems = items.concat(itemsTab2);
+    .service-offer-popups
+      each item, idx in popupItems
+        - var imgUrl = 'img/' + item.img;
+        .offer-popup(data-id=offerPopupIndex)
+          .offer-popup__main
+            .scrollbar-container(data-simplebar)
+              .offer-popup__main-inner
+                .offer-popup__head
+                  .offer-popup__head-text #{item.title}
+                  a(href="javascript:void(0);").offer-popup__close
+                    +icon('close')(width="20" height="20")
+
+                .offer-popup__text
+                  p
+                    img(src="img/service-offer-popup-img.jpg" alt="")
+
+                  h3 Что можем предложить:
+
+                  ul
+                    li Аргонно-дуговая сварка;
+                    li Электро-дуговая сварка;
+                    li Импульсная сварка.
+
+                  p Конкорд производит сварочные работы по металлу  любой сложности и в любых объемах. На нашем производстве работают квалифицированные сварщики, имеющие большой опыт осуществления сварочных работ посредством газовой, электрической и холодной сварки металла. Мы используем новое современное оборудование для сварки металлов, которое позволяет производить работы высокой точности в сжатые сроки.
+                  
+                  p Мы оказываем услуги по сварке единичных изделий и серийных заказов. Высокая точность выполнения сварки, надежность и высокое качество сварных швов, оперативность – за эти качества нас выбирают клиенты. Кроме того, наш завод предлагает выгодные цены на все виды сварочных работ и дает гарантию качества.
+
+          .offer-popup__form
+            form.form.offer-form
+              .form-title Заказать обратный звонок
+              
+              .fields.fields--inline
+                .row
+                  .col
+                    +field-text({
+                      title: 'Ваше имя',
+                      isTextarea: false,
+                      helpText: '',
+                      mods: '',
+                      val: '',
+                      attrs: {
+                        name: 'name'
+                      }
+                    })
+                  
+                  .col
+                    +field-text({
+                      title: 'Телефон',
+                      isTextarea: false,
+                      helpText: '',
+                      mods: '',
+                      val: '',
+                      attrs: {
+                        name: 'phone',
+                        type: 'tel'
+                      }
+                    })
+                  .col.col--submit
+                    input(type="submit" value="Заказать").btn.btn--main
+
+                //-
+                .agreement Нажимая на кнопку, вы даете #[a(href="#" target="_blank") согласие на обработку] ваших персональных данных
+
+        - offerPopupIndex++;
+
+
+    .service-offer-popups__bg
+
+    block

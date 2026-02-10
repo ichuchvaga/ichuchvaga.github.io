@@ -1,0 +1,17 @@
+extends ../pug/layout.pug
+
+block meta
+  title Страница не найдена
+  meta(name='description', content='')
+
+block variables
+  - var pageClass = 'page--header-border';
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block content
+  .inner-page.inner-page--404
+    +error()
+
+//-block append page-bottom

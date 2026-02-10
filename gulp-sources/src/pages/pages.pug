@@ -1,0 +1,26 @@
+-
+  var pages = [
+    {
+      url: 'index.html',
+      title: 'Главная',
+    },
+    {
+      url: '404.html',
+      title: '404. Страница не найдена',
+    }
+  ]
+<!DOCTYPE html>
+html(lang="en")
+  head
+    title Pages
+    style.
+      body {font-family:sans-serif;}
+      a {color: #0479e5;}
+  body
+    header
+      h1 Страницы
+    main
+      ul
+        each page in pages
+          li
+            a(href=page.url)= page.title

@@ -1,0 +1,21 @@
+// В этом файле должны быть стили для БЭМ-блока okl, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.okl {
+
+  $block-name:                &; // #{$block-name}__element
+}
+
+.okl-main {
+  .breadcrumbs {
+    margin-bottom: 19px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .okl-main {
+    .breadcrumbs {
+      margin-bottom: 17px;
+    }
+  }
+}

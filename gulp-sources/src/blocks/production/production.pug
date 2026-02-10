@@ -1,0 +1,63 @@
+mixin production()
+  //- Вызов:
+    +production()
+
+  -
+    var prod_items = [
+      {
+        title: "контрольный кабель",
+        text: "С медными жилами, бронированные, не распространяющие  горение при групповой прокладке по категории «А», с пониженным дымо- и  газовыделением, предназначены для передачи и распределения электрических сигналов в стационарных установках до 0,66 кВ.",
+        img: "production-img-1.png",
+        url: "catalog.html#control-cable"
+      },
+      {
+        title: "силовой кабель",
+        text: "Кабели силовые, предназначенные для передачи и распределения  электроэнергии в стационарных установках на номинальное переменное  напряжение 0,66 кВ частотой 50 Гц. Область применения: кабель марки NUM  может использоваться для бытового и промышленного монтажа электрического освещения внутри влажных и сухих помещений.",
+        img: "production-img-2.png?v=1.03",
+        url: "catalog.html#power-cable"
+      },
+      {
+        title: "провод",
+        text: "Провода  ПВС  предназначены для присоединения электроприборов и  электроинструмента, бытовой техники, средств малой механизации и других  подобных машин и приборов, для изготовления удлинительных шнуров  напряжением 380 В для систем 380/660 В.",
+        img: "production-img-3.png",
+        url: "catalog.html#wire"
+      }
+    ];
+
+  div.section.production.bg-blue&attributes(attributes)
+    .production__bg
+    .container
+      h2.section-title.production__title Наша продукция
+
+      .prod-listing
+        each p_card in prod_items
+          - var imgUrl = 'img/' + p_card.img;
+          .prod-card
+            .prod-card__main
+              .h2.prod-card__title #{p_card.title}
+              .prod-card__text.text-md
+                p #{p_card.text}
+
+              .prod-card__benefits
+                .prod-card-benefit
+                  .prod-card-benefit__icon
+                    +icon('production-term')(width="59" height="53")
+                  .prod-card-benefit__main
+                    .prod-card-benefit__title 15 лет
+                    .prod-card-benefit__text-sm срок службы
+
+                .prod-card-benefit
+                  .prod-card-benefit__icon
+                    +icon('production-warranty')(width="45" height="56")
+                  .prod-card-benefit__main
+                    .prod-card-benefit__title 5 лет
+                    .prod-card-benefit__text-sm гарантия
+
+              .prod-card__btn
+                a(href=p_card.url).btn.btn--main.btn--with-icon
+                  span.btn__text Перейти в каталог
+                  span.btn__icon
+                    +icon('btn-arrow-right')
+
+            .prod-card__image
+              img(src=imgUrl alt="")

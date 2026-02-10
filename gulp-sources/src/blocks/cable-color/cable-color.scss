@@ -1,0 +1,189 @@
+// В этом файле должны быть стили для БЭМ-блока cable-color, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.cable-color {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+
+  &__title {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 17px;
+    max-width: 400px;
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 0;
+    line-height: 0;
+    text-align: right;
+    z-index: 4;
+
+    img {
+      margin-right: 210px;
+    }
+  }
+}
+
+
+.cable-color-info {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+  padding: 89px 0 73px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 419px;
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: $blue;
+    opacity: 0.85;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: 575px;
+  }
+  
+}
+
+.cable-color-material {
+  padding-top: 93px;
+  padding-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 448px;
+
+  &__content {
+    max-width: 575px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 17px;
+  }
+}
+
+.cable-specs {
+  margin-top: 37px;
+
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: -50px;
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+}
+
+.cable-specs-item {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 50px;
+
+  &__caption {
+    font-size: 16px;
+    line-height: 24px;
+    color: #7E7E7E;
+    margin-top: 3px;
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1em;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .cable-color {
+    &__title {
+      font-size: 30px;
+      line-height: 36px;
+      margin-bottom: 16px;
+    }
+
+    &__image {
+      display: none;
+    }
+  }
+
+  .cable-color-info {
+    min-height: 1px;
+    padding-top: 53px;
+    padding-bottom: 53px;
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+    }
+    
+  }
+
+  .cable-color-material {
+    padding-top: 53px;
+    padding-bottom: 56px;
+    min-height: 1px;
+
+    &__title {
+      font-size: 30px;
+      line-height: 1.2em;
+      margin-bottom: 17px;
+    }
+  }
+
+  .cable-specs {
+    margin-top: 23px;
+
+    &__in {
+      margin-left: -15px;
+      margin-right: -15px;
+      margin-bottom: -30px;
+    }
+  }
+
+  .cable-specs-item {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+
+    &__caption {
+      font-size: 14px;
+      line-height: 18px;
+      margin-top: 4px;
+    }
+
+    &__value {
+      font-size: 24px;
+      line-height: 1em;
+    }
+  }
+}

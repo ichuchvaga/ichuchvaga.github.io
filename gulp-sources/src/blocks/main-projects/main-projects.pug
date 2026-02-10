@@ -1,0 +1,74 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-projects)
+
+mixin main-projects(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +main-projects('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' main-projects--' + modsList[i].trim();
+      }
+    }
+
+  .section.main-projects(class=allMods)&attributes(attributes)
+    .container
+      .main-projects__wrapper
+        .main-projects__main
+          .main-projects__title
+            .main-projects__title-line-1 реализовано
+            .main-projects__title-line-2
+              span более 1000 
+            .main-projects__title-line-3 проектов
+
+          .main-projects__text.text-md
+            p ООО «Конкорд» обеспечивает полный технологический цикл производства  кабельных изделий. От волочения проволоки до наложения наружных покровов на основе сшитых и вулканизированных материалов.
+
+          -
+            var links = [
+              {
+                title: "Каталог продукции",
+                meta: "PDF, 134.55 KB"
+              },
+              {
+                title: "Договор поставки",
+                meta: "PDF, 134.55 KB"
+              }
+            ];
+
+          .download-links
+            .download-links__inner
+              each pdf_link in links
+                .download-link
+                  a(href="#").download-link__inner
+                    .download-link__icon
+                      +icon('pdf')(width="40" height="48")
+
+                    .download-link__main
+                      .download-link__text #{pdf_link.title}
+                      .download-link__meta #{pdf_link.meta}
+
+          .main-projects__buttons
+            a(href="projects.html" class="btn btn--main btn--with-icon")
+              span.btn__text Все проекты
+              span.btn__icon
+                +icon("btn-arrow-right")(width="14" height="14")
+
+            +nav-arrows('inline')
+
+
+        .main-projects__gallery
+          +gallery()
+
+      .section-bottom-btn
+        a(href="projects.html" class="btn btn--main btn--with-icon")
+          span.btn__text Все проекты
+          span.btn__icon
+            +icon("btn-arrow-right")(width="14" height="14")

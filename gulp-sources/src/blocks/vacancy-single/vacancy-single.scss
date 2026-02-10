@@ -1,0 +1,482 @@
+// В этом файле должны быть стили для БЭМ-блока vacancy-single, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.vacancy-single {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .page-title {
+    margin-bottom: 22px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+  }
+  
+  padding-bottom: 100px;
+}
+
+.two-columns-layout {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+
+  .main {
+    width: calc(100% - 449px);
+    margin-right: 40px;
+    padding: 33px 50px 43px;
+    background-color: #fff;
+  }
+
+  .sidebar {
+    width: 449px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}
+
+.vacancy-content {
+  font-size: 16px;
+  line-height: 24px;
+
+  h2 {
+    margin: 37px 0 1em;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 1.2em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & > li {
+      display: block;
+      position: relative;
+      padding-left: 20px;
+      margin: 4px 0 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        background-color: $black;
+        position: absolute;
+        top: 9px;
+        left: 0;
+      }
+    }
+  }
+}
+
+.vacancy-params {
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+.vacancy-params + .vacancy-content {
+  border-top: 1px solid #e6e6e6;
+  padding-top: 45px;
+  margin-top: 35px;
+}
+
+.vacancy-param {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(33.33% - 20px);
+  background-color: #F5F5F5;
+  padding: 19px 20px 13px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__icon {
+    font-size: 0;
+    line-height: 0;
+    margin-right: 6px;
+
+    .icon {
+      fill: #7E7E7E;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #7E7E7E;
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+}
+
+.sb-element {
+  background-color: #fff;
+  margin-top: 39px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &--contacts {
+    clip-path: polygon(calc(100% - 66px) 0%, 100% 51px, 100% 100%, 66px 100%, 0% calc(100% - 51px), 0 0);
+  }
+
+  &--feedback {
+    clip-path: polygon(calc(100% - 47px) 0%, 100% 37px, 100% 100%, 47px 100%, 0% calc(100% - 37px), 0 0);
+  }
+}
+
+.sb-contacts {
+  padding: 45px 48px 41px;
+
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+    color: #7E7E7E;
+    margin-bottom: 10px;
+  }
+
+  &__phone {
+    font-size: 30px;
+    line-height: 1em;
+    font-weight: 600;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $orange;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__email {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-top: 6px;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $orange;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.vacancy-form {
+  margin: 0;
+  padding: 40px 50px 50px;
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 1.2em;
+    font-weight: 600;
+    margin-bottom: 19px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 400;
+  }
+
+  .upload-file {
+    padding: 0;
+  }
+
+  .form-submit {
+    margin-top: 35px;
+  }
+
+  .fields {
+    margin-top: 27px;
+  }
+}
+
+.form--theme-white {
+  .field-text {
+    &__input {
+      border-color: #e6e6e6;
+
+      &:focus {
+        border-color: $black;
+      }
+    }
+  }
+
+  .choices__inner {
+    border: 1px solid #e6e6e6;
+    padding-top: 20px;
+    overflow: hidden;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.selected-file {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.2em;
+  font-weight: 400;
+  color: $black;
+
+  &__name {
+
+  }
+
+  &__size {
+    color: #7E7E7E;
+    margin-left: 10px;
+  }
+
+  &__remove {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    border: none;
+    box-shadow: none;
+    background: unset;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+      fill: #7E7E7E;
+    }
+
+    &:hover {
+      .icon {
+        fill: $black;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .vacancy-single {
+    padding-bottom: 35px;
+
+    .page-title {
+      h1 {
+        font-size: 30px;
+        line-height: 1.2em;
+      }
+      
+      margin-bottom: 23px;
+    }
+  }
+
+  .two-columns-layout {
+    display: block;
+
+    .main {
+      width: unset;
+      margin-left: -15px;
+      margin-right: -15px;
+      padding: 28px 15px 29px;
+    }
+
+    .sidebar {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }  
+
+  .vacancy-content {
+    font-size: 16px;
+    line-height: 22px;
+
+    h2 {
+      font-size: 18px;
+      line-height: 24px;
+      margin-top: 24px;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      & > li {
+        margin-top: 6px;
+  
+        &::before {
+          top: 8px;
+        }
+      }
+    }
+  }
+  
+  .vacancy-params+.vacancy-content {
+    margin-top: 28px;
+    padding-top: 30px;
+  }
+
+  .sb-element--feedback {
+    clip-path: polygon(calc(100% - 29px) 0, 100% 23px, 100% 100%, 29px 100%, 0 calc(100% - 23px), 0 0);
+  }
+
+  .sb-element--contacts {
+    clip-path: polygon(calc(100% - 29px) 0, 100% 23px, 100% 100%, 29px 100%, 0 calc(100% - 23px), 0 0);
+  }
+
+  .vacancy-form {
+    padding: 30px 20px 31px;
+
+    &__title {
+      font-size: 30px;
+      line-height: 32px;
+      margin-bottom: 10px;
+    }
+
+    &__text {
+      line-height: 22px;
+    }
+
+    .fields {
+      margin-top: 21px;
+    }
+
+    .form-submit {
+      margin-top: 30px;
+    }
+
+    .upload-input {
+      width: 100%;
+
+      &__text {
+        width: 100%;
+        font-size: 16px;
+        line-height: 20px;
+        padding-top: 13px;
+        padding-bottom: 11px;
+      }
+    }
+
+    .field-select__name {
+      top: 6px;
+      left: 22px;
+    }
+
+    .upload-file__selected {
+      padding-top: 8px;
+      padding-bottom: 0;
+      margin-bottom: -4px;
+    }
+
+    .choices__inner .choices__list {
+      top: 26px;
+    }
+  }
+
+  .sb-element {
+    margin-top: 20px;
+  }
+
+  .sb-contacts {
+    padding: 29px 32px 28px;
+
+    &__title {
+      margin-bottom: 6px;
+    }
+
+    &__phone {
+      font-size: 26px;
+      line-height: 28px;
+    }
+
+    &__email {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 4px;
+    }
+  }
+}
+
+.vacancy-single {
+  .choices__list--dropdown {
+    max-height: 96px;
+  }
+}
+
+
+@media (max-width: $screen-lg - 1) {
+  .vacancy-params {
+    &__in {
+      margin-left: -9px;
+      margin-right: -9px;
+    }
+  }
+
+  .vacancy-param {
+    margin-left: 9px;
+    margin-right: 9px;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+  
+    &__head {
+      display: block;
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &__label {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 0;
+    }
+  }
+}

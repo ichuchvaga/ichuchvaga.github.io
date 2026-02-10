@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (file-block)
+
+mixin file-block(title, linkText, mods)
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +file-block('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' file-block--' + modsList[i].trim();
+      }
+    }
+
+  a.file-block(href="#", class=allMods)&attributes(attributes)
+    .file-block__title!=title
+    .file-block__link!=linkText
+      svg(width='16', height='16')
+        use(xlink:href='img/sprite.svg#download')

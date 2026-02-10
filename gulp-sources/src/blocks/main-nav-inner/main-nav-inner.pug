@@ -1,0 +1,26 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-nav)
+//- Структура меню — в main-nav.data.pug
+
+mixin main-nav-inner(selectedID)
+
+  //- Принимает:
+  //-   selectedID {string} - id пункта меню (по умолчанию — из main-nav-inner.data.pug)
+  //- Вызов:
+        +main-nav-inner('1')
+
+  //- подключаем файл со структурой данных блока
+  include main-nav-inner.data.pug
+
+  nav.main-nav-inner#nav&attributes(attributes)
+    ul.main-nav-inner__list
+      each menuItem in mainMenu
+        +main-nav-inner-item(selectedID, menuItem)
+
+mixin main-nav-inner-item(selectedID, item)
+  -
+    var thisItemClass = 'main-nav-inner__item';
+    var thisLinkClass = 'main-nav-inner__link';
+
+  li(class= thisItemClass)
+    a(class= thisLinkClass, href=item.url)= item.name
+    block

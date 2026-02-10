@@ -1,0 +1,194 @@
+//- Все примеси в этом файле должны начинаться c имени блока (where-to-buy-page)
+
+mixin where-to-buy-page(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +where-to-buy-page('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' where-to-buy-page--' + modsList[i].trim();
+      }
+    }
+
+  include ./where-to-buy.data.pug
+
+  .where-to-buy-page(class=allMods)&attributes(attributes)
+    .container
+      +breadcrumbs()
+        +breadcrumbs-item('Главная', 'index.html')
+        +breadcrumbs-item('Где купить')
+
+      .page-title
+        h1 Дилеры
+
+      
+    
+    .section.bg-white.where-to-buy.section--without-heading
+      .container
+        .dealers
+          .dealers__in
+            each dealer in dealersFromMain
+              - var imgUrl = 'img/' + dealer.img;
+              .dealers__item
+                .dealer-img
+                  img(src=imgUrl alt="")
+
+          .load-more
+            a(class="btn btn--outline-with-icon" href="javascript:void(0);" data-modal="open" data-modal-target="#modal-dealer")
+              span.btn__icon
+                +icon('dealers-black')(width="22" height="22")
+              span.btn__text Стать дилером
+
+    .dealers-page-wrapper
+      .container
+        .where-to-buy-filters
+          form
+            .where-to-buy-filters__wrapper
+              .where-to-buy-filters__fields
+                .where-to-buy-filters__search
+                  .filter-field
+                    .filter-field__label Город
+                    .filter-field__widget
+                      .search-field
+                        input(type="text" name="city" placeholder="Введите название города")
+                        button(type="submit")
+                          +icon('search')
+                
+                -
+                  var dealersList = [];
+                  dealersList.push({
+                    title: 'Все',
+                    attrs: {
+                      value: 'all',
+                    }
+                  });
+
+                each dealer in dealers
+                  -
+                    dealersList.push({
+                      title: dealer.dropdownName,
+                      attrs: {
+                        value: dealer.dropdownName,
+                      }
+                    });
+
+                .where-to-buy-filters__dropdown
+                  .filter-field
+                    .filter-field__label Дилер
+                    .filter-field__widget
+                      +field-select(
+                        '',
+                        {
+                          name: 'dealer',
+                          id: 'dealer',
+                          class: 'js-dealers-dropdown'
+                        },
+                        dealersList,
+                        '',
+                        ''
+                      )
+
+              .where-to-buy-filters__view
+                .view-controls
+                  a(href="#" data-view="map").view-control.active
+                    span.view-control__icon
+                      +icon('view-map')(width="22" height="22")
+                    span.view-control__text Карта
+
+                  a(href="#" data-view="list").view-control
+                    span.view-control__icon
+                      +icon('view-list')(width="22" height="22")
+                    span.view-control__text Список
+
+        .where-to-buy-panel(data-view='map').active
+          .dealers-on-map#map(data-coords="55.755864, 37.617698" data-url="./json/dealers-points.json?v=200212025c")
+
+          .dealer-popups
+            each item in dealers
+              - var imgUrl = 'img/' + item.img;
+
+              each store, idx in item.stores
+                .dealer-popup(data-coords=store.geo)
+                  .custom-balloon
+                    .custom-balloon__image
+                      img(src=imgUrl alt="")
+
+                    .custom-balloon__company-name #{item.name}
+
+                    .custom-balloon__contacts
+                      .custom-balloon__contact-line
+                        .custom-balloon__contact-line-caption Адрес
+                        .custom-balloon__contact-line-value #{store.address}
+
+                      .custom-balloon__contact-line
+                        .custom-balloon__contact-line-caption Телефон
+                        .custom-balloon__contact-line-value #{store.phones}
+
+                      .custom-balloon__contact-line
+                        .custom-balloon__contact-line-caption E-mail
+                        .custom-balloon__contact-line-value #{store.email}
+
+                      .custom-balloon__contact-line
+                        .custom-balloon__contact-line-caption Сайт
+                        .custom-balloon__contact-line-value #
+
+        .where-to-buy-panel(data-view='list')
+          .dealers-list
+            each item in dealers
+              - var imgUrl = 'img/' + item.img;
+              - var dealerClasses = (item.stores.length > 1) ? 'dealer-card--align-top' : '';
+
+              .dealer-card(class=dealerClasses data-dealer=item.dropdownName)
+                .dealer-card__image
+                  img(src=imgUrl alt="")
+                .dealer-card__main
+                  a(href="#").dealer-card__name
+                    span.dealer-card__name-text #{item.name}
+                    span.dealer-card__name-icon
+                      .circle-link
+                        +icon('circle-arrow-mini')(width="12" height="12")
+
+                  if (item.stores.length)
+                    .dealer-card__stores
+                      each store, idx in item.stores
+                        -
+                          var itemClass = (idx > 0) ? 'store-card--hidden' : '';
+                        .store-card(class=itemClass data-city=item.city)
+                          .store-card__location
+                            .store-card__caption Адрес
+                            .store-card__value #{store.address}
+
+                          .store-card__phone
+                            .store-card__caption Телефон
+
+                            .store-card__value
+                              -
+                                var phones = store.phones.split(',');
+                              each phone in phones
+                                - var phoneUrl = phone.replace(/[\(\)\s-]/gi, '');
+                                div
+                                  a(href='tel:' + phoneUrl) #{phone}
+                          
+                          .store-card__email
+                            .store-card__caption E-mail
+                            .store-card__value
+                              a(href="mailto:" + store.email) #{store.email}
+                          
+                          .store-card__geo-point
+                            a(href="#" data-coords=store.geo).geo-point
+                              +icon('map-pin')(width="20" height="20")
+
+                  if (item.stores.length > 1)          
+                    .stores-more
+                      a(href="#").link-dash.js-stores-more-link Показать все филиалы города
+
+          .section-bottom-btn
+            a(href="news.html" class="btn btn--main") Загрузить еще

@@ -1,0 +1,135 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mobile-menu)
+
+mixin mobile-menu(text, mods)
+
+  include ../main-nav/main-nav.data.pug
+  include ./mobile-menu.data.pug
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +mobile-menu('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if (typeof (mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' mobile-menu--' + modsList[i].trim();
+      }
+    }
+
+    var menuCatalog = [
+      {title: 'Кабель силовой',url: 'catalog.html#power-cable'},
+      {title: 'Кабель контрольный',url: 'catalog.html#control-cable'},
+      {title: 'Провод',url: 'catalog.html#wire'},
+    ];
+
+  .mobile-menu#mobile-menu(class=allMods)&attributes(attributes)
+    .mobile-menu__inner
+      .mobile-menu__body
+        ul.mobile-menu-nav__list.mobile-menu-nav__list--catalog
+          li.mobile-menu-nav__item(class='mobile-menu-nav__item--catalog')
+            a.mobile-menu-nav__link(href="catalog.html") Каталог
+
+          if menuCatalog
+            each child, idx in menuCatalog
+              li.mobile-menu-nav__item.mobile-menu-nav__item--has-child
+                a.mobile-menu-nav__link(href=child.url data-id=idx)= child.title
+
+        +mobile-menu-nav()
+        +mobile-menu-footer()
+
+      .mobile-submenus
+        .mobile-submenu(data-id="0")
+          .mobile-submenu-head.js-mobile-submenu-back
+            .mobile-submenu-head__arrow
+              +icon('mobile-nav-arrow-left')(width="13" height="13")
+
+            .mobile-submenu-head__text Кабель силовой
+            
+          .mobile-submenu__content
+            .row
+              .col.col-6
+                ul
+                  each item in submenu1_col1
+                    li
+                      a(href="product.html") #{item}
+
+              .col.col-6
+                ul
+                  each item in submenu1_col2
+                    li
+                      a(href="product.html") #{item}
+
+        .mobile-submenu(data-id="1" style="display: none;")
+          .mobile-submenu-head.js-mobile-submenu-back
+            .mobile-submenu-head__arrow
+              +icon('mobile-nav-arrow-left')(width="13" height="13")
+
+            .mobile-submenu-head__text Кабель контрольный
+            
+          .mobile-submenu__content
+            .row
+              .col.col-6
+                ul
+                  each item in submenu2_col1
+                    li
+                      a(href="product.html") #{item}
+
+              .col.col-6
+                ul
+                  each item in submenu2_col2
+                    li
+                      a(href="product.html") #{item}
+
+        .mobile-submenu(data-id="2" style="display: none;")
+          .mobile-submenu-head.js-mobile-submenu-back
+            .mobile-submenu-head__arrow
+              +icon('mobile-nav-arrow-left')(width="13" height="13")
+
+            .mobile-submenu-head__text Провод
+            
+          .mobile-submenu__content
+            .row
+              .col.col-6
+                ul
+                  each item in submenu3_col1
+                    li
+                      a(href="product.html") #{item}
+
+              .col.col-6
+                ul
+                  each item in submenu3_col2
+                    li
+                      a(href="product.html") #{item}
+
+mixin mobile-menu-nav()
+  -
+    var menu = [
+      {title: 'О заводе',url: 'about.html'},
+      {title: 'Проекты',url: 'projects.html'},
+      {title: 'Новости',url: 'news.html'},
+      {title: 'Наличие и распродажа',url: 'documents-availability.html'},
+      {title: 'Где купить',url: 'where-to-buy.html'},
+      {title: 'Документация',url: 'documents.html'},
+      {title: 'Вакансии',url: 'vacancies.html'},
+      {title: 'ОКЛ',url: 'okl.html'},
+    ];
+
+  .mobile-menu-nav
+    ul.mobile-menu-nav__list
+      each item in menu
+        li.mobile-menu-nav__item(class=(item.children ? 'mobile-menu-nav__item--has-child' : ''))
+          a.mobile-menu-nav__link(href=item.url)= item.title
+          if item.children
+            ul.mobile-menu-nav__list
+              each child in item.children
+                li.mobile-menu-nav__item
+                  a.mobile-menu-nav__link(href=child.url)= child.title
+
+mixin mobile-menu-footer()
+  .mobile-menu-footer
+    +mobile-menu-contacts()

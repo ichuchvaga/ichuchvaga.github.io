@@ -1,0 +1,82 @@
+[
+  {
+    "name": "ООО «Элком-Электро»",
+    "address": "121087, г. Москва, ул. Тучковская, 9a",
+    "phones": "+7 (800) 770-72-62",
+    "email": "sale@el-com.ru",
+    "geo": "55.747297, 37.511077",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-2.png",
+    "city": "Москва"
+  },
+  {
+    "name": "Группа предприятий «ЭТМ»",
+    "address": "125212, ул. Выборгская, д. 16",
+    "phones": "+7 (495) 783-90-93",
+    "email": "msk1@msk.etm.ru",
+    "geo": "55.834285, 37.495141",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-3.png",
+    "city": "Москва"
+  },
+  {
+    "name": "ООО «Минимакс»",
+    "address": "Москва, ул. Барклая, д. 6, стр. 5, эт. 4, оф. 424, м. Парк Победы, БЦ Барклай Плаза",
+    "phones": "+7 (499) 649-69-00, +7 (812) 244-66-36",
+    "email": "msk@minimaks.ru",
+    "geo": "55.739255, 37.508229",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-4.png",
+    "city": "Москва"
+  },
+  {
+    "name": "ООО «АТЛАС»",
+    "address": "127644, Москва, ул. Вагоноремонтная, д. 10, эт. 4, пом. 1, ком 1-5, 8-17",
+    "phones": "+7 (495) 543-43-06",
+    "email": "atlastpk@atlastpk.ru",
+    "geo": "55.901041, 37.529358",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-5.png",
+    "city": "Москва"
+  },
+  {
+    "name": "Группа предприятий «ЭТМ»",
+    "address": "Москва, ул. Бутырский Вал, д. 68/70, стр. 1, БЦ «Бейкер Плаза», оф. 66, эт. 6",
+    "phones": "+7 (499) 334-88-91",
+    "email": "secretar01.mskbval@petrovich.ru",
+    "geo": "55.788677, 37.589159",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-6.png",
+    "city": "Москва"
+  },
+  {
+    "name": "ЛЕМАНА ПРО",
+    "address": "Московская обл., г. Мытищи, Осташковское шоссе, д.1",
+    "phones": "+7 (495) 961-01-60",
+    "email": "",
+    "geo": "55.899361, 37.668201",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-7.png",
+    "city": "Мытищи"
+  },
+  {
+    "name": "OBI",
+    "address": "Москва, 1-й Покровский пр. 1, Котельники, эт. 1",
+    "phones": "+7 (800) 500 80 80",
+    "email": "info@obi.ru",
+    "geo": "55.658261, 37.845098",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-8.png",
+    "city": "Москва"
+  },
+  {
+    "name": "Все Инструменты",
+    "address": "Москва, ул. Народного Ополчения, д. 48, корп. 1,",
+    "phones": "+7 (800) 550-37-71",
+    "email": "zakaz@vseinstrumenti.ru",
+    "geo": "55.794032, 37.495078",
+    "website": "www.site.ru",
+    "image":"img/dealer-img-9.png",
+    "city": "Москва"
+  }
+]

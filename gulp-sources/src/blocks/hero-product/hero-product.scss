@@ -1,0 +1,303 @@
+// В этом файле должны быть стили для БЭМ-блока hero-category, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.hero-product {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+  padding-bottom: 100px;
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  &__image {
+    width: 589px;
+    flex-shrink: 0;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__image-mobile {
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    display: none;
+  }
+
+  &__main {
+    width: 614px;
+    padding-left: 53px;
+    padding-right: 50px;
+    padding-top: 47px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__params {
+    position: absolute;
+    bottom: 46px;
+    right: 0;
+    text-align: right;
+  }
+
+  &__prod-type {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  &__h1 {
+    text-transform: uppercase;
+    margin: 0 0 7px;
+  }
+
+  &__short-description {
+    line-height: 18px;
+    color: #7E7E7E;
+    font-weight: 400;
+    margin-bottom: 26px;
+  }
+
+  &__text {
+    p {
+      margin-bottom: 18px;
+    }
+  }
+
+  &__main-params {
+    margin-top: 5px;
+
+    &-in {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+  }
+
+  &__buttons {
+    margin-top: 31px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+  }
+
+  .download-links {
+    position: absolute;
+    top: 49px;
+    left: 50px;
+    z-index: 2;
+
+    &--main {
+      position: static;
+      margin-top: 30px;
+    }
+  }
+}
+
+.hero-product-btn {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+  width: calc(50% - 20px);
+}
+
+.hero-product-param {
+  font-size: 16px;
+  line-height: 18px;
+  color: #7E7E7E;
+  padding-left: 24px;
+  padding-right: 24px;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 1px;
+    background-color: #cdcdcd;
+    position: absolute;
+    top: 5px;
+    bottom: 4px;
+    right: 0;
+  }
+
+  &__caption {
+    margin-top: 3px;
+  }
+
+  &__value {
+    display: inline-block;
+    color: $black;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 1em;
+    position: relative;
+
+    sup {
+      position: absolute;
+      margin-right: 1px;
+      top: -15px;
+      left: 100%;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+  }
+
+  &:last-child {
+    &::after {
+      content: unset;
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .hero-product {
+    padding-bottom: 53px;
+
+    &__wrapper {
+      display: block;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__image-mobile {
+      display: block;
+    }
+
+    &__main {
+      margin-left: -15px;
+      margin-right: -15px;
+      width: calc(100% + 30px);
+      padding: 24px 15px 30px;
+      font-size: 16px;
+      line-height: 24px;
+      background-color: #fff;
+    }
+
+    &__prod-type {
+      font-size: 14px;
+      line-height: 22px;
+      margin-bottom: 1px;
+    }
+
+    &__short-description {
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    &__h1 {
+      margin-bottom: 1px;
+    }
+
+    .download-links {
+      position: static;
+      margin-top: 31px;
+      margin-bottom: 23px;
+
+      &--main {
+        display: none;
+      }
+    }
+
+    .download-links--compact {
+      .download-links {
+        &__inner {
+          margin-bottom: -14px;
+        }
+      }
+
+      .download-link {
+        padding-bottom: 14px;
+      }
+    }
+
+    &__buttons {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    &__main-params {
+      margin-top: 6px;
+
+      &-in {
+        margin-left: -14px;
+        margin-right: -16px;
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  .hero-product-param {
+    font-size: 11px;
+    line-height: 14px;
+    padding-left: 14px;
+    padding-right: 16px;
+
+    &__value {
+      font-size: 24px;
+    }
+  }
+
+  .hero-product-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  .hero-product {
+    &__main-params {
+      width: 100%;
+    }
+
+    &__main-params-in {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+  }
+
+  .hero-product-param {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-grow: 1;
+
+    &__value {
+      font-size: 20px;
+    }
+
+    &:first-child {
+      .hero-product-param__caption {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+    }
+  }
+}

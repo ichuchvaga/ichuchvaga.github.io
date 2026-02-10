@@ -1,0 +1,103 @@
++modal('modal-callback', 'Заказать звонок', 'callback')
+  .modal__body
+    p Нужна консультация? Закажите обратный звонок, и&nbsp;мы обязательно с&nbsp;Вами свяжемся!
+    +form()
+      +field-text({
+        title: 'Имя',
+        attrs: {
+          name: 'name',
+          required: false,
+        }
+      })
+
+      +field-text({
+        title: 'Телефон',
+        attrs: {
+          name: 'phone',
+          required: true,
+          type: 'tel'
+        }
+      })
+
+      +btn('Заказать', 'main,submit', true)(data-modal="open", data-modal-target="#modal-feedback-success")
+
+      .form__privacy Нажимая на&nbsp;кнопку, вы даете #[a(href="#") согласие на&nbsp;обработку] ваших персональных данных
+
++modal('modal-callback-error', 'Заказать звонок', 'callback')
+  .modal__body
+    p Нужна консультация? Закажите обратный звонок, и&nbsp;мы обязательно с&nbsp;Вами свяжемся!
+    +form()
+      +field-text({
+        title: 'Имя',
+        helpText: 'Обязательно для заполнения',
+        error: true,
+        attrs: {
+          name: 'name',
+          required: false,
+        }
+      })
+
+      +field-text({
+        title: 'Телефон',
+        attrs: {
+          name: 'phone',
+          required: true,
+          type: 'tel'
+        }
+      })
+
+      +btn('Заказать', 'main,submit', true)(data-modal="open", data-modal-target="#modal-feedback-success")
+
+      .form__privacy Нажимая на&nbsp;кнопку, вы даете #[a(href="#") согласие на&nbsp;обработку] ваших персональных данных
+
++modal('modal-feedback-success', 'спасибо', 'message,feedback-success')
+  .modal__body
+    p Благодарим за обратный звонок! Наши специалисты свяжутся с вами в ближайшее время. Пожалуйста, ожидайте.
+
++modal('modal-vacancy-success', 'резюме успешно отправлено', 'message,feedback-success')
+  .modal__body
+    p Благодарим Вас за отклик по вакансии! Наши специалисты свяжутся с вами в ближайшее время. Пожалуйста, ожидайте.
+
++modal('modal-dealer', '<span>Оставьте заявку</span> — <br>мы свяжемся с вами', 'dealer')
+  .modal__body
+    
+    +form()
+      +field-text({
+        title: 'ФИО',
+        attrs: {
+          name: 'name',
+          required: false,
+        }
+      })
+
+      +field-text({
+        title: 'ИНН организации',
+        attrs: {
+          name: 'org_id',
+          required: false,
+        }
+      })
+
+      +field-text({
+        title: 'Телефон',
+        attrs: {
+          name: 'phone',
+          required: true,
+          type: 'tel'
+        }
+      })
+
+      +field-text({
+        title: 'Сообщение',
+        isTextarea: true,
+        helpText: '',
+        mods: 'message',
+        val: '',
+        attrs: {
+          name: 'message',
+        }
+      })
+
+      +btn('Отправить', 'main,submit', true)(data-modal="open", data-modal-target="#modal-feedback-success")
+
+      .form__privacy Нажимая на&nbsp;кнопку, вы даете #[a(href="#") согласие на&nbsp;обработку] ваших персональных данных

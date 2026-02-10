@@ -1,0 +1,411 @@
+// В этом файле должны быть стили для БЭМ-блока page-header, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@use 'sass:color';
+
+.page-header {
+  $block-name: &; // #{$block-name}__element
+
+  padding-top: 0;
+  position: relative;
+
+  &__contacts {
+    color: $black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &-sep {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1px;
+      height: 18px;
+      background-color: #CDCDCD;
+      margin: 0 13px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2em;
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      // color: $color-main;
+      text-decoration: none;
+    }
+  }
+
+  &__email {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2em;
+    text-decoration: none;
+    color: #7E7E7E;
+
+    &:hover {
+      // color: $color-main;
+      text-decoration: none;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__callback {
+    margin-top: 4px;
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 0;
+    background: #fff;
+
+    box-shadow: 0px 0px 15px 0px rgba(105, 105, 105, 0.2);
+
+    .btn.catalog-btn.btn--with-icon {
+      display: none;
+    }
+
+    .additional-nav {
+      display: none;
+    }
+
+    .container {
+      // padding: 0;
+    }
+
+    &__inner {
+      padding: 14px 0 14px;
+    }
+
+    .main-nav {
+      display: none;
+    }
+
+    .header-top {
+      display: none;
+    }
+
+    .logo {
+      margin-right: auto;
+
+      img {
+        width: 145px;
+        height: 40px;
+      }
+    }
+
+    &__contacts {
+      display: none;
+    }
+
+    &__toggler {
+      display: block;
+      margin-right: 12px;
+      margin-left: 24px;
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__toggler {
+      margin-left: 15px;
+      margin-right: 6px;
+    }
+  }
+}
+
+.catalog-btn {
+  margin-left: 45px;
+
+  &.btn--with-icon {
+    display: inline-block;
+    padding: 11px 20px;
+
+    .btn {
+      &__icon {
+        font-size: 0;
+        line-height: 0;
+        margin-left: 0;
+        margin-right: 11px;
+      }
+
+      &__text {
+        padding-top: 2px;
+      }
+    }
+  }
+} 
+
+.additional-nav {
+  &__inner {
+    display: flex;
+    align-items: center;
+    margin-left: -12px;
+    margin-right: -13px;
+  }
+
+  &__item {
+    padding-left: 12px;
+    padding-right: 13px;
+  }
+}
+
+.nav-link-with-icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: $black;
+
+  &__icon {
+    font-size: 0;
+    line-height: 0;
+    width: 22px;
+    height: 22px;
+    margin-right: 9px;
+
+    .icon {
+      fill: $orange;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.05em;
+    font-weight: 600;
+  }
+
+  &:hover {
+    color: $orange-hover;
+    text-decoration: none;
+  }
+}
+
+.header-dealer-btn {
+  padding: 11px 20px;
+     
+  .icon {
+    fill: $black;
+  }
+
+  &.btn--outline-with-icon .btn__icon {
+    margin-right: 9px;
+    margin-left: 0;
+  }
+}
+
+.search-btn {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  color: $black;
+  position: relative;
+  overflow: hidden;
+
+  .icon {
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: $orange-hover;
+  }
+
+  &.active {
+    .search-btn-icon--default {
+      display: none;
+    }
+
+    .search-btn-icon--active {
+      display: block;
+    }
+  }
+}
+
+.search-btn-icon {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  &--active {
+    display: none;
+  }
+}
+
+
+.header-top {
+  background-color: #F5F5F5;
+  padding: 9px 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.callback-link {
+  font-size: 17px;
+  line-height: 1.2em;
+  font-weight: 400;
+  color: #222221;
+  text-decoration: none;
+}
+
+.page--header-border {
+  .page-header {
+    border-bottom: 1px solid #dddedf;
+  }
+}
+
+.header-main {
+  padding: 16px 0 17px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .search-btn {
+    margin-left: 26px;
+  }
+}
+
+.header-search-panel {
+  overflow: hidden;
+  transition: all .3s ease;
+  background-color: #F5F5F5;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  box-shadow: 0 2px 2px rgba(50,50,50,.15);
+
+  .search-widget {
+    padding: 24px 0 20px;
+    // margin-left: auto;
+    // margin-right: auto;
+    // max-width: 740px;
+
+    .search-field input[type=text] {
+      background-color: transparent;
+    }
+  }
+}
+
+.notransition {
+  transition: unset;
+}
+
+.call-btn-mobile {
+  display: none;
+}
+
+@media (max-width: $screen-xl - 1) {
+  .header-main {
+    padding: 0;
+  }
+
+  .search-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .search-btn-icon {
+    width: 24px;
+    height: 24px;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .header-search-panel {
+    position: fixed;
+    top: 68px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    .search-widget {
+      padding-top: 44px;
+
+      .search-field {
+        input[type=text] {
+          font-size: 16px;
+          line-height: 1.2em;
+        }
+
+        [type=submit] {
+          width: 24px;
+          height: 24px;
+          right: 0;
+
+          .icon {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  .call-btn-mobile {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    width: 24px;
+    height: 24px;
+    color: $black;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  }
+
+  .header-main .search-btn {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  
+} 

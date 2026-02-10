@@ -1,0 +1,15 @@
+// В этом файле должны быть стили для БЭМ-блока projects, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.projects {
+
+  $block-name:                &; // #{$block-name}__element
+
+  padding-bottom: 100px;
+}
+
+@media (max-width: $screen-xl - 1) {
+  .projects {
+    padding-bottom: 60px;
+  }
+}

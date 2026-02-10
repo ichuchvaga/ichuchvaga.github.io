@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (read-more)
+
+mixin read-more(title, button, mods)
+
+  //- Принимает:
+  //-   title    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +read-more('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' read-more--' + modsList[i].trim();
+      }
+    }
+
+  .read-more(class=allMods)&attributes(attributes)
+    .read-more__title= title
+    .read-more__slider
+      .swiper
+        .swiper-wrapper
+          block
+      +nav-arrows()
+      +nav-dots()
+    if button
+      +btn(button.title, 'outline-with-icon')(href=button.url).read-more__button
+        svg(width='20', height='18').btn__icon
+          use(xlink:href='img/sprite.svg#btn-arrow')

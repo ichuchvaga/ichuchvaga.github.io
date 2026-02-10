@@ -1,0 +1,51 @@
+// В этом файле должны быть стили для БЭМ-блока mobile-menu-contacts, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.mobile-menu-contacts {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  &__title {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__title-sm {
+    color: $gray-darkest;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .contact-address {
+    margin-bottom: 6px;
+  }
+  
+  .contact-phone {
+    font-size: 26px;
+    line-height: 1em;
+    margin-bottom: 8px;
+  }
+  
+  .contact-email {
+    margin-top: 5px;
+  }
+  
+  .contact-messengers {
+    margin-top: 18px;
+  
+    .social {
+      padding-top: 0;
+    }
+  }
+  
+  .contact-work-hours {
+    margin-top: 14px;
+
+    &__value {
+      margin-top: 4px;
+    }
+  }
+}

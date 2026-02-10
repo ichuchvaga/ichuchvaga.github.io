@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (project-card)
+
+mixin project-card(data, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +project-card('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' project-card--' + modsList[i].trim();
+      }
+    }
+
+  - var imgUrl = 'img/' + data.img;
+
+  .project-card(class=allMods)&attributes(attributes)
+    .project-card__img(style="background-image: url('"+imgUrl+"')")
+
+    .project-card__main
+      .project-card__labels
+        .project-card__label #{data.city}
+        .project-card__label #{data.date}
+
+      .h3.project-card__name #{data.name}
+      .project-card__text.text-md #{data.descr}

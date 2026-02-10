@@ -1,0 +1,209 @@
+// В этом файле должны быть стили для БЭМ-блока social, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.social {
+  $block-name: &; // #{$block-name}__
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__link-wrap {
+    &--shadow {
+      filter: drop-shadow(0px 2px 4px rgba($black, 0.21));
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 0;
+    line-height: 34px;
+    text-align: center;
+    transition: all .25s;    
+
+    img {
+      display: block;
+    }
+
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      fill: #fff;
+      transition: all .25s;
+    }
+
+    &:hover {
+      color: $text-color;
+      background-color: $blue;
+      border-color: $orange-hover;
+
+      .icon {
+        fill: $orange-hover;
+      }
+    }
+  }
+
+  &__text {
+    @include hide-text;
+  }
+
+  &--mobile-menu {
+    gap: 8px;
+
+    .social__link {
+      width: 42px;
+      height: 42px;
+      background: #f9fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+  }
+
+  &--contacts {
+    padding-top: 4px;
+
+    .social__link {
+      // color: #87898f;
+      width: 50px;
+      height: 50px;
+      line-height: 48px;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // border-radius: 50%;
+      // background: #f9fafc;
+
+      &:hover {
+        color: $orange-hover;
+      }
+    }
+  }
+
+  &--footer {
+    .icon--social-vk {
+      margin-left: 7px;
+      margin-right: 6px;
+    }
+
+    .icon--social-dzen {
+      margin: 7px 7px 8px 8px;
+    }
+
+    .icon--social-rutube {
+      margin: 6px 5px 10px 7px;
+    }
+  }
+
+  &--sidebar {
+    .social__link {
+      &:hover {
+        color: $orange-hover;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    &--footer {
+      .social {
+        &__link {
+          width: 38px;
+          height: 38px;
+          line-height: 36px;
+        }
+      }
+
+      .icon--social-telegram {
+        width: 20px;
+        height: 17px;
+        margin-left: 6px;
+        margin-right: 10px;
+      }
+
+      .icon--social-vk {
+        width: 21px;
+        height: 13px;
+        margin-left: 7px;
+        margin-right: 8px;
+      }
+
+      .icon--social-dzen {
+        width: 18px;
+        height: 18px;
+        margin-left: 9px;
+        margin-right: 9px;
+      }
+
+      .icon--social-rutube {
+        width: 22px;
+        height: 19px;
+        margin-left: 8px;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    
+  }
+}
+
+.social--theme-black {
+  .social {
+    &__link {
+      border-color: $black;
+
+      .icon {
+        fill: $black;
+      }
+
+      &:hover {
+        background-color: transparent;
+        border-color: $orange-hover;
+
+        .icon {
+          fill: $orange-hover;
+        }
+      }
+    }
+  }
+}
+
+.social--md {
+  .social {
+    &__link {
+      width: 44px;
+      height: 44px;
+      line-height: 42px;
+    }
+  }
+
+  .icon--social-telegram-md {
+    margin: 12px 11px 12px 9px;
+  }
+
+  .icon--social-vk-md {
+    margin: 14px 9px 13px 9px;
+  }
+
+  .icon--social-dzen-md {
+    margin: 10px;
+  }
+
+  .icon--social-rutube-md {
+    margin: 9px 9px 12px 9px;
+  }
+}
+
+.social--hero {
+  justify-content: center;
+}

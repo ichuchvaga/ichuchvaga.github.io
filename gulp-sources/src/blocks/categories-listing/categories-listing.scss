@@ -1,0 +1,79 @@
+// В этом файле должны быть стили для БЭМ-блока categories-listing, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.categories-listing {
+
+  $block-name:                &; // #{$block-name}__element
+
+  overflow: hidden;
+
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+
+    &--more {
+      margin-top: 20px;
+      overflow: hidden;
+      transition: height 0.3s ease;
+
+      &.collapsed {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        overflow: hidden;
+
+        & + .products-listing__in-more:before {
+          content: attr(data-text-open);
+        }
+      }
+    }
+  }
+
+  &__in-more {
+    margin: 20px auto 0;
+    display: block;
+    width: fit-content;
+
+    &:before {
+      content: attr(data-text-close);
+    }
+  }
+
+  &__item {
+    padding: 0 10px 20px;
+    width: 305px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .categories-listing {
+    &__item {
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+
+  .categories-listing {
+    &__in {
+      margin-left: -5px;
+      margin-right: -6px;
+      margin-bottom: -15px;
+    }
+
+    &__item {
+      padding-left: 5px;
+      padding-right: 6px;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+  }
+}

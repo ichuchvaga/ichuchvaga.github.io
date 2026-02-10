@@ -1,0 +1,187 @@
+// В этом файле должны быть стили для БЭМ-блока collaboration, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.collaboration {
+
+  $block-name:                &; // #{$block-name}__element
+
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-image: url("../img/collab-bg.png");
+  padding-top: 76px;
+
+  .section-title {
+    text-align: left;
+    margin: 0 0 21px;
+    font-size: 48px;
+    line-height: 1.2em;
+    font-weight: 600;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__left {
+    width: 552px;
+    padding-top: 26px;
+  }
+
+  &__right {
+    width: calc(100% - 552px);
+    padding-left: 62px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    max-width: 591px;
+
+    p {
+      margin-bottom: 24px;
+
+      &:first-child {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 23px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+.collab-unions {
+  background-color: #fff;
+  padding: 35px 40px 40px;
+  clip-path: polygon(0 0, calc(100% - 35px) 0%, 100% 28px, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+
+  &__title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-bottom: 34px;
+    max-width: 450px;
+  }
+
+  &__list {
+    width: 100%;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__list-in {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -11px;
+    margin-right: -11px;
+    margin-bottom: -22px;
+  }
+
+  &__item {
+    padding: 0 11px 22px;
+    width: 50%;
+  }
+
+  &__logo {
+    display: block;
+    height: 97px;
+    padding: 22px;
+    line-height: 53px;
+    background-color: #F5F5F5;
+    text-align: center;
+    clip-path: polygon(0 0, calc(100% - 33px) 0%, 100% 25px, 100% 100%, 100% 100%, 33px 100%, 0 calc(100% - 25px), 0 0);
+
+
+    img {
+      max-height: 53px;
+      max-width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .collaboration {
+    background-image: url("../img/collab-bg-mobile.png");
+    padding-top: 52px;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    &__left {
+      width: 100%;
+      padding-top: 28px;
+    }
+
+    &__right {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    .section-title {
+      font-size: 36px;
+      line-height: 44px;
+      letter-spacing: -0.04em;
+      margin-bottom: 19px;
+    }
+
+    &__text {
+      p {
+        &:first-child {
+          font-size: 18px;
+          line-height: 26px;
+          margin-bottom: 22px;
+        }
+      }
+    }
+  } 
+
+  .collab-unions {
+    padding: 20px 25px 25px;
+
+    &__title {
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 21px;
+    }
+
+    &__list {
+      &-in {
+        margin-left: -6px;
+        margin-right: -5px;
+        margin-bottom: -11px;
+      }
+    }
+
+    &__item {
+      padding-left: 6px;
+      padding-right: 5px;
+      padding-bottom: 11px;
+    }
+
+    &__logo {
+      clip-path: polygon(0 0, calc(100% - 20px) 0%, 100% 15px, 100% 100%, 100% 100%, 20px 100%, 0 calc(100% - 15px), 0 0);
+      height: 58px;
+      padding: 12px;
+      line-height: 34px;
+
+      img {
+        max-height: 30px;
+      }
+    }
+  }
+}

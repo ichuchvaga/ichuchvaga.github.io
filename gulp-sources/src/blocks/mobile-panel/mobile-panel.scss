@@ -1,0 +1,91 @@
+// В этом файле должны быть стили для БЭМ-блока mobile-panel, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.mobile-panel {
+  $block-name: &; // #{$block-name}__element
+
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+
+  &__request {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    background: hsla(78, 83%, 41%, 1);
+    border-radius: 0;
+  }
+
+  &__inner {
+    background: hsla(0, 0%, 100%, 1);
+    display: flex;
+    height: 71px;
+    justify-content: space-between;
+    padding: 11px 49px 8px 47px;
+    align-items: end;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    color: hsla(0, 0%, 25%, 1);
+    text-decoration: none;
+    gap: 8px;
+
+    &:hover, &:focus {
+      color: hsla(0, 0%, 25%, 1);
+    }
+  }
+
+  &__inner svg {
+    color: hsla(0, 0%, 54%, 1);
+  }
+
+  &__whatsapp img {
+    width: 37px;
+    height: 37px;
+  }
+
+  @media (max-width: $screen-xxl - 1) {
+    display: block;
+
+    &__request {
+      font-size: 20px;
+      line-height: 28px;
+      border-radius: 0;
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__request {
+      font-size: 12px;
+      line-height: 17px;
+      padding: 5px 14px;
+    }
+
+    &__inner {
+      height: 46px;
+      padding: 0px 21px 4px 15px;
+    }
+
+    &__item {
+      font-size: 9px;
+      line-height: 12px;
+      gap: 4px;
+
+      svg, img {
+        height: 20px;
+        width: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,503 @@
+// В этом файле должны быть стили для БЭМ-блока service-offer, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.service-offer {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .section-content {
+    padding-top: 37px;
+  }
+}
+
+.offer-slider {
+  margin-left: calc(((100% - $screen-xl) / 2) + 15px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+
+  &__tab-links {
+    width: 346px;
+    padding-right: 40px;
+  }
+
+  &__wrapper {
+    width: calc(100% - 346px);
+  }
+
+  .swiper, .swiper *, .swiper *::before,*::after {
+    box-sizing: border-box;
+  }
+
+  .swiper-slide {
+    width: 408px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 85px;
+  }
+}
+
+.progress-status {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  &__current {
+    font-size: 30px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #3C3C3C;
+  }
+
+  &__line {
+    display: block;
+    width: 103px;
+    height: 1px;
+    background-color: #D9D9D9;
+    margin-left: 10px;
+    margin-right: 11px;
+    margin-top: 16px;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__total {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #7E7E7E;
+    padding-top: 5px;
+  }
+}
+
+.offer-card {
+  position: relative;
+  display: block;
+  height: 536px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  color: #fff;
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(59, 97, 165, 0) 14.88%, rgba(59, 97, 165, 0.8) 85.9%), linear-gradient(0deg, rgba(59, 97, 165, 0.2), rgba(59, 97, 165, 0.2));
+  }
+  
+  &__title {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    z-index: 3;
+    padding: 0 35px;
+  }
+
+  &__plus {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    line-height: 0;
+    background-color: rgba(255,255,255,0);
+    border: 1px solid #fff;
+    padding: 14px;
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    z-index: 3;
+    transition: all .25s ease;
+
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+  }
+
+  &__number {
+    font-size: 200px;
+    line-height: 1em;
+    font-weight: 400;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 8px;
+    left: 28px;
+    z-index: 1;
+    color: #fff;
+  }
+
+  &:hover {
+    .offer-card__plus {
+      background-color: rgba(255,255,255,1);
+      border-color: #fff;
+
+      .icon {
+        fill: #3C3C3C;
+      }
+    }
+  }
+}
+
+.offer-tab-link {
+  display: block;
+  text-decoration: none;
+  background-color: #fff;
+  border-left: 5px solid #fff;
+  padding: 29px 35px 26px 30px;
+  color: #7E7E7E;
+
+  &__title {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    display: block;
+  }
+
+  &__descr {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #7E7E7E;
+    margin-top: 11px;
+    max-height: 0;
+    overflow: hidden;
+    transition: height .25s ease;
+  }
+
+  &.active {
+    border-color: $orange;
+    background-color: #F5F5F5;
+    color: #3C3C3C;
+
+    .offer-tab-link__descr {
+      max-height: unset;
+    }
+  }
+}
+
+.offer-tab {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .progress-status {
+    justify-content: flex-start;
+    margin-top: 30px;
+  } 
+
+  .service-offer {
+    padding-bottom: 10px;
+    
+    .section-content {
+      padding-top: 0;
+    }
+  }
+
+  .offer-slider {
+    display: block;
+    margin-left: 0;
+
+    .swiper-slide {
+      width: unset;
+    }
+
+    &__wrapper {
+      width: 100%;
+    }
+
+    &__tab-links {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    &__nav {
+      position: static;
+      margin-top: 24px;
+      height: unset;
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+  }
+
+  .offer-card {
+    width: 100%;
+    height: 360px;
+
+    &__title {
+      font-size: 20px;
+      line-height: 1.2em;
+    }
+
+    &__number {
+      font-size: 150px;
+    }
+  }
+}
+
+
+.offer-popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 639px;
+  background-color: $blue;
+  color: #fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__main {
+    height: calc(100% - 197px);
+    width: 100%;
+    
+    &-inner {
+      padding: 30px 35px 0;
+    }
+  }
+
+  .scrollbar-container {
+    max-height: 100%;
+  }
+
+  &__head {
+    position: relative;
+    padding-right: 40px;
+    margin-bottom: 29px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__close {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    cursor: pointer;
+
+    svg {
+      fill: #fff;
+    }
+
+    &:hover {
+      svg {
+        fill: $color-main;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+
+    p {
+      margin: 0 0 22px;
+    }
+
+    h2, h3, h4,
+    .h2, .h3, .h4 {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 600;
+      margin: 0 0 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      margin-bottom: 2px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 14px 0 31px;
+      padding:0 ;
+
+      & > li {
+        position: relative;
+        padding: 1px 0 0 34px;
+        margin: 0 0 9px 0;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: transparent url("../img/list-check-blue.svg") no-repeat 0 0;
+          position: absolute;
+          top: 1px;
+          left: 1px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__form {
+    background-color: #13397D;
+    padding: 29px 35px 31px;
+    margin-top: auto;
+    height: 197px;
+
+    .form-title {
+      font-size: 20px;
+      line-height: 30px;
+      margin: 0 0 26px;
+    }
+
+    .agreement {
+      color: inherit;
+    }
+
+    .row {
+      flex-wrap: nowrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    .col {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .col--submit {
+      flex-shrink: 0;
+
+      .btn {
+        width: 139px;
+        font-weight: 500;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    .field-text {
+      width: 195px;
+      margin-bottom: 15px;
+    }
+  }
+
+  &.popup--active {
+    display: flex;
+  }
+}
+
+.service-offer-popups {
+  display: none;
+  position: fixed;
+  z-index: 21;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 639px;
+
+  &__bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background-color: #000;
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: $screen-lg - 1) {
+  .service-offer-popups {
+    max-width: 639px;
+    width: 100%;
+  }
+
+  .offer-popup {
+    max-width: 639px;
+    width: 100%;
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  .service-offer-popups {
+    max-width: 100%;
+  }
+
+  .offer-popup {
+    max-width: 100%;
+    width: 100%;
+
+    &__main {
+      height: calc(100% - 382px);
+    }
+
+    &__form {
+      height: 382px;
+
+      .row {
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .col {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .field-text {
+        width: 100%;
+      }
+
+      .col--submit .btn {
+        width: 100%;
+      }
+
+      .agreement {
+        margin-top: 24px;
+      }
+    }
+  }
+}

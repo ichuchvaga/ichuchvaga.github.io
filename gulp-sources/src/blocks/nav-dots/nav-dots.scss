@@ -1,0 +1,43 @@
+// В этом файле должны быть стили для БЭМ-блока nav-dots, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.nav-dots {
+  $block-name:                &; // #{$block-name}__element
+
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+
+  .swiper-pagination-bullet {
+    background: rgba(205, 205, 205, 0.5);
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+
+    &:hover {
+      background:rgba(205, 205, 205, 1);
+    }
+  }
+
+  .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+  .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0;
+  }
+
+  .swiper-pagination-bullet-active,
+  .swiper-pagination-bullet.active {
+    background: #FF683C;
+  }
+
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal>.swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 0;
+  }
+
+}

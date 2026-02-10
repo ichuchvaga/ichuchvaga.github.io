@@ -1,0 +1,32 @@
+mixin cta()
+	//- Вызов:
+		+cta()
+	.cta.cta--dealers&attributes(attributes)
+		.cta__wrapper
+			.cta__main
+				.cta__title Нужна консультация?<br> Закажите обратный звонок!
+				.cta__text.text-md
+					|Наши специалисты свяжутся с&nbsp;вами в&nbsp;ближайшее время
+
+				.cta__form
+					form.form
+						.inline-fields
+							+field-text({
+								title: 'Телефон',
+								isTextarea: false,
+								helpText: '',
+								mods: '',
+								val: '',
+								attrs: {
+									name: 'phone',
+									type: 'tel'
+								}
+							})
+							
+							.submit-btn
+								input(type="submit" value="Заказать звонок").btn.btn--main
+
+						.agreement Нажимая на кнопку, вы даете #[a(href="#" target="_blank") согласие на обработку] ваших данных
+						
+			.cta__image
+				img(src="img/cta-main.png?v=1.02" alt="")

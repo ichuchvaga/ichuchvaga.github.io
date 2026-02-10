@@ -1,0 +1,31 @@
+//- Все примеси в этом файле должны начинаться c имени блока (products-listing)
+
+mixin products-listing(data, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +products-listing('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' products-listing--' + modsList[i].trim();
+      }
+    }
+
+  .products-listing(class=allMods)&attributes(attributes)
+    .products-listing__in
+      each p in data
+        - var imgUrl = 'img/' + p.img;
+
+        .products-listing__item
+          a(href="product.html").product-card
+            .product-card__category #{p.cat}
+            .product-card__name #{p.name}
+            .product-card__image
+              img(src=imgUrl alt="")

@@ -1,0 +1,9 @@
+{
+  "syntax": "scss",
+  "plugins": [
+    "stylelint-selector-bem-pattern",
+    "stylelint-order"
+  ],
+  "rules": {
+  }
+}

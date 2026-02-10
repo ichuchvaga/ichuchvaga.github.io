@@ -1,0 +1,15 @@
+// В этом файле должны быть стили для БЭМ-блока logo, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.logo {
+
+  $block-name: &; // #{$block-name}__element
+
+  font-size: 0;
+  line-height: 0;
+
+  img {
+    display: block;
+    width: 184px;
+  }
+}

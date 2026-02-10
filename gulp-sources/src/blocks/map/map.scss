@@ -1,0 +1,89 @@
+// В этом файле должны быть стили для БЭМ-блока map, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.map {
+
+  $block-name:                &; // #{$block-name}__element
+  position: relative;
+}
+
+.map-element {
+  height: 643px;
+}
+
+.contact-form-outer-container {
+  height: 0;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  /*bottom: 30px;*/
+}
+
+.contact-form-box {
+  width: 470px;
+  background-color: #fff;
+  padding: 44px 60px 60px;
+  clip-path: polygon(0 0,calc(100% - 48px) 0,100% 38px,100% 100%,100% 100%,48px 100%,0 calc(100% - 38px),0 0); 
+
+  .form-title {
+    margin-bottom: 16px;
+  }
+
+  .fields {
+    margin-top: 27px;
+  }
+
+  .form-submit {
+    margin-top: 35px;
+  }
+
+  textarea.field-text__input {
+    min-height: 127px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .contact-form-box {
+    padding: 30px 20px 30px;
+    clip-path: polygon(0 0,calc(100% - 29px) 0,100% 23px,100% 100%,100% 100%,29px 100%,0 calc(100% - 23px),0 0); 
+
+    .form-title {
+      font-size: 30px;
+      line-height: 32px;
+      margin-bottom: 14px;
+    }
+
+    .field-text {
+      margin-bottom: 20px;
+    }
+
+    .form-submit {
+      margin-top: 30px;
+    }
+
+    .fields {
+      margin-top: 23px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .contact-form-outer-container {
+    height: auto;
+    position: static;
+    margin-top: 30px;
+
+    & > .container {
+      height: auto;
+    }
+  }
+  .contact-form-box {
+    width: 100%;
+    max-width: 586px;
+    padding-bottom: 35px;
+  }
+
+  .map-element {
+    height: 360px;
+  }
+}

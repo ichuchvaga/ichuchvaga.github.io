@@ -1,0 +1,55 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-checkbox-list)
+
+mixin field-checkbox-list(props, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +field-checkbox-list('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-checkbox-list--' + modsList[i].trim();
+      }
+    }
+
+  .field-checkbox-list(class=allMods)&attributes(attributes)
+    .field-checkbox-list__current.field-checkbox-list__current--empty Выберите
+    .field-checkbox-list__container
+      each item in props.items
+        if(typeof (item.children) !== 'undefined' && item.children)
+          +field-checkbox-list-group(item.title)
+            each child in item.children
+              +field-checkbox([
+                {
+                  title: child.title,
+                  attrs: {
+                    name: props.name + '[]',
+                    value: child.value
+                  }
+                },
+              ])
+        else if(typeof (item.title) !== 'undefined' && item.title)
+          +field-checkbox([
+            {
+              title: item.title,
+              attrs: {
+                name: props.name + '[]',
+                value: item.value
+              }
+            },
+          ])
+
+mixin field-checkbox-list-group(title, items)
+  .field-checkbox-list-group
+    .field-checkbox-list-group__title= title
+      +btn().field-checkbox-list-group__close
+        svg(width='36', height='36')
+          use(xlink:href='img/sprite.svg#close-circle')
+    .field-checkbox-list-group__items
+      block

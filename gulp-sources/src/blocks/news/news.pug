@@ -1,0 +1,44 @@
+mixin news()
+	//- Вызов:
+				+about()
+
+	//- подключаем файл со структурой данных блока
+	include news.data.pug
+
+	.news.section&attributes(attributes)
+		.container
+			.section-heading.section-heading--2columns
+				.section-heading__text
+					h2.section-title Новости
+
+				.section-heading__links
+					a(href="news.html" class="btn btn--main btn--with-icon")
+						span.btn__text Все новости
+						span.btn__icon
+							+icon("btn-arrow-right")(width="14" height="14")
+
+			.news-slider
+				.news-slider__in.slider-container
+					.swiper
+						.swiper-wrapper
+							each item in news_items
+								.swiper-slide
+									.news-listing-card
+										.news-listing-card__in
+											.news-listing-card__publish-date #{item.date}
+											.news-listing-card__title
+												a(href="news-single.html") #{item.title}
+											.news-listing-card__text #{item.text}
+											.news-listing-card__detail-link
+												a(href="news-single.html" class="link-with-arrow")
+													span.link-with-arrow__text Подробнее
+													span.link-with-arrow__icon
+														+icon('link-arrow')(width="17" height="14")
+										
+					+nav-arrows()
+
+			.section-bottom-btn
+				a(href="news.html" class="btn btn--main btn--with-icon")
+					span.btn__text Все новости
+					span.btn__icon
+						+icon("btn-arrow-right")(width="14" height="14")

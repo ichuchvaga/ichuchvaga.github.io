@@ -1,0 +1,81 @@
+//- Все примеси в этом файле должны начинаться c имени блока (service-contact)
+
+mixin service-contact(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +service-contact('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' service-contact--' + modsList[i].trim();
+      }
+    }
+
+  .service-contact.section.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .service-contact__inner
+        .service-contact__main
+          .section-heading.section-heading--bottom-line
+            h2 #[span Свяжитесь с&nbsp;нами] <br> прямо сейчас
+
+          .service-contact__text
+            p Вместе мы достигнем новых высот в&nbsp;вашем бизнесе!
+
+        .service-contact__form
+          form.form.form--white.service-form
+            .form-title Оставьте заявку
+            .form-text Пожалуйста, заполните форму ниже, и мы свяжемся с вами в ближайшее время для обсуждения деталей
+
+            .fields
+              .row
+                .col.col-12.col-lg-6
+                  +field-text({
+                    title: 'Телефон',
+                    isTextarea: false,
+                    helpText: '',
+                    mods: '',
+                    val: '',
+                    attrs: {
+                      name: 'phone',
+                      type: 'tel'
+                    }
+                  })
+
+                .col.col-12.col-lg-6
+                  +field-text({
+                    title: 'E-mail',
+                    isTextarea: false,
+                    helpText: '',
+                    mods: '',
+                    val: '',
+                    attrs: {
+                      name: 'email',
+                      type: 'email'
+                    }
+                  })
+
+              .message-field
+                +field-text({
+                  title: 'Сообщение',
+                  isTextarea: true,
+                  helpText: '',
+                  mods: 'message',
+                  val: '',
+                  attrs: {
+                    name: 'message',
+                  }
+                })
+
+            .form-submit
+              .form-submit__btn
+                input(type="submit" value="Оставить заявку").btn.btn--main
+
+              .form-submit__agreement
+                .agreement Нажимая на кнопку, вы даете #[a(href="#" target="_blank") согласие на обработку] ваших персональных данных

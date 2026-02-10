@@ -1,0 +1,80 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 0,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.747297, 37.511077]
+      },
+      "properties": {
+        "balloonContent": "<div class=\"custom-balloon\"><div class=\"custom-balloon__image\"><img src=\"img/dealer-img-2.png\" alt=\"\"></div><div class=\"custom-balloon__company-name\">ООО «Элком-Электро»</div><div class=\"custom-balloon__contacts\"><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Адрес</div><div class=\"custom-balloon__contact-line-value\">121087, г. Москва, ул. Тучковская, 9a</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Телефон</div><div class=\"custom-balloon__contact-line-value\">+7 (800) 770-72-62</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">E-mail</div><div class=\"custom-balloon__contact-line-value\">sale@el-com.ru</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Сайт</div><div class=\"custom-balloon__contact-line-value\">www.site.ru</div></div></div></div>",
+        "clusterCaption": "Метка 1",
+        "hintContent": "Текст подсказки",
+        "myDescription": "Произвольное описание",
+        "name": "ООО «Элком-Электро»",
+        "address": "121087, г. Москва, ул. Тучковская, 9a",
+        "phones": "+7 (800) 770-72-62",
+        "email": "sale@el-com.ru",
+        "website": "www.site.ru",
+        "image":"img/dealer-img-2.png",
+        "city": "Москва",
+        "company": "Элком-Электро"
+      },
+      "options": {
+        "preset": "islands#nightCircleDotIcon"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.834285, 37.495141]
+      },
+      "properties": {
+        "balloonContent": "<div class=\"custom-balloon\"><div class=\"custom-balloon__image\"><img src=\"img/dealer-img-3.png\" alt=\"\"></div><div class=\"custom-balloon__company-name\">Группа предприятий «ЭТМ»</div><div class=\"custom-balloon__contacts\"><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Адрес</div><div class=\"custom-balloon__contact-line-value\">125212, ул. Выборгская, д. 16</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Телефон</div><div class=\"custom-balloon__contact-line-value\">+7 (495) 783-90-93</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">E-mail</div><div class=\"custom-balloon__contact-line-value\">msk1@msk.etm.ru</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Сайт</div><div class=\"custom-balloon__contact-line-value\">www.site.ru</div></div></div></div>",
+        "clusterCaption": "Метка 2",
+        "hintContent": "Текст подсказки",
+        "myDescription": "Произвольное описание",
+        "name": "Группа предприятий «ЭТМ»",
+        "address": "125212, ул. Выборгская, д. 16",
+        "phones": "+7 (495) 783-90-93",
+        "email": "msk1@msk.etm.ru",
+        "website": "www.site.ru",
+        "image":"img/dealer-img-3.png",
+        "city": "Мытищи",
+        "company": "Группа предприятий ЭТМ"
+      },
+      "options": {
+        "preset": "islands#nightCircleDotIcon"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [60.031751, 30.284966]
+      },
+      "properties": {
+        "balloonContent": "<div class=\"custom-balloon\"><div class=\"custom-balloon__image\"><img src=\"img/dealer-img-3.png\" alt=\"\"></div><div class=\"custom-balloon__company-name\">Группа предприятий «ЭТМ»</div><div class=\"custom-balloon__contacts\"><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Адрес</div><div class=\"custom-balloon__contact-line-value\">125212, ул. Выборгская, д. 16</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Телефон</div><div class=\"custom-balloon__contact-line-value\">+7 (495) 783-90-93</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">E-mail</div><div class=\"custom-balloon__contact-line-value\">msk1@msk.etm.ru</div></div><div class=\"custom-balloon__contact-line\"><div class=\"custom-balloon__contact-line-caption\">Сайт</div><div class=\"custom-balloon__contact-line-value\">www.site.ru</div></div></div></div>",
+        "clusterCaption": "Метка 2",
+        "hintContent": "Текст подсказки",
+        "myDescription": "Произвольное описание",
+        "name": "Лунда",
+        "address": "Санкт-Петербург, ул. Репищева, д. 20",
+        "phones": "8 812 407-23-00",
+        "email": "kolomyagi@lunda.ru",
+        "website": "www.site.ru",
+        "image":"img/dealer-img-3.png",
+        "city": "Санкт-Петербург",
+        "company": "Лунда"
+      },
+      "options": {
+        "preset": "islands#nightCircleDotIcon"
+      }
+    }
+  ]
+}

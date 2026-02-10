@@ -1,0 +1,121 @@
+// В этом файле должны быть стили для БЭМ-блока offer-cta, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.offer-cta {
+
+  $block-name:                &; // #{$block-name}__element
+  
+  margin: 100px 0 0;
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    font-size: 52px;
+    line-height: 62px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    width: 532px;
+    padding-right: 40px;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__btn {
+    margin-top: 32px;
+
+    .btn {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 89px 80px 98px 76px;
+    background-color: #3B61A5;
+    color: #fff;
+    position: relative;
+  }
+
+  &__bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 1200px;
+    height: 325px;
+    background: transparent url("../img/offer-cta-bg.png") no-repeat center top;
+  }
+
+  &__bg-left {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 342px;
+    height: 325px;
+    background: transparent url("../img/offer-cta-bg-left.png") no-repeat 0 0;
+  }
+
+  &__bg-right {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 341px;
+    height: 325px;
+    background: transparent url("../img/offer-cta-bg-right.png") no-repeat 0 0;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .offer-cta {
+    margin: 50px 0;
+
+    &__bg {
+      display: none;
+    }
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &__wrapper {
+      display: block;
+      padding: 29px 20px 38px;
+    }
+
+    &__title {
+      width: 100%;
+      font-size: 36px;
+      line-height: 44px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 24px;
+    }
+  }
+}

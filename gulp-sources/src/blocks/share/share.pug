@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (share)
+
+mixin share(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +share('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' share--' + modsList[i].trim();
+      }
+    }
+
+  .share(class=allMods)&attributes(attributes)
+    .share__title Поделиться
+    .share__list
+      button(data-social="telegram").share__button
+        +icon('share-telegram')(width='22' height='18')
+      button(data-social="vkontakte").share__button
+        +icon('share-vk')(width='24' height='15')
+      button(data-social="link").share__button.js-copy-link
+        +icon('share-link')(width='26' height='24')

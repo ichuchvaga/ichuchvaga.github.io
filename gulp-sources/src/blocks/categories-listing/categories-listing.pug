@@ -1,0 +1,27 @@
+//- Все примеси в этом файле должны начинаться c имени блока (categories-listing)
+
+mixin categories-listing(data, mods)
+
+  //- Принимает:
+  //-   data    {string} - data
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +categories-listing([], 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' categories-listing--' + modsList[i].trim();
+      }
+    }
+
+  .categories-listing(class=allMods)&attributes(attributes)
+    .categories-listing__in
+      each p in data
+        - var imgUrl = 'img/' + p.img;
+
+        .categories-listing__item
+          +category-card(p)

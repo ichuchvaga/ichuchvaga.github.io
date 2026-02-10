@@ -1,0 +1,92 @@
+// В этом файле должны быть стили для БЭМ-блока service-examples, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.service-examples {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .section-content {
+    padding-top: 16px;
+  }
+}
+
+
+.example-card {
+  position: relative;
+  box-sizing: border-box;
+
+  &__bluebox {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    z-index: 2;
+    background-color: rgba(59, 97, 165, 0.9);
+    clip-path: polygon(0 0, calc(100% - 40px) 0%, 100% 45px, 100% 100%, 45px 100%, 0% calc(100% - 40px));
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    width: 466px;
+    padding: 36px 41px 41px;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: 600;
+  }
+
+  &__text {
+    margin-top: 16px;
+  }
+
+  &__term {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 400;
+    margin-top: 18px;
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  &__term-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 7px;
+
+    .icon {
+      fill: #fff;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+ .example-card {
+    &__img {
+      img {
+        height: 360px;
+        object-fit: cover;
+      }
+    }
+
+    &__bluebox {
+      left: 15px;
+      right: 15px;
+      width: unset;
+
+      font-size: 14px;
+      line-height: 20px;
+      background-color: rgba(59,97,165,.64);
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 1.2em;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mobile-menu-contacts)
+
+mixin mobile-menu-contacts(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +mobile-menu-contacts('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' mobile-menu-contacts--' + modsList[i].trim();
+      }
+    }
+
+  .mobile-menu-contacts(class=allMods)&attributes(attributes)
+    .mobile-menu-contacts__title Контакты
+
+    .contact-address Смоленск, Индустриальная 9А
+    .contact-phone
+      a(href="tel:" + phoneHref) #{phone}
+      
+    .contact-email
+      a(href="mailto" + email) #{email}
+
+    .contact-work-hours
+      .mobile-menu-contacts__title-sm График работы отдела продаж 
+      .contact-work-hours__value Пн-Пт: с 10:00 до 20:00
+
+    .contact-messengers
+      +social('contacts, theme-black, md')
+        +social-link('#')(title='Telegram')
+          +icon('social-telegram-md')(width='22', height='18')
+          
+        +social-link('#')(title='VK')
+          +icon('social-vk-md')(width='24', height='15')
+
+        +social-link('#')(title='DZEN')
+          +icon('social-dzen-md')(width='22', height='22')
+
+        +social-link('#')(title='RUTUBE')
+          +icon('social-rutube-md')(width='25', height='21')

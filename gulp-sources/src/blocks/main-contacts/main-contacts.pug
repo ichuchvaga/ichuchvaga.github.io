@@ -1,0 +1,112 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-contacts)
+
+mixin main-contacts(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +main-contacts('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' main-contacts--' + modsList[i].trim();
+      }
+    }
+
+  .main-contacts.section.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .main-contacts__wrapper
+        .main-contacts__info
+          h2.section-title.section-title--with-border Контакты
+
+          .contact-address Смоленск, Индустриальная 9А
+          .contact-phone
+            a(href="tel:" + phoneHref) #{phone}
+            
+          .contact-email
+            a(href="mailto" + email) #{email}
+
+          .contact-work-hours
+            .main-contacts__title-sm График работы отдела продаж 
+            .contact-work-hours__value Пн-Пт: с 10:00 до 20:00
+
+          .contact-messengers
+            .main-contacts__title-sm Месенджеры
+
+            +social('contacts, theme-black, md')
+              +social-link('#')(title='Telegram')
+                +icon('social-telegram-md')(width='22', height='18')
+                
+              +social-link('#')(title='VK')
+                +icon('social-vk-md')(width='24', height='15')
+
+              +social-link('#')(title='DZEN')
+                +icon('social-dzen-md')(width='22', height='22')
+
+              +social-link('#')(title='RUTUBE')
+                +icon('social-rutube-md')(width='25', height='21')
+            
+
+        .main-contacts__form
+          .main-contacts__form-title Задать вопрос
+
+          form.form
+            .fields
+              .row
+                .col.col-12.col-lg-6
+                  +field-text({
+                    title: 'Ваше имя',
+                    isTextarea: false,
+                    helpText: '',
+                    mods: '',
+                    val: '',
+                    attrs: {
+                      name: 'name',
+                    }
+                  })
+
+                .col.col-12.col-lg-6
+                  +field-text({
+                    title: 'E-mail',
+                    isTextarea: false,
+                    helpText: '',
+                    mods: '',
+                    val: '',
+                    attrs: {
+                      name: 'email',
+                      type: 'email'
+                    }
+                  })
+              
+              .message-field
+                +field-text({
+                  title: 'Сообщение',
+                  isTextarea: true,
+                  helpText: '',
+                  mods: 'message',
+                  val: '',
+                  attrs: {
+                    name: 'message',
+                  }
+                })
+
+                .upload-file
+                  .upload-file__widget
+                    .upload-file__text Ваши прикрепленные файлы <br>в формате .doc,&nbsp;.jpg,&nbsp;.png
+
+                    label.upload-input
+                      input(type="file" name="file")
+                      span.upload-input__text.btn + Прикрепить файл 
+
+            //-
+            .form-submit
+              .form-submit__btn
+                input(type="submit" value="Отправить запрос").btn.btn--main
+
+              .form-submit__agreement
+                .agreement Нажимая на кнопку, вы даете #[a(href="#" target="_blank") согласие на обработку] ваших персональных данных

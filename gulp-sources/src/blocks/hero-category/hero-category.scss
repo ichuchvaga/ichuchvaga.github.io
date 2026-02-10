@@ -1,0 +1,272 @@
+// В этом файле должны быть стили для БЭМ-блока hero-category, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.hero-category {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+
+  &__wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  &__image {
+    width: 589px;
+    flex-shrink: 0;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__image-mobile {
+    display: none;
+    font-size: 0;
+    line-height: 0;
+    position: relative;
+    margin-bottom: 25px;
+
+    img {
+      max-height: 300px;
+    }
+  }
+
+  &__main {
+    width: 614px;
+    padding-left: 53px;
+    padding-right: 53px;
+    padding-top: 43px;
+    padding-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+
+  &__prod-type {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  &__h1 {
+    text-transform: uppercase;
+    margin: 0 0 7px;
+  }
+
+  &__short-description {
+    line-height: 18px;
+    color: #7E7E7E;
+    font-weight: 400;
+    margin-bottom: 21px;
+  }
+
+  &__text {
+    margin-bottom: 18px;
+
+    p {
+      margin-bottom: 18px;
+    }
+  }
+
+  .download-links-wrap {
+    margin-top: 32px;
+  }
+
+  &__params-mobile {
+    display: none;
+  }
+}
+
+.download-links-wrap {
+  position: relative;
+
+  .hero-category__params {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-right: 54px;
+    text-align: right;
+    width: 500px;
+    transform: translateY(-50%);
+    padding-top: 2px;
+  }
+}
+
+.warranty-label {
+  background-color: $blue;
+  clip-path: polygon(0 0,85% 0,100% 30%,100% 100%,100% 100%,0 100%,0 100%,0 0);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px 25px 19px;
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 0;
+    line-height: 0;
+    width: 37px;
+    padding-top: 1px;
+
+    .icon {
+      fill: #fff;
+      width: 37px;
+      height: 46px;
+    }
+  }
+
+  &__content {
+    padding-left: 13px;
+  }
+
+  &__line-1 {
+    font-size: 30px;
+    line-height: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__line-2 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+
+.cat-param {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: $black;
+  margin-top: 17px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__caption {
+    color: #7E7E7E;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .hero-category {
+    padding-bottom: 30px;
+
+    &__wrapper {
+      display: block;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__main {
+      padding: 24px 0 0;
+      width: 100%;
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    &__image-mobile {
+      display: block;
+      margin-top: 5px;
+      width: 100%;
+      min-height: 90px;
+    }
+
+    &__params-mobile {
+      display: block;
+      margin-top: 25px;
+      margin-bottom: 17px;
+    }
+
+    &__h1 {
+      margin-bottom: 3px;
+    }
+
+    &__prod-type {
+      margin-bottom: 1px;
+    }
+
+    &__label {
+      top: 0;
+      left: 0;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 24px;
+
+      p:last-child {
+        margin-bottom: 17px;
+      }
+    }
+
+    .link-dash {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .download-links-wrap {
+      margin-top: 30px;
+      width: 100%;
+    }
+  }
+
+  .download-links-wrap .hero-category__params {
+    display: none;
+  }
+
+  .warranty-label {
+    padding: 16px 16px 14px 15px;
+
+    &__icon {
+      width: 27px;
+
+      .icon {
+        width: 27px;
+        height: 33px;
+      }
+    }
+
+    &__content {
+      padding-left: 11px;
+    }
+
+    &__line-1 {
+      font-size: 20px;
+      line-height: 20px;
+    }
+
+    &__line-2 {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+
+  .cat-param {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 18px;
+
+    &__value {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 2px;
+    }
+  }
+}

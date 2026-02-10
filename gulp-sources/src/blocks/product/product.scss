@@ -1,0 +1,186 @@
+// В этом файле должны быть стили для БЭМ-блока product, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.product {
+
+  $block-name:                &; // #{$block-name}__element
+}
+
+
+.catalog-list {
+  padding-top: 90px;
+  background-color: #fff;
+
+  .catalog-category {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .section-title {
+    text-align: left;
+    font-size: 40px;
+    line-height: 1.2em;
+    margin-bottom: 33px;
+  }
+}
+
+.specs {
+  padding-bottom: 87px;
+
+  .section-title {
+    text-align: left;
+    margin-bottom: 32px;
+  }
+}
+
+.specs-table {
+  // column-count: 2;
+  // column-gap: 42px;
+  .row {
+    margin-left: -21px;
+    margin-right: -21px;
+  }
+
+  .col {
+    padding-left: 21px;
+    padding-left: 21px;
+  }
+}
+
+.specs-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+
+  &::after {
+      content:'';
+      display: block;
+      position: absolute;
+      top: 1em;
+      left: 0px;
+      width: 100%;
+      height: 2px;
+      border-top: 1px dotted #7E7E7E;
+  }
+  &__caption {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      background: #f5f5f5;
+      padding-right: 12px;
+      color: #7E7E7E;
+  }
+
+  &__value {
+      display: block;
+      width: 270px;
+      position: relative;
+      z-index: 2;
+      background: #f5f5f5;
+      padding-left: 8px;
+  }
+}
+
+.product-variations {
+  padding-top: 1px;
+  padding-bottom: 52px;
+
+  .nav-arrow.swiper-button-disabled {
+    display: none;
+  }
+}
+
+.specs-table-more-btn {
+  display: none;
+}
+
+@media (max-width: $screen-xl - 1) {
+  .product {
+    .tabs__links {
+      margin-bottom: 11px;
+    } 
+  }
+
+  .product-variations {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .specs {
+    padding-top: 53px;
+    padding-bottom: 61px;
+
+    .section-title {
+      font-size: 30px;
+      line-height: 1.2em;
+      margin-bottom: 16px;
+    }
+  }
+
+  .specs-table {
+    padding-top: 3px;
+  }
+
+  .specs-item {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 14px;
+    justify-content: flex-start;
+
+    &::after {
+      width: 145px;
+      top: 13px;
+      border-color: #9c9c9c;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__caption {
+      width: 145px;
+      flex-shrink: 0;
+      background-color: unset;
+      padding-right: 0;
+    }
+
+    &__caption-text {
+      display: inline;
+      background: #f5f5f5;
+      padding-right: 12px;
+    }
+
+    &__value {
+      width: auto;
+      padding-left: 6px;
+    }
+
+    &--mobile-hidden {
+      display: none;
+    }
+  }
+
+  .specs-table-more-btn {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .catalog-list {
+    padding-top: 53px;
+    
+    .section-title {
+      font-size: 30px;
+      line-height: 1.2em;
+      margin-bottom: 22px;
+    }
+  }
+
+  .specs-table-col2 .specs-item:first-child {
+    margin-top: 14px;
+  }
+}

@@ -1,0 +1,23 @@
+// В этом файле должны быть стили для БЭМ-блока field-range, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-range {
+  $block-name:                &; // #{$block-name}__element
+
+  display: flex;
+  gap: 13px;
+
+  .field-text {
+    flex: 1;
+    margin: 0;
+
+    &__input {
+      font-size: 14px;
+      line-height: 19px;
+      border: 1px solid hsla(0, 0%, 78%, 1);
+      border-radius: 12px;
+      padding: 7px 15px;
+      min-height: 36px;
+    }
+  }
+}

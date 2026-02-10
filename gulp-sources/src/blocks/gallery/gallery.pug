@@ -1,0 +1,37 @@
+//- Все примеси в этом файле должны начинаться c имени блока (gallery)
+
+mixin gallery(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +gallery('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' gallery--' + modsList[i].trim();
+      }
+    }
+
+  include ../projects/projects.data.pug
+
+  .gallery(class=allMods)&attributes(attributes)
+    .slider-container
+      .swiper
+        .swiper-wrapper
+          each project in projects
+            .swiper-slide
+              .gallery-card
+                .gallery-card__img
+                  img(src="img/main-project-1.jpg" alt="")
+                .gallery-card__content
+                  .gallery-card__date #{project.city}  |  #{project.date}
+                  .gallery-card__title #{project.name}
+                  .gallery-card__description #{project.descr}
+
+      +nav-arrows('mobile')

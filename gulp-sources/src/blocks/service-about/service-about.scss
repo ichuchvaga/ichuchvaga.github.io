@@ -1,0 +1,128 @@
+// В этом файле должны быть стили для БЭМ-блока service-about, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.service-about {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-image: url('../img/service-about-bg.png');
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    opacity: 0.8;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__intro {
+    font-size: 30px;
+    line-height: 34px;
+    font-weight: 500;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__col1 {
+    width: 575px;
+  }
+
+  &__col2 {
+    width: 590px;
+    margin-top: -54px;
+  }
+
+  &__text {
+    background-color: #fff;
+    clip-path: polygon(0 0, calc(100% - 38px) 0%, 100% 41px, 100% 100%, 41px 100%, 0% calc(100% - 38px));
+    padding: 44px 40px 42px 50px;
+    font-size: 16px;
+    line-height: 24px;
+
+    p {
+      margin: 0 0 21px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin: 21px 0;
+      padding: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      & > li {
+        position: relative;
+        padding: 1px 0 0 37px;
+        margin: 0 0 14px 0;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 24px;
+          height: 24px;
+          background: transparent url("../img/list-check-orange.svg") no-repeat 0 0;
+          position: absolute;
+          top: 0;
+          left: 1px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .section-heading {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .service-about {
+    &__wrapper {
+      display: block;
+    }
+
+    &__col1 {
+      width: 100%;
+    }
+
+    &__col2 {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    &__intro {
+      font-size: 24px;
+      line-height: 1.2em;
+    }
+
+    &__text {
+      padding: 24px 20px 22px 30px;
+    }
+  }
+}

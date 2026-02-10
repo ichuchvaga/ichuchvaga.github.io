@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (benefits)
+
+mixin benefits(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +benefits('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' benefits--' + modsList[i].trim();
+      }
+    }
+  include ./benefits.data.pug
+
+  .benefits(class=allMods)&attributes(attributes)
+    .container
+      .benefits__grid
+        .benefits__grid-in
+          each item in benefits
+            - var imgUrl = 'img/' + item.img;
+            .benefits-item
+              .benefits-item__in
+                .benefits-item__img
+                  img(src=imgUrl alt="")
+                .benefits-item__title !{item.title}

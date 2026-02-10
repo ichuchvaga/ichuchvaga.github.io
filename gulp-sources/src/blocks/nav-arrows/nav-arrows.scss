@@ -1,0 +1,213 @@
+// В этом файле должны быть стили для БЭМ-блока nav-arrows, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.nav-arrows {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: absolute;
+  top: 50%;
+  left: -98px;
+  right: -98px;
+  height: 0;
+  z-index: 3;
+
+  &--mobile {
+    display: none;
+  }
+}
+
+.slider-container .nav-arrows {
+  left: -78px;
+  right: -78px;
+}
+
+.nav-arrow {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  font-size: 0;
+  line-height: 0;
+  transition: all .25s ease;
+  background-color: #CDCDCD;
+  //box-shadow: 0px 3px 7px 2px rgba(53, 53, 53, 0.06);
+  transform: translateY(-50%);
+  opacity: 0.5;
+
+  svg {
+    fill: #fff;
+    transition: all .25s ease;
+    width: 11px;
+    height: 19px;
+  }
+
+  &.next {
+    right: 0;
+    svg {
+      margin-top: 15px;
+      margin-left: 19px;
+    }
+  }
+
+  &.prev {
+    left: 0;
+    svg {
+      margin-top: 15px;
+      margin-left: 18px;
+    }
+  }
+  
+  
+
+  &:hover {
+    //border-color: $color-main;
+    opacity: 1;
+
+    svg {
+      fill: #fff;
+    }
+  }
+  
+  &.swiper-button-disabled {
+    // opacity: 0.3;
+    opacity: 0;
+    visibility: hidden;
+
+    &:hover {
+      // opacity: 0.3;
+      opacity: 0;
+    }
+  }
+}
+
+.nav-arrows--inline {
+  position: static;
+  height: unset;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
+  .nav-arrow {
+    position: static;
+    transform: translateY(0px);
+  }
+}
+
+.nav-arrows--lg {
+  .nav-arrow {
+    width: 85px;
+    height: 85px;
+    opacity: 1;
+    background-color: #F5F5F5;
+    transform: translateY(0);
+
+    .icon {
+      fill: #3C3C3C;
+      width: 24px;
+      height: 24px;
+    }
+
+    &.prev svg {
+      margin-left: 31px;
+      margin-top: 30px;
+    }
+
+    &.next svg {
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+
+    &.next {
+      margin-left: 20px;
+    }
+
+    &.swiper-button-disabled {
+      visibility: visible;
+      opacity: 1;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background-color: #E6E6E6;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .slider-container .nav-arrows {
+    left: 0;
+    right: 0;
+  }
+
+  .nav-arrows {
+    &--mobile {
+      display: block;
+    }
+  }
+
+  .nav-arrow {
+    width: 30px;
+    height: 30px;
+    background-color: #e6e6e6;
+    opacity: 1;
+  
+    svg {
+      width: 9px;
+      height: 14px;
+      fill: $black;
+    }
+  
+    &.next {
+      svg {
+        margin-top: 8px;
+        margin-left: 11px;
+      }
+    }
+  
+    &.prev {
+      svg {
+        margin-top: 8px;
+        margin-left: 10px;
+      }
+    }
+
+    &:hover {
+      svg {
+        fill: $black;
+      }
+    }
+  }
+
+  .nav-arrows--lg {
+    .nav-arrow {
+      width: 50px;
+      height: 50px;
+  
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+  
+      &.prev svg {
+        margin-left: 15px;
+        margin-top: 14px;
+      }
+  
+      &.next svg {
+        margin-left: 14px;
+        margin-top: 14px;
+      }
+  
+      &.next {
+        margin-left: 10px;
+      }
+    }
+  }
+}

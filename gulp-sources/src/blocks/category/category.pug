@@ -1,0 +1,36 @@
+//- Все примеси в этом файле должны начинаться c имени блока (category)
+
+mixin category(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +category('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' category--' + modsList[i].trim();
+      }
+    }
+
+  include ./category.data.pug
+
+  .category(class=allMods)&attributes(attributes)
+    .container
+      +breadcrumbs()
+        +breadcrumbs-item('Главная', 'index.html')
+        +breadcrumbs-item('Каталог', 'catalog.html')
+        +breadcrumbs-item('Контрольный кабель')
+        
+    .category__content
+      .category-products
+        .container
+          .page-title
+            h1 Контрольный кабель
+
+          +categories-listing(categories)

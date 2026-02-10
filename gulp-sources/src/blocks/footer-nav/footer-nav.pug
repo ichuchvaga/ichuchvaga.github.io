@@ -1,0 +1,53 @@
+//- Все примеси в этом файле должны начинаться c имени блока (footer-nav)
+//- Структура меню — в footer-nav.data.pug
+
+mixin footer-nav(selectedID)
+
+  //- Принимает:
+  //-   selectedID {string} - id пункта меню (по умолчанию — из footer-nav.data.pug)
+  //- Вызов:
+        +footer-nav('1')
+
+  //- подключаем файл со структурой данных блока
+  include footer-nav.data.pug
+
+  nav.footer-nav#nav&attributes(attributes)
+    //- +burger('Показать главное меню', 'nav', 'footer-nav--open')(class='footer-nav__toggler')
+    .footer-nav__wrapper
+      .footer-nav__column.footer-nav__column--col1
+        a(href="catalog.html").footer-nav__column-title Каталог
+          svg(width='12', height='8')
+            use(xlink:href='img/sprite.svg#more-link-arrow')
+        ul.footer-nav__list
+          each menuItem in footMenuCol1
+            +footer-nav-item(selectedID, menuItem, 1)
+            
+      .footer-nav__column.footer-nav__column--col2
+        ul.footer-nav__list
+          each menuItem in footMenuCol2
+            +footer-nav-item(selectedID, menuItem, 1)
+
+      .footer-nav__column.footer-nav__column--col3
+        ul.footer-nav__list
+          each menuItem in footMenuCol3
+            +footer-nav-item(selectedID, menuItem, 1)
+
+
+mixin footer-nav-item(selectedID, item, level)
+  -
+    var thisItemClass = 'footer-nav__item';
+    var thisLinkClass = 'footer-nav__link';
+    if(selectedID == item.id) {
+      thisItemClass += '  footer-nav__item--active';
+    }
+    if(item.childs) {
+      thisItemClass += '  footer-nav__item--has-child';
+    }
+    if(level > 1) {
+      thisItemClass += '  footer-nav__item--lvl-' + level;
+      thisLinkClass += '  footer-nav__link--lvl-' + level;
+    }
+
+  li(class= thisItemClass)
+    a(class= thisLinkClass, href=item.url)= item.name
+    block

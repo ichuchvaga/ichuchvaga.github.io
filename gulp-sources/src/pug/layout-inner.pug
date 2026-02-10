@@ -1,0 +1,110 @@
+//- Стандартный шаблон страницы
+
+- var phone = '+7 (4812) 31-14-23';
+- var phoneHref = phone.replace(/[()\s-]/gi, '');
+- var email = 'mail@nym.ru';
+- var address = 'Смоленск, Индустриальная 9А';
+- var workHours = 'Пн-Пт: с 10:00 до 20:00';
+
+include mixins.pug
+
+block variables
+  - var pageClass = '';
+  - var phone = '+7 (4812) 31-14-23';
+  - var phoneHref = phone.replace(/[()\s-]/gi, '');
+  - var email = 'mail@nym.ru';
+  - var address = 'Смоленск, Индустриальная 9А';
+  - var workHours = 'Пн-Пт: с 10:00 до 20:00';
+
+doctype html
+html(class='page page--service  no-js ' + pageClass, lang='ru')
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    //- Edge и ряд мобильных браузеров слишком умны. Отключим это.
+    meta(name='format-detection', content='telephone=no')
+    meta(name='format-detection', content='date=no')
+    meta(name='format-detection', content='address=no')
+    meta(name='format-detection', content='email=no')
+    meta(content='notranslate', name='google')
+
+    //- Предзагрузка шрифтов или иных ресурсов
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap', rel='stylesheet')
+
+    //- Фавиконки (https://realfavicongenerator.net)
+    link(rel='apple-touch-icon', sizes='180x180', href='/img/favicon/apple-touch-icon.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='/img/favicon/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='/img/favicon/favicon-16x16.png')
+    link(rel='manifest', href='/img/favicon/site.webmanifest')
+    link(rel='mask-icon', href='/img/favicon/safari-pinned-tab.svg', color='#5bbad5')
+    meta(name='msapplication-TileColor', content='#da532c')
+    meta(name='theme-color', content='#000000')
+
+    block meta
+      title Home
+
+    block head
+      link(rel='stylesheet', href='css/style.css?v=' + Date.now())
+      script
+        include ../js/head-script.js
+
+  body
+    .page__inner
+      .page__content
+        block content
+          p содержимое
+
+      //-+mobile-panel()
+      //-+mobile-menu()
+    
+      .page__footer-wrapper
+        +page-footer('inner')
+          .page-footer__main
+            .page-footer__left
+              .page-footer__logo
+                +logo('index.html')
+                  img(src='img/logo-footer.svg?v=1', alt='')
+
+              .page-footer__nav
+                block footer
+                  +footer-nav2()
+
+            .page-footer__contacts              
+              .page-footer__address
+                | !{address}
+
+              a(href='tel:' + phoneHref)
+                  | #{phone}
+
+              a(href='mailto:' + email)
+                | #{email}
+
+              .page-footer__social
+                +social('footer')
+                  +social-link('#')(title='Telegram')
+                    +icon('social-telegram')(width='19', height='16')
+                    
+                  +social-link('#')(title='VK')
+                    +icon('social-vk')(width='21', height='13')
+
+                  +social-link('#')(title='DZEN')
+                    +icon('social-dzen')(width='19', height='19')
+
+                  +social-link('#')(title='RUTUBE')
+                    +icon('social-rutube')(width='22', height='19')
+
+          .page-footer__bottom-mobile
+            .page-footer__copyright Все права защищены. &copy; 2024 ООО «Конкорд»
+            .page-footer__policy
+              a(href="#" target="_blank") Политика конфиденциальности
+
+    include modal.pug
+
+    block page-bottom
+      //-if (mapJS)
+        script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+      script(src='js/bundle.js?v='+Date.now())

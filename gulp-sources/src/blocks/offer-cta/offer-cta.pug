@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (offer-cta)
+
+mixin offer-cta(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +offer-cta('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' offer-cta--' + modsList[i].trim();
+      }
+    }
+
+  .offer-cta(class=allMods)&attributes(attributes)
+    .container
+      .offer-cta__wrapper
+        .offer-cta__bg
+        //-.offer-cta__bg-left
+        //-.offer-cta__bg-right
+
+        h2.offer-cta__title Ваш проект – наша миссия!
+        
+        .offer-cta__text
+          p Для уточнения любой, интересующей Вас информации, заполните форму обратной связи, и мы Вам ответим!
+          .offer-cta__btn
+            a(href="#").btn.btn--main Заказать расчет

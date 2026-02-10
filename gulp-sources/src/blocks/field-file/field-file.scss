@@ -1,0 +1,129 @@
+// В этом файле должны быть стили для БЭМ-блока field-file, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-file {
+  $block-name: &; // #{$block-name}__element
+
+  margin-bottom: 21px;
+
+  &__label {
+    font-weight: 500;
+    font-size: 16px;
+    color: #0479e5;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 17px;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      color: #178ffe;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__empty {
+    display: none;
+    vertical-align: middle;
+    font-size: 16px;
+  }
+
+  &__help-text {
+    display: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: #aeb0b7;
+    margin-top: 8px;
+    margin-left: 2px;
+  }
+
+  &__files {
+    padding-top: 7px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  &__item-name {
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 2px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__item-ext {
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 11px;
+  }
+
+  &__item-size {
+    font-weight: 500;
+    font-size: 16px;
+    color: #aeb0b7;
+    margin-right: 11px;
+  }
+
+  &__item-remove {
+    flex: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #aeb0b7;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &--empty {
+    #{$block-name}__empty {
+      display: inline-block;
+    }
+
+    #{$block-name}__help-text {
+      display: block;
+    }
+
+    #{$block-name}__files {
+      display: none;
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    padding: 0;
+
+    &__help-text {
+      margin-top: 11px;
+    }
+
+    &--empty {
+      #{$block-name}__empty {
+        display: none;
+      }
+    }
+  }
+}

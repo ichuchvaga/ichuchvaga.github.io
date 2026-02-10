@@ -1,0 +1,51 @@
+mixin main-banner()
+  //- Вызов:
+    +main-banner()
+
+  -
+    var items = [
+      {
+        title: 'Контрольный<br> кабель',
+        img: 'banner-category-1-1.png',
+        url: 'catalog.html#control-cable'
+      },
+      {
+        title: 'Силовой<br> кабель',
+        img: 'banner-category-2-1.png',
+        url: 'catalog.html#power-cable'
+      },
+      {
+        title: 'Провод',
+        img: 'banner-category-3-1.png',
+        url: 'catalog.html#wire'
+      },
+      {
+        title: 'Монтажный<br> кабель',
+        img: 'banner-category-4-1.png',
+        url: 'catalog.html#installation'
+      }
+    ];
+
+  div.main-banner.bg-gray&attributes(attributes)
+    //-.main-banner__img(style="background-image: url('img/main-banner.jpg')")
+    .main-banner__video
+      video(src="video/konkord-video2.webm" muted="muted" autoplay="autoplay" loop="loop")
+    
+    .main-banner-links
+      .container
+        .main-banner-links__in
+          each item in items
+            - var imgUrl = 'img/' + item.img;
+
+            .main-banner-links__item
+              a(href=item.url).main-banner-link
+                span.main-banner-link__title
+                  |!{item.title}
+                  
+                  span.main-banner-link__arrow
+                    .circle-link
+                      +icon('circle-arrow')(width="24" height="24")
+                      +icon('circle-arrow-mini')(width="12" height="12")
+
+                span.main-banner-link__img
+                  img(src=imgUrl alt="")

@@ -1,0 +1,108 @@
+// Базовые цвета https://colorscheme.ru/color-converter.html
+
+@use 'sass:color';
+
+$black:                       #3C3C3C;
+$gray-darkest:                #7E7E7E;
+$gray-darker:                 #CDCDCD;
+$gray:                        #F5F5F5;
+$white:                       hsl(0, 0%, 100%);
+
+
+$blue-dark:                  #13397D;
+$blue:                       #3B61A5;
+
+$orange:                      #FF683C;
+$orange-hover:                 #F34B1A ;
+
+$color-main:                  $orange;
+$color-success:               hsl(120, 39%, 54%);
+$color-danger:                rgb(234, 45, 58);
+$color-warning:               hsl(35, 84%, 62%);
+
+$color-vk:                    #4a76a8;
+$color-fb:                    #4267b2;
+$color-tw:                    #40a2f5;
+$color-gh:                    #24292e;
+
+
+// Семантические цвета
+
+///$text-color:                  $gray-darkest;
+$text-color:                  #3C3C3C;
+
+$text-color-muted:            $gray;
+$body-bg:                     $white;
+
+$link-color:                  $color-main;
+$link-color--hover:           $orange-hover;
+
+$border-color:                hsla(0, 0%, 68%, 1);
+
+// Базовая типографика
+
+$font-size:                   16px;
+
+$font-size-h1:                48px;
+$font-size-h2:                40px;
+$font-size-h3:                30px;
+$font-size-h4:                24px;
+$font-size-h5:                20px;
+$font-size-h6:                16px;
+
+$font-size-sm:                0.75em; // 12px от 16px
+
+//$line-height:                 1.43;
+$line-height:        1.5;
+$line-height-heading:         1.17;
+
+$typo-margin-vertical:        1em;
+
+$font-family:                 'Jost', -apple-system, BlinkMacSystemFont, 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+$font-family--monospace:     SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+// Georgia, Times New Roman, Times, serif
+
+
+
+// Ширины
+
+$screen-xs:                   0;
+$screen-xsm:                   460px;
+$screen-sm:                   480px;
+$screen-md:                   768px;
+$screen-lg:                   992px;
+$screen-xl:                   1230px;
+$screen-xxl:                  1400px;
+
+$container-sm:                100%;
+$container-md:                100%;
+$container-lg:                $screen-lg - 30;
+$container-xl:                $screen-xl;
+//$container-xxl:               $screen-xxl - 30;
+$container-xxl:               1470px;
+
+
+
+// Модульная сетка
+
+$grid-columns:                12;
+$grid-gutter-width:           30px;
+
+
+
+// Разное
+
+$field-margin-vertical:       27px;
+$field-padding-vertical:      18px;
+$field-padding-horizontal:    41px;
+
+$border-radius:               10px;
+$opacity:                     0.7;
+$transition-time:             0.3s;
+$shadow:                      0 4px 2px -2px rgba(0, 0, 0, 0.3);
+
+$menu-desktop-width:          $screen-lg;
+$toggler-part-height:         2px;
+
+$z-index-modal:               100;

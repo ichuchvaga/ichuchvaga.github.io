@@ -1,0 +1,260 @@
+// В этом файле должны быть стили для БЭМ-блока main-contacts, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-contacts {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .section-title {
+    text-align: left;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    width: 600px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  &__form {
+    width: 575px;
+  }
+
+  &__form-title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 34px;
+  }
+
+  &__title-sm {
+    color: $gray-darkest;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+}
+
+.contact-address {
+  margin-bottom: 6px;
+}
+
+.contact-phone {
+  font-size: 40px;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover {
+      color: $orange-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+.contact-email {
+  margin-top: 8px;
+  
+  a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover {
+      color: $orange-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+.contact-messengers {
+  margin-top: 25px;
+
+  .social {
+    padding-top: 5px;
+  }
+}
+
+.contact-work-hours {
+  margin-top: 25px;
+}
+
+.upload-file {
+  padding: 20px;
+
+  &__widget {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+    color: #CDCDCD;
+    font-weight: 400;
+    line-height: 1.2em;
+  }
+
+  &__selected {
+    margin-top: -7px;
+    margin-bottom: -4px;
+    // padding-top: 13px;
+    // padding-bottom: 12px;
+  }
+}
+
+.upload-input {
+  display: block;
+  margin: 0;
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
+  &__text {
+    background-color: #F5F5F5;
+    color: $black;
+    padding-top: 13px;
+    padding-bottom: 12px;
+  }
+}
+
+.main-contacts {
+  .upload-file {
+    background-color: #fff;
+  }
+
+  .field-text--message {
+    margin-bottom: 0;
+
+    textarea.field-text__input {
+      // min-height: 105px;
+      min-height: 189px;
+      max-height: 189px;
+      height: 189px;
+      padding-bottom: 94px;
+    }
+  }
+}
+
+.message-field {
+  position: relative;
+
+  .upload-file {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+    padding: 27px 19px 19px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .main-contacts {
+    &__wrapper {
+      display: block;
+    }
+
+    &__info {
+      width: 100%;
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    &__title-sm {
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    &__form {
+      margin-top: 55px;
+      width: 100%;
+      max-width: 575px;
+    }
+
+    &__form-title {
+      margin-bottom: 24px;
+    }
+  }
+
+  .contact-messengers {
+    margin-top: 15px;
+
+    .social {
+      padding-top: 9px;
+    }
+  }
+
+  .contact-phone {
+    font-size: 30px;
+    line-height: 1em;
+    margin-bottom: 3px;
+  }
+
+  .contact-email {
+    margin-top: 3px;
+  }
+
+  .contact-work-hours {
+    margin-top: 15px;
+  }
+
+  .upload-file {
+    &__text {
+      font-size: 12px;
+      line-height: 14px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .upload-input {
+    width: 159px;
+    
+    &__text {
+      font-size: 14px;
+      padding: 12px 10px;
+      letter-spacing: -0.015em;
+      width: 159px;
+    }
+  }
+
+  .main-contacts {
+    .field-text--message {  
+      textarea.field-text__input {
+        min-height: 202px;
+        max-height: 202px;
+        height: 202px;
+        padding-bottom: 74px;
+      }
+    }
+  }
+
+  .message-field {
+    .upload-file {
+      padding-bottom: 18px;
+    }
+  }
+  
+}

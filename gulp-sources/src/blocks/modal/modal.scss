@@ -1,0 +1,439 @@
+// В этом файле должны быть стили для БЭМ-блока modal, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.modal {
+
+  $block-name: &; // #{$block-name}__element
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+
+  .form {
+    margin-top: 22px;
+
+    .btn--submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      height: 50px;
+      padding: 0 15px;
+      margin-bottom: 16px;
+      margin-top: 35px;
+    }
+
+    &__privacy {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+      color: $black;
+
+      a {
+        text-decoration: none;
+        color: #7E7E7E;
+
+        &:hover {
+          color: $orange;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .field-text__input {
+      border: 1px solid #e6e6e6;
+      padding-top: 17px;
+
+      &.error {
+        border-color: #FF5656;
+      }
+
+      &:focus {
+        border-color: $black;
+
+        &.error {
+          border-color: #FF5656;
+        }
+
+        &::placeholder {
+          color: $black;
+        }
+      }
+
+      &:not(:placeholder-shown)+.field-text__name,
+      &:focus + .field-text__name {
+        top: 4px;
+      }
+    }
+  }
+
+  &__dialog {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: auto;
+    width: 450px;
+    min-height: calc(100% - 4em); // центровка, удвоенный margin, указанный чуть ниже
+    margin: 2em auto;
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 40px;
+    pointer-events: auto;
+    background-color: #fff;
+    outline: 0;
+    border-radius: 0;
+  }
+
+  &__header {
+    position: relative;
+    flex-shrink: 0;
+    padding: 44px 50px 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  &__close {
+    border: none;
+    outline: none;
+    padding: 0;
+    background: none;
+    position: absolute;
+    z-index: 10;
+    outline: 0;
+    display: block;
+    cursor: pointer;
+
+    width: 22px;
+    height: 22px;
+    top: 19px;
+    right: 19px;
+
+    .icon {
+      fill: #7E7E7E;
+    }
+
+    &:hover {
+      .icon {
+        fill: $black;
+      }
+    }
+  }
+
+  &__body {
+    position: relative;
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: left;
+    padding: 21px 50px 46px;
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__footer {
+    display: block;
+    border-top: 1px solid #e7e7e9;
+    padding: 50px 60px 60px;
+
+    .modal__title {
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    .btn {
+      display: flex;
+      width: 100%;
+      height: 54px;
+      padding: 0 15px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &__footer-description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #aeb0b7;
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  &--show {
+
+    #{$block-name}__dialog {
+      animation: modal-dialog 0.3s 1 ease-out forwards;
+    }
+  }
+
+  &--message {
+    .modal {
+      &__header {
+        padding-top: 48px;
+      }
+
+      &__body {
+        padding-top: 21px;
+        padding-bottom: 44px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    &__dialog {
+      max-width: 699px;
+    }
+
+    &__close {
+      right: 14px;
+      top: 14px;
+    }
+
+    &__header {
+      padding: 29px 100px 0 41px;
+    }
+
+    &__title {
+      font-size: 30px;
+      line-height: 31px;
+    }
+
+    &__body {
+      font-size: 21px;
+      line-height: 30px;
+      padding: 18px 41px 39px;
+    }
+
+    .form {
+      margin-top: 37px;
+
+      .field-text {
+        margin-bottom: 22px;
+
+        &__input {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+
+      .field-select {
+        margin-bottom: 23px;
+      }
+
+      .choices {
+        &__inner {
+          font-size: 16px;
+          line-height: 19px;
+          padding: 15px 30px;
+        }
+
+        &:after {
+          right: 24px;
+          top: 11px;
+        }
+      }
+
+      .btn--submit {
+        font-size: 16px;
+        line-height: 23px;
+        width: 300px;
+        padding: 14px 15px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__content {
+      border-radius: 0;
+    }
+
+    &__dialog {
+      padding-left: 15px;
+      padding-right: 15px;
+      max-width: 100%;
+    }
+
+    &__header {
+      padding: 39px 25px 0;
+    }
+
+    &__title {
+      font-size: 26px;
+      line-height: 31px;
+    }
+
+    &__body {
+      padding: 11px 25px 41px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__footer {
+      padding: 30px 20px 40px;
+
+      .btn {
+        height: 50px;
+      }
+    }
+
+    .form {
+      margin-top: 23px;
+
+      .field-text {
+        margin-bottom: 20px;
+        line-height: 1.42;
+
+        &__input {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+
+      .field-select {
+        margin-bottom: 20px;
+      }
+
+      .field-checkbox__name-text {
+        font-size: 16px;
+        line-height: 18px;
+      }
+
+      .choices {
+        &__inner {
+          font-size: 12px;
+          line-height: 14px;
+          padding: 10px 18px;
+          min-height: 50px;
+        }
+
+        &:after {
+          background-size: 100% 100%;
+          width: 7px;
+          height: 12px;
+          right: 25px;
+          top: 19px;
+        }
+      }
+
+      .btn--submit {
+        width: 100%;
+        padding: 9px 15px;
+        font-size: 16px;
+        line-height: 17px;
+        height: 50px;
+        margin-top: 30px;
+        margin-bottom: 17px;
+      }
+
+      &__privacy {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+
+    &--message {
+      .modal {
+        &__header {
+          padding-top: 40px;
+        }
+        
+        &__body {
+          padding-top: 13px;
+          padding-bottom: 39px;
+        }
+      }
+    }
+  }  
+}
+
+
+.modal-open {
+  overflow: hidden;
+
+  .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  // background-color: $black;
+  background-color: #000;
+  animation: modal-backdrop 0.3s 1 ease-out forwards;
+}
+
+
+@keyframes modal-backdrop {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes modal-dialog {
+
+  from {
+    transform: translate(0, -2em);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+
+.modal--dealer {
+  .modal__title {
+    text-align: center;
+    margin-left: -20px;
+    margin-right: -20px;
+
+    span {
+      color: $blue;
+    }
+  }
+}
+
+@media (max-width: $screen-sm - 1) {
+  .modal--dealer {
+    .modal__title {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

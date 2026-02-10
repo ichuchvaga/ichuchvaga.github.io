@@ -1,0 +1,103 @@
+// В этом файле должны быть стили для БЭМ-блока where-to-buy, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.where-to-buy {
+
+  $block-name:                &; // #{$block-name}__element
+
+  .section-heading--2columns {
+    margin-bottom: 38px;
+  }
+}
+
+.dealers {
+  width: 100%;
+  overflow: hidden;
+  
+  &__in {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: -11px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+  }
+
+  &__item {
+    width: 25%;
+    padding-left: 11px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+  }
+}
+
+.dealer-img {
+  height: 100%;
+  background-color: $gray;
+  font-size: 0;
+  line-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 122px;
+  padding: 16px 20px;
+
+  img {
+    max-height: 84px;
+  }
+}
+
+.load-more {
+  .btn--outline-with-icon {
+    .icon {
+      fill: $black;
+    }
+
+    &.btn--outline-with-icon .btn__icon {
+      margin-right: 9px;
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .where-to-buy {
+    .section-heading--2columns {
+      margin-bottom: 20px;
+    }
+
+    &.section--without-heading {
+      padding-top: 45px;
+      padding-bottom: 45px;
+    }
+  }
+}
+
+@media (max-width: $screen-lg - 1) {
+  .dealers {
+    &__item {
+      width: 50%;
+      padding-left: 7px;
+      padding-right: 6px;
+      padding-bottom: 13px;
+    }
+
+    &__in {
+      margin-left: -7px;
+      margin-right: -6px;
+      margin-bottom: -13px;
+    }
+  }
+
+  .dealer-img {
+    min-height: 67px;
+    padding: 12px;
+
+    img {
+      max-height: 46px;
+      max-width: 132px;
+    }
+  }
+}

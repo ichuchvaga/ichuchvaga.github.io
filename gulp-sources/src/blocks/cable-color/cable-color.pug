@@ -1,0 +1,46 @@
+//- Все примеси в этом файле должны начинаться c имени блока (cable-color)
+
+mixin cable-color(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +cable-color('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' cable-color--' + modsList[i].trim();
+      }
+    }
+
+  .cable-color(class=allMods)&attributes(attributes)
+    .cable-color-info(style="background-image: url('img/cable-color.jpg')")
+      .container
+        .cable-color-info__content
+          .h2.cable-color__title Расцветка изоляции ТПЖ
+          p Сердечник кабеля представляет собой скрученные изолированные  токопроводящие жилы, изоляция которых выполнена из поливинилхлоридного  пластиката пониженной пожарной опасности, поверх которых наложена  поясная изоляция из высоконаполненной полимерной композиции не  содержащей галогенов.
+
+    .cable-color-material
+      .container
+        .cable-color-material__content
+          .h2.cable-color-material__title оболочка кабеля
+          p Оболочка кабеля выполнена из поливинилхлоридного пластиката пониженной пожарной опасности, светло-серого цвета.  Длительно допустимая температура нагрева жил кабелей, допустимый нагрев жил в аварийном режиме, допустимые токи короткого замыкания,  соответствуют требованиям ГОСТ 31996.
+
+          .cable-specs
+            .cable-specs__in
+              .cable-specs-item
+                .cable-specs-item__value -30°С/+50°С
+                .cable-specs-item__caption Температура эксплуатации
+
+              .cable-specs-item
+                .cable-specs-item__value До -15°С
+                .cable-specs-item__caption Температура монтажа
+
+      .cable-color__image
+        .container
+          img(src="img/cable-material.png" alt="")

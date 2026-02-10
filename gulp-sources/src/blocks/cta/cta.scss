@@ -1,0 +1,126 @@
+// В этом файле должны быть стили для БЭМ-блока cta, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.cta {
+
+  $block-name:                &; // #{$block-name}__element
+
+  background: transparent url("../img/cta-bg.svg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  margin: 100px 0;
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 56px 32px 78px;
+  }
+
+  &__main {
+    // padding-top: 67px;
+    // padding-bottom: 66px;
+    padding-top: 0;
+    padding-bottom: 2px;
+  }
+
+  &__form {
+    margin-top: 28px;
+  }
+
+  &__title {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    flex-shrink: 0;
+  }
+
+  .agreement {
+    color: currentColor;
+    margin-top: 9px;
+
+    a {
+      color: #CDCDCD;
+
+      &:hover {
+        color: $orange-hover;
+      }
+    }
+  }
+
+  &--dealers {
+    margin-bottom: 0;
+  }
+}
+
+
+@media (max-width: $screen-xl - 1) {
+ .cta {
+   margin-top: 60px;
+
+   &__wrapper {
+     display: block;
+     padding: 39px 15px 248px;
+     position: relative;
+     overflow: hidden;
+   }
+
+   &__title {
+     font-size: 24px;
+     line-height: 30px;
+     margin-bottom: 13px;
+   }
+
+   &__form {
+     margin-top: 0;
+   }
+
+   &__text {
+     line-height: 22px;
+     margin-bottom: 24px;
+   }
+
+   .agreement {
+     margin-top: 21px;
+   }
+
+   &__image {
+     position: absolute;
+     bottom: -58px;
+     left: 0;
+     right: 0;
+     padding-left: 25px;
+     padding-right: 25px;
+     text-align: center;
+     font-size: 0;
+     line-height: 0;
+   }
+
+   &--dealers {
+     margin-left: -15px;
+     margin-right: -15px;
+   }
+ } 
+}
+
+@media (max-width: $screen-md - 1) {
+  .cta {
+    &__wrapper {
+      padding-bottom: 147px;
+    }
+
+    &__image {
+      text-align: center;
+      
+      img {
+        max-width: 310px;
+      }
+    }
+  }
+}

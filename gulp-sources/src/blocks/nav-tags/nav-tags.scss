@@ -1,0 +1,280 @@
+// В этом файле должны быть стили для БЭМ-блока nav-tags, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.nav-tags {
+
+  $block-name: &; // #{$block-name}__element
+
+  overflow: hidden;
+  width: 100%;
+  font-size: 0;
+  line-height: 0;
+  margin-bottom: 30px;
+
+  &__inner {
+    display: flex;
+    gap: 11px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 11px;
+    height: 55px;
+    overflow: hidden;
+  }
+
+  &__more {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+
+    &.visible {
+      //max-height: none;
+    }
+  }
+
+  &--show {
+    #{$block-name}__list {
+      height: auto;
+    }
+
+    .nav-tag--hide {
+      display: block;
+    }
+
+    .nav-tag--more {
+      .nav-tag__link {
+        border-color: #e7e7e9;
+
+        &:hover {
+          border-color: $color-main;
+        }
+      }
+      .nav-tag__more-icon {
+        &::after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &--inactive {
+    .nav-tag--more {
+      display: none;
+    }
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    margin-bottom: 36px;
+
+    &__list {
+      margin: 0;
+      gap: 8px;
+      height: 45px;
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    margin-bottom: 29px;
+
+    &__list {
+      gap: 6px;
+      height: auto;
+    }
+
+    &--show {
+      .nav-tag--hide {
+        display: block;
+      }
+
+      .nav-tag--more .nav-tag__link:before {
+        content: 'Скрыть';
+      }
+    }
+  }
+}
+
+.nav-tag {
+  $block-name: &; // #{$block-name}__element
+
+  &__link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1em;
+    color: #313132;
+    display: inline-block;
+    padding: 16px 24px 17px;
+    border: 2px solid #e7e7e9;
+    border-radius: 27px;
+    text-decoration: none;
+    transition: all .25s ease;
+
+    &:hover, &:focus {
+      border-color: $color-main;
+      color: #313132;
+    }
+
+    &.active {
+      border-color: $color-main;
+    }
+  }
+
+  &--more {
+    .nav-tag__more-icon {
+      width: 12px;
+      height: 12px;
+      font-size: 0;
+      line-height: 0;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: currentColor;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 2px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: currentColor;
+      }
+    }
+
+    .nav-tag__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 54px;
+      width: 54px;
+      padding: 0;
+      font-size: 0;
+      line-height: 0;
+      position: relative;
+
+      &:hover {
+        border-color: $color-main;
+      }
+
+      &.active {
+        border-color: #e7e7e9;
+
+        &:hover {
+          border-color: $color-main;
+        }
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &--hide {
+    display: none;
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    margin: 0;
+
+    &__link {
+      font-size: 14px;
+      padding: 12px 17px 13px;
+      border-radius: 22px;
+    }
+
+    &--more {
+      #{$block-name}__link {
+        width: 44px;
+        height: 44px;
+
+        &::before, &::after {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: $screen-md - 1) {
+    &__link {
+      padding: 9px 9px 8px 9px;
+      border-radius: 18px;
+    }
+
+    &--more {
+      #{$block-name}__link {
+        width: auto;
+        height: 36px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1;
+        gap: 6px;
+        padding: 0 9px;
+
+        &:before {
+          content: 'Еще';
+          transform: none;
+        }
+      }
+
+      #{$block-name}__more-icon {
+        &:before {
+          width: 10px;
+        }
+
+        &:after {
+          height: 10px;
+        }
+      }
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+}
+
+
+
+.filter-grid-container {
+  position: relative;
+  transition: all .3s;
+
+  [data-tag] {
+    transition: .3s all;
+    transform: scale(1);
+
+    &.animate {
+      position: absolute;
+      z-index: 1;
+      transform: scale(1);
+    }
+
+    &.hidden {
+      position: absolute;
+      z-index: 0;
+      visibility: hidden;
+      transform: scale(0);
+    }
+
+    &.hidden.animate {
+      visibility: visible;
+      transform: scale(0);
+    }
+  }
+}

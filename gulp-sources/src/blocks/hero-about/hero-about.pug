@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (hero-about)
+
+mixin hero-about(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +hero-about('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' hero-about--' + modsList[i].trim();
+      }
+    }
+
+  .hero-about(class=allMods)&attributes(attributes)
+    .container
+      +breadcrumbs()
+        +breadcrumbs-item('Главная', 'index.html')
+        +breadcrumbs-item('О компании')
+          
+      .hero-about__wrapper
+        .hero-about__title
+          h1 О компании
+
+        .hero-about__text
+          p ООО «Конкорд» обеспечивает полный технологический цикл производства кабельных изделий: от волочения проволоки до наложения наружных покровов на основе сшитых и вулканизированных материалов.

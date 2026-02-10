@@ -1,0 +1,64 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-text)
+
+mixin field-text(props)
+
+  //- Принимает:
+  //-   props {
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     isTextarea: false {bool}   - флаг input/textarea
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     val: ''           {string} - текст в поле
+  //-     attrs:            {object} - любые атрибуты для input/textarea
+  //-       type:           {string}
+  //-       placeholder:    {string}
+  //- Вызов:
+        +field-text({
+          title: 'Название',
+          isTextarea: true,
+          helpText: 'Подсказка',
+          mods: '',
+          val: '',
+          error: false,
+          attrs: {
+            name: 'comment',
+          }
+        })
+
+  -
+    if(typeof(props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if (props.attrs && props.attrs.type == 'password') allMods+= 'field-text--password';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-text--' + modsList[i].trim();
+      }
+    }
+
+    var inputClasses = (props.error == true) ? 'error' : '';
+
+  label.field-text(class=allMods)&attributes(attributes)
+    span.field-text__input-wrap
+      if(typeof(props.isTextarea) !== 'undefined' && props.isTextarea)
+        textarea.field-text__input(placeholder="")&attributes(props.attrs)= props.val
+      else
+        input.field-text__input(type=(typeof(props.attrs) !== 'undefined' && props.attrs.type) ? props.attrs.type : 'text', value=props.val, placeholder="", class=inputClasses)&attributes(props.attrs)
+
+      if(typeof (props.helpText) !== 'undefined' && props.helpText)
+        span.field-text__help-text!= props.helpText
+
+      if(typeof (props.title) !== 'undefined' && props.title)
+        span.field-text__name(data-mobile=props.mobileTitle)!= props.title
+
+      if (props.attrs && props.attrs.type == 'password')
+        .field-text__password-toggle
+          svg(width='20', height='14').field-text__password-toggle-show
+            use(xlink:href='img/sprite.svg#eye')
+          svg(width='20', height='18').field-text__password-toggle-hide
+            use(xlink:href='img/sprite.svg#eye-closed')
+
+    
+    block

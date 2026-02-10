@@ -1,0 +1,224 @@
+//- Стандартный шаблон страницы
+
+- var phone = '+7 (4812) 31-14-23';
+- var phoneHref = phone.replace(/[()\s-]/gi, '');
+- var email = 'mail@nym.ru';
+- var address = 'Смоленск, Индустриальная 9А';
+- var workHours = 'Пн-Пт: с 10:00 до 20:00';
+
+include mixins.pug
+
+block variables
+  - var pageClass = '';
+  - var phone = '+7 (4812) 31-14-23';
+  - var phoneHref = phone.replace(/[()\s-]/gi, '');
+  - var email = 'mail@nym.ru';
+  - var address = 'Смоленск, Индустриальная 9А';
+  - var workHours = 'Пн-Пт: с 10:00 до 20:00';
+
+doctype html
+html(class='page  no-js ' + pageClass, lang='ru')
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    //- Edge и ряд мобильных браузеров слишком умны. Отключим это.
+    meta(name='format-detection', content='telephone=no')
+    meta(name='format-detection', content='date=no')
+    meta(name='format-detection', content='address=no')
+    meta(name='format-detection', content='email=no')
+    meta(content='notranslate', name='google')
+
+    //- Предзагрузка шрифтов или иных ресурсов
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap', rel='stylesheet')
+
+    //- Фавиконки (https://realfavicongenerator.net)
+    link(rel='apple-touch-icon', sizes='180x180', href='/img/favicon/apple-touch-icon.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='/img/favicon/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='/img/favicon/favicon-16x16.png')
+    link(rel='manifest', href='/img/favicon/site.webmanifest')
+    link(rel='mask-icon', href='/img/favicon/safari-pinned-tab.svg', color='#5bbad5')
+    meta(name='msapplication-TileColor', content='#da532c')
+    meta(name='theme-color', content='#000000')
+
+    block meta
+      title Home
+
+    block head
+      link(rel='stylesheet', href='css/style.css?v=' + Date.now())
+      script
+        include ../js/head-script.js
+
+  body
+    .page__inner
+      .page__content
+        +page-header()
+          .header-top
+            .container
+              .header-top__wrapper
+                .page-header__contacts
+                  a.page-header__phone(href='tel:' + phoneHref)
+                    | #{phone}
+
+                  span.page-header__contacts-sep
+
+                  a.page-header__email(href='mailto:' + email)
+                    | #{email}
+
+                .header__nav
+                  +main-nav()
+
+          .header-main
+            .container
+              .header-main__wrapper
+                +logo('index.html')
+                  img(src='img/logo.svg?v=1', alt='')
+
+                a(href="catalog.html").catalog-btn.btn.btn--main.btn--with-icon
+                  span.btn__icon
+                    +icon('catalog-menu')(width="22" height="22")
+                  span.btn__text Каталог                  
+
+                -
+                  var additionalMenu = [
+                    /*{
+                      url: 'documents-availability.html',
+                      icon: 'sale',
+                      title: 'Наличие и распродажи'
+                    },*/
+                    {
+                      url: 'where-to-buy.html',
+                      icon: 'dealers',
+                      title: 'Где купить (Дилеры)'
+                    },
+                    {
+                      url: 'documents.html',
+                      icon: 'documents',
+                      title: 'Документация'
+                    }
+                  ];
+
+                .header-main__right
+                  .additional-nav
+                    .additional-nav__inner
+                        .additional-nav__item
+                          a(class="header-dealer-btn btn btn--outline-with-icon" href="javascript:void(0);" data-modal="open" data-modal-target="#modal-dealer")
+                            span.btn__icon
+                              +icon('dealers-black')(width="22" height="22")
+                            span.btn__text Стать дилером
+
+                        each navItem in additionalMenu
+                          .additional-nav__item
+                            a(href=navItem.url).nav-link-with-icon
+                              span.nav-link-with-icon__icon
+                                +icon(navItem.icon)
+                              span.nav-link-with-icon__text #{navItem.title}
+
+                  a(href="tel:+74812311423" class="call-btn-mobile")
+                    +icon('call-mobile')(width="24" height="24")
+
+                  a(href="javascript:void(0);").search-btn
+                    span.search-btn-icon.search-btn-icon--default
+                      +icon("search")(width="22" height="22")
+                    span.search-btn-icon.search-btn-icon--active
+                      +icon("close")(width="22" height="22")
+
+                  +burger('Показать меню', 'mobile-menu', 'mobile-menu--open')(class='page-header__toggler')
+                  +mobile-menu()
+
+          .header-search-panel(style="display: none;")
+            .container
+              .search-widget
+                form.search-form
+                  .search-field
+                    input(type="text" name="city" placeholder="Введите запрос")
+                    button(type="submit")
+                      +icon('search')
+
+        block content
+          p содержимое
+
+      //-+mobile-panel()
+      //-+mobile-menu()
+
+      .page__footer-wrapper
+        +page-footer()
+          .page-footer__main
+            .page-footer__left
+              .page-footer__logo
+                +logo('index.html')
+                  img(src='img/logo-footer.svg?v=1', alt='')
+
+              .page-footer__text Промышленное предприятие, специализирующееся на&nbsp;выпуске силовых и&nbsp;контрольных кабелей.
+              .page-footer__copyright Все права защищены. &copy; 2024 ООО «Конкорд»
+              .page-footer__policy
+                a(href="#" target="_blank") Политика конфиденциальности
+
+              -
+                var partners = [
+                  "footer-partner-1.png",
+                  "footer-partner-2.png",
+                  "footer-partner-3.png",
+                ];
+
+              .page-footer__partners
+                each item in partners
+                  - var imgUrl = 'img/' + item;
+                  .page-footer__partner
+                    img(src=imgUrl alt="")
+              
+
+            .page-footer__nav
+              block footer
+                +footer-nav()
+
+            .page-footer__contacts
+              a(href="contacts.html").page-footer__title Контакты
+              
+              .page-footer__address
+                | !{address}
+
+              a(href='tel:' + phoneHref)
+                  | #{phone}
+
+              a(href='mailto:' + email)
+                | #{email}
+
+              .page-footer__work-hours
+                .page-footer__work-hours-title График работы отдела продаж 
+                .page-footer__work-hours-text #{workHours}
+
+              .page-footer__social
+                +social('footer')
+                  +social-link('#')(title='Telegram')
+                    +icon('social-telegram')(width='19', height='16')
+                    
+                  +social-link('#')(title='VK')
+                    +icon('social-vk')(width='21', height='13')
+
+                  +social-link('#')(title='DZEN')
+                    +icon('social-dzen')(width='19', height='19')
+
+                  +social-link('#')(title='RUTUBE')
+                    +icon('social-rutube')(width='22', height='19')
+
+            .page-footer__bottom-mobile
+              .page-footer__partners
+                each item in partners
+                  - var imgUrl = 'img/' + item;
+                  .page-footer__partner
+                    img(src=imgUrl alt="")
+
+              .page-footer__copyright Все права защищены. &copy; 2024 ООО «Конкорд»
+              .page-footer__policy
+                a(href="#" target="_blank") Политика конфиденциальности
+
+    include modal.pug
+
+    block page-bottom
+      //-if (mapJS)
+        script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+      script(src='js/bundle.js?v='+Date.now())

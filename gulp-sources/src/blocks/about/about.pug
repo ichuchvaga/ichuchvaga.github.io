@@ -1,0 +1,227 @@
+//- Все примеси в этом файле должны начинаться c имени блока (about)
+
+mixin about(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +about('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' about--' + modsList[i].trim();
+      }
+    }
+
+  .about(class=allMods)&attributes(attributes)
+    +hero-about()(style="background-image: url('img/hero-about.jpg')")
+
+    +info-section()(class="bg-white")
+      .info-section__wrapper
+        .info-section__main
+          .info-section-head
+            .info-section-head__subtitle Оборудование
+            .info-section-head__title
+              span Завода
+
+          .info-section__text
+            p Парк оборудования завода сбалансирован и технологический цикл не имеет  выраженных узких мест, что позволяет достигнуть минимальных сроков  производства и его высокой экономической эффективности.
+
+          .equipment-benefits
+            .equipment-benefit
+              .equipment-benefit__img
+                img(src="img/eq-benefit-1.svg?v=1.02" alt="")
+              .equipment-benefit__main
+                .equipment-benefit__title Выполнение плана без нарушений технологии производства
+                .equipment-benefit__description Избегаем штурмовщины и исполняем производственный план без нарушения технологии производства
+
+            .equipment-benefit
+              .equipment-benefit__img
+                img(src="img/eq-benefit-2.svg?v=1.02" alt="")
+              .equipment-benefit__main
+                .equipment-benefit__title Минимальные сроки и стоимость необходимых мероприятий
+                .equipment-benefit__description Благодаря инжинирингу и подготовке производства, которые осуществляются силами собственных специалистов
+            
+        .info-section__additional
+          //-.market-img
+            img(src="img/market.png?v=1.02" alt="" class="market-img--desktop")
+            img(src="img/market-mobile.png?v=1.02" alt="" class="market-img--mobile")
+
+          .market-img.market-img--style2(style="background-image: url('img/market-bg-2.jpg?v=1.01')")
+            .market-img__blue
+              .market-img__logo
+                img(src="img/market-logo.svg" alt="" width="93" height="93")
+              .market-img__bottom
+                .market-img__years 34 года
+                .market-img__text На рынке
+
+    +info-section("reversed, quality-control")(class="bg-gray")
+      .info-section__wrapper
+        .info-section__main
+          .info-section-head
+            .info-section-head__subtitle Контроль
+            .info-section-head__title
+              span Качества
+
+          .info-section__text
+            p Вся производимая продукция проходит обязательный контроль ОТК, результаты которого персонализированы и обязательно документированы.
+            
+            p Компания располагает развитой лабораторной базой для всестороннего контроля  качества производимой продукции и применяемого сырья, а также всех основных параметров пожарной безопасности. Политика производства предприятия целевым образом ориентирована на превентивные меры по предотвращению несоответствий и брака, возникновение которых является ЧП.
+            
+        .info-section__additional
+          .quality-control
+            .quality-control__img
+              img(src="img/quality-control.svg" alt="")
+
+            .quality-control__main
+              .quality-control__text-sm СМК предприятия соответствует требованиям 
+              .quality-control__text ГОСТ Р 9001-2015 (ISO 9001:2015)
+
+    +info-section('catalog')(class="bg-white")
+      .info-section__wrapper
+        .info-section__main
+          .info-section-head
+            .info-section-head__subtitle Каталог
+            .info-section-head__title
+              span Товаров
+
+          .info-section__text
+            p Оборудование предприятия позволяет производить медные токопроводящие жилы 1,2 и 5 классов номинальным сечением до&nbsp;300 кв.мм. как круглой так секторной формы с&nbsp;покровами на&nbsp;базе ПВХ, ПЭ, ТЭП и&nbsp;вулканизированных  резин, а&nbsp;также готовые изделия на их базе в&nbsp;бронированном и&nbsp;экранированном исполнениях.
+
+          .info-section__btn.info-section__btn--mobile-hidden
+            a(href="catalog.html").btn.btn--main.btn--with-icon
+              span.btn__text Перейти в каталог
+              span.btn__icon
+                +icon('btn-arrow-right')
+            
+        .info-section__additional
+          .info-stats
+            .info-stats__in
+              .info-stats-item
+                .info-stats-item__number 70
+                .info-stats-item__descr видов Марок
+
+              .info-stats-item
+                .info-stats-item__number 3000+
+                .info-stats-item__descr типоразмеров
+
+          -
+            var infoFeatures = [
+              {
+                title: "Силовые кабели",
+                text: "Для стационарной прокладки до&nbsp;1 кВ на основе ПВХ и&nbsp;безгалогенных композиций"
+              },
+              {
+                title: "Гибкие силовые кабели",
+                text: "До 0,66 кВ на основе резин и&nbsp;термоэластопластов, и&nbsp;гибкие кабели до&nbsp;1 кВ на основе ПВХ"
+              },
+              {
+                title: "Контрольные кабели",
+                text: "На основе ПВХ и&nbsp;безгалогенных композиций"
+              },
+              {
+                title: "Провода",
+                text: "С покровами ПВХ"
+              }
+            ];
+          .info-features
+            .info-features__in
+              each item in infoFeatures
+                .info-features__item
+                  .info-feature-card
+                    .info-feature-card__icon
+                      +icon('feature-check')(width="28" height="28")
+
+                    .info-feature-card__main
+                      .info-feature-card__title !{item.title}
+                      .info-feature-card__text !{item.text}
+
+          .info-features-slider.slider-container
+            .swiper
+              .swiper-wrapper
+                each item in infoFeatures
+                  .swiper-slide
+                    .info-feature-card
+                      .info-feature-card__icon
+                        +icon('feature-check')(width="28" height="28")
+
+                      .info-feature-card__main
+                        .info-feature-card__title !{item.title}
+                        .info-feature-card__text !{item.text}
+
+            +nav-arrows()
+
+          .info-section__btn.info-section__btn--mobile-visible
+            a(href="catalog.html").btn.btn--main.btn--with-icon
+              span.btn__text Перейти в каталог
+              span.btn__icon
+                +icon('btn-arrow-right')
+
+    +history()(style="background-image: url('img/history-bg.jpg')")
+
+    +info-section('geo')(class="bg-white")
+      .info-section__wrapper
+        .info-section__main
+          .info-section-head
+            .info-section-head__subtitle География
+            .info-section-head__title
+              span Конкорд
+
+          .info-section__text
+            p Предприятие расположено в&nbsp;380 км на запад от&nbsp;столицы, невдалеке от&nbsp;крупнейшей автомобильной трассы страны (М1) в&nbsp;г.&nbsp;Смоленск в&nbsp;50 км от государственной границы РФ с&nbsp;Республикой Беларусь. 
+
+            p ООО «Конкорд» располагается в промышленной зоне в&nbsp;черте города в&nbsp;непосредственной близости от&nbsp;жилого массива и&nbsp;имеет 2 промышленные  площадки на ул.&nbsp;Индустриальной. Расположение предприятия в&nbsp;социально и&nbsp;геологически  стабильном регионе с&nbsp;хорошей доступностью необходимых ресурсов, удобной логистикой создает условия для успешной многолетней деятельности на&nbsp;рынке РФ.
+            
+        .info-section__additional
+          .geo-map
+            img(src="img/geo-map.svg?v=1.01" alt="")
+
+          .geo-map-mobile
+            img(src="img/geo-map-mobile.svg" alt="")
+
+          .geo-distances
+            .distance
+              .distance__city От Москвы
+              .distance__value 380 км
+
+            .distance
+              .distance__city От Беларуси
+              .distance__value 50 км
+
+      .info-section__bottom
+        -
+          var geoStats = [
+            {
+              icon: "geo-stats-icon-1.svg",
+              num: "2",
+              text: "промышленные площадки в&nbsp;г.&nbsp;Смоленске"
+            },
+            {
+              icon: "geo-stats-icon-2.svg",
+              num: "450",
+              text: "сотрудников<br> в&nbsp;штате"
+            },
+            {
+              icon: "geo-stats-icon-3.svg",
+              num: "9",
+              text: "авторизованных<br> сетей дилеров<br> по всей России"
+            }
+          ];
+        .geo-stats
+          .geo-stats__in
+            each item in geoStats
+              - var imgUrl = 'img/' + item.icon;
+              .geo-stats__item
+                .geo-stats-card
+                  .geo-stats-card__image
+                    img(src=imgUrl alt="")
+                  .geo-stats-card__number !{item.num}
+                  .geo-stats-card__text !{item.text}
+
+    +collaboration()
+    +where-to-buy()(class="bg-white")

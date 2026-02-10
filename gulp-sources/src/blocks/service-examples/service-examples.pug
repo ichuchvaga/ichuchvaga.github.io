@@ -1,0 +1,65 @@
+//- Все примеси в этом файле должны начинаться c имени блока (service-examples)
+
+mixin service-examples(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +service-examples('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' service-examples--' + modsList[i].trim();
+      }
+    }
+
+  .service-examples.section(class=allMods)&attributes(attributes)
+    .container
+      .section-heading.section-heading--with-nav
+        .section-heading__main
+          h2 #[span Примеры наших] <br> выполненных работ
+        .section-heading__nav
+          .nav-arrows.nav-arrows--lg.nav-arrows--inline
+            a(href="javascript:void(0);" class="nav-arrow prev")
+              +icon('nav-arrow-prev-type2')(width='24', height='24')
+              
+            a(href="javascript:void(0);" class="nav-arrow next")
+              +icon('nav-arrow-next-type2')(width='24', height='24')
+
+      .section-content
+        .example-slider
+          .swiper
+            .swiper-wrapper
+
+              -
+                var items = [
+                  {
+                    img: "img/example-bg.jpg",
+                    title: "Цилиндрические редуктора",
+                    text: "Прямозубые, косозубые, конические со сварным корпусом и запчасти к ним",
+                    term: "от 5 рабочих дней"
+                  },
+                  {
+                    img: "img/example-bg.jpg",
+                    title: "Цилиндрические редуктора",
+                    text: "Прямозубые, косозубые, конические со сварным корпусом и запчасти к ним",
+                    term: "от 5 рабочих дней"
+                  }
+                ];
+              each item in items
+                .swiper-slide
+                  .example-card
+                    .example-card__img
+                      img(src=item.img alt="")
+                    .example-card__bluebox
+                      .example-card__title #{item.title}
+                      .example-card__text #{item.text}
+                      .example-card__term
+                        span.example-card__term-icon
+                          +icon('clock')(width="24" height="24")
+                        span.example-card__term-text #[strong Срок изготовления: ] #{item.term}

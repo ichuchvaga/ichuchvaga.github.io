@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (category-card)
+
+mixin category-card(data, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +category-card('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' category-card--' + modsList[i].trim();
+      }
+    }
+
+  div(data-href="subcategory.html").category-card(class=allMods)&attributes(attributes)
+    .category-card__name #{data.title}
+    .category-card__image
+      img(src="img/category-product-1.png" alt="")
+
+    //-.category-card__hover
+      .category-card__name-mobile #{data.title}
+      .category-card__caption Жильность:
+      .category-card__links
+        each core in data.cores
+          .category-card__link
+            a(href="subcategory.html?cores=" + core).cat-circle-link #{core}

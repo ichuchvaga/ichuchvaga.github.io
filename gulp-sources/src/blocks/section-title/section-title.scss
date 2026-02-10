@@ -1,0 +1,173 @@
+// В этом файле должны быть стили для БЭМ-блока section-title, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.section-title {
+
+  $block-name:                &; // #{$block-name}__element
+
+  // font-size: $font-size-h1;
+  // font-weight: 600;
+  // line-height: 1.2em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #3C3C3C;
+  margin-top: 0;
+  margin-bottom: 40px;
+
+  h2, h3 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  span {
+    color: $orange;
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    // margin-bottom: 28px;
+  }
+
+  @media (max-width: $screen-md - 1) {
+    // margin-bottom: 25px;
+  }
+}
+
+.bg-blue {
+  .section-title {
+    color: #fff;
+  }
+}
+
+.section-heading {
+  margin-bottom: 30px;
+
+  &--2columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 47px;
+
+    .section-heading {
+      &__text {
+        .section-title {
+          margin-bottom: 0;
+        }
+      }
+
+      &__links {
+        padding-top: 3px;
+      }
+    }
+  }
+}
+
+.section-title--with-border {
+  margin-bottom: 34px;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 7px;
+    margin-top: 33px;
+    background-color: $orange;
+  }
+
+  @media (max-width: $screen-xl - 1) {
+    margin-bottom: 23px;
+
+    &::after {
+      width: 64px;
+      height: 6px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.section-heading--with-progress-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+
+  h2 {
+    margin: 0;
+  }
+
+  .section-heading {
+    &__main {
+      
+    }
+
+    &__progress {
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.section-heading--with-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+
+  h2 {
+    margin: 0;
+  }
+
+  .section-heading {
+    &__main {
+      padding-bottom: 11px;
+    }
+  }
+}
+
+
+@media (max-width: $screen-xl - 1) {
+  .section-heading {  
+    &--2columns {
+      display: block;
+      margin-bottom: 20px;
+
+      .section-title {
+        text-align: left;
+      }
+    }
+
+    &__links {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    &--with-progress-line {
+      display: block;
+  
+      .section-heading__main {
+        width: 100%;
+      }
+  
+      .section-heading__progress {
+        padding-top: 0;
+      }
+    }
+
+    &--with-nav {
+      display: block;
+    
+      .section-heading {
+        &__main {
+          padding-bottom: 11px;
+        }
+
+        &__nav {
+          margin-top: 24px;
+        }
+      }
+    }
+
+  }
+}

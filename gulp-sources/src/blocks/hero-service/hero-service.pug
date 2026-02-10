@@ -1,0 +1,22 @@
+//- Все примеси в этом файле должны начинаться c имени блока (hero-service)
+
+mixin hero-service(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +hero-service('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' hero-service--' + modsList[i].trim();
+      }
+    }
+
+  .hero-service(class=allMods)&attributes(attributes)
+    block

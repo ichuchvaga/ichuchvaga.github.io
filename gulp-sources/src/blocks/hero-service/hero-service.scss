@@ -1,0 +1,195 @@
+// В этом файле должны быть стили для БЭМ-блока hero-service, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.hero-service {
+
+  $block-name:                &; // #{$block-name}__element
+
+  
+  background: transparent url("../img/hero-service.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  padding: 91px 0 20px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 482px;
+    padding: 100px 0;
+  }
+
+  &__title {
+    font-size: 52px;
+    line-height: 1.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+    max-width: 800px;
+    text-align: center;
+    
+    h1, .h1 {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+      margin: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+    margin-top: 17px;
+  }
+
+  &__btn {
+    margin-top: 33px;
+
+    .btn {
+      text-transform: uppercase;
+      font-size: 17px;
+      line-height: 20px;
+      font-weight: 500;
+      padding: 15px 31px;
+    }
+  }
+
+  .page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(59,97,165,1);
+  }
+
+  .logo img {
+    width: 193px;
+  }
+
+  .header-main {
+    padding-top: 20px;
+    padding-bottom: 18px;
+
+    &__right {
+      margin-left: 0;
+    }
+  }
+
+  .page-header {
+    &__contacts {
+      display: block;
+      text-align: right;
+    }
+    
+    &__phone {
+      color: #fff;
+      font-size: 17px;
+      line-height: 17px;
+      font-weight: 600;
+    }
+
+    &__email {
+      font-size: 16px;
+      line-height: 16px;
+      color: #fff;
+      margin-top: 8px;
+    }
+    
+    &__nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__feedback-btn {
+      margin-left: 31px;
+
+      .btn {
+        border-radius: 0;
+        font-size: 17px;
+        line-height: 20px;
+        text-transform: uppercase;
+        padding: 15px 30px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-lg - 1) {
+  .hero-service {
+    padding-top: 0;
+
+    .page-header {
+      &__nav {
+        display: none;
+      }
+
+      &__contacts {
+        display: none;
+      }
+
+      &__feedback-btn {
+        display: none;
+      }
+    }
+
+    .header-main {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .call-btn-mobile svg {
+      fill: #fff;
+    }
+
+    .burger__icon {
+      background-color: #fff;
+      &:before,
+      &:after {
+        background-color: #fff;
+      }
+    }
+
+    .burger--close .burger__icon {
+      background: transparent;
+    }
+
+    .mobile-menu {
+      color: #3C3C3C;
+    }
+
+    &__inner {
+      min-height: unset;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__text {
+      font-size: 20px;
+      line-height: 16px;
+      line-height: 24px;
+      text-align: center;
+    }
+  }  
+}

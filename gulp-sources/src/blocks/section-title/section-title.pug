@@ -1,0 +1,21 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-header)
+
+mixin section-title(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +section-title()
+          h2 text
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' section-title--' + modsList[i].trim();
+      }
+    }
+
+  .section-title(class=allMods)&attributes(attributes)
+    block

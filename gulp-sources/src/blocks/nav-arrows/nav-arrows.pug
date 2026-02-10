@@ -1,0 +1,23 @@
+mixin nav-arrows(mods)
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +nav-arrows('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    var modsList = []
+    if(typeof(mods) !== 'undefined' && mods) {
+      modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' nav-arrows--' + modsList[i].trim();
+      }
+    }
+
+  .nav-arrows(class=allMods)&attributes(attributes)
+    a(href="javascript:void(0);" class="nav-arrow prev")
+      +icon('nav-arrow-prev')(width='10', height='16')
+      
+    a(href="javascript:void(0);" class="nav-arrow next")
+      +icon('nav-arrow-next')(width='10', height='16')

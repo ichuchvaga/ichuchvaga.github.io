@@ -1,0 +1,47 @@
+//- Все примеси в этом файле должны начинаться c имени блока (collaboration)
+
+mixin collaboration(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +collaboration('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' collaboration--' + modsList[i].trim();
+      }
+    }
+
+  .collaboration.section.bg-gray(class=allMods)&attributes(attributes)
+    include ./collaboration.data.pug
+
+    .container
+      .collaboration__wrapper
+        .collaboration__left
+          .collab-unions
+            .collab-unions__title ООО «Конкорд» - участник отраслевых объединений и ассоциаций:
+
+            .collab-unions__list
+              .collab-unions__list-in
+                each img in images
+                  - var imgUrl = 'img/' + img;
+
+                  .collab-unions__item
+                    a(href="#").collab-unions__logo
+                      img(src=imgUrl alt="")
+
+        .collaboration__right
+          h2.section-title Сотрудничество
+
+          .collaboration__text
+            p Компания активно участвует во встречном мониторинге качества продукции в&nbsp;рамках сотрудничества с&nbsp;дилерами. Постоянное коммерческое и&nbsp;техническое сотрудничество осуществляется с&nbsp;коллегами в&nbsp;рамках проекта LEKRON.
+            
+            p ООО «Конкорд» в рамках партнерского взаимодействия  активно участвует в&nbsp;мероприятиях дилеров как в&nbsp;части подготовки персонала так и&nbsp;при работе с&nbsp;потребителями и&nbsp;проектами.
+            
+            p Компания КОНКОРД ведет открытую политику и&nbsp;готово к&nbsp;контактам с&nbsp;любыми заинтересованными лицами и&nbsp;предприятиями как в&nbsp;части продаж готовой продукции, так и&nbsp;закупок сырья и&nbsp;оборудования.

@@ -1,0 +1,84 @@
+// В этом файле должны быть стили для БЭМ-блока gallery, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.gallery {
+
+  $block-name:                &; // #{$block-name}__element
+}
+
+.gallery-card {
+  position: relative;
+
+  &__img {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 48px;
+    z-index: 2;
+    background-color: $blue;
+    background-image: url("../img/main-projects-pattern-img.png");
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    clip-path: polygon(0 0,90% 0,100% 20%,100% 100%,100% 100%,0 100%,0 100%,0 0);
+    padding: 33px 38px 32px;
+    color: #fff;
+  }
+
+  &__title {
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+
+  &__date {
+    margin-bottom: 6px;
+  }
+
+  &__description {
+    margin-top: 11px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .gallery-card {
+    padding-bottom: 20px;
+
+    &__title {
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    &__description {
+      margin-top: 4px; 
+    }
+
+    &__content {
+      padding: 17px 35px 15px 20px;
+      font-size: 12px;
+      line-height: 16px;
+      clip-path: polygon(calc(100% - 32px) 0%, 100% 25px, 100% 100%, 0 100%, 0 0);
+      background-size: 140px 140px;
+    }
+
+    &__date {
+      margin-bottom: 5px;
+    }
+  }
+
+  .gallery {
+    .nav-arrow {
+      &.prev {
+        left: -15px;
+      }
+
+      &.next {
+        right: -15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,643 @@
+// В этом файле должны быть стили для БЭМ-блока where-to-buy-page, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.where-to-buy-page {
+
+  $block-name:                &; // #{$block-name}__element
+
+  padding-bottom: 100px;
+
+  .page-title {
+    margin-bottom: 33px;
+  }
+}
+
+.view-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.view-control {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid $orange;
+  background-color: transparent;
+  margin-left: 10px;
+  padding: 13px;
+  border-radius: 3px;
+  color: $black;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .icon {
+    fill: currentColor;
+    width: 22px;
+    height: 22px;
+    display: block;
+    transition: all .25s ease;
+  }
+
+  &:hover {
+    color: $orange;
+  }
+
+  &.active {
+    background-color: $orange;
+    color: #fff;
+  }
+
+  &__text {
+    display: none;
+  }
+}
+
+.filter-field {
+  padding: 0 10px 20px;
+
+  &__label {
+    display: block;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 600;
+    color: $black;
+  }
+
+  .field-select {
+    width: 334px;
+  }
+}
+
+
+.where-to-buy-filters {
+  margin-bottom: 50px;
+
+  &__search {
+    width: 334px;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+  }
+  
+  .filter-field {
+    padding-bottom: 0;
+  }
+}
+
+
+
+.where-to-buy-panel {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.marketplaces {
+  background-color: #fff;
+  padding-top: 89px;
+  
+  .section-title {
+    text-align: left;
+    margin: 0 0 23px;
+  }
+
+  &__list {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__list-in {
+    display: flex;
+    margin-left: -11px;
+    margin-right: -10px;
+    margin-bottom: -21px;
+  }
+}
+
+.marketplace-item {
+  padding: 0 10px 21px 11px;
+}
+
+.marketplace-link {
+  display: block;
+  font-size: 0;
+  background-color: #f5f5f5;
+  width: 284px;
+  height: 284px;
+  line-height: 244px;
+  padding: 20px 24px;
+  text-align: center;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.dealer-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 25px 25px 25px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__image {
+    width: 244px;
+    height: 172px;
+    line-height: 152px;
+    padding: 10px;
+    font-size: 0;
+    background-color: #F5F5F5;
+    text-align: center;
+    margin-right: 25px;
+    flex-shrink: 0;
+
+    img {
+      max-height: 152px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+    color: $black;
+    text-decoration: none;
+    
+    &-text {
+      font-size: 24px;
+      line-height: 1.2em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    &-icon {
+      font-size: 0;
+      line-height: 0;
+      margin-left: 7px;
+    }
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .circle-link {
+    width: 22px;
+    height: 22px;
+    line-height: 0;
+    // padding: 6px 7px 6px 8px
+    padding: 5px;
+
+    // .icon {
+    //   width: 7px;
+    //   height: 10px;
+    // }
+
+    .icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &__name:hover .circle-link {
+    background-color: $orange-hover;
+  }
+
+  &--align-top {
+    align-items: flex-start;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.store-card {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 24px;
+  // border-bottom: 1px solid #e6e6e6;
+  border-bottom: none;
+  padding: 13px 0 12px;
+
+  &__caption {
+    color: #7E7E7E;
+    margin-bottom: 1px;
+  }
+
+  &__location {
+    width: 328px;
+    padding-right: 25px;
+  }
+
+  &__phone {
+    width: 189px;
+    padding-right: 25px;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  &__email {
+    width: 319px;
+    padding-right: 25px;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  &__geo-point {
+    margin-left: auto;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.dealer-card__stores.active {
+  .store-card {
+    border-bottom: 1px solid #e6e6e6;
+  }
+}
+
+.geo-point {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $orange;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 0;
+  line-height: 42px;
+  padding: 11px;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    fill: $black;
+    transition: all .25s ease;
+  }
+
+  &:hover {
+    .icon {
+      fill: $orange;
+    }
+  }
+}
+
+.stores-more {
+  margin-top: 24px;
+}
+
+.dealers-page-wrapper {
+  .where-to-buy-filters {
+    padding-top: 47px;
+  }
+}
+
+.dealers-on-map {
+  height: 605px;
+}
+
+.custom-balloon {
+  background-color: #fff;
+  padding: 20px 20px 16px;
+  box-sizing: border-box;
+  color: $black;
+  font-family: $font-family;
+  width: 233px;
+
+  &__company-name {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  &__image {
+    font-size: 0;
+    line-height: 50px;
+    background-color: #F5F5F5;
+    padding: 16px;
+    text-align: center;
+    height: 82px;
+    margin-bottom: 13px;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      max-height: 50px;
+    }
+  }
+
+  &__contact-line {
+    margin-top: 8px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__contact-line-caption {
+    font-size: 12px;
+    line-height: 1.2em;
+    font-weight: 400;
+    color: #7E7E7E;
+    margin-bottom: 1px;
+  }
+
+  &__contact-line-value {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+}
+
+.dealer-popups {
+  display: none;
+}
+
+.dealer-popup {
+  display: none;
+}
+
+@media (max-width: $screen-xl - 1) {
+  .where-to-buy-page {
+    padding-bottom: 0;
+  }
+  
+  .where-to-buy-filters {
+    &__wrapper {
+      display: block;
+    }
+
+    &__fields {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    &__search {
+      width: 100%;
+      margin-bottom: 27px;
+    }
+
+    .filter-field {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .field-select {
+      margin-bottom: 0;
+    }
+
+    &__view {
+      padding-top: 30px;
+    }
+  } 
+
+  .filter-field {
+    .field-select {
+      width: 100%;
+    }
+  }
+
+  .view-controls {
+    margin-left: -10px;
+    margin-right: -9px;
+  }
+
+  .view-control {
+    width: calc(50% - 19px);
+    margin-left: 10px;
+    margin-right: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    &:first-child {
+      margin-left: 10px;
+    }
+
+    &__icon {
+      font-size: 0;
+      line-height: 0;
+      display: block;
+      margin-right: 9px;
+    }
+    &__text {
+      display: block;
+      font-size: 16px;
+      line-height: 1.2em;
+      font-weight: 400;
+      color: currentColor;
+    }
+  }
+
+  .dealers-page-wrapper {
+    padding-bottom: 60px;
+    
+    .where-to-buy-filters {
+      padding-top: 41px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .marketplaces {
+    padding-top: 54px;
+
+    .section-title {
+      font-size: 30px;
+      line-height: 1.2em;
+      margin-bottom: 22px;
+    }
+
+    &__list {
+      &-in {
+        margin-left: -5px;
+        margin-right: -5px;
+        margin-bottom: -10px;
+      }
+    }
+  }
+  
+  .marketplace-item {
+    padding: 0 5px 10px;
+  }
+
+  .marketplace-link {
+    width: 104px;
+    height: 104px;
+    padding: 10px;
+    line-height: 84px;
+  }
+  
+  .dealer-card {
+    display: block;
+    padding: 22px 20px 31px;
+    
+    &__image {
+      margin-right: 0;
+      margin-bottom: 27px;
+      width: 100%;
+      height: 98px;
+      line-height: 78px;
+
+      img {
+        max-height: 78px;
+      }
+    }
+
+    &__main {
+      width: 100%;
+    }
+
+    &__name {
+      display: block;
+      font-size: 0;
+      line-height: 0;
+      
+      &-text {
+        font-size: 20px;
+        line-height: 1.2em;
+        display: inline;
+      }
+      
+      &-icon {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 5px;
+        position: relative;
+      }
+    }
+  }
+
+  .store-card {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 25px 36px 25px 0;
+
+    &:first-child {
+      padding-top: 15px;
+    }
+
+    &__location {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    &__phone {
+      width: 100%;
+      padding-right: 0;
+      margin-top: 10px;
+    }
+
+    &__email {
+      width: 100%;
+      padding-right: 0;
+      margin-top: 10px;
+    }
+
+    &__geo-point {
+      margin-left: 0;
+      position: absolute;
+      top: 33px;
+      right: 0;
+    }
+
+    &__caption {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  .geo-point {
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    padding: 5px;
+    
+    .icon {
+      width: 12px;
+      height: 12px;
+      fill: $black;
+    }
+  }
+
+  .dealers-on-map {
+    height: 360px;
+  }
+
+  .dealer-popups {
+    display: block;
+  }
+
+  .dealer-popup {
+    margin-top: 30px;
+
+    .custom-balloon {
+      width: 100%;
+    }
+  }
+}

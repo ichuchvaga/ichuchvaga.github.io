@@ -1,0 +1,59 @@
+mixin main-about()
+  //- Вызов:
+    +main-about()
+
+  -
+    var workListingItems = [
+      {
+        img: "main-about-work-1.jpg",
+        icon: "main-about-work-icon-1.svg",
+        title: "Более 2000 типоразмеров продукции",
+        descr: "Ассортимент производимой продукции составляет 38&nbsp;марок более 2000 типоразмеров"
+      },
+      {
+        img: "main-about-work-2.jpg",
+        icon: "main-about-work-icon-2.svg",
+        title: "Контроль качества продукции",
+        descr: "Компания располагает развитой лабораторной базой для всестороннего контроля  качества производимой продукции"
+      },
+      {
+        img: "main-about-work-3.jpg?v=1.02",
+        icon: "main-about-work-icon-3.svg",
+        title: "Огромный опыт работы",
+        descr: "Мы надежная основа для&nbsp;будущих успехов и&nbsp;достижений, а&nbsp;также гарантия надежности и&nbsp;уверенности для наших потребителей"
+      },
+      {
+        img: "main-about-work-4.jpg",
+        icon: "main-about-work-icon-4.svg",
+        title: "Сотрудничество с&nbsp;дилерами",
+        descr: "Активно участвуем в&nbsp;мероприятиях дилеров для&nbsp;подготовки персонала к&nbsp;работе с&nbsp;потребителями и&nbsp;проектами"
+      }
+    ];
+
+  div.section.main-about.bg-gray&attributes(attributes)
+    .container
+      .main-about-text
+        .main-about-text__left
+          .main-about-text__title-orange Работаем
+          .main-about-text__title-black
+            span с 1991 года
+
+        .main-about-text__right
+          p
+            strong ООО «Конкорд» обеспечивает полный технологический цикл производства  кабельных изделий: от волочения проволоки до наложения наружных покровов на основе сшитых и вулканизированных материалов. 
+
+          p Парк оборудования завода сбалансирован и технологический цикл не имеет выраженных узких  мест, что позволяет достигнуть минимальных сроков производства и его высокой экономической эффективности.
+
+      .work-listing
+        each item in workListingItems
+          - var imgUrl = 'img/' + item.img;
+          - var iconUrl = 'img/' + item.icon;
+
+          .work-listing__item
+            .work-item
+              .work-item__img(style="background-image: url('" + imgUrl +"')")
+              .work-item__main
+                .work-item__icon
+                  img(src=iconUrl alt="")
+                .work-item__title !{item.title}
+                .work-item__description !{item.descr}

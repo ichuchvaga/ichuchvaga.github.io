@@ -1,0 +1,115 @@
+// В этом файле должны быть стили для БЭМ-блока okl-manufacturers, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.okl-manufacturers {
+
+  $block-name:                &; // #{$block-name}__element
+
+  background-color: #fff;
+  padding-top: 96px;
+
+  .section-title {
+    text-align: left;
+    font-size: 48px;
+    line-height: 1.2em;
+    margin-bottom: 26px;
+    max-width: 900px;
+  }
+}
+
+.okl-manuf-list {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 15px;
+  
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+  }
+
+  &__item {
+    padding: 0 10px 20px;
+    width: 25%;
+  }
+}
+
+.okl-manuf-logo {
+  display: block;
+  background-color: #F5F5F5;
+  clip-path: polygon(0 0, calc(100% - 42px) 0,100% 32px,100% 100%,100% 100%,42px 100%,0 calc(100% - 32px),0 0);
+  height: 110px;
+  padding: 20px;
+  line-height: 70px;
+  text-align: center;
+  font-size: 0;
+  transition: background-color .25s ease;
+  
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &:hover {
+    background-color: #e7e7e7;
+  }
+}
+
+
+@media (max-width: $screen-xl - 1) {
+  .okl-manufacturers {
+    // padding-top: 54px;
+    padding-top: 38px;
+    padding-bottom: 45px;
+
+    .section-title {
+      font-size: 26px;
+      line-height: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      max-width: 560px;
+    }
+
+    .text-md p {
+      margin-bottom: 18px;
+    }
+  } 
+
+  .okl-manuf-list {
+    padding-top: 0;
+    
+    &__item {
+      width: 33.33%;
+    }
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  .okl-manuf-list {
+    &__in {
+      margin-left: -6px;
+      margin-right: -5px;
+      margin-bottom: -11px;
+    }
+
+    &__item {
+      width: 50%;
+      padding-left: 6px;
+      padding-right: 5px;
+      padding-bottom: 11px;
+    }
+  }
+
+  .okl-manuf-logo {
+    height: 70px;
+    padding: 16px;
+    line-height: 36px;
+    clip-path: polygon(0 0, calc(100% - 23px) 0,100% 18px,100% 100%,100% 100%,23px 100%,0 calc(100% - 18px),0 0);
+  }
+}

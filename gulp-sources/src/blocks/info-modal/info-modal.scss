@@ -1,0 +1,94 @@
+// В этом файле должны быть стили для БЭМ-блока info-modal, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.info-modal {
+  $block-name:                &; // #{$block-name}__element
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(56, 56, 56, 0.64);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+
+  @media(max-width: $screen-md) {
+    padding: 20px;
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    .info_modal__main {
+      transform: translateY(0);
+    }
+  }
+}
+
+
+.info_modal__main {
+  border-radius: 10px;
+  background: #FFF;
+  max-width: 700px;
+  padding: 46px 61px;
+  position: relative;
+  transition: all .3s ease;
+  transform: translateY(50px);
+  @media(max-width: $screen-md) {
+    padding: 26px 41px;
+  }
+  @media(max-width: $screen-sm) {
+    padding: 19px 22px;
+  }
+}
+
+.info_modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: all .3s ease;
+  @media(max-width: $screen-sm) {
+    width: 30px;
+    height: 30px;
+  }
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.info-title {
+  pointer-events: none;
+  user-select: none;
+  h3 {
+    margin: 0;
+    margin-bottom: 12px;
+    @media(max-width: $screen-md) {
+      font-size: 22px;
+    }
+    @media(max-width: $screen-sm) {
+      font-size: 16px!important;
+    }
+  }
+}
+
+.info-txt {
+  pointer-events: none;
+  user-select: none;
+  p {
+    margin-bottom: 0;
+    @media(max-width: $screen-md) {
+      font-size: 18px;
+    }
+    @media(max-width: $screen-sm) {
+      font-size: 14px!important;
+    }
+  }
+}

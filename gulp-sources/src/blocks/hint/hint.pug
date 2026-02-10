@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока (hint)
+
+mixin hint(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +hint('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' hint--' + modsList[i].trim();
+      }
+    }
+
+  .hint(class=allMods)&attributes(attributes)
+    .hint__text
+      block

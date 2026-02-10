@@ -1,0 +1,54 @@
+mixin map()
+  //- Вызов:
+    +map()
+
+  div.map&attributes(attributes)
+    .map-element#map.js-marker-offset(data-marker="img/pin.svg" data-coords="54.779676, 32.108519")
+
+    .contact-form-outer-container
+      .contact-form-box
+        form.form.contact-form.form--theme-white
+          .form-title Обратная связь
+          .form-intro Будем рады Вам помочь!
+
+          .fields
+            +field-text({
+              title: 'Ваше имя',
+              isTextarea: false,
+              helpText: '',
+              mods: '',
+              val: '',
+              attrs: {
+                name: 'name',
+              }
+            })
+
+            +field-text({
+              title: 'E-mail',
+              isTextarea: false,
+              helpText: '',
+              mods: '',
+              val: '',
+              attrs: {
+                name: 'email',
+                type: 'email'
+              }
+            })
+
+            +field-text({
+              title: 'Текст сообщения',
+              isTextarea: true,
+              helpText: '',
+              mods: '',
+              val: '',
+              attrs: {
+                name: 'message'
+              }
+            })
+
+          .form-submit
+            .form-submit__btn
+              input(type="submit" class="btn btn--main" value="Отправить")
+
+            .form-submit__agreement
+              .agreement Нажимая на кнопку, вы даете #[a(href="#" target="_blank") согласие на обработку] ваших персональных данных

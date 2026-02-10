@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-file)
+
+mixin field-file(props, mods)
+
+  //- Принимает:
+  //-   props {
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     attrs:            {object} - любые атрибуты для input
+  //- Вызов:
+        +field-text({
+          title: 'Название',
+          helpText: 'Подсказка',
+          mods: '',
+          attrs: {
+            name: 'comment',
+          }
+        })
+
+  -
+    // список модификаторов
+    var allMods = 'field-file--empty';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-file--' + modsList[i].trim();
+      }
+    }
+
+  .field-file(class=allMods)&attributes(attributes)
+    .field-file__inner
+      label.field-file__label Прикрепить файл
+        svg(width='14', height='14')
+          use(xlink:href='img/sprite.svg#paperclip')
+        input(type="file").field-file__input&attributes(props.attrs)
+      .field-file__empty Файл не выбран
+
+      if props.helpText
+        .field-file__help-text=props.helpText
+
+      .field-file__files

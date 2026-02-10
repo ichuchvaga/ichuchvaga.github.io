@@ -1,0 +1,37 @@
+// В этом файле должны быть стили для БЭМ-блока hint, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.hint {
+  $block-name:                &; // #{$block-name}__element
+
+  display: inline-block;
+  position: relative;
+
+  &:before {
+    content: '';
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 74.2 74.2' style='enable-background:new 0 0 74.2 74.2;' xml:space='preserve'%3E%3Cpath class='st0' d='M0,37.1c0,20.5,16.7,37.1,37.1,37.1s37.1-16.6,37.1-37.1S57.6,0,37.1,0S0,16.6,0,37.1 M37.1,4 c18.3,0,33.1,14.9,33.1,33.1S55.4,70.2,37.1,70.2S4,55.4,4,37.1S18.8,4,37.1,4'/%3E%3Cpath class='st0' d='M32.5,55.3c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2h9.2c1.1,0,2-0.9,2-2c0-1.1-0.9-2-2-2h-2.5V31c0-1.1-0.9-2-2-2 h-4.7c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2h2.7v22.3H32.5z'/%3E%3Cpath class='st0' d='M37.2,16.9c1.99,0,3.6,1.61,3.6,3.6s-1.61,3.6-3.6,3.6c-1.99,0-3.6-1.61-3.6-3.6S35.21,16.9,37.2,16.9'/%3E%3C/svg%3E%0A");
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 13px;
+    width: 254px;
+    left: 0;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    padding: 15px;
+    display: none;
+  }
+
+  &:hover &__text {
+    display: block;
+  }
+}

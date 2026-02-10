@@ -1,0 +1,102 @@
+//- Все примеси в этом файле должны начинаться c имени блока (hero-product)
+
+mixin hero-product(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +hero-product('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' hero-product--' + modsList[i].trim();
+      }
+    }
+
+  .hero-product.bg-gray(class=allMods)&attributes(attributes)
+    .container
+      .hero-product__wrapper
+        -
+          var links = [
+            {
+              title: "Сертификаты"
+            },
+            {
+              title: "Руководство по эксплуатации"
+            }
+          ];
+
+        .hero-product__image
+          img(src="img/hero-product.jpg" alt="")          
+
+          .download-links.download-links--compact
+            .download-links__inner
+              each pdf_link in links
+                .download-link
+                  a(href="upload/document.pdf" target="_blank").download-link__inner
+                    .download-link__icon
+                      +icon('pdf-mini')(width="18" height="22")
+
+                    .download-link__main
+                      .download-link__text #{pdf_link.title}
+
+        .hero-product__main
+          .hero-product__prod-type Силовой кабель
+          h1.hero-product__h1 NUMнг(А)-LS-J 3х10,0ок -0,66
+          .hero-product__short-description  ТУ 3521-001-12350648-2009
+
+          .hero-product__image-mobile
+            img(src="img/hero-product.jpg" alt="")
+
+            .download-links.download-links--compact
+              .download-links__inner
+                each pdf_link in links
+                  .download-link
+                    a(href="upload/document.pdf" target="_blank").download-link__inner
+                      .download-link__icon
+                        +icon('pdf-mini')(width="18" height="22")
+
+                      .download-link__main
+                        .download-link__text #{pdf_link.title}
+
+          .hero-product__text
+            .hero-product__text-inner
+              p Кабель силовой для стационарной прокладки внутри помещений. Отличительной особенностью данных изделий  является современный внешний вид и&nbsp;высокая технологичность монтажа.
+
+          .hero-product__main-params
+            .hero-product__main-params-in
+              .hero-product-param
+                .hero-product-param__in
+                  .hero-product-param__value 3
+                  .hero-product-param__caption Жилы
+
+              .hero-product-param
+                .hero-product-param__in
+                  .hero-product-param__value 10 мм <sup>2</sup>
+                  .hero-product-param__caption Номинальное сечение жил
+
+              .hero-product-param
+                .hero-product-param__in
+                  .hero-product-param__value 15,8 мм
+                  .hero-product-param__caption Диаметр изделия
+
+          .hero-product__buttons
+            a(href="#characteristics").js-scroll-to.btn.hero-product-btn.hero-product-btn--specs Все  характеристики
+            a(href="where-to-buy.html").btn.btn--main.hero-product-btn.hero-product-btn--dealers Где купить
+
+          //-.download-links
+            .download-links__inner
+              each pdf_link in links
+                .download-link.download-link--sm
+                  a(href="#").download-link__inner
+                    .download-link__icon
+                      +icon('pdf')(width="40" height="48")
+
+                    .download-link__main
+                      .download-link__text #{pdf_link.title}
+                      .download-link__meta #{pdf_link.meta}

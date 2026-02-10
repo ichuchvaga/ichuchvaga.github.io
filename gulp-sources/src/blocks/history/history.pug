@@ -1,0 +1,64 @@
+//- Все примеси в этом файле должны начинаться c имени блока (history)
+
+mixin history(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +history('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' history--' + modsList[i].trim();
+      }
+    }
+
+  include ./history.data.pug
+
+  .history(class=allMods)&attributes(attributes)
+    .container
+      .history__wrapper
+        
+
+        .history__content
+          h2.history__title История
+
+          .slider-container
+            .swiper
+              .swiper-wrapper
+                each item in history_items
+                  .swiper-slide
+                    .history-card(data-image=item.img)
+                      .history-card__main
+                        .history-card__year #{item.year}
+                        .history-card__event-name
+                          span #{item.title}
+
+                        .history-card__text
+                          |!{item.text}
+
+                      //-.history-card__image-mobile
+                        img(src=item.img alt="")
+
+          .history-nav
+            a(href="javascript:void(0)").history-nav__arrow.prev
+              +icon('history-nav-prev')
+
+            .history-nav__dots
+              //- a(href="javascript:void(0)").history-nav__dot.active
+              //- a(href="javascript:void(0)").history-nav__dot
+              //- a(href="javascript:void(0)").history-nav__dot
+              //- a(href="javascript:void(0)").history-nav__dot
+              //- a(href="javascript:void(0)").history-nav__dot
+              //- a(href="javascript:void(0)").history-nav__dot
+
+            a(href="javascript:void(0)").history-nav__arrow.next
+              +icon('history-nav-next')
+
+        .history__image
+          img(src="img/history-img.jpg" alt="")

@@ -1,0 +1,82 @@
+// В этом файле должны быть стили для БЭМ-блока benefits, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.benefits {
+
+  $block-name:                &; // #{$block-name}__element
+
+  padding-top: 99px;
+  padding-bottom: 95px;
+  background-color: #fff;
+
+  &__grid {
+    overflow: hidden;
+  }
+
+  &__grid-in {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -20px;
+    margin-right: -19px;
+    margin-bottom: -40px;
+  }
+}
+
+.benefits-item {
+  padding-left: 20px;
+  padding-right: 19px;
+  padding-bottom: 40px;
+  width: 20%;
+  text-align: center;
+
+  &__img {
+    font-size: 0;
+    line-height: 0;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .benefits {
+    padding-top: 61px;
+    padding-bottom: 57px;
+
+    &__grid {
+      &-in {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: -27px;
+        justify-content: center;
+      }
+    }
+  }
+
+  .benefits-item {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 27px;
+
+    &__title {
+      font-size: 14px;
+      line-height: 16px;
+      word-break: keep-all;
+    }
+
+    &__img {
+      margin-bottom: 13px;
+    }
+  }
+}
+
+@media (max-width: $screen-lg - 1) {
+  .benefits-item {
+    width: 33.3%;
+  }
+}

@@ -1,0 +1,130 @@
+// В этом файле должны быть стили для БЭМ-блока main-cables, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.manufacturing {
+
+  $block-name:                &; // #{$block-name}__element
+  
+  padding-top: 120px;
+  padding-bottom: 102px;
+
+  &__img {
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    padding-left: 31px;
+    padding-top: 9px;
+  }
+
+  &__content {
+    width: 600px;
+    padding-left: 26px;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0 0 20px;
+    text-align: left;
+  }
+}
+
+
+.years-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  min-width: 308px;
+  padding: 40px 44px 60px 40px;
+  background-color: $blue;
+  clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 100% 100%, 15% 100%, 0 85%, 0 0);
+  font-size: 30px;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: #fff;
+
+  &__icon {
+    margin-bottom: 44px;
+    width: 71px;
+    height: 71px;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__text {
+    font-size: 52px;
+    text-transform: uppercase;
+  }
+
+  &__text-sm {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: $screen-xl - 1) {
+  .manufacturing {
+    padding-top: 68px;
+    padding-bottom: 60px;
+
+    &__wrapper {
+      display: block;
+    }
+
+    &__img {
+      width: 305px;
+      padding-left: 19px;
+    }
+
+    &__content {
+      padding-top: 52px;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    &__title {
+      margin-bottom: 18px;
+    }
+  }
+
+  .years-label {
+    top: -8px;
+    min-width: 169px;
+    width: 169px;
+    padding: 20px 20px 29px;
+    font-size: 20px;
+    line-height: 26px;
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 24px, 100% 100%, 100% 100%, 30px 100%, 0 calc(100% - 24px), 0 0);
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 17px;
+    }
+
+    &__text {
+      font-size: 30px;
+      line-height: 1em;
+      white-space: nowrap;
+    }
+
+    &__text-sm {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-md - 1) {
+  .manufacturing {
+    &__btn {
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

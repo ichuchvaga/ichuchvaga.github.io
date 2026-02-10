@@ -1,0 +1,32 @@
+mixin error()
+  //- Вызов:
+        +error()
+
+  div.error&attributes(attributes)
+    .container
+      +breadcrumbs()
+        +breadcrumbs-item('Главная', 'index.html')
+        +breadcrumbs-item('Страница не найдена')
+
+      .error__content
+        .error__image
+          img(src="img/404.png" alt="Страница не найдена")
+
+        .page-title
+          h1 Страница не найдена
+
+        .error__text
+          p К сожалению, такая страница не найдена. Возможно, она была удалена или ее вовсе не существовало.
+
+        .error__btn
+          a(href="index.html").btn.btn--main Перейти на главную
+
+        .error__search
+          .search-widget
+            form.search-form
+              .filter-field
+                .filter-field__widget
+                  .search-field
+                    input(type="text" name="city" placeholder="Введите запрос")
+                    button(type="submit")
+                      +icon('search')

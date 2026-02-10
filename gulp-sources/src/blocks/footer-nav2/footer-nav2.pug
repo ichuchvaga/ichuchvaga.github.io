@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока (footer-nav)
+//- Структура меню — в footer-nav.data.pug
+
+mixin footer-nav2(selectedID)
+
+  //- Принимает:
+  //-   selectedID {string} - id пункта меню (по умолчанию — из footer-nav.data.pug)
+  //- Вызов:
+        +footer-nav2('1')
+
+  //- подключаем файл со структурой данных блока
+  include footer-nav2.data.pug
+
+  nav.footer-nav2#nav&attributes(attributes)
+    //- +burger('Показать главное меню', 'nav', 'footer-nav--open')(class='footer-nav__toggler')
+    .footer-nav2__wrapper
+        ul.footer-nav2__list
+          each menuItem in footMenu
+            +footer-nav2-item(selectedID, menuItem)
+     
+mixin footer-nav2-item(selectedID, item)
+  -
+    var thisItemClass = 'footer-nav2__item';
+    var thisLinkClass = 'footer-nav2__link';
+
+  li(class= thisItemClass)
+    a(class= thisLinkClass, href=item.url)= item.name
+    block
