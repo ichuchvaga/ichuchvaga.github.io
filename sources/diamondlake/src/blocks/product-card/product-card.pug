@@ -1,0 +1,56 @@
+//- Все примеси в этом файле должны начинаться c имени блока (product-card)
+
+mixin product-card(props, mods)
+
+    //- Принимает:
+    //-   props   {object} - параметры
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +product-card(
+              {
+                  image: 'cat-p2.jpg',
+                  props: [
+                      'Помолвочное кольцо',
+                      'С одним бриллиантом',
+                      '0.25 карат 4.0 мм',
+                  ],
+                  likes: 123,
+              }
+              , 'some-mod'
+          )
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-card--' + modsList[i].trim();
+            }
+        }
+
+    .product-card(href="#", class=allMods)&attributes(attributes)
+        .product-card__inner
+            .product-card__slider.swiper
+                .product-card__images.swiper-wrapper
+                    each image in props.gallery
+                        .product-card__image.swiper-slide
+                            img(src="img/"+image)
+                .swiper-pagination
+                .swiper-button-next
+                .swiper-button-prev
+
+            .product-card__heading
+                .product-card__heading-title ES4 Sophia
+                .product-card__heading-price From: 1250 €
+
+            .product-card__info
+                if (props.props)
+                    .product-card__props
+                        each item in props.props
+                            .product-card__prop= item
+                a(href="#").product-card__likes
+                    svg(width='24', height='24')
+                        use(xlink:href='img/sprite.svg#heart-bg-white')
+
+                a(href="#").btn.btn--main-o.product-card__button View Details

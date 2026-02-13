@@ -1,0 +1,470 @@
+.list
+	list-style: none
+	margin: 0
+	padding: 0
+
+	& > li
+		position: relative
+		padding-left: 30px
+		font-size: 18px
+		line-height: 1.4em
+		color: hsl(0, 0%, 0%)
+		margin-bottom: 0.61em
+
+		&:before
+			content: ''
+			display: block
+			+size(7px)
+			background-color: $green
+			position: absolute
+			top: 10px
+			left: 0
+	
+	&.list--inline
+		font-size: 0
+		& > li
+			display: inline-block
+			vertical-align: top
+			width: 50%
+
+// Numeric list
+ol
+	margin: 0
+	padding: 0
+	counter-reset: myCounter
+	> li
+		position: relative
+		padding-left: 32px
+		margin-bottom: 0.61em
+		font-size: 18px
+		line-height: 1.4em
+		list-style: none
+		cursor: default
+		&:before
+			counter-increment: myCounter
+			content: counter(myCounter) ". "
+			position: absolute
+			top: 0
+			left: 0
+			display: inline-block
+			font-size: 18px
+			line-height: 1.4em
+			color: $green
+		&:last-child
+			margin-bottom: 0
+
+// Features list
+.features-list
+	margin:
+		left: -15px
+		right: -15px
+.features-item
+	display: inline-block
+	vertical-align: top
+	margin:
+		left: 15px
+		right: 15px
+		bottom: 70px
+	width: calc(50% - 30px)
+	font-size: initial
+	&__circle
+		position: relative
+		margin-bottom: 30px
+		+size(122px)
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			display: block
+			+size(122px)
+			background: transparent url(../img/icons/circle.png) no-repeat 0 0
+			z-index: 0
+	&__img
+		position: relative
+		display: inline-block
+		vertical-align: middle
+		font-size: 0
+		z-index: 1
+	&__title
+		margin-bottom: 20px
+		font-size: 18px
+		font-family: $raleway
+		font-weight: 500
+	&__descr
+		margin: 0
+		padding-right: 30px
+		font-size: 18px
+
+// Section conformity
+.section-conformity
+	.advantages-circle
+		&__img
+			position: relative
+			display: inline-block
+			vertical-align: middle
+			font-size: 0
+			z-index: 1
+		&__text
+			padding-right: 10px
+			margin-top: 1.3333em
+			font-size: 18px
+			line-height: 1.4em
+			color: #232a32
+
+// Filter panel
+.filter-panel
+	padding: 60px 0
+	.row
+		font-size: 0
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+		margin: 
+			left: 15px
+			right: 15px
+		width: calc(50% - 30px)
+		font-size: initial
+
+	&__search
+		padding-left: 66px
+
+	&__dropdowns
+		font-size: 0
+		margin-left: -4px
+		margin-right: -4px
+
+		.filter-panel__dropdown
+			padding-left: 4px
+			padding-right: 4px
+			display: inline-block
+			vertical-align: top
+			width: 50%
+
+// Section with header
+.section-with-header-compact
+	padding-top: 54px
+	padding-bottom: 60px
+	margin-top: 38px
+
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+		font-size: initial
+
+		margin: 
+			left: 15px
+			right: 15px
+		width: calc(50% - 30px)
+
+	&__l
+		padding-left: 110px
+	&__r
+		padding-right: 70px		
+
+	&__title
+		&.section-header__title
+			line-height: 1.1em
+			font-weight: 300
+			font-family: $raleway
+
+			&::after
+				margin-top: 0.57142em
+				margin-right: unset
+				margin-left: unset
+
+	&__descr
+		margin: 
+			top: 0
+			bottom: 2.3889em		
+		font-size: 20px
+		line-height: 1.3em
+
+// Section with header
+.section-with-header
+	padding-top: 80px
+	padding-bottom: 90px
+	
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		font-size: initial
+		
+	&__l
+		
+		position: relative
+		padding-right: 30px
+		width: 447px
+	&__r
+		
+		width: calc(100% - 447px)
+
+	&__title
+		&.section-header__title
+			&::after
+				margin-top: 0.57142em
+				margin-right: unset
+				margin-left: unset
+
+	&__descr
+		margin: 
+			top: 0
+			bottom: 2.3889em
+		font-size: 18px
+
+
+// Section with list
+.section-with-list
+	padding:
+		top: 90px
+		bottom: 70px
+	&__title
+		margin-bottom: 1.25em
+
+
+// Section intro
+.section-intro
+	padding: 95px 0
+	&__title
+		margin:
+			top: 0
+			bottom: 1.21052em
+	b
+		font-weight: 500
+		a
+			color: hsl(0, 0%, 0%)
+	p
+		margin: 
+			top: 1.66666em
+			bottom: 0
+		font-size: 18px
+		line-height: 1.5em
+	&.section-intro-without-header
+		padding: 
+			top: 65px
+			bottom: 85px
+		p
+			margin-top: 0
+
+// Industry grid
+.industry-grid-section
+	padding-top: 90px
+	padding-bottom: 58px
+
+.industry-grid
+	font-size: 0
+
+	&__in
+		margin-left: -15px
+		margin-right: -15px
+
+	&__item
+		padding-left: 15px
+		padding-right: 15px
+		display: inline-block
+		vertical-align: top
+		width: 33.33%
+		margin-bottom: 32px
+
+	&__link-text
+		display: inline-block
+		vertical-align: middle
+		font-size: 18px
+		line-height: 1.45em
+		max-height: 4.35em
+		overflow: hidden
+		font-weight: 300
+		word-wrap: break-word
+		
+		width: calc(100% - 61px)
+		color: #1262b3
+
+		span
+			display: inline
+			border-bottom: 1px solid #a5c2e0
+			transition: color .3s, border-color .3s
+
+	&__link
+		display: block
+		width: 100%
+		height: 99px
+		border-radius: 7px
+		background-color: #fff
+		padding-left: 30px
+		padding-right: 30px
+		transition: background-color .3s
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			height: 100%
+			width: 0
+			font-size: 0
+			line-height: 0
+
+		.icon
+			display: inline-block
+			vertical-align: middle
+			width: 61px
+
+
+		&:hover
+			background-color: #f3f7fa
+
+			.resume-grid__link-text
+				span
+					color: #1a8cff
+					border-color: #1a8cff
+
+// Applicants advice bottom
+.section-bottom
+    padding: 
+        top: 115px
+        bottom: 55px
+    ul
+        margin: 
+            left: -15px
+            right: -15px
+        font-size: 0
+    li
+        display: inline-block
+        vertical-align: top
+        padding-right: 15px
+        margin: 
+            left: 15px
+            right: 15px
+        width: calc(50% - 30px)
+        font-size: 18px
+    p
+        margin: 
+            top: 0
+            bottom: 1.666666em
+        line-height: 1.5em
+
+// Contact list
+
+.contact-list
+	> li
+		position: relative
+		display: inline-block
+		vertical-align: middle
+		margin-right: 30px
+		font-size: 18px
+		line-height: 1.3em
+		&::after
+			content: ""
+			position: absolute
+			top: 0
+			left: 100%
+			margin-left: 13px
+			background: #eaeaea
+			+size(2px, 100%)
+		&:last-child
+			margin-right: 0
+			&::after
+				display: none
+		> a
+			color: hsl(0, 0%, 0%)
+
+// Attachments
+.attachment
+	font-size: 0
+
+	&__img,
+	&__text
+		display: inline-block
+		vertical-align: middle
+
+	&__img
+		margin-right: 18px
+		width: 45px
+	&__text
+		width: calc(100% - 63px)
+		span
+			margin-left: 10px
+			font-size: 10px
+			color: #aaa
+	&__link 
+		font-size: 18px
+		line-height: 1.3em
+
+.attachments
+	.attachment
+		margin-bottom: 18px
+		&:last-child
+			margin-bottom: 0
+
+// Section heading
+.section-heading
+	padding:
+		top: 88px
+		bottom: 55px
+	&__title
+		margin: 0
+	&.section-heading-with-link
+		font-size: 0
+		.section-heading
+			&__title,
+			&__link
+				display: inline-block
+				vertical-align: top
+			
+			&__title
+				padding-right: 54px
+				width: calc(100% - 252px)
+			&__link
+				padding-top: 4px
+				width: 252px
+				font-size: 18px
+
+// Section recruitment
+.section-recruitment
+	padding-bottom: 70px
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		font-size: initial
+	&__l
+		width: 48%
+		padding-right: 28px
+	&__r
+		width: 52%
+
+	&__annotation
+		position: relative
+		padding-left: 36px
+		line-height: 1.2em
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			+size(3px, 100%)
+			background: $blue
+			background: linear-gradient($green, #2e82d8)
+
+	p
+		margin: 
+			top: 0
+			bottom: 1.888888em
+		font-size: 18px
+
+	.list
+		& > li
+			margin-bottom: .9091em
+			font-size: 22px 
+		&.list--inline
+			& > li
+				&:first-child
+					margin-bottom: .7353em
+					width: 100%
+					font-size: 34px
+					&:before
+						top: 21px
+				&:nth-child(even)
+					padding-right: 25px

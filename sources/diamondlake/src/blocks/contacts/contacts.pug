@@ -1,0 +1,64 @@
+//- Все примеси в этом файле должны начинаться c имени блока (contacts)
+
+mixin contacts(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +contacts('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' contacts--' + modsList[i].trim();
+            }
+        }
+
+    .contacts(class=allMods)&attributes(attributes)
+        .row
+            .col.contacts__col-map
+                iframe(src="https://yandex.ru/map-widget/v1/-/CCUMFLrOcA").contacts__map
+            .col.contacts__col-main
+                .contacts__content
+                    .contacts__group
+                        .contacts__group-title Адрес:
+
+                        p г. Москва, ул. Большой Тишинский переулок, 8с2.<br> Есть бесплатная парковка.
+
+                    .contacts__group
+                        .contacts__group-title Время работы:
+
+                        p Будни: 12:00-20:00 #[br] Сб: 12:00-19:00#[br] Вс: Выходной
+
+                    .contacts__group.contacts__group--phone
+                        .contacts__phone
+                            a(href="tel:+74951426793") +7 495 142 67 93
+
+                        .contacts__hint Для посещения студии требуется запись.
+                                
+                .contacts__bottom
+                    .contacts__social-section
+                        +social().contacts__social
+                            //-+social-link('//instagram.com', 'instagram')(title='Instagram')
+                                svg(width='64', height='64')
+                                    use(xlink:href='img/sprite.svg#instagram')
+                            +social-link('//vk.com', 'vk')(title='VK')
+                                svg(width='64', height='64')
+                                    use(xlink:href='img/sprite.svg#vk')
+                            +social-link('//telegram.org', 'telegram')(title='Telegram')
+                                svg(width='64', height='64')
+                                    use(xlink:href='img/sprite.svg#telegram')
+
+                        .contacts__social-section-text Вы можете нас найти в других социальных сетях#[br] @diamondlake.ru
+
+                    .contacts__buttons
+                        +btn('Консультация WhatsApp', 'main')(href="#")
+                        +btn('Записаться на примерку', 'main')(href="#modal-studio", data-modal="open")
+
+            .col.contacts__col-image
+                .contacts__image
+                    img(src="img/contacts-img.jpg" alt="")

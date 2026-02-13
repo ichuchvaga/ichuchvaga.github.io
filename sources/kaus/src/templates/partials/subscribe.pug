@@ -1,0 +1,46 @@
+//- Subscribe
+
+//- Mixins
+include ../mixins/input
+include ../mixins/checkbox
+
+.subscribe.blue-gray-theme
+	.container
+		.row
+			.col-md-6.col-subscribe
+				.subscribe-content
+					.subscribe-icon.valign-wrapper
+						.subscribe-img
+							img(src="src/img/icons/mail.png" draggable="false" alt="")/
+					.subscribe-title.h2 Подпишитесь#[br]на свежие обзоры зарплат.
+					.subscribe-subtitle.h2
+						strong Это бесплатно
+					p.subscribe-descr Используйте подробный мониторинг зарплат: увеличьте эффективность подбора персонала и сэкономьте ФОТ Вашей Организации на 15%!
+			.col-md-6.col-subscribe
+				.subscribe-form.text-center
+					form.form
+						.fieldset
+							+input_field({
+								name: "name",
+								placeholder: "Ваше имя",
+								required: true
+							})
+							+input_field({
+								type: "email",
+								name: "email",
+								placeholder: "E-mail",
+								required: true
+							})
+
+						input(type="hidden" name="success_title" value="Спасибо за подписку")/
+						input(type="hidden" name="success_message" value="Вы подписаны на свежие обзоры зарплат!")/
+
+						.agreement
+							+checkbox({
+								name: "agreement",
+								id: "agreement_subscribe",
+								checked: true
+							})
+							span Я принимаю условия #[a.link(href="javascript:void(0);") передачи информации]
+						.form-button
+							input.btn.btn-block.btn-primary(type="submit" value="Подписаться")/

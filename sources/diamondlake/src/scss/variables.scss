@@ -1,0 +1,74 @@
+// Базовые цвета https://colorscheme.ru/color-converter.html
+
+$black: #1A1A1A;
+$white: #ffffff;
+$gray: #8A9199;
+$blue: #66A9CB;
+
+$color-main: $blue;
+$color-main: $gray;
+
+// Семантические цвета
+
+$text-color: $black;
+$body-bg: $white;
+
+$link-color: $text-color;
+$link-color--hover: $color-main;
+
+$border-color: $color-main;
+
+// Базовая типографика
+
+$font-size: 14px;
+$font-size-sm: 0.875em;
+$font-size-xs: 0.75em;
+$line-height: 1.2;
+$line-height-sm: $line-height;
+$line-height-xs: $line-height;
+$typo-margin-vertical: 25px;
+
+$font-family: 'Suisse Intl', sans-serif;
+$font-family--quasimoda: 'Quasimoda', sans-serif;
+$font-family--monospace: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
+
+// Ширины
+$gutter-x: 15px;
+
+$screen-xs: 0;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1920px;
+
+$container-sm: 100%;
+$container-md: 100%;
+$container-lg: 100%;
+$container-xl: $screen-xl;
+
+
+// Модульная сетка
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+
+// Разное
+
+$header-height: 100px;
+$header-height-inner: 72px;
+$header-height-mobile: 56px;
+
+$field-padding-vertical: 14px;
+$field-padding-horizontal: 16px;
+
+$border-radius: 4px;
+$opacity: 0.7;
+$transition-time: 0.3s;
+$shadow: none;
+
+$menu-desktop-width: $screen-xl;
+$toggler-part-height: 2px;
+
+$z-index-modal: 100;

@@ -1,0 +1,861 @@
+// Main page
+
+.map-container
+	.container
+		position: relative
+	.bottom-form
+		position: absolute
+		top: 85px
+		right: 15px
+		width: 498px
+		background: #fff
+		overflow: hidden
+		z-index: 1
+
+.bottom-form
+	border-radius: 10px
+
+.map
+	+size(100%, 635px)
+
+.heading-section
+	
+
+.heading-section-with-photo
+	font-size: 0	
+
+	&__in
+		position: relative
+		min-height: 300px
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			
+			+size(0, 100%)
+			font-size: 0
+			line-height: 0
+
+	&__content
+		font-family: $raleway
+		font-size: 51px
+		line-height: (58/51)
+		color: #232a32
+		display: inline-block
+		vertical-align: middle
+		width: 64%
+		padding-top: 70px
+		padding-bottom: 78px
+
+		p
+			margin: 0 0 0.4705882352941176em
+			padding: 0
+
+	&__img
+		position: absolute
+		top: 20px
+		bottom: 0
+		right: 0
+		width: 43%
+		font-size: 0
+
+		img
+			max-width: 100%
+			max-height: 100%
+			position: absolute
+			bottom: 0
+			right: 0
+
+.heading-section-without-link
+	.heading-section-with-photo
+		&__content
+			padding: 
+				top: 162px
+				right: 30px
+				bottom: 170px
+			font-size: 62px
+			p
+				margin-bottom: 0
+
+
+.section-header
+	padding-top: 79px
+	padding-bottom: 0
+	margin-bottom: 60px
+
+	&__title
+		margin-top: 0
+
+		&:after
+			content: ''
+			display: block
+			margin-left: auto
+			margin-right: auto
+			+size(108px, 3px)
+			background-color: #d4dde4
+			margin-top: 0.4354838709677419em
+		&.title_type_h2
+			&:after
+				margin-left: unset
+				margin-right: unset
+				margin-top: 0.63158em
+		&.title_color_white
+			&::after
+				background-color: #fff
+
+
+.content-box-grey
+	background-color: #f3f7fa
+
+.content-box
+	padding: 50px
+
+.section-content
+	padding-bottom: 90px
+
+.section-with-border
+	border-bottom: 1px solid #eaeaea
+
+.services-decorated-list
+	width: 80%
+
+	&__item
+		position: relative
+		padding-left: 125px
+		min-height: 84px
+		margin-top: 54px
+
+		&:first-child
+			margin-top: 9px
+
+	&__link
+		display: inline
+		color: #1262b3
+		text-decoration: none
+		border-bottom: 1px solid #a5c2e0
+
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: none
+			color: #1a8cff
+			border-color: #1a8cff
+
+	&__descr
+		font-size: 18px
+		line-height: 1.3333em
+		color: #232a32
+		margin-top: 15px
+
+	&__icon
+		position: absolute
+		left: 0
+		top: 3px
+
+
+/* Services list (text items) */
+.services-list
+	list-style: none
+	margin: 0
+	padding: 0
+
+	li
+		position: relative
+		padding-left: 20px
+		font-size: 22px
+		line-height: 1.272727272727273em
+		margin-bottom: 20px
+
+		&:before
+			content: ''
+			display: block
+			+size(7px)
+			background-color: $green
+			position: absolute
+			top: 12px
+			left: 0
+
+		a
+			display: inline
+			color: #1262b3
+			text-decoration: none
+			border-bottom: 1px solid #a5c2e0
+			transition: all 0.15s
+
+			&:hover,
+			&:active,
+			&:focus
+				text-decoration: none
+				color: #1a8cff
+				border-color: #1a8cff
+
+.services-section
+	.section-header
+		color: #232a32
+	.content-box
+		max-width: 410px
+		margin-left: auto
+		margin-right: 0
+
+	.btn
+		width: 100%
+		padding-left: 15px
+		padding-right: 15px
+		max-width: 283px
+		margin-top: 3px
+
+.advantage-numbers-section
+	.section-header
+		color: #232a32
+
+.advantages-circles
+	font-size: 0
+	text-align: left
+
+.advantages-circle
+	display: inline-block
+	vertical-align: top
+	width: 20%
+
+	&__number
+		font-size: 72px
+		line-height: 1em
+		font-weight: bold
+		color: #1262b3
+		position: absolute
+		top: 50%
+		right: -61px
+		margin-top: -0.49em
+		transition: color 0.15s
+		cursor: default
+
+	&__number-wrap,
+	&__wrap
+		position: relative
+		+size(122px)
+	&__number-wrap
+		&:before
+			content: ''
+			display: block
+			+size(122px)
+			background: transparent url("../img/icons/circle.png") no-repeat 0 0
+			position: absolute
+			left: 0
+			top: 0
+	&__wrap
+		&:after
+			content: ''
+			display: block
+			+size(122px)
+			background: transparent url("../img/icons/circle.png") no-repeat 0 0
+			position: absolute
+			left: 0
+			top: 0
+	&__text
+		font-size: 20px
+		line-height: 1.2em
+		color: hsl(0, 0%, 0%)
+		margin-top: 0.95em
+		cursor: default
+
+	&:hover
+		.advantages-circle__number
+			color: $green
+
+.codex-circle
+	display: inline-block
+	vertical-align: top
+	width: 20%
+	text-align: center
+	padding-top: 21px
+
+	&__in
+		max-width: 172px
+		margin-left: auto
+		margin-right: 0
+
+	&__icon
+		display: block
+		text-align: center
+		margin-bottom: 19px
+
+	&__link
+		display: inline
+		font-size: 20px
+		line-height: 1.3em
+		color: #1262b3
+		text-decoration: none
+		border-bottom: 1px solid #a5c2e0
+		transition: all 0.15s
+
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: none
+			border-color: #1a8cff
+			color: #1a8cff
+
+.recruitment-section
+	background: #31659c url("../img/recruitment_bg.jpg") no-repeat top center
+	background-size: cover
+	color: hsl(255, 100%, 100%)
+
+	.section-header
+		margin-bottom: 48px
+
+	.section-header__title
+		margin-left: -24px
+		margin-right: -24px
+
+		&:after
+			content: unset
+			display: none
+
+
+	.section-content
+		padding-left: 73px
+		padding-right: 73px
+
+	.search-form
+		margin-bottom: 60px
+
+.recruitment-industries
+	width: 56.92%
+	padding-top: 18px
+	padding-bottom: 9px
+	position: relative
+	&:after
+		content: ''
+		display: block
+		width: 3px
+		background: $green
+		position: absolute
+		top: 0
+		bottom: 0
+		right: -14px
+
+	.list
+		> li
+			padding-left: 22px
+			font-size: 20px
+			line-height: 1.25em
+			margin-bottom: 0.8em
+			&:before
+				top: 11px
+				+size(5px)
+		a
+			display: inline
+			border-bottom: 1px dashed #6788ad
+			color: hsl(255, 100%, 100%)
+			text-decoration: none
+			transition: all 0.15s
+
+			&:hover,
+			&:active,
+			&:focus
+				text-decoration: none
+				color: $green
+				border-color: transparent
+
+.recruitment-industry-categories
+	width: 43.08%
+	position: absolute
+	top: 0
+	right: 0
+	padding-left: 9px
+
+	ul
+		list-style: none
+		padding: 47px 42px 48px 42px
+		margin: 0
+		background-color: #ebf0f6
+
+		li
+			position: relative
+			padding-left: 15px
+			font-size: 16px
+			line-height: 1.25em
+			color: #1262b3
+			margin-top: 13px
+
+			&:first-child
+				margin-top: 0
+
+			&:before
+				content: ''
+				display: block
+				+size(11px, 1px)
+				background-color: #1262b3
+				position: absolute
+				top: 9px
+				left: 0
+
+	a
+		text-decoration: none
+		display: inline
+		color: #1262b3
+		border-bottom: 1px solid #c7d8eb
+		transition: all 0.15s
+
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: none
+			color: #1a8cff
+			border-color: #c6d7ea
+
+.recruitment-section__content-wrap
+	position: relative
+
+.search
+	position: relative
+
+	&__field
+		display: block
+		+size(100%, 72px)
+		border: 5px solid $green
+		border-image: linear-gradient(to right, $green, #2e82d8)
+		border-image-slice: 1
+		background: transparent
+		padding: 0 78px 0 18px
+		font-size: 20px
+		line-height: 62px
+		font-family: $regular
+		font-weight: 300
+		color: hsl(0, 0%, 0%)
+
+		&::-webkit-input-placeholder
+			color: hsl(0, 0%, 0%)
+		&::-moz-placeholder
+			color: hsl(0, 0%, 0%)
+		&:-ms-input-placeholder
+			color: hsl(0, 0%, 0%)
+		&:-moz-placeholder
+			color: hsl(0, 0%, 0%)
+
+		&:focus
+			outline: none
+
+	&__button
+		display: block
+		+size(78px, 62px)
+		background: transparent
+		border: 0
+		border-radius: 0
+		box-shadow: none
+		cursor: pointer
+		position: absolute
+		right: 0
+		top: 5px
+		bottom: 5px
+		z-index: 1
+		.icon-search
+			+size(34px)
+			background: transparent url("../img/icons/sprite_search.png") no-repeat
+			background-position: -54px 0px
+
+		&:focus
+			outline: none
+
+		&:hover,
+		&:active,
+		&:focus
+			.icon-search
+				background-position: 0px 0px
+
+	&--md
+		.search
+			&__field
+				height: 60px
+				line-height: 50px
+			&__button
+				height: 50px
+
+	&--sm
+		.search
+			&__field
+				padding: 0 40px 0 12px
+				font-size: 16px
+				height: 47px
+				line-height: 37px
+			&__button
+				+size(40px, 37px)
+				.icon-search
+					+size(18px)
+					background-position: -108px 0px
+				&:hover,
+				&:active,
+				&:focus
+					.icon-search
+						background-position: -54px -54px
+
+	&.search_color_white
+		.search
+			&__field
+				color: hsl(255, 100%, 100%)
+
+				&::-webkit-input-placeholder
+					color: hsl(255, 100%, 100%)
+				&::-moz-placeholder
+					color: hsl(255, 100%, 100%)
+				&:-ms-input-placeholder
+					color: hsl(255, 100%, 100%)
+				&:-moz-placeholder
+					color: hsl(255, 100%, 100%)
+			&__button
+				.icon-search
+					background-position: 0px -54px
+				&:hover,
+				&:active,
+				&:focus
+					.icon-search
+						background-position: 0px 0px
+
+
+.list-with-icons
+	list-style: none
+	padding: 0
+	margin: 0
+	font-size: 0
+	line-height: 0
+
+	li
+		position: relative				
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		padding-right: 124px
+		min-height: 70px
+		margin-top: 50px
+
+		&:nth-child(2n)
+			padding-left: 24px
+
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			+size(0, 100%)
+			font-size: 0
+			line-height: 0
+
+	.icon
+		display: inline-block
+		vertical-align: middle
+		+size(70px)
+		margin-right: 28px
+
+	&__text		
+		color: hsl(0, 0%, 0%)
+		display: inline-block
+		vertical-align: middle
+		width: calc(100% - 98px)
+		font-size: 18px
+		line-height: 1.3333em
+		a
+			color: $blue
+			border-bottom: 1px solid #c7d8eb
+			transition: color 0.15s, border-color 0.15s
+			&:hover,
+			&:active,
+			&:focus
+				color: #1a8cff
+				border-color: #c6d7ea
+
+.advantages-intro
+	font-family: $raleway
+	font-size: 28px
+	line-height: 1.2857em
+	font-weight: 500
+	color: #232a32
+	margin: 0 48px
+	text-align: center
+	padding-bottom: 10px
+
+.advantages2-section
+	.section-header
+		margin-bottom: 33px
+		color: #232a32
+	.list-with-icons
+		li
+			margin-top: 18px
+			padding: 
+				left: 24px
+				top: 16px
+				bottom: 16px
+			transition: background-color 0.15s
+			&:hover
+				background-color: #fafafa
+			&:nth-child(odd)
+				margin-left: -24px
+
+// About section
+.about-section
+	border-top: 1px solid #eaeaea
+	color: #232a32
+
+	.section-header
+		margin-bottom: 51px
+
+	.section-content
+		padding-bottom: 50px
+
+	&__quote
+		padding-right: 24px
+
+	blockquote
+		color: #232a32
+
+	&__text
+		font-size: 18px
+		line-height: 1.3333em
+		padding-top: 4px
+
+		p
+			margin-top: 0
+			margin-bottom: 1.388888888888889em
+
+		.btn
+			margin-top: 20px
+
+.about-slider
+	background-color: #858689
+	.swiper-slide
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center center
+		height: 576px
+	.swiper-container-horizontal 
+		> .swiper-pagination-bullets
+			bottom: 14px
+			.swiper-pagination-bullet
+				margin: 0 6px
+	.swiper-pagination-bullet
+		&:hover,
+		&:focus
+			background: #0968ac
+	.swiper-pagination-bullet-active
+		background: #0968ac
+
+.directions-section
+	color: #232a32
+.directions-content
+	&.section-content
+		padding-bottom: 85px
+
+	&__l
+		padding-right: 32px
+
+		font-size: 18px
+		line-height: 1.33em
+
+		.btn
+			margin-top: 18px
+			width: 100%
+
+	&__r
+		padding-top: 7px
+		padding-left: 10px
+		padding-right: 15px
+
+.directions-list
+	font-size: 0
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		padding-left: 48px
+		margin-top: 28px
+
+		&:nth-child(1),
+		&:nth-child(2)
+			margin-top: 0
+
+	&__logo
+		margin-bottom: 7px
+
+	&__text
+		font-size: 18px
+		line-height: 1.33em
+
+.subheading
+	font-size: 28px
+	font-weight: 500
+	line-height: 1.2857em
+	font-family: $raleway
+
+	&:after
+		content: ''
+		display: block
+		+size(23.68%, 3px)
+		background-color: #d4dde4
+		margin-top: 6px
+
+// Vacancies section
+.vacancies-section
+	border-top: 1px solid #eaeaea
+	.section-header
+		color: #232a32
+
+.vacancies-of-the-day
+	padding-bottom: 35px
+	&__header
+		position: relative
+		margin-bottom: 32px
+		padding-right: 50px
+		color: #232a32
+		font-weight: 500
+		font-family: $raleway
+
+	&__header-date
+		font-family: $roboto
+		font-size: 0.75em
+		font-weight: 300
+		color: #aaa
+		display: inline-block
+		vertical-align: baseline
+		margin-left: 1.25em
+
+	.slider-controls
+		position: absolute
+		top: 4px
+		right: 0
+
+.vacancies-list
+	padding-top: 55px
+	border-top: 2px solid #d4dde4
+	.btn
+		margin-top: 18px
+
+.vacancy
+	&__title
+		line-height: 1.2em
+		color: $blue
+		border-bottom: 1px solid #c7d8eb
+		transition: color 0.15s, border-color 0.15s
+
+		&:hover,
+		&:active,
+		&:focus
+			color: #1a8cff
+			border-color: #c6d7ea
+			
+	&__description
+		margin-top: 10px
+		font-size: 20px
+		font-family: $roboto
+		font-weight: 300
+		color: #232a32
+	&__date
+		margin-top: 10px
+		font-size: 18px
+		color: #aaa
+
+.vacancy-layout-default
+	margin-bottom: 15px
+	&:last-child
+		margin-bottom: 0
+
+// Articles
+
+.articles-section
+	color: hsl(255, 100%, 100%)
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		height: 599px
+	&__title
+		margin-top: 0
+	&__l
+		width: 38%
+		background-color: #0b499d
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: top right
+		.articles-section
+			&__title
+				position: relative
+				margin-bottom: 18px
+				font-weight: 500
+				line-height: 1.2em
+				&::after
+					content: ''
+					display: block
+					+size(108px, 3px)
+					background-color: #d4dde4
+					margin-top: 0.4354838709677419em
+			&__content
+				float: right
+				padding: 
+					top: 80px
+					right: 10px
+				max-width: 410px
+	&__r
+		width: 62%
+		background-color: $blue
+		.articles-section
+			&__content
+				padding:
+					top: 86px
+					left: 65px
+				max-width: 805px
+			&__title
+				margin-bottom: 20px
+	.list-with-icons
+		li
+			margin-top: 22px
+			min-height: 47px
+			padding-right: 0
+			width: 100%
+			&:nth-child(2n)
+				padding-left: 0
+		.icon
+			+size(auto)
+		&__text
+			width: calc(100% - 64px)
+			font-size: 24px
+			color: hsl(255, 100%, 100%)
+			a
+				color: hsl(255, 100%, 100%)
+				transition: color 0.15s, border-color 0.15s
+				&:hover,
+				&:active,
+				&:focus
+					color: $green
+					border-color: $green
+
+	&__introtext
+		margin-bottom: 28px
+		font-size: 24px
+	&__img,
+	&__descr
+		display: inline-block
+		vertical-align: top
+	&__img
+		margin-right: 36px
+		width: 382px
+		
+		font-size: 0
+	&__descr
+		margin-top: -4px
+		margin-bottom: 0
+		padding-bottom: 30px
+		width: calc(100% - 418px)
+		font-size: 18px
+
+	.swiper-container-horizontal 
+		> .swiper-pagination-bullets
+			margin-left: 411px
+			width: auto
+			bottom: 0
+			.swiper-pagination-bullet
+				margin: 0 6px
+	.swiper-pagination-bullet
+		&:hover,
+		&:focus
+			background: $green
+	.swiper-pagination-bullet-active
+		background: $green

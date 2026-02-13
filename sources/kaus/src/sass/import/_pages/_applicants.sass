@@ -1,0 +1,262 @@
+// Applicants page
+
+// Applicants advice
+.applicants-advice
+    padding:
+        top: 15px
+        bottom: 60px
+
+.advice-list
+    margin: 
+        left: -30px
+        right: -30px
+    font-size: 0
+
+.advice-item
+    display: inline-block
+    vertical-align: top
+    margin: 
+        left: 30px
+        right: 30px
+        bottom: 80px
+    width: calc(33.33% - 60px)
+    font-size: 18px
+
+    &__title,
+    &__descr
+        line-height: 1.3em
+
+    &__title
+        margin-bottom: 0.666666em
+
+    &__descr
+        margin: 0
+
+// Applicants questionnaire
+
+.section-intro
+    &.applicants-intro
+        padding: 
+            top: 65px
+            bottom: 60px
+
+.applicants-questionnaire
+    padding-bottom: 100px
+
+// Applicants form
+.applicants-form
+    .fieldset
+        .row
+            font-size: 0
+    .col-field
+        float: none
+        display: inline-block
+        vertical-align: top
+        .form-element
+            margin-bottom: 28px
+        legend,
+        p
+            display: none
+
+    .agreement
+        margin-bottom: 70px
+
+    .form-submit,
+    .form-button
+        margin-top: 12px
+        font-size: 0
+        .btn,
+        .form-steps
+            display: inline-block
+            vertical-align: middle
+
+        .btn
+            margin-left: 144px
+
+        .form-steps
+            margin-left: 40px
+            font-size: 18px
+            color: #c0c0c0
+
+        .form-step
+            &--current
+                font-weight: 500
+                color: $green
+
+    .actions
+        display: none
+
+// Applicants vacancies
+
+// Vacancy agency
+.vacancy-agency
+    padding-top: 88px
+    &__title
+        margin:
+            top: 0
+            bottom: 1.36842em
+    h3.vacancy-agency__title
+        margin-bottom: 1.625em
+    &.vacancy-agency-industry
+        padding-top: 25px
+
+.vacancy-grid-item
+    &__top
+        margin-bottom: 36px
+        font-size: 0
+
+    &__link
+        margin-right: 28px
+        font-size: 24px
+
+    &__date
+        font-size: 18px
+        color: #aaa
+
+    &__main
+        margin-bottom: 80px
+        .col-vacancy-grid
+            &:nth-child(even)
+                padding-left: 185px
+
+    &__caption
+        margin-bottom: 0.833333em
+        font-size: 18px
+
+    ul
+        li
+            position: relative
+            display: block
+            margin-bottom: 0.5555555em
+            padding: 0 20px
+            font-size: 18px
+            line-height: 1.4em
+            &::after
+                content: "—"
+                position: absolute
+                top: 0
+                left: 0
+            &:last-child
+                margin-bottom: 0
+
+    p
+        margin: 0
+        font-size: 18px
+        line-height: 1.4em
+
+// Directions
+.directions
+    padding: 
+        top: 90px
+        bottom: 80px
+
+    &.directions--industry
+        .advantages-circles
+            margin-bottom: 10px
+
+    .hgroup
+        margin-bottom: 60px
+        h3
+            margin: 
+                top: 0
+                bottom: 0.6875em
+
+    &__subtitle
+        margin-bottom: 60px
+        &-item
+            position: relative
+            display: inline-block
+            vertical-align: middle
+            font-size: 18px
+            font-family: $raleway
+            line-height: 1.7em
+            b
+                display: block
+                text-align: left
+            + .directions__subtitle-item
+                margin-left: 40px
+                &::after
+                    content: ""
+                    position: absolute
+                    top: 0
+                    right: 100%
+                    margin-right: 19px
+                    +size(2px, 100%)
+                    background: #e2ebfa
+                    background: linear-gradient(#f8faff, #ccdcf5)
+
+    .advantages-circles
+        margin-bottom: 50px
+    .advantages-circle
+        width: 16.66%
+        &__wrap
+            padding-right: 20px
+            +size(100%, 114px)
+            &::after
+                +size(114px)
+                background-image: url('../img/icons/circle-sm.png')
+                opacity: 0.2
+                transition: opacity 0.15s
+        &__img
+            font-size: 0
+            position: relative
+            z-index: 1
+            display: inline-block
+            vertical-align: middle
+
+        &__title
+            margin-top: 0.833333em
+            font-size: 18px
+            font-family: $raleway
+            font-weight: 500
+
+        &__text
+            padding-right: 20px
+            margin-top: 0.625em
+            font-size: 16px
+            line-height: 1.3em
+
+        &:hover,
+        &:focus
+            .advantages-circle
+                &__wrap
+                    &::after
+                        opacity: 1
+
+    p
+        margin: 0
+        padding: 
+            left: 10%
+            right: 10%
+        font-size: 18px
+        line-height: 1.5em
+
+// Vacancy single
+
+.vacancy-single
+    padding-top: 30px
+    &__head
+        margin-bottom: 32px
+    &__title,
+    &__date
+        display: inline-block
+
+    &__date
+        position: relative
+        bottom: 2px
+        font-size: 18px
+        color: #aaa
+    
+    &__title
+        margin:
+            top: 0
+            right: 28px
+            bottom: 0
+    &__contacts
+        margin-bottom: 52px
+
+    .section-content
+        padding-bottom: 40px
+    .col-vacancy-grid
+        margin-bottom: 50px
+        

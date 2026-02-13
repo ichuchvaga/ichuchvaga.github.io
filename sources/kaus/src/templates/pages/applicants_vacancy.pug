@@ -1,0 +1,124 @@
+//- Data
+include ../data/applicants_vacancy
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Соискателям",
+		pagetitle = "Бухгалтерия / Финансы / Банки",
+		ymap = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--green
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'applicants_advice.html'
+				},
+				{
+					title: "Вакансии агенства",
+					url: 'applicants_vacancies.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Filter panel
+		.filter-panel
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="applicants_vacancies.html" class="btn btn-wide btn-outline") Каталог отраслей
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+		//- Vacancy single
+		.vacancy-single.section-with-border
+			.container
+				.vacancy-single__head.wrapper
+					h3.vacancy-single__title Руководитель отдела бухгалтерского сопровождения
+					time.vacancy-single__date 08.05.18
+
+				ul.vacancy-single__contacts.contact-list.wrapper
+					li #[b Код:] LVO
+					li #[b Контактная информация:] #[a(href="mailto:lvova@kaus-group.ru") lvova@kaus-group.ru], #[a(href="tel:84952416402") 8 (495) 241-64-02]
+
+				.section-content
+					.vacancy-grid-item
+						.row
+							.col-md-6.col-vacancy-grid
+								.vacancy-grid-item__caption
+									b Основные требования:
+								ul
+									each el in vacancy_requirements
+										li #{el}
+
+							.col-md-6.col-vacancy-grid
+								.vacancy-grid-item__caption
+									b Условия:
+								ul
+									each el in vacancy_conditions
+										li #{el}
+
+							.col-md-6.col-vacancy-grid
+								.vacancy-grid-item__caption
+									b Информация о компании:
+								p.
+									Консалтинговая компания, услуги в области бухгалтерского учета, 
+									финансового аудита и налогового консультирования
+
+							.col-md-6.col-vacancy-grid
+								.vacancy-grid-item__caption
+									b Основные обязанности:
+								ul
+									each el in vacancy_responsibilities
+										li #{el}
+		//- Vacancy agency
+		.vacancy-agency
+			.container
+				h3.vacancy-agency__title Остальные вакансии в отрасли Бухгалтерия / Финансы / Банки
+				.section-content
+					.vacancy-grid
+						each item in vacancy_items
+							.vacancy-grid-item
+								.vacancy-grid-item__top
+									a.vacancy-grid-item__link.link(href="applicants_vacancy.html") #{item.name}
+									time.vacancy-grid-item__date #{item.date}
+								.vacancy-grid-item__main
+									.row
+										.col-md-6.col-vacancy-grid
+											.vacancy-grid-item__caption
+												b Основные требования:
+											ul
+												each el in item.requirements
+													li #{el}
+
+										.col-md-6.col-vacancy-grid
+											.vacancy-grid-item__caption
+												b Условия:
+											ul
+												each el in item.conditions
+													li #{el}
+					.vacancy-button.text-center
+						a.btn.btn-wide.btn-primary(href="javascript:void(0);") Показать еще вакансии
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

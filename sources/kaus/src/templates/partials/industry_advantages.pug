@@ -1,0 +1,16 @@
+//- Industry advantages
+
+//- Data
+include ../data/industry_advantages
+
+.industry-advantages.section-with-border
+	.container
+		.section-header.text-center
+			.h1.section-header__title Почему выбирают наше агентство
+		.section-content
+			.advantages-circles
+				each item in advantages_circles
+					.advantages-circle
+						.advantages-circle__number-wrap
+							.advantages-circle__number #{item.value}
+						.advantages-circle__text !{item.caption}

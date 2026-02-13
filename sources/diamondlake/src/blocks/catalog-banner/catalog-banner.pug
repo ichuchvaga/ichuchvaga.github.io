@@ -1,0 +1,26 @@
+//- Все примеси в этом файле должны начинаться c имени блока (catalog-banner)
+
+mixin catalog-banner(left, right, title, text, mods)
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +catalog-banner('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-banner--' + modsList[i].trim();
+            }
+        }
+
+    .catalog-banner(class=allMods)&attributes(attributes)
+        .catalog-banner__inner
+            .catalog-banner__left(style="background-image: url(" + left + ")")
+            .catalog-banner__right(style="background-image: url(" + right + ")")
+                .catalog-banner__content
+                    h1.catalog-banner__title!=title
+                    .catalog-banner__text=text

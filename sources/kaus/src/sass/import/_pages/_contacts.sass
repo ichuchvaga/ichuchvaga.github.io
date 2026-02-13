@@ -1,0 +1,179 @@
+// Contacts Page
+
+.contact-info
+	font-size: 0
+	padding-top: 71px
+	border-bottom: 1px solid #eaeaea
+
+	.section-content
+		padding-bottom: 84px
+
+.contact-info-group
+	display: inline-block
+	vertical-align: top
+	width: 50%
+	font-size: 18px
+	font-family: $regular
+	font-weight: 300
+	color: #232a32
+	
+	position: relative
+	padding-left: 124px
+	padding-top: 32px
+	padding-right: 28px
+	margin-top: 85px
+
+	&:nth-child(1),
+	&:nth-child(2)
+		margin-top: 0
+
+	&__heading
+		font-size: 28px
+		line-height: 1.25em
+		font-family: $raleway
+		font-weight: 500
+		margin-bottom: 29px
+
+
+	&__circle
+		display: block
+		width: 102px
+		height: 102px
+		content: ''
+		background: transparent url(../img/icons/circle-102px.png) no-repeat 0 0
+		position: absolute
+		top: 0
+		left: 0
+
+		
+	&__icon
+		display: block
+		position: absolute
+		left: 0
+		top: 50%
+		background-color: transparent
+		background-repeat: no-repeat
+		background-position: 0 0
+
+		&.ct-icon-address
+			width: 70px
+			height: 57px
+			margin-top: -30px
+			background-image: url("../img/icons/ct-address.png")
+
+		&.ct-icon-phone
+			width: 70px
+			height: 64px
+			margin-top: -32px
+			background-image: url("../img/icons/ct-phone.png")
+
+		&.ct-icon-mail
+			width: 70px
+			height: 64px
+			margin-top: -32px
+			background-image: url("../img/icons/ct-mail.png")
+
+		&.ct-icon-clock
+			width: 70px
+			height: 66px
+			margin-top: -33px
+			background-image: url("../img/icons/ct-clock.png")
+
+	&__text-line
+		margin-top: 11px
+
+.contact-directions
+	padding-top: 68px
+	padding-bottom: 64px
+
+.directions-images
+	counter-reset: image_id
+
+	&__in
+		margin-left: -15px
+		margin-right: -15px
+		font-size: 0
+	
+.directions-image
+	display: inline-block
+	vertical-align: top
+	width: 16.66666%
+	padding-left: 15px
+	padding-right: 15px
+	position: relative
+
+	counter-increment: image_id    
+
+	&:before
+		content: counter(image_id)
+		display: block
+		width: 31px
+		height: 31px
+		line-height: 31px
+		font-size: 15px
+		color: #2e82d8
+		text-align: center
+		font-family: $regular
+		font-weight: 500
+
+		background-color: #fff
+		border-radius: 50%
+
+		position: absolute
+		bottom: 8px
+		right: 23px
+		z-index: 1
+	img
+		width: 100%
+		height: auto
+
+/* "How to get to" section */
+
+.directions-tabs
+	margin-top: 53px
+
+.directions-links
+	font-size: 0
+	margin-bottom: 34px
+	
+.directions-link
+	color: #9b9b9b
+	font-family: $raleway
+	font-weight: 300
+	font-size: 20px
+	line-height: 1.2em
+	display: inline-block
+	vertical-align: top
+	margin-right: 36px
+
+	&:hover,
+	&:active,
+	&.active,
+	&:focus
+		color: $blue
+
+	border-bottom: 1px dashed #a5c2e0
+
+
+.directions-text
+	font-family: $regular
+	font-size: 16px
+	line-height: 1.5em
+	color: #000
+	margin-top: 34px
+
+	ol
+		list-style: none
+		margin: 1em 0
+		padding: 0
+
+		& > li
+			padding-left: 34px
+			margin-bottom: 1.166666666666667em
+
+			&:before
+				color: #2e82d8
+				font-weight: 500
+
+.contact-directions-trigger.active
+	border-bottom-color: transparent

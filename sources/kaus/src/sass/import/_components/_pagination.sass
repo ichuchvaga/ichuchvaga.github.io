@@ -1,0 +1,114 @@
+.pagination
+	list-style: none
+	padding: 0
+	margin: 0 -3px
+
+	li
+		display: inline-block
+		vertical-align: top
+		+size(46px, 44px)
+		border: 1px solid #e5e5e5
+		margin: 0 3px
+		padding: 0
+
+		text-align: center
+		font-size: 16px
+		line-height: 42px
+		font-family: $light
+		color: #727272
+		transition: all 0.3s
+
+		&:hover,
+		&.active
+			background-color: #5ebb2e
+			color: hsl(255, 100%, 100%)
+			border-color: #5ebb2e
+			a
+				color: hsl(255, 100%, 100%)
+
+	a
+		display: block
+		+size(100%, 42px)
+		line-height: 42px
+		color: #727272
+		text-decoration: none
+		&:hover,
+		&:active,
+		&:focus
+			text-decoration: none
+			color: hsl(255, 100%, 100%)
+
+	.next
+		position: relative
+
+		&:before,
+		&:after
+			content: ''
+			display: block
+			+size(9px, 16px)
+			background-color: transparent
+			background-image: url("../img/icons/pagination.png")
+			background-repeat: no-repeat
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -8px
+			margin-left: -3px
+			transition: opacity 0.3s
+
+		&:before			
+			background-position: 0 -19px
+
+		&:after
+			background-position: -15px -19px
+			opacity: 0
+			
+			z-index: 1
+
+		&:hover
+			&:before
+				opacity: 0
+			&:after
+				opacity: 1
+
+	.prev
+		position: relative
+
+		&:before,
+		&:after
+			content: ''
+			display: block
+			+size(9px, 16px)
+			background-color: transparent
+			background-image: url("../img/icons/pagination.png")
+			background-repeat: no-repeat
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -8px
+			margin-left: -6px
+			transition: opacity 0.3s
+
+		&:before
+			background-position: 0 0
+
+		&:after
+			background-position: -15px 0
+			opacity: 0
+			
+			z-index: 1
+
+		&:hover
+			&:before
+				opacity: 0
+			&:after
+				opacity: 1
+
+	li.active,
+	li:hover
+		.next,
+		.prev
+			&:after
+				opacity: 1
+			&:before
+				opacity: 0

@@ -1,0 +1,141 @@
+// В этом файле должны быть стили для БЭМ-блока field-range, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-range {
+    $block-name: &; // #{$block-name}__element
+
+    display: block;
+    margin-bottom: 27px;
+
+    &__name {
+        @include field-name;
+    }
+
+    &__input-wrap {
+        display: block;
+        position: relative;
+    }
+
+    &__help-text {
+        @include field-help-text;
+    }
+
+    &__input-range-container {
+        height: 1px;
+        margin: 22px 6px 21px;
+        background: #8a9199;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 0;
+    }
+
+    &__input-range {
+        height: 1px;
+        margin: 22px 6px 21px;
+        background: #8A9199;
+        box-shadow: none;
+        border: 0;
+        display: none;
+    }
+
+    &__input-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__input {
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0;
+        padding: 0 10px;
+        cursor: text;
+        outline: none;
+        -moz-appearance: textfield;
+        height: 38px;
+        font-size: 14px;
+        font-weight: 300;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    &__input-separator {
+        display: inline-block;
+        height: 1px;
+        font-size: 0;
+        width: 7px;
+        margin: 0 12px;
+        flex: 0 0 7px;
+        background: #a6a5a5;
+
+        &:last-child {
+            display: none;
+        }
+    }
+
+    &--no-inputs &__input ,
+    &--no-inputs &__input-separator
+    {
+        display: none;
+    }
+
+    &__label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+
+
+    .noUi-connect {
+        background: #1A1A1A;
+    }
+
+    .noUi-horizontal .noUi-handle {
+        width: 12px;
+        height: 12px;
+        right: -6px;
+        top: -5px;
+        margin: 0;
+        background: black;
+        border: 0;
+        box-shadow: none;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:after, &:before {
+            display: none;
+        }
+    }
+
+    .noUi-origin {
+        width: 100%;
+    }
+
+    .noUi-target {
+        &:before,&:after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #8A9199;
+            position: absolute;
+            top: 50%;
+            background: white;
+            margin-top: -6px;
+        }
+
+        &:before {
+            left: -6px;
+        }
+
+        &:after {
+            right: -6px;
+        }
+    }
+}

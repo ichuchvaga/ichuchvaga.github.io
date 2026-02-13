@@ -1,0 +1,130 @@
+// Radio
+	
+.radio
+	input[type="radio"]
+		display: none
+
+		&:checked + label
+			background-color: $blue
+			color: hsl(255, 100%, 100%)
+
+	label
+		position: relative
+		display: block
+		padding:
+			left: 25px
+			right: 25px
+		height: 40px
+		line-height: 40px
+		font-size: 16px
+		font-family: $regular
+		background-color: #f4f4f4
+		color: #9b9b9b
+		border-radius: 10px
+		cursor: pointer
+		transition: background-color .15s, color .15s
+
+		&:before,
+		&:after
+			display: none
+
+		&:hover
+			background-color: $blue
+			color: hsl(255, 100%, 100%)
+
+.radio-link
+	display: block
+	padding: 
+		top: 12px
+		left: 24px
+		right: 24px
+		bottom: 12px
+	height: 40px
+	background-color: #f4f4f4
+	border-radius: 10px
+	transition: background-color .15s
+	&:hover,
+	&:focus
+		background-color: $blue
+		.icon-arrows-l
+			background-position: 0px -35px
+		.icon-arrows-r
+			background-position: -32px 0px
+
+
+.radio-inline
+	font-size: 0
+	.radio
+		display: inline-block
+		vertical-align: top
+		margin-right: 6px
+		&:last-child
+			margin-right: 0
+
+.radio-blocks
+	.radio
+		margin-bottom: 18px
+
+// Checkbox
+
+.checkbox
+	font-size: 0
+	margin-bottom: 20px
+
+	input[type="checkbox"]
+		display: none
+
+		&:checked + label
+			color: hsl(0, 0%, 0%)
+
+			&:after
+				opacity: 1
+
+	label
+		position: relative
+		display: inline-block
+		vertical-align: top
+		padding-left: 30px
+		margin-right: 10px
+		height: 30px
+		font-size: 16px
+		color: #727272
+		font-family: $regular
+		cursor: pointer
+
+		&:before
+			content: ''
+			display: block
+			+size(30px)
+			position: absolute
+			top: 0
+			left: 0
+			border-radius: 8px
+			border: 1px solid #eaeaea
+			background-color: $blue
+			transition: border-color 0.3s
+
+		&:after
+			content: ''
+			display: block
+			+size(17px, 12px)
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -6px
+			margin-left: -8.5px
+			opacity: 0
+			transition: opacity 0.3s
+
+			background-image: url('../img/icons/check.png')
+			background-repeat: no-repeat
+
+		&:hover
+			color: hsl(0, 0%, 0%)
+
+			&:before
+				border-color: #aaa
+
+.checkboxes
+	.checkbox
+		margin-bottom: 21px

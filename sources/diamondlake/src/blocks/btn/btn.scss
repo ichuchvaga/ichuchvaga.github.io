@@ -1,0 +1,126 @@
+// В этом файле должны быть стили для БЭМ-блока btn, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    max-width: 100%;
+    margin: 0;
+    padding: 8px;
+    height: 40px;
+
+    border-radius: 0;
+    border: 1px solid $black;
+
+    background-image: none;
+
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    text-transform: none;
+    font-family: inherit;
+    text-decoration: none;
+    color: $black;
+
+    cursor: pointer;
+    overflow: hidden;
+    transition-duration: $transition-time;
+    transition-property: background-color, background-position, border-color, color, opacity;
+
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $black;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    &:active,
+    &:focus {
+        @include field-focus;
+    }
+
+    &--disabled,
+    &:disabled {
+        opacity: $opacity;
+        cursor: not-allowed;
+        color: $black;
+        background-color: #E0E2EB;
+        border-color: #E0E2EB;
+
+        @at-root a.btn--disabled {
+            pointer-events: none;
+        }
+    }
+
+    &--main {
+        background: #1A1A1A;
+        color: white;
+        border-color: #1a1a1a;
+
+        &:hover, &:focus {
+            //background: #66A9CB;
+            //border-color: #66A9CB;
+            //color: white;
+            background: #1A1A1A;
+            color: white;
+            border-color: #1a1a1a;
+        }
+    }
+
+    &--main-o {
+        border-color: #1A1A1A;
+        background: transparent;
+
+        &:hover, &:focus {
+            background: #1A1A1A;
+            color: #fff;
+        }
+    }
+
+    &--white-o {
+        border-color: $white;
+        color: $white;
+        background: transparent;
+
+        &:hover, &:focus {
+            background: $white;
+            color: $black;
+        }
+    }
+
+    &--blue {
+        border-color: #25a4db;
+        background: #25a4db;
+        color: $white;
+
+        &:hover, &:focus {
+            opacity: 1;
+            background: #29baf9;
+            border-color: #29baf9;
+            color: $white;
+        }
+    }
+
+    &--blue-o {
+        border-color: #25a4db;
+        color: $black;
+        background: transparent;
+
+        &:hover, &:focus {
+            border-color: #29baf9;
+            opacity: 1;
+            color: $black;
+        }
+    }
+}

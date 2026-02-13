@@ -1,0 +1,89 @@
+//- Data
+include ../data/resume
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Сервис подбора кадров";
+	var pagetitle = "Сервис подбора кадров";
+	var ymap = true;
+	var ymap_center = false;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--blue
+			.container
+				h1.page-head__title #{pagetitle}
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Кадровое агентство КАУС",
+					url: "main.html"
+				}
+			],
+			last_title: header_menu_active
+		})
+
+		//- Search
+		.recruitment-search
+			.container
+				form.search-form
+					.search
+						input.search__field(type="text" name="q" placeholder="" value="Бухгалтер")/
+						button.search__button(type="submit")
+							span.icon.icon-search
+
+				.recruitment-search-results
+					.recruitment-search-results__item
+						.h3.recruitment-search-results__title
+							a(href="#" class="link") Подбор опытного бухгалтера
+
+						.recruitment-search-results__descr Опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов.
+
+
+		//- Recruitment
+
+		//- CTA
+		//- Section with header
+		.section-with-header.blue-gray-theme
+			.container
+				.wrapper
+					.section-with-header__l
+						.section-with-header__title.section-header__title.annotation.
+							Не тратьте время и силы на самостоятельный поиск главного бухгалтера!
+					.section-with-header__r
+						p.section-with-header__descr.
+							Наши специалисты закроют Вашу вакансию, как минимум, в два раза быстрее и&nbsp;с&nbsp;гарантированным качеством!
+						a.btn.btn-wide.btn-outline.btn-outline-transparent(href="javascript:void(0);") Получить консультацию
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь/
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

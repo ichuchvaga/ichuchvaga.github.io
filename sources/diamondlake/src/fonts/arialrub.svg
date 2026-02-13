@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata></metadata>
+<defs>
+<font id="arial_rubregular" horiz-adv-x="0" >
+<font-face units-per-em="1000" ascent="800" descent="-200" />
+<missing-glyph horiz-adv-x="250" />
+<glyph />
+<glyph unicode="&#xd;" horiz-adv-x="250" />
+<glyph />
+<glyph />
+<glyph unicode=" "  horiz-adv-x="250" />
+<glyph unicode="&#x09;" horiz-adv-x="250" />
+<glyph unicode="&#xa0;" horiz-adv-x="250" />
+<glyph unicode="B" />
+<glyph unicode="R" horiz-adv-x="1000" />
+<glyph unicode="U" />
+<glyph unicode="&#x406;" horiz-adv-x="1000" />
+<glyph unicode="&#x420;" horiz-adv-x="556" d="M157 400h123q33 0 62.5 5t52 18.5t36 37t13.5 60.5q0 31 -12 53.5t-32.5 36t-48.5 20t-60 6.5h-134v-237zM280 318h-123v-70h287v-68h-287v-180h-94v180h-49v68h49v70h-49v82h49v316h224q94 0 145 -20t80 -68q30 -48 30 -107q0 -60 -22 -99t-58.5 -62t-83.5 -32.5 t-98 -9.5z" />
+<glyph unicode="&#x422;" horiz-adv-x="1000" />
+<glyph unicode="&#x440;" horiz-adv-x="556" d="M157 400h123q33 0 62.5 5t52 18.5t36 37t13.5 60.5q0 31 -12 53.5t-32.5 36t-48.5 20t-60 6.5h-134v-237zM280 318h-123v-70h287v-68h-287v-180h-94v180h-49v68h49v70h-49v82h49v316h224q94 0 145 -20t80 -68q30 -48 30 -107q0 -60 -22 -99t-58.5 -62t-83.5 -32.5 t-98 -9.5z" />
+<glyph unicode="&#x2000;" horiz-adv-x="358" />
+<glyph unicode="&#x2001;" horiz-adv-x="716" />
+<glyph unicode="&#x2002;" horiz-adv-x="358" />
+<glyph unicode="&#x2003;" horiz-adv-x="716" />
+<glyph unicode="&#x2004;" horiz-adv-x="238" />
+<glyph unicode="&#x2005;" horiz-adv-x="179" />
+<glyph unicode="&#x2006;" horiz-adv-x="119" />
+<glyph unicode="&#x2007;" horiz-adv-x="119" />
+<glyph unicode="&#x2008;" horiz-adv-x="89" />
+<glyph unicode="&#x2009;" horiz-adv-x="143" />
+<glyph unicode="&#x200a;" horiz-adv-x="39" />
+<glyph unicode="&#x202f;" horiz-adv-x="143" />
+<glyph unicode="&#x205f;" horiz-adv-x="179" />
+<glyph unicode="&#x20bd;" horiz-adv-x="556" d="M157 400h123q33 0 62.5 5t52 18.5t36 37t13.5 60.5q0 31 -12 53.5t-32.5 36t-48.5 20t-60 6.5h-134v-237zM280 318h-123v-70h287v-68h-287v-180h-94v180h-49v68h49v70h-49v82h49v316h224q94 0 145 -20t80 -68q30 -48 30 -107q0 -60 -22 -99t-58.5 -62t-83.5 -32.5 t-98 -9.5z" />
+<glyph unicode="&#x25fc;" horiz-adv-x="500" d="M0 0v0v0v0v0z" />
+</font>
+</defs></svg> 

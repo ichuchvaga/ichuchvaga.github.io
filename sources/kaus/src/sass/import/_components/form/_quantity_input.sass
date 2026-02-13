@@ -1,0 +1,74 @@
+.quantity-widget
+	&__title
+		font-size: 14px
+		line-height: 1.25em
+		color: #727272
+		font-family: $regular
+		margin-bottom: 12px
+
+	&__box
+		font-size: 0
+		line-height: 0
+		width: 140px
+
+	&__button
+		box-shadow: none
+		border-radius: 0
+		background-color: #fff
+		border: 1px solid #e5e5e5
+
+		position: relative
+		display: inline-block
+		vertical-align: top
+		+size(36px, 40px)
+		transition: background-color 0.3s
+		cursor: pointer
+
+		&:before
+			font-size: 16px
+			line-height: 1em
+			font-family: $regular
+			color: #090909
+
+			display: inline
+			position: absolute
+			top: 50%
+			left: 0
+			right: 0
+
+			transition: color 0.3s
+			
+
+		&.prev:before
+			content: '\005f'
+			margin-top: -15px
+
+		&.next:before
+			content: '\002b'
+			margin-top: -0.5em
+
+		&:hover
+			background-color: #5ebb2e
+			border-color: #5ebb2e
+
+			&:before
+				color: hsl(255, 100%, 100%)
+
+	&__input
+		display: inline-block
+		vertical-align: top
+		+size(68px, 40px)
+		padding: 0 8px
+
+		box-shadow: none
+		border-radius: 0
+		background-color: #fff
+		border-width: 1px 0 1px 0
+		border-style: solid
+		border-color: #e5e5e5
+
+		font-size: 16px
+		line-height: 38px
+		font-family: $regular
+		color: #090909
+		text-align: center

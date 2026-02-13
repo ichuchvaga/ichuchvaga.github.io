@@ -1,0 +1,171 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'WOMen’s wedding <br> ring WM18',
+                gallery = [
+                    'img/product-3-1.jpg',
+                    'img/product-3-2.jpg',
+                    'img/product-3-3.jpg',
+                    'img/product-3-4.jpg',
+                ],
+                price = '575',
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Collections', link: '#'},
+                    {title: 'Mom’s Bracelets', link: '#'},
+                    {title: 'Boy', link: '#'},
+                    {title: 'BG14W'}
+                ];
+                galleryText = {
+                    women: 'Women’s ring width 5.5 mm',
+                }
+    +product(title, gallery, breadcrumbs, galleryText)
+        +product-price(price)
+        +product-options({
+            title: 'Металл:',
+            mainOptions: ['585', '750'],
+            options: [
+                {
+                    id: 'color-white',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '585'
+                },
+                {
+                    id: 'color-yellow',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '585'
+                },
+                {
+                    id: 'color-pink',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '585'
+                },
+                {
+                    id: 'color-white-750',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '750'
+                },
+                {
+                    id: 'color-yellow-750',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '750'
+                },
+                {
+                    id: 'color-pink-750',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '750'
+                },
+            ],
+            mods: 'color',
+            name: 'color',
+            showValue: true,
+        }, 'color')
+
+        //-
+            +product-options({
+                title: 'Width:',
+                options: [
+                    {
+                        id: 'wwidth-0',
+                        value: '5.5 mm',
+                        label: '5.5',
+                    },
+                ],
+                mods: 'circle',
+                name: 'wWidth',
+                showValue: true,
+            }, 'circle')
+
+        -
+            var options = ['14.0','14.5','15.0','15.5','16.0','16.5','17.0','17.5','18.0','18.5','19.0','19.5','20.0'];
+            options = options.map((elem, index) => ({
+                id: 'rsize-' + index,
+                value: elem,
+                label: elem,
+            }));
+        +product-options({
+            title: 'Размер кольца:',
+            info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+            options: options,
+            mods: 'square',
+            name: 'ringSize',
+            showValue: true
+        }, 'square')
+
+        +product-details-toggle()
+            .product-details-cols
+                .product-details-cols__inner
+                    +product-details('Описание:', [
+                        {
+                            label: 'Артикул',
+                            value: 'ES4R03',
+                        }, {
+                            label: 'Ширина',
+                            value: '5 мм',
+                        }, {
+                            label: 'Размер',
+                            value: '16.5',
+                        }, {
+                            label: 'Металл',
+                            value: 'Платина 750',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '2.1 гр',
+                        }
+                    ], 'desktop')
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16 шт',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: '3',
+                        }, {
+                            label: 'Чистота',
+                            value: '5',
+                        }
+                    ], 'desktop')
+                    +product-details(false, [
+                        {
+                            label: 'Ширина кольца',
+                            value: '5 мм',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '4.3 гр',
+                        }, {
+                            label: 'Бриллианты',
+                            value: '12 шт',
+                        }, {
+                            label: 'Вес камней',
+                            value: '0.04 карат',
+                        }, {
+                            label: 'Цвет/Чистота',
+                            value: '3/5',
+                        }
+                    ], 'mobile')
+
+        +product-summary(['date', 'available', 'laser'])
+        +product-buttons()

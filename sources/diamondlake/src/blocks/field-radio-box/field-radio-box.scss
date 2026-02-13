@@ -1,0 +1,84 @@
+// В этом файле должны быть стили для БЭМ-блока field-radio-box, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-radio-box {
+
+  $block-name:                &; // #{$block-name}__element
+
+
+  &__inner {
+    display: block;
+    height: 100%;
+    border: 2px solid #e9e9ec;
+    padding: 15px 20px;
+    position: relative;
+    transition-property: border-color;
+    transition-duration: $transition-time;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      border: 1px solid $gray-dark;
+      position: absolute;
+      top: 18px;
+      right: 19px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      position: absolute;
+      top: 23px;
+      right: 24px;
+      background: $green;
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: $transition-time;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  &--checked {
+    #{$block-name}__inner {
+      border-color: $green;
+
+      &::before {
+        border-color: $green;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    #{$block-name}__inner {
+      border-color: $green;
+    }
+  }
+
+}

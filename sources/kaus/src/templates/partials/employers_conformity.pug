@@ -1,0 +1,17 @@
+//- Employers conformity
+
+//- Data
+include ../data/employers_conformity
+
+.section-conformity.section-conformity--employers
+	.container
+		.section-header.text-center
+			.h1.section-header__title Помогаем решать традиционные задачи службы персонала
+		.section-content
+			.advantages-circles
+				each item in advantages_circles
+					.advantages-circle
+						.advantages-circle__wrap.valign-wrapper
+							.advantages-circle__img
+								img(src=`upload/employers/conformity/${item.img}.png` alt="")/
+						.advantages-circle__text !{item.caption}

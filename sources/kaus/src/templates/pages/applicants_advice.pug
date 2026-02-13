@@ -1,0 +1,79 @@
+//- Data
+include ../data/applicants_advice
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Соискателям",
+		pagetitle = "Советы кандидатам",
+		ymap = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--gray
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'applicants_advice.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Filter panel
+		.filter-panel
+			.container
+				.row
+					.filter-panel__l
+						.radio-buttons.radio-inline
+							+radio({
+								name: 'years',
+								items: [
+									{
+										label: 2018,
+										checked: true
+									},
+									{
+										label: 2017
+									},
+									{
+										label: 2016
+									}
+								]
+							})
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+		//- Applicants advice
+		.applicants-advice.section-with-border
+			.container
+				ul.advice-list
+					each item in articles
+						li.advice-item
+							.advice-item__title.h4
+								a.advice-item__link.link(href="javascript:void(0);") #{item.title}
+							p.advice-item__descr #{item.descr}
+				.advice-button.text-center
+					a.btn.btn-wide.btn-primary(href="javascript:void(0);") Показать еще советы
+		//- Section bottom
+		include ../partials/section_bottom
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

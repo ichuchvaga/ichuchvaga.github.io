@@ -1,0 +1,30 @@
+//- Все примеси в этом файле должны начинаться c имени блока (slider)
+
+mixin slider(steps, step, label, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +slider('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' slider--' + modsList[i].trim();
+            }
+        }
+
+    .slider(class=allMods)&attributes(attributes)
+        input(type="hidden" value="1" data-step=step data-start=steps[0] data-end=steps[1]).slider__input
+        .slider__inner
+            .slider__track
+            .slider__steps
+                each stepText in steps
+                    .slider__step=stepText
+                if step
+                    .slider__current=steps[0]
+            .slider__handle

@@ -1,0 +1,106 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mini-cart)
+
+mixin mini-cart(text, mods)
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +mini-cart('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' mini-cart--' + modsList[i].trim();
+            }
+        }
+
+    .mini-cart(class=allMods)&attributes(attributes)
+        .mini-cart__inner
+            a(href="#").mini-cart__close
+            .mini-cart__title Ваша корзина
+
+            .mini-cart__list
+                +mini-cart-product(true)
+                +mini-cart-product()
+
+            .mini-cart__total
+                .mini-cart__total-label Общая стоимость:
+                .mini-cart__total-value 156 000 &#8381;
+
+            +btn('Перейти к оформлению', 'main')(href="#modal-order", data-modal="open").mini-cart__order
+            .mini-cart__hint Менеджер свяжется с вами, чтобы подтвердить заказ и составить договор на изготовление украшений.
+            +btn('Продолжить покупки', 'main-o')(href="#").mini-cart__close-button
+
+            +mini-cart-actions()
+            +mini-cart-recommend()
+
+
+
+mixin mini-cart-product(pair)
+    .mini-cart-product&attributes(attributes)
+        .mini-cart-product__image
+            img(src="img/product1.jpg")
+        .mini-cart-product__content
+            a(href="product.html").mini-cart-product__title Помолвочное кольцо Sophia
+            if pair
+                .mini-cart-product__pair
+                    .mini-cart-product__description
+                        .mini-cart-product__sex Женское:
+                        | Материал: 585
+                        br
+                        | Бриллиант: I / VS1 / 0.3 карат
+                        br
+                        | Размер: 14.5
+                    .mini-cart-product__description
+                        .mini-cart-product__sex Мужское:
+                        | Материал: 585
+                        br
+                        | Бриллиант: I / VS1 / 0.3 карат
+                        br
+                        | Размер: 14.5
+            else
+                .mini-cart-product__description
+                    |Материал: 585
+                    br
+                    |Бриллиант: I / VS1 / 0.3 карат
+                    br
+                    |Размер: 14.5
+            .mini-cart-product__prices
+                .mini-cart-product__price 156 000 &#8381;
+                .mini-cart-product__price-old 158 000 &#8381;
+
+        .mini-cart-product__actions
+            a(href="#").mini-cart-product__favorite
+                +icon-svg('heart', 18, 18)
+            a(href="#").mini-cart-product__remove
+
+
+mixin mini-cart-recommend()
+    .mini-cart-recommend&attributes(attributes)
+        .mini-cart-recommend__title Возможно, вам понравится
+        .mini-cart-recommend__slider.swiper
+            .swiper-wrapper
+                +mini-cart-recommend-product().swiper-slide
+                +mini-cart-recommend-product().swiper-slide
+                +mini-cart-recommend-product().swiper-slide
+                +mini-cart-recommend-product().swiper-slide
+            .swiper-pagination
+
+mixin mini-cart-recommend-product()
+    .mini-cart-recommend-product&attributes(attributes)
+        .mini-cart-recommend-product__image
+            img(src="img/product1.jpg")
+        .mini-cart-recommend-product__content
+            .mini-cart-recommend-product__title Помолвочное кольцо #[br] Sophia
+            .mini-cart-recommend-product__price 156 000 &#8381;
+
+mixin mini-cart-actions()
+    .mini-cart-actions
+        .mini-cart-actions__buttons
+            +btn('Консультация в WhatsApp', 'main')(href="#")
+            +btn('Записаться на примерку', 'main')(href="#", data-mobile-text="Позвонить")
+        .mini-cart-actions__hint Если вы не готовы оформить заказ сегодня, то вы можете отправить ссылку на выбранный товар себе на почту, чтобы в дальнейшем не искать его заново.
+        a(href="#modal-order", data-modal="open").mini-cart-actions__send Отправить на почту

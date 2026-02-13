@@ -1,0 +1,203 @@
+// В этом файле должны быть стили для БЭМ-блока product-card, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.product-card {
+    $block-name: &; // #{$block-name}__element
+
+    position: relative;
+
+    &__slider {
+        margin-bottom: 12px;
+
+        .swiper-pagination {
+            display: none;
+            bottom: 15px;
+
+            .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                border: 1px solid #000;
+                background: none;
+                opacity: 1;
+            }
+
+            .swiper-pagination-bullet-active {
+                background: #000;
+            }
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            display: none;
+            position: absolute;
+            bottom: 15px;
+            top: unset;
+            margin: 0;
+            left: 18px;
+            width: auto;
+            height: auto;
+
+            &:before, &:after {
+                background-image: url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1L1 9L9 17' stroke='%231A1A1A' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                font-size: 0;
+                width: 10px;
+                height: 18px;
+                display: block;
+                background-size: 100% 100%;
+            }
+        }
+        .swiper-button-next {
+            left: unset;
+            right: 18px;
+
+            &:after {
+                transform: scaleX(-1);
+            }
+        }
+    }
+
+    &__image {
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    &__heading {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 18px;
+    }
+
+    &__info {
+        display: none;
+        flex-wrap: wrap;
+        padding: 0 18px 32px;
+        justify-content: space-between;
+        margin-top: 16px;
+        align-items: flex-end;
+    }
+
+    &__button {
+        margin-top: 32px;
+        width: 100%;
+        flex: none;
+    }
+
+    &__props {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__likes{
+        cursor: pointer;
+
+        svg {
+            fill: none;
+        }
+
+        &--in {
+            color: #1a1a1a;
+
+            svg {
+                fill: #1a1a1a;
+            }
+        }
+
+        &:hover, &:focus {
+            color: #1a1a1a;
+        }
+
+        &:hover {
+            svg {
+                fill: #1a1a1a;
+            }
+        }
+    }
+
+    &:hover &__inner {
+        outline: 1px solid #1A1A1A;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+    }
+
+    &:hover &__slider {
+        .swiper-pagination, .swiper-button-prev, .swiper-button-next {
+            display: block;
+        }
+    }
+
+    &:hover &__info {
+        display: flex;
+    }
+
+    @media (max-width: 1000px) {
+        &__slider {
+            margin-bottom: 8px;
+
+            .swiper-pagination {
+                display: flex;
+                justify-content: center;
+                bottom: 12px;
+                line-height: 0;
+
+                .swiper-pagination-bullet {
+                    width: 6px;
+                    height: 6px;
+                    border: 1px solid #8A9199;
+                    margin: 0 3px;
+                }
+
+                .swiper-pagination-bullet-active {
+                    background: #8A9199;
+                }
+            }
+        }
+
+        &__heading {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        &__heading-title {
+            margin-bottom: 4px;
+        }
+
+        &__heading-price {
+            font-weight: 400;
+        }
+
+        &__info {
+            display: block;
+            padding: 0;
+            justify-content: center;
+        }
+
+        &__props {
+            display: none;
+        }
+
+        &__likes {
+            display: flex;
+            justify-content: center;
+        }
+
+        &__button {
+            display: none;
+        }
+
+        &:hover &__inner {
+            outline: none;
+        }
+
+        &:hover &__slider .swiper-button-prev, &:hover &__slider .swiper-button-next {
+            display: none;
+        }
+    }
+}

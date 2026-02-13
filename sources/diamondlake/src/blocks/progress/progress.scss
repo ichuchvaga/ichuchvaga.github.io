@@ -1,0 +1,36 @@
+// В этом файле должны быть стили для БЭМ-блока progress, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.progress {
+  border-radius: $border-radius;
+  text-align: center;
+  background: #e9e9ec;
+
+  &__bar {
+    position: relative;
+    border-radius: $border-radius;
+    max-width: 100%;
+    white-space: nowrap;
+    transition: width $transition-time;
+    background: #7fb568;
+    min-height: 6px;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      bottom: 0;
+      width: 12px;
+      background: inherit;
+      transform: skewX(-60deg);
+      transform-origin: top left;
+    }
+  }
+
+  &__bartext {
+    display: inline-block;
+    padding: 0.5em;
+  }
+}

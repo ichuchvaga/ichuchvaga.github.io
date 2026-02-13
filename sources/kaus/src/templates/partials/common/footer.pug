@@ -1,0 +1,50 @@
+include ../../data/header
+
+footer
+	nav.main-menu
+		.container
+			.row
+				ul.main-menu-list
+					each item in header_menu
+						- var activeClass = "";
+						- if (item.title == header_menu_active) activeClass = "active";
+						- var url = "javascript:void(0);"; if (item.url != '') url = item.url;
+
+						li.main-menu-list__item(class=activeClass)
+							a(href=url class="main-menu-list__link") #{item.title}
+
+	.header-base
+		.container
+			.row
+				.header-base__l.col-md-6
+					a(href="main.html" class="logo")
+						img(src="src/img/logo.png" alt="")/
+
+					.header-company-name Кадровое агентство / 11 лет на рынке
+						.header-base__l-button
+							a(href="javascript:void(0);").link-dashed Специализированные агентства "КАУС"
+
+				.header-base__r.col-md-6
+					.address-widget
+						a.tooltip(href="javascript:void(0);" title="Карта сайта")
+							span.icon.icon-scheme
+						span.address-widget__text г. Москва, Шлюзовая Набережная 6,<br/> стр. 4, эт. 3, оф. 15
+
+						.address-widget__button
+							a(href="javascript:void(0);" class="show-on-map-btn link-dashed") Посмотреть на карте
+
+					.phones-widget
+						.phones-widget__cities
+							a(href='javascript:void(0);' data-city="msk").phones-widget__city.active Москва
+							a(href='javascript:void(0);' data-city="spb").phones-widget__city Санкт-Петербург
+
+						.phones-widget__numbers
+							a(href="tel:84951234567" data-city="msk" class="phones-widget__number active") 8 (495) 123-45-67
+							a(href="tel:84951234567" data-city="spb" class="phones-widget__number") 8 (812) 123-45-67
+
+						.callback-button-wrap
+							a(href="javascript:void(0);" class="callback-button link-underlined")
+								span.callback-button__text Заказать обратный звонок
+
+
+include ../modal/all

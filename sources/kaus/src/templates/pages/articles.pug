@@ -1,0 +1,96 @@
+//- Data
+include ../data/articles
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Статьи";
+	var pagetitle = "Статьи";
+	var ymap = true;
+	var ymap_center = false;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--blue
+			.container
+				h1.page-head__title #{pagetitle}
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+			],
+			last_title: header_menu_active
+		})
+
+		//- Filter panel
+		.filter-panel
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="articles.html" class="btn btn-wide btn-outline") Категории статей
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+
+		//- Items List
+		.articles-section.section-with-border
+			.container
+				.articles-list-outer
+					ul.articles-list
+						each item in articles_array
+							- var cat_url = "javascript:void(0);";
+							- if (item.category_url != '') cat_url = item.category_url;
+
+							- var single_url = "javascript:void(0);";
+							- if (item.elem_url != '') single_url = item.elem_url;
+
+							li.articles-list__item
+								.articles-list__category-link
+									a(href=cat_url class="link") #{item.category}
+
+								.h4.articles-list__item-link
+									a(href=single_url class="link") #{item.elem_title}
+
+								.articles-list__descr #{item.descr}
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь/
+
+		//- Consult
+		include ../partials/consult
+
+
+		//- Clients
+		include ../partials/clients
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

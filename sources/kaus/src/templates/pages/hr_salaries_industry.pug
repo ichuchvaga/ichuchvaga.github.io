@@ -1,0 +1,178 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/select
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Обзор заработных плат";
+	var ymap = true;
+	var tabs_js = true;
+	var select_js = true;
+	var tooltip_js = true;
+	var chart_modal = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Библиотека HR",
+					url: "hr.html"
+				},
+				{
+					title: "Обзор заработных плат",
+					url: "hr_salaries.html"
+				}
+			],
+			last_title: "Медицина / Фармацевтика / Медоборудование"
+		})
+
+		//- Top
+
+		//- Filter panel
+		.filter-panel.filter-panel-industries-two-dropdowns
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="resume.html" class="btn btn-wide btn-outline") Каталог отраслей
+
+						.filter-panel__dropdowns
+							.filter-panel__dropdown
+								+select({
+									name: "specialty",
+									placeholder: "Выберите квартал",
+									options: ["II квартал", "III квартал", "IV квартал"],
+									search: false,
+									size: "sm"
+								})
+
+							.filter-panel__dropdown
+								+select({
+									name: "specialty",
+									placeholder: "Выберите год",
+									options: ["2017", "2016"],
+									search: false,
+									size: "sm"
+								})
+						
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+
+		.hr-salaries-industry.section-with-border
+			.container
+				h2 Медицина / Фармацевтика / Медоборудование
+
+			//- Tables
+
+			.table-section
+				.container
+					.table-title.h3 Управляющий и административный персонал
+
+				.table-container
+					.container
+						table.table
+							tbody
+								tr
+									th.table__position Позиция
+									th.table__level.table__min-level Минимальный уровень
+									th.table__level.table__middle-level Средний уровень
+									th.table__level.table__elevated-level Повышенный уровень
+
+								each row in salaries_table1
+									tr
+										td.table__position
+											a.table__link.link(href="javascript:void(0);") #{row.position}
+											a(href="javascript:void(0);" class="chart-popup-link tooltip js-fancy" title="Динамика заработной платы" data-id="popup-chart")
+												span.icon.icon-chart
+
+										td.table__level.table__min-level #{row.min}
+										td.table__level.table__middle-level #{row.average}
+										td.table__level.table__elevated-level #{row.max}
+
+
+			.table-section
+				.container
+					.table-title.h3 Врачебный персонал
+
+				.table-container
+					.container
+						table.table
+							tbody
+								tr
+									th.table__position Позиция
+									th.table__level.table__min-level Минимальный уровень
+									th.table__level.table__middle-level Средний уровень
+									th.table__level.table__elevated-level Повышенный уровень
+
+								each row in salaries_table2
+									tr
+										td.table__position
+											a.table__link.link(href="javascript:void(0);") #{row.position}
+											a(href="javascript:void(0);" class="chart-popup-link tooltip js-fancy" title="Динамика заработной платы" data-id="popup-chart")
+												span.icon.icon-chart
+
+										td.table__level.table__min-level #{row.min}
+										td.table__level.table__middle-level #{row.average}
+										td.table__level.table__elevated-level #{row.max}
+		
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Поиск соискателей#[br]по резюме за 3 дня
+							span.consult-subtitle Вы получите пул лучших кандидатов<br/> из базы нашего агентства в 140 тыс. резюме
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Заказать поиск		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

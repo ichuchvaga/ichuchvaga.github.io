@@ -1,0 +1,63 @@
+//- Data
+include ../data/about_work
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Об агентстве",
+		pagetitle = "Работа у нас",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-about(style={"background-color":"#b8d0f2"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Получить консультацию
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'about.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- About work
+		.about-work
+			.container
+				.about-work__intro
+					each item in work_items
+						p #{item}
+				.section-content
+					ul.about-work-list.row.text-center
+						each item in work_list
+							li.about-work-item.col-md-4
+								a.about-work-item__link(href="javascript:void(0);")
+									.about-work-item__img.valign-wrapper
+										img(src=`upload/about/work/${item.img}.png` alt=item.title)/
+									.about-work-item__title !{item.title}
+
+		//- Subscribe
+		include ../partials/subscribe
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

@@ -1,0 +1,37 @@
+//- Все примеси в этом файле должны начинаться c имени блока (reviews)
+
+mixin reviews(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +reviews('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' reviews--' + modsList[i].trim();
+            }
+        }
+
+        var items = {
+            'Яндекс картах': 'https://yandex.ru/maps/org/diamondlake/154627824959/reviews/?ll=37.578245%2C55.769332&z=14',
+            'Google maps': 'https://www.google.com/search?sa=X&sxsrf=ALiCzsaVoq9YA3dp7TaMT3MMX3pKmkHZFg:1657459728088&q=diamond%20lake%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%D1%8B&ved=2ahUKEwi6wsnStu74AhVGQ_EDHX9QAGAQvS56BAgaEAE&biw=1920&bih=969&dpr=1&tbs=lf:1,lf_ui:10&tbm=lcl&rflfq=1&num=10&rldimm=18141069067110169505&lqi=ChlkaWFtb25kIGxha2Ug0L7RgtC30YvQstGLIgI4AVobIhlkaWFtb25kIGxha2Ug0L7RgtC30YvQstGLkgENamV3ZWxyeV9zdG9yZZoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOdGJ6UnFjRU5uRUFFqgEhEAEqHSIZZGlhbW9uZCBsYWtlINC-0YLQt9GL0LLRiygN&phdesc=p9rd4yE52DE&rlst=f#rlfi=hd:;si:18141069067110169505,l,ChlkaWFtb25kIGxha2Ug0L7RgtC30YvQstGLIgI4AVobIhlkaWFtb25kIGxha2Ug0L7RgtC30YvQstGLkgENamV3ZWxyeV9zdG9yZZoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOdGJ6UnFjRU5uRUFFqgEhEAEqHSIZZGlhbW9uZCBsYWtlINC-0YLQt9GL0LLRiygN,y,p9rd4yE52DE;mv:[[60.103800199999995,50.2470259],[55.4297946,29.213592799999997]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:10',
+            '2ГИС': 'https://2gis.ru/moscow/search/diamondlake/firm/70000001043868202/37.578279%2C55.769309/tab/reviews?m=37.578317%2C55.769283%2F17.71',
+            'Zoon': 'https://zoon.ru/msk/utility_service/yuvelirnaya_studiya_diamondlake/',
+        }
+
+    .reviews(class=allMods)&attributes(attributes)
+        each link, title in items
+            .reviews__item
+                .reviews__date 12.50.20022
+                .reviews__text Супер мастерская. Делают все качественно и в срок, слушают и слышат все пожелания, очень сильно помогли с выбором и сделали все под наши предпочтения! В общем, взаимодействием с салоном и самим заказом очень доволен
+                .reviews__rating
+                    each i in [1,2,3,4,5]
+                        svg(width='20', height='20')
+                            use(xlink:href='img/sprite.svg#star')
+                .reviews__summary Посмотреть все отзывы на #[a(href=link)=title]

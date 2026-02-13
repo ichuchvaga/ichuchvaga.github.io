@@ -1,0 +1,19 @@
+mixin input_field(obj)
+	-
+		var input_value = ""; if (obj.value) input_value = obj.value;
+		var input_ph = ""; if (obj.placeholder) input_ph = obj.placeholder;
+		var input_type = "text"; if (obj.type) input_type = obj.type;
+		var input_name = ""; if (obj.name) input_name = obj.name;
+		var input_class = ""; if (obj.size) input_class = ` input-size-${obj.size}`;
+		var validate_class = ""; if (obj.validateClass) validate_class = ` ${obj.validateClass}`;
+		var input_required = obj.required || false;
+
+	.form-element
+		input(
+			type=input_type
+			class="input" + input_class + validate_class
+			placeholder=input_ph
+			name=input_name
+			value=input_value
+			required=input_required
+		)/

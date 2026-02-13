@@ -1,0 +1,160 @@
+//- Все примеси в этом файле должны начинаться c имени блока (catalog)
+
+mixin catalog(type, mods)
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +catalog('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        var showBannerProduct = (type === 'engagement' && lang === 'ru');
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog--' + modsList[i].trim();
+            }
+        }
+        var title = 'Engagement Rings';
+        if (type === 'wedding') title = 'Wedding Rings';
+        if (type === 'earrings') title = 'Earring Suds';
+
+        if (lang === 'ru') {
+            title = 'Помолвочные кольца';
+            if (type === 'wedding') title = 'Обручальные кольца';
+            if (type === 'earrings') title = 'Серьги Пусеты';
+            if (type === 'moms') title = 'Браслеты «Детки»';
+        }
+
+    .catalog(class=allMods)&attributes(attributes)
+        .catalog__inner.container
+            .catalog__mobile-heading=title
+            .catalog__header
+                +btn((lang === 'ru' ? 'Фильтры' : 'Filter by'))(href="javascript:void()").catalog-filter-button.active
+                +catalog-sort()
+                +catalog-filter(type).active
+                .catalog-results
+                    .catalog-results__filters
+                    .catalog-results__count=(lang ==='ru' ? 'Результат: 135' : 'Results: 135')
+            .catalog__list
+                //- props: ['Бриллиант 0.30 карат', 'Бриллиант 0.40 карат', 'Бриллиант 0.50 карат', 'Бриллиант 0.60 карат'],
+                - for (var i = 0; i < 30; ++i) {
+                    - itemProps = ['Бриллиант 0.30 карат', 'Бриллиант 0.40 карат', 'Бриллиант 0.50 карат', 'Бриллиант 0.60 карат'];
+                    - if (i == 0)
+                         - itemProps = ['Бриллиант 0.30 карат'];
+                    if lang === 'ru'
+                        +product-card2({
+                            title: 'Помолвочное кольцо <br> Sophia',
+                            gallery: ['product-also.jpg', 'product-also.jpg', 'product-also.jpg', 'product-also.jpg'],
+                            props: itemProps,
+                            colors: true,
+                        })
+                    else
+                        +product-card({
+                            gallery: ['product-also.jpg', 'product-also.jpg', 'product-also.jpg', 'product-also.jpg'],
+                            props: ['Solitaire', 'Diamond 0.3-0.5 Ct']
+                        })
+                    - if (showBannerProduct && (i % 20 === 9 || i % 20 === 17)) {
+                        +catalog-banner-product('img/catalog-banner-product.png', 'Сделай этот момент незабываемым', 'c помолвочным кольцом Aurora', true)
+                    - }
+                - }
+
+        .catalog__description
+            .catalog__description-container.container
+                +catalog-description-block(false, (lang === 'ru' ? 'wide' : ''))
+                +catalog-description-block()
+
+        .catalog__also
+            .container
+                .catalog__also-container
+                    +catalog-also-block('img/catalog-blocks-gia.png', 'GIA Ceritificate', 'We have used only tested diamonds, certified by the most international GIA laboratory.')
+                    +catalog-also-block('img/catalog-blocks-handmade.png', 'Handmade', 'Diamondlake jewelry is unique and inimitable. All rings are created only by hand with attention to every detail.')
+                    +catalog-also-block('img/catalog-blocks-diamonds.png', 'Any diamonds', 'You can choose a diamond for the ring in any size and shape, taking into account personal preferences and budget. You can choose the weight and type of diamond in the filter above.')
+                    +catalog-also-block('img/catalog-blocks-exclusive.png', 'Exclusive', 'We turn bold and complex ideas of our clients into reality. We make rings with the author\'s design according to photos and sketches of gold 585 or 750.')
+
+        if lang === 'ru'
+            .catalog__faq.container
+                .catalog__faq-title Вопрос-ответ
+                +accordion()
+                    each i in [1,2,3,4]
+                        +accordion-item('Кто производитель и где производится?', false, (i === 1 ? '' : 'collapsed'))
+                            p Каждое изделие нашей студии упаковывается в брендированный футляр. Кольца и пусеты размещаются внутри на ложементе из нежнейшей замши цвета шампань. Корпус футляра отделан темно-синей кожей с гладкой матовой текстурой.
+
+        +product-reviews()
+
+mixin catalog-banner-product(image, title, text, button)
+    if !button
+        a(href="#").catalog-banner-product
+            img(src=image).catalog-banner-product__image
+            +catalog-banner-product-content(title, text, button)
+    else
+        .catalog-banner-product.catalog-banner-product--button
+            img(src=image).catalog-banner-product__image
+            +catalog-banner-product-content(title, text, button)
+
+mixin catalog-banner-product-content(title, text, button)
+    .catalog-banner-product__content
+        if title
+            .catalog-banner-product__title=title
+        if text
+            .catalog-banner-product__text=text
+        if button
+            a(href='#').catalog-banner-product__button Подробнее
+
+
+mixin catalog-also-block(img, title, text)
+    .catalog-also-block
+        img(src=img).catalog-also-block__image
+        .catalog-also-block__title=title
+        .catalog-also-block__text=text
+
+
+mixin catalog-description-block(image, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-description-block--' + modsList[i].trim();
+            }
+        }
+
+        var title = 'How to chose engagement ring'
+        if (lang === 'ru') {
+            title = 'Где купить помолвочное кольцо?'
+            if (modsList && modsList.includes('wide')) title = 'Как выбрать помолвочное кольцо?'
+        }
+
+    .catalog-description-block(class=allMods)&attributes(attributes)
+        .catalog-description-block__title=title
+        .catalog-description-block__content
+            if lang === 'ru'
+                p.
+                    В коллекции ювелирной студии Diamondlake представлены помолвочные кольца разных размеров и форм огранки, как классические так и эксплюзивные.<br>
+                    Каждая модель кольца для помолвки – это идеальное сочетание благородного золота и натуральных камней.<br>
+                    Где купить помолвочное кольцо в Москве?<br>
+                    Конечно же, у нас! Наши дизайнеры создали несколько линеек колец для предложения.<br>
+                    Кольца изготавливаются в оправе из белого, желтого и розового золота 585, либо 750 пробы. Каждый цвет металла придает драгоценным камням неповторимое звучание, а самому кольцу – новые визуальные нюансы.
+                if modsList && modsList.includes('wide')
+                    p.
+                        В коллекции ювелирной студии Diamondlake представлены помолвочные кольца разных размеров и форм огранки, как классические так и эксплюзивные.<br>
+                        Каждая модель кольца для помолвки – это идеальное сочетание благородного золота и натуральных камней.<br>
+                        Где купить помолвочное кольцо в Москве?<br>
+                        Конечно же, у нас! Наши дизайнеры создали несколько линеек колец для предложения.<br>
+                        Кольца изготавливаются в оправе из белого, желтого и розового золота 585, либо 750 пробы. Каждый цвет металла придает драгоценным камням неповторимое звучание, а самому кольцу – новые визуальные нюансы.
+
+            else
+                p The Gemological Institute of America (GIA) is a non-profit organization that was established in 1931 and is considered to be one of the most respected and well-known organizations in the diamond industry. GIA is renowned for its unbiased and objective grading of diamonds and has set the standard for diamond grading worldwide.
+                p The GIA diamond certificate is a report that provides a detailed analysis of a diamond's characteristics, including its carat weight, color, clarity, cut, and other important factors. The certificate is issued by GIA after a diamond has been examined by a team of expert gemologists who use advanced equipment and techniques to assess the diamond's quality.
+                p
+                    |The report also includes a diagram that shows the diamond's exact proportions, as well as a detailed description of its characteristics.
+                    br
+                    |GIA uses a comprehensive grading system for diamonds that takes into account all of the factors that determine a diamond's quality. The system includes grades for color, clarity, cut, and carat weight, and each grade is assigned a specific rating that ranges from "excellent" to "poor."
+
+                p
+                    |GIA is known for its strict grading standards and is considered to be one of the most reliable sources for diamond grading. Many buyers and sellers of diamonds insist on GIA certification as a way to ensure the quality and authenticity of their diamonds.
+                    br
+                    |In summary, a GIA diamond certificate provides a

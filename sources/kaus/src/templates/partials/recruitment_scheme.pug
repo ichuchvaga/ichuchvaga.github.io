@@ -1,0 +1,12 @@
+//- Recruitment scheme
+
+//- Data
+include ../data/recruitment_scheme
+
+.recruitment-scheme__in
+	.container
+		.section-header.text-center
+			.h1.section-header__title Схема подбора персонала
+		ol.list_type_scheme
+			each item in scheme_list
+				li #{item}

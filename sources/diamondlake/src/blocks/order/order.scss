@@ -1,0 +1,153 @@
+// В этом файле должны быть стили для БЭМ-блока order, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.order {
+    $block-name: &; // #{$block-name}__element
+
+    padding-top: 15px;
+    padding-bottom: 13px;
+
+    &__item {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        letter-spacing: -0.0071428571428571em;
+        margin-top: 43px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__image {
+        position: relative;
+        margin-bottom: 25px;
+        flex-shrink: 0;
+        width: 562px;
+
+        /*&:before {
+            content: '';
+            display: block;
+            padding-top: 74.32%;
+        }*/
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        padding-left: 48px;
+        padding-top: 1px;
+
+        ul {
+            margin: 0;
+
+            li {
+                position: relative;
+                //padding: 0 0 0 25px;
+                padding: 0;
+                margin: 0 0 23px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                // &::before {
+                //     content: '';
+                //     display: block;
+                //     width: 6px;
+                //     height: 6px;
+                //     background-color: #1a1a1a;
+                //     border-radius: 50%;
+                //     position: absolute;
+                //     top: 8px;
+                //     left: 0;
+                // }
+            }
+        }
+
+        a {
+            color: #66a9cb;
+            text-decoration: none;
+
+            &:focus, &:hover {
+                color: #66a9cb;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        line-height: 1.1em;
+        margin-bottom: 15px;
+        letter-spacing: -0.0104166666666667em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 1526px) {
+        &__image {
+            width: 37.5%;
+        }
+
+        &__content {
+            width: 62.5%;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        padding-top: 7px;
+        padding-bottom: 0;
+        margin-bottom: -25px;
+
+        &__item {
+            display: block;
+            margin-top: 59px;
+        }
+
+        &__image {
+            width: 100%;
+            margin-bottom: 24px;
+            font-size: 0;
+            line-height: 0;
+
+            img {
+                position: static;
+                height: auto;
+                max-width: 562px;
+            }
+        }
+
+        &__content {
+            width: 100%;
+            padding-left: 0;
+
+            .row {
+                gap: 0;
+                display: block;
+            }
+
+            ul {
+                li {
+                    //padding-left: 24px;
+                    margin-bottom: 22px;
+                }
+            }
+        }
+
+        &__title {
+            font-size: 20px;
+            line-height: 1.2em;
+            margin-bottom: 12px;
+        }
+    }
+}

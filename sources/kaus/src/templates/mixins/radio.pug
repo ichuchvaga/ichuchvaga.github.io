@@ -1,0 +1,29 @@
+mixin radio(obj)
+	- var name = obj.name;
+	- var items = obj.items;
+	- var nav_prev = obj.nav_prev || false;
+	- var nav_next = obj.nav_next || false;
+	
+	if(nav_prev == true)
+		.radio.radio-nav
+			a.radio-link(href="javascript:void(0);")
+				span.icon.icon-arrows-l
+
+	each item,index in items
+		- var checked = item.checked || false;
+		- var value = item.value || "";
+
+		.radio
+			input(
+				type="radio",
+				id=`${name}_${index}`,
+				name=name,
+				checked=checked,
+				value=value
+			)/
+
+			label(for=`${name}_${index}`) #{item.label}
+	if(nav_next == true)
+		.radio.radio-nav
+			a.radio-link(href="javascript:void(0);")
+				span.icon.icon-arrows-r

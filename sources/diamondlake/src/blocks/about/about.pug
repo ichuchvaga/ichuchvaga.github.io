@@ -1,0 +1,52 @@
+//- Все примеси в этом файле должны начинаться c имени блока (about)
+
+mixin about(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +about('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' about--' + modsList[i].trim();
+            }
+        }
+
+        var person = {
+            image: 'img/person1.png',
+            title: 'CEO',
+            name: 'Alexandra',
+            text: 'Diamond\'s quality. The system includes grades for color, clarity, cut, and carat weight, and each grade is assigned a specific rating that ranges from "excellent" to "poor."',
+        };
+
+    .about(class=allMods)&attributes(attributes)
+        .about__content.row
+            .col
+                p The Diamondlake jewelry studio specializes in creating engagement and wedding rings. All jewelry is made in our own workshop, which allows us to control every stage of production. Currently, our collection includes over 200 models of wedding and engagement rings. You can view and try on all the rings in our studio. The address can be found here. models of wedding and engagement rings. You can view and try on all the rings in our studio.
+            .col
+                p By ordering any ring at the Diamondlake studio, you can be 100% confident in its exceptional quality. #[br] We can also create a design for any jewelry specifically
+                p for you, and it will be truly unique. You can learn more about this here.We can also create a design for any jewelry specifically for you, and it will be truly unique. You can learn more about this here.
+            .col
+                p By ordering any ring at the Diamondlake studio, you can be 100% confident in its exceptional quality.
+                p We can also create a design for any jewelry specifically for you, and it will be truly unique. You can learn more about this here.
+            .col
+                p By ordering any ring at the Diamondlake studio, you can be 100% confident in its exceptional quality.
+                p We can also create a design for any jewelry specifically for you, and it will be truly unique. You can learn more about this here.
+
+        .about__persons
+            each i in [1, 2, 3, 4, 5, 6]
+                +about-person(person)
+
+mixin about-person(props)
+    .about-person
+        .about-person__title=props.title
+        .about-person__image
+            img(src=props.image)
+        .about-person__name=props.name
+        .about-person__text=props.text

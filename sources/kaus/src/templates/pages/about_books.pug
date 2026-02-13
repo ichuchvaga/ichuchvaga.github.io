@@ -1,0 +1,85 @@
+//- Data
+include ../data/about_books
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Об агентстве",
+		pagetitle = "Книги нашего агенства	",
+		ymap = true,
+		socials_js = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head-with-link
+			.container
+				.page-head-with-link__in.wrapper
+					.page-head-with-link__content
+						h1.page-head__title #{pagetitle}
+					.page-head-with-link__right.text-center
+						span.page-head-with-link__link-caption Тираж раскуплен!
+						a.page-head-with-link__link.btn.btn-block.btn-primary(href="javascript:void(0);") Сообщить о поступлении
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'about.html'
+				}
+			],
+			last_title: "Наши книги"
+		})
+		//- About books
+		.about-books
+			.about-books-list
+				each item in books_list
+					.about-books-item
+						.container
+							.about-books-item__top
+								.wrapper
+									.about-books-item__img
+										img(src=`upload/about/books/${item.img}.png` alt=item.name)/
+									.about-books-item__content
+										.about-books-item__name.h2.section-header__title.title_type_h2 #{item.name}
+										.about-books-item__descr
+											each el in item.descr_items
+												p #{el}
+							.about-books-item__body
+								.about-books-item__caption.h4 Цитаты из книг
+								.about-books-item__citations
+									each quote in item.citations
+										blockquote: p #{quote}
+		.about-author
+			.section-content
+				.container
+					.wrapper
+						.about-author__l
+							.about-author__img
+								img(src="upload/about/books/author.jpg" alt="")/
+						.about-author__r
+							.about-author__title.h2.section-header__title.title_type_h2 Немного об авторе
+							.about-author__name Екатерина Крупина - генеральный директор Группы кадровых агентств «КАУС».
+							p.about-author__descr.
+								Имеет высшее юридическое образование, опыт работы в консалтинговых компаниях. Является 
+								экспертом в области трудового права, подбора и адаптации персонала, формирования кадровой 
+								документации и кадрового аудита.
+					//- Share
+					include ../partials/share
+
+		//- Consult
+		include ../partials/consult
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

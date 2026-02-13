@@ -1,0 +1,44 @@
+//- Все примеси в этом файле должны начинаться c имени блока (works)
+
+mixin works(mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' works--' + modsList[i].trim();
+            }
+        }
+
+    .works(class=allMods)&attributes(attributes)
+        .works__filter
+            +works-filter()
+        .works__grid
+            - for (var i = 0; i < 8; i++) {
+                .works-card
+                    .works-card__inner
+                        img(src="img/works-card-image.png").works-card__image
+                        .works-card__content
+                            .works-card__title №0001
+                            .works-card__sku Артикул WB19
+
+                        .works-card__hover
+                            p Женское кольцо: Белое золото 585, ширина 3 мм, черные бриллианты, 0.21 карат, 7/8
+                            p Мужское кольцо: Розовое золото 585, ширина 5 мм, поверхность глянец/айс
+            - }
+
+mixin works-filter()
+    form.works-filter
+        .works-filter__types
+            label.works-filter__type
+                input(name="type", type="checkbox", value="engagement").js-works-type
+                span Помолвочные
+            label.works-filter__type
+                input(name="type", type="checkbox", value="wedding").js-works-type
+                span Обручальные
+
+        select(multiple).works-filter__sku
+            option(value="Aurora", data-custom-properties={type:"engagement"}) Aurora
+            option(value="wb100", data-custom-properties={type:"wedding"}) wb100
+            option(value="abc25", data-custom-properties={type:"engagement"}) abc25

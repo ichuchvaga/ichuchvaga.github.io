@@ -1,0 +1,48 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-date)
+
+mixin field-date(props)
+    //- Принимает:
+    //-   props {
+    //-     title: ''         {string} - текст с названием (выводится над полем)
+    //-     helpText: ''      {string} - пояснение под полем
+    //-     mods: ''          {string} - модификаторы блока
+    //-     val: ''           {string} - текст в поле
+    //-     attrs:            {object} - любые атрибуты для input
+    //-       type:           {string}
+    //-       placeholder:    {string}
+    //- Вызов:
+          +field-date({
+            title: 'Название',
+            helpText: 'Подсказка',
+            mods: '',
+            val: '',
+            attrs: {
+              name: 'date',
+            }
+          })
+
+    -
+        if (typeof (props) === 'undefined') {
+            var props = {};
+        }
+        var allMods = '';
+        if (typeof (props.mods) !== 'undefined' && props.mods) {
+            var modsList = props.mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' field-date--' + modsList[i].trim();
+            }
+        }
+        if (!props.attrs.placeholder)
+            props.attrs.placeholder = 'MM/DD/YYYY';
+
+    label.field-date(class=allMods)&attributes(attributes)
+        if(typeof (props.title) !== 'undefined' && props.title)
+            span.field-date__name!= props.title
+                if (props.attrs.required)
+                    span.icon-required *
+
+        input.field-date__input(type=(typeof (props.attrs) !== 'undefined' && props.attrs.type) ? props.attrs.type : 'text', value=props.val, placeholder=props.attrs.placeholder)&attributes(props.attrs)
+
+        if(typeof (props.helpText) !== 'undefined' && props.helpText)
+            span.field-date__help-text!= props.helpText
+        block

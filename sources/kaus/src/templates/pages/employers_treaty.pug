@@ -1,0 +1,94 @@
+//- Data
+include ../data/employers_treaty
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Работодателям",
+		pagetitle = "Договор на подбор персонала",
+		ymap = true,
+		socials_js = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Кадровое агенство КАУС",
+					url: ''
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Employers treaty
+		.employers-treaty
+			.section-content
+				.container
+					.treaty-head
+						.wrapper
+							.treaty-head__wrap
+								.attachment
+									.attachment__img
+										img(src="src/img/icons/pdf.png" draggable="false" alt="")/
+									.attachment__text
+										a.attachment__link.link(href="javascirpt:void(0);") Договор на подбор персонала
+										span.attachment__caption PDF 8Мб
+							.treaty-head__left
+								h2 Договор № #[span.underline ______________]
+								p.
+									на оказание услуг по поиску и подбору персонала#[br]
+									г. Москва  «___»_________20__г.
+						p.
+							Общество с ограниченной ответственностью «______________» , именуемое в дальнейшем «Заказчик», в лице генерального директора 
+							__________________, действующего на основании Устава, с одной стороны, и Общество с ограниченной ответственностью «Кадровое агентство 
+							уникальных специалистов» (ООО «КАУС»), именуемое в дальнейшем «Исполнитель», в лице генерального директора _____________________, 
+							действующего на основании Устава, с другой стороны, совместно именуемые «Стороны», заключили настоящий Договор о нижеследующем: 
+					each item,index in employers_list
+						- var curr_index = index + 1;
+						h3 #{curr_index}. #{item.title}
+						ul
+							each el in item.items
+								li !{el.text}
+								- if(el.list)
+									li
+										ul.list
+											each item in el.list
+												li #{item}
+					h3 8. Реквизиты и подписи сторон
+					.row
+						each item in employers_table
+							.col-md-6
+								hgroup.hgroup
+									each title in item.titles
+										h5 #{title} 
+								.treaty-table
+									table.table
+										tbody
+											each row in item.rows
+												tr
+													td.table__name #{row.name}
+													td.table__val #{row.val}
+					//- Share
+					include ../partials/share
+
+		//- Consult
+		include ../partials/consult
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

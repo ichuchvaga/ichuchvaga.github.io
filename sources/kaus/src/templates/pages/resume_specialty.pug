@@ -1,0 +1,146 @@
+//- Data
+include ../data/resume
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/select
+//- Variables
+-
+	var header_menu_active = "Резюме";
+	var pagetitle = "Бухгалтер";
+	var ymap = true;
+	var tabs_js = true;
+	var select_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Резюме",
+					url: "resume.html"
+				},
+				{
+					title: "Бухгалтерия / Экономисты",
+					url: "resume_industry.html"
+				}
+			],
+			last_title: header_menu_active
+		})
+
+		//- Top
+
+		//- Filter panel
+		.filter-panel.filter-panel-industries
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="resume.html" class="btn btn-wide btn-outline") Каталог отраслей
+
+						.filter-panel__dropdown
+							+select({
+								name: "specialty",
+								placeholder: "",
+								options: ["Бухгалтер"],
+								search: true,
+								size: "sm"
+							})
+						
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+		//- Specialties
+		.resume-specialties.section-with-border
+			.container
+				.specialists-list
+					each item in specialists
+						- var url = "javascript:void(0);";
+						- if (item.url != '') url = item.url;
+
+						.specialists-list__item
+							a(href=url class="link specialists-list__link") #{item.title}
+
+							.specialists-list__salary #{item.salary} Р / #{item.exp}
+
+							.specialists-list__other-details
+								.specialists-list__other-details-row
+									.specialists-list__other-detail-caption
+										strong Последнее место работы:
+									.specialists-list__other-detail-value #{item.last_work_place}
+
+								.specialists-list__other-details-row
+									.specialists-list__other-detail-caption
+										strong Должность:
+									.specialists-list__other-detail-value #{item.last_work_position}
+
+
+				.resume-specialties-button.text-center
+					a(class="btn btn-wide btn-primary" href="javascript:void(0);") Показать еще специальности
+
+		//- Seo text
+		.resume-text-section
+			.container
+				.row
+					.col-md-6
+						h4 Рекомендации по поиску резюме.
+
+						p При размещении резюме на сайтах кандидаты могут называть одну и ту же специальность по-разному, в зависимости от ее названия на предыдущем рабочем месте. При этом их квалификация и навыки совпадают. Поэтому при рассмотрении анкет стоит рассматривать похожие профессии, чтобы расширить пул кандидатов.
+
+						p Также соискатели часто перечисляют в резюме множество личных качеств. Рекомендуем вам обращать внимание только на те из них, которые могут непосредственно оказывать влияние на результат труда.
+
+						h4 Нужного резюме нет на вашем сайте, что делать?
+
+						p Если подходящей анкеты не нашлось, нужно заполнить <a href="#" target="_blank">заявку на подбор персонала.</a> Мы сделаем выборку по нашей базе резюме соискателей работы и задействуем дополнительные источники, чтобы найти для вас нужного сотрудника.
+
+
+					.col-md-6
+						h4 Как ведется поиск резюме соискателей и когда будет закрыта ваша вакансия?
+
+						p Консультанты агентства выбирают из базы резюме анкеты, наиболее соответствующие открытой вакансии. После проводятся собеседования по телефону, далее – очные встречи с отобранными кандидатами. Затем наступает финальный этап: клиент может посмотреть резюме соискателей и провести серию интервью. Средний срок закрытия вакансии составляет от 5 дней до 3 недель. Первый пул кандидатов будет отобран в течение трех дней после заключения договора.
+
+						p Все услуги по подбору оплачиваются только в случае выхода сотрудника на рабочее место, за успешный результат.
+
+						p Кроме подбора резюме соискателей мы бесплатно и без регистрации консультируем наших клиентов по всем вопросам кадрового делопроизводства и адаптации персонала на рабочем месте.
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Поиск соискателей#[br]по резюме за 3 дня
+							span.consult-subtitle Вы получите пул лучших кандидатов<br/> из базы нашего агентства в 140 тыс. резюме
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Заказать поиск		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

@@ -1,0 +1,203 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/select
+include ../mixins/input
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Обзор заработных плат";
+	var ymap = true;
+	var tabs_js = true;
+	var select_js = true;
+	var tooltip_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Библиотека HR",
+					url: "hr.html"
+				},
+				{
+					title: "Обзор заработных плат",
+					url: "hr_salaries.html"
+				},
+				{
+					title: "Медицина / Фармацевтика / Медоборудование",
+					url: "hr_salaries_industry.html"
+				}
+			],
+			last_title: "Заведующий отделением"
+		})
+
+		//- Top
+
+		//- Filter panel
+		.filter-panel.filter-panel-industries-two-dropdowns
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="resume.html" class="btn btn-wide btn-outline") Каталог отраслей
+
+						.filter-panel__dropdowns
+							.filter-panel__dropdown
+								+select({
+									name: "specialty",
+									placeholder: "Выберите квартал",
+									options: ["II квартал", "III квартал", "IV квартал"],
+									search: false,
+									size: "sm"
+								})
+
+							.filter-panel__dropdown
+								+select({
+									name: "specialty",
+									placeholder: "Выберите год",
+									options: ["2017", "2016"],
+									search: false,
+									size: "sm"
+								})
+						
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+
+		.hr-salaries-single
+			.container
+
+			//- Tables
+
+			.table-section
+				.container
+					//-.table-title.h3 Заведующий отделением
+					h2 Заведующий отделением
+
+				.table-container
+					.container
+						table.table
+							tbody
+								tr
+									th.table__level.table__min-level Минимальный уровень
+									th.table__level.table__middle-level Средний уровень
+									th.table__level.table__elevated-level Повышенный уровень
+
+								each row in salaries_single_table
+									tr
+										td.table__level.table__min-level #{row.min}
+										td.table__level.table__middle-level #{row.average}
+										td.table__level.table__elevated-level #{row.max}
+		//- Chart section
+		.chart-section.section-with-border
+			.container
+				.chart-controls
+					form.chart-form
+						.clearfix
+							.chart-form__period
+								.chart-form__period-label Укажите период
+
+								.chart-form__period-main
+									.chart-form__period-inputs
+										+input_field({
+											placeholder: "",
+											value: "2016",
+											name: "from",
+											size: "sm",
+											required: false,
+											type: "text"
+										})
+
+										span.chart-form-dash
+
+										+input_field({
+											placeholder: "",
+											value: "2018",
+											name: "to",
+											size: "sm",
+											required: false,
+											type: "text"
+										})
+
+								.chart-form__period-options
+									a(href="javascript:void(0);").chart-form__link.link-dashed.active За 2 года
+									a(href="javascript:void(0);").chart-form__link.link-dashed За 5 лет
+									a(href="javascript:void(0);").chart-form__link.link-dashed За весь период
+
+							.chart-form__city
+								+select({
+									name: "city",
+									placeholder: "",
+									options: ["Санкт-Петербург", "Москва"],
+									search: false,
+									size: "sm"
+								})
+
+				ul.chart-legend
+					li #[span(style="background-color: #1262b3;")] Минимальный уровень
+					li #[span(style="background-color: #1a8cff;")] Средний уровень
+					li #[span(style="background-color: #20cc91;")] Высокий уровень
+
+				.chart-box
+					img(src="upload/hr/chart.png" alt="")/
+
+		
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Поиск соискателей#[br]по резюме за 3 дня
+							span.consult-subtitle Вы получите пул лучших кандидатов<br/> из базы нашего агентства в 140 тыс. резюме
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Заказать поиск		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

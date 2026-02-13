@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (catalog-sort)
+
+mixin catalog-sort(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +catalog-sort('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-sort--' + modsList[i].trim();
+            }
+        }
+
+    .catalog-sort(class=allMods)&attributes(attributes)
+        +btn((lang ==='ru' ? 'Сортировать' : 'Sort By'))(href="javascript:void(0)").catalog-sort-button
+        .catalog-sort__content
+            .catalog-sort__title=(lang ==='ru' ? 'Сортировать' : 'Sort By')
+                a(href="javascript:void()").catalog-sort__close
+            a(href="#").catalog-sort__item.catalog-sort__item--active=(lang ==='ru' ? 'Возрастанию цены' : ' Price: Low to High')
+            a(href="#").catalog-sort__item=(lang ==='ru' ? 'Убыванию цены' : ' Price: High to Low')
+            a(href="#").catalog-sort__item=(lang ==='ru' ? 'Популярность' : ' Best Sellers')
+            a(href="#").catalog-sort__item=(lang ==='ru' ? 'Новинки' : ' New')

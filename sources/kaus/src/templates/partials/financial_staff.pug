@@ -1,0 +1,17 @@
+//- Financial staff
+
+//- Data
+include ../data/financial_staff
+
+.financial-staff(style={"background-image":"url(upload/industry/bg.jpg)"})
+	.section-header.text-center
+		.section-header__title.title_color_white.h1 Какой финансовый персонал мы подбираем?
+	.container
+		.section-content
+			ul.list-with-icons.list_type_staff
+				each item in financial_staff_items
+					li
+						.icon-wrapp
+							img.icon(src=`upload/industry/personal/${item.icon}.png` draggable="false")/
+						span.list-with-icons__text
+							a(href="javascript:void(0);") #{item.text}

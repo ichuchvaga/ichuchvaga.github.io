@@ -1,0 +1,25 @@
+//- Все примеси в этом файле должны начинаться c имени блока (blog)
+
+mixin blog(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +blog('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' blog--' + modsList[i].trim();
+      }
+    }
+
+  .blog(class=allMods)&attributes(attributes)
+    .blog__grid
+      - for (var i = 0; i < 8; i++) {
+        +blog-card()
+      - }

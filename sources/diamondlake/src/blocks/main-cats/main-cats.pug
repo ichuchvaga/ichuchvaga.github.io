@@ -1,0 +1,61 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-cats)
+
+mixin main-cats(text, mods)
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-cats('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-cats--' + modsList[i].trim();
+            }
+        }
+
+        var cats = [];
+        if (lang === 'ru') {
+            cats = [
+                {
+                    title: 'ПОМОЛВОЧНЫЕ <br> КОЛЬЦА',
+                    mobile: 'Помолвочные кольца',
+                    image: 'img/jewelry1.png'
+                },{
+                    title: 'оБРУЧАЛЬНЫЕ <br> КОЛЬЦА',
+                    mobile: 'Обручальные кольца',
+                    image: 'img/jewelry2.png'
+                },{
+                    title: 'бРИЛЛИАНТОВЫЕ <br> ДОРОЖКИ',
+                    mobile: 'Бриллиантовые дорожки',
+                    image: 'img/jewelry3.png'
+                },{
+                    title: 'Серьги <br> пУСЕТЫ',
+                    mobile: 'Серьги пусеты',
+                    image: 'img/jewelry4.png'
+                },{
+                    title: 'бРАСЛЕТЫ <br> ДЕТКИ',
+                    mobile: 'Браслеты детки',
+                    image: 'img/jewelry5.png'
+                },
+            ];
+        }
+
+    .main-cats(class=allMods)&attributes(attributes)
+        .main-cats__inner.container
+            .main-cats__title ЮВЕЛИРНЫЕ УКРАШЕНИЯ
+
+            .horizontal-scroll-container
+                div(class="simplebar-scrollable-x" data-simplebar="true" data-simplebar-auto-hide="false" style="height: 100%; width: 100%")
+                    .main-cats__items
+                        each item in cats
+                            +main-cats-block(item)
+
+mixin main-cats-block(item)
+    .main-cats-block
+        img(src=item.image).main-cats-block__image
+        .main-cats-block__title!=item.title
+        a(href="#" data-mobile-text!=item.mobile).main-cats-block__button.btn.btn--white-o Посмотреть

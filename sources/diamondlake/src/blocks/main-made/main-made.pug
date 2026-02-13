@@ -1,0 +1,49 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-made)
+
+mixin main-made(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-made('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-made--' + modsList[i].trim();
+            }
+        }
+
+    .main-made(class=allMods)&attributes(attributes)
+        .main-made__inner.container
+            .main-made__col(style="background-image:url(img/main-contacts.png)")
+            .main-made__col.main-made__col--content
+                .main-made__title Сделано с любовью
+                .main-made__text Каждое украшение студии Diamondlake – результат искренней, душевной и кропотливой работы наших ювелиров. В их руках драгоценный камень в оправе из холодного металла превращается в нечто большее: он становится воплощенным символом верности и глубины ваших чувств.
+                .main-made__contacts
+                    .main-made__address
+                        .main-made__contacts-title Адрес студии:
+                        .main-made__contacts-value
+                            |Москва, Большой Тишинский переулок, 8с2
+                            br
+                            |+7 495 142 67 93
+                            br
+                            br
+                            |Для посещения студии требуется запись.
+                    .main-made__workhours
+                        .main-made__contacts-title График работы:
+                        .main-made__contacts-value
+                            |Пн-Пт: 12:00 - 20:00
+                            br
+                            |Сб: 12:00 - 19:00
+                            br
+                            br
+                            |Вс: Закрыто
+                    .main-made__button
+                        a(href="#").btn.btn--white-o Записаться в студию
+                    .main-made__button
+                        a(href="#").btn.btn--white-o Контакты

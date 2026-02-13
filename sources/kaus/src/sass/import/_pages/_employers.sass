@@ -1,0 +1,345 @@
+// Employers page
+
+// Employers tabs
+.employers-tabs
+	.nav-pills
+		margin-bottom: 60px
+
+// Employers form
+.employers-form
+	padding-bottom: 58px
+	.form
+		&__head
+			margin-bottom: 28px
+			padding: 
+				top: 20px
+				bottom: 23px
+			background-color: #f3f7fa
+		&__body
+			padding: 0
+			padding-bottom: 32px
+	.fieldset
+		.form-element
+			margin-bottom: 28px
+	.form-button
+		margin-top: 20px
+		.btn
+			width: 450px
+
+// Employers consulting
+
+.employers-consulting
+	padding-bottom: 40px
+
+	p
+		margin: 
+			top: 2.22222em
+			bottom: 2.555555em
+		font-size: 18px
+
+	h2
+		margin: 
+			top: 2.105262em
+			bottom: 1.2631567em
+
+	a
+		color: hsl(0, 0%, 0%)
+
+.employers-consulting-item
+	&__title
+		margin:
+			top: 1.833333em
+			bottom: 1.25em
+
+// Employers treaty
+
+.underline
+	font-family: $roboto
+.employers-treaty
+	padding-top: 66px
+	h2
+		margin:
+			top: 0
+			bottom: .73685em
+	h3
+		margin: 
+			top: 2.5em
+			bottom: .9375em
+	p
+		margin:
+			top: 0
+			bottom: 2.777777em
+		font-size: 18px
+	ul
+		> li
+			margin-bottom: 1.666666em
+			font-size: 18px
+			b
+				font-size: 20px
+				font-family: $raleway
+				font-weight: 500
+	.list
+		> li
+			margin-bottom: 0.61em
+
+	.hgroup
+		margin:
+			top: 20px
+			bottom: 28px
+
+.treaty-head
+	&__wrap
+		float: right
+		padding-top: 28px
+		width: 279px
+	&__left
+		display: inline-block
+		vertical-align: middle
+		padding-right: 30px
+		width: calc(100% - 279px)
+
+// Employers recruitment
+
+.heading-section
+	&.heading-section-type-recruitment
+		.heading-section-with-photo
+			&__content
+				width: 65%
+				font-size: 62px
+				p
+					margin-bottom: .19355em
+
+// Recruitment features
+.recruitment-features
+	padding-bottom: 15px
+
+// Recruitment industry
+.recruitment-industry
+	background-color: $blue
+	background-size: cover
+	background-position: top center
+	background-repeat: no-repeat
+	color: hsl(255, 100%, 100%)
+	.section-header
+		padding: 
+			left: 15%
+			right: 15%
+
+.list-with-icons
+	&.list_type_industry
+		.icon-wrapp
+			display: inline-block
+			vertical-align: middle
+			margin-right: 28px
+			width: 44px
+		.icon
+			margin-right: 0
+			+size(auto)
+		li
+			margin-top: 30px
+			padding:
+				left: 30px
+				right: 20px
+			min-height: 44px
+			&:nth-child(2n)
+				padding-left: 20px
+		.list-with-icons__text
+			font-size: 22px
+		a
+			color: hsl(255, 100%, 100%)
+			transition: color 0.15s, border-color 0.15s
+			&:hover,
+			&:active,
+			&:focus
+				color: $green
+				border-color: $green
+
+// Recruitment scheme
+.recruitment-scheme
+	padding-bottom: 30px
+	border-bottom: 1px solid #eaeaea
+	&.recruitment-scheme-with-bg
+		background-color: $blue
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center center
+		color: hsl(255, 100%, 100%)
+
+.list_type_scheme
+	font-size: 0
+	> li
+		display: inline-block
+		vertical-align: top
+		margin-bottom: 2.777777em
+		padding: 
+			left: 42px
+			right: 30px
+		width: 25%
+		&:before
+			content: counter(myCounter)
+			top: 0
+			left: 0
+			font-size: 56px
+			line-height: .9em
+			background: linear-gradient($green, #2e82d8)
+			background-clip: text
+			-webkit-text-fill-color: transparent
+			color: $blue
+		&:last-child
+			margin-bottom: 2.777777em
+
+// Recruitment conditions
+.recruitment-conditions
+	padding-bottom: 60px
+
+.recruitment-conditions-item
+	display: inline-block
+	vertical-align: top
+	margin-bottom: 25px
+	padding-right: 30px
+	width: 25%
+	font-size: initial
+	&__title,
+	&__descr
+		padding-left: 30px
+	&__title
+		position: relative
+		margin-bottom: .5357em
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			+size(3px, 100%)
+			background: $blue
+			background: linear-gradient($green, #2e82d8)
+	&__descr
+		margin: 0
+		font-size: 18px
+		line-height: 1.4em
+
+// Recruitment price
+.recruitment-price
+	.cooperation-item
+		padding: 
+			top: 37px
+			left: 40px
+			right: 40px
+			bottom: 40px
+		width: calc(33.33% - 30px)
+		&__value
+			font-size: 56px
+			span
+				font-size: 50px
+
+// Employers base
+.employers-base
+	padding-top: 90px
+	.row
+		font-size: 0
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+		margin: 
+			left: 15px
+			right: 15px
+		width: calc(50% - 30px)
+
+	&__content
+		margin-top: 1.166666em
+		line-height: 1.3em
+
+// Section conformity
+.section-conformity
+	&--employers
+		.advantages-circle
+			width: 25%
+
+// Funnel selection
+.funnel-selection
+	background: $blue
+	background: linear-gradient(#299cbf, #2e82d8)
+	color: hsl(255, 100%, 100%)
+
+	&__num
+		margin-bottom: 0.19355em
+		font-size: 62px
+		font-weight: 700
+		line-height: 1em
+		color: #0f4f90
+
+	&__descr
+		margin: 0
+		font-size: 20px
+
+	&__top
+		margin-bottom: 38px
+		img
+			margin-bottom: 25px
+
+	&__bottom,
+	&__bottom-in
+		position: relative
+	&__bottom
+		padding-top: 105px
+		&-img
+			padding-top: 10px
+		&-content
+			padding-left: 74px
+		img
+			display: block
+			margin:
+				left: auto
+				right: 74px
+
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 50%
+			margin-left: -0.5px
+			+size(1px, 100%)
+			background: hsl(255, 100%, 100%)
+			z-index: 0
+
+	&__bottom-in
+		.funnel-selection
+			&__circle-outer
+				top: 50%
+				margin-top: -11.5px
+
+	&__circle-outer,
+	&__circle
+		display: inline-block
+		border-radius: 50%
+	&__circle-outer
+		position: absolute
+		top: 0
+		left: 50%
+		margin-left: -11.5px
+		+size(23px)
+		background: hsl(255, 100%, 100%)
+		text-align: center
+		font-size: 0
+		z-index: 1
+	&__circle
+		margin-top: 7px
+		+size(9px)
+		background: #0f4f90
+
+// Employers-advantages
+.employers-advantages
+	.list-with-icons
+		li
+			padding-right: 30px
+		.icon-wrap
+			display: inline-block
+			vertical-align: middle
+			width: 86px
+			margin-right: 24px
+		.icon 
+			margin-right: 0
+			+size(auto)
+		&__text
+			width: calc(100% - 110px)

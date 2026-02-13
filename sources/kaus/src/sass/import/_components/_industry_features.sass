@@ -1,0 +1,68 @@
+// Industry-features styling
+
+.industry-features
+	.section-header
+		margin-bottom: 5px
+		padding:
+			left: 70px
+			right: 70px
+		color: #232a32
+		&__title
+			margin-bottom: 0
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+	&__l
+		width: calc(100% - 340px)
+		font-size: 18px
+	&__r
+		padding-top: 55px
+		width: 340px
+
+.list
+	&.list_type_industry-features
+		position: relative
+		margin-left: 53px
+		background: linear-gradient($green, #2e82d8)
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			right: 100%
+			display: block
+			margin:
+				top: -84px
+				right: 21px
+			+size(32px, 168px)
+			background: transparent url("../img/icons/bracket.png") no-repeat
+		> li
+			mix-blend-mode: screen
+			background-color: hsl(255, 100%, 100%)
+			padding-left: 22px
+			margin-bottom: 0
+			padding-bottom: 1em
+			color: $blue
+			font-size: 16px
+			&:before
+				top: 8px
+
+.industry-features-item
+	display: inline-block
+	vertical-align: top
+	padding-right: 40px
+	margin-top: 55px
+	width: 50%
+	font-size: 18px
+	&__title
+		margin-bottom: 17px
+		font-weight: 500
+	&__descr
+		margin: 0
+		line-height: 1.3em
+
+.industry-features-with-recruitment
+	.section-content
+		padding-bottom: 0
+	.recruitment-block
+		margin-top: 55px

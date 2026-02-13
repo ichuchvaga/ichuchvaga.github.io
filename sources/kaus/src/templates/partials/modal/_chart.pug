@@ -1,0 +1,57 @@
+//- Chart modal
+.popup.chart-popup(id="popup-chart")
+	.popup__wrapper
+		.popup-section.popup-title.h2 Динамика заработной платы
+
+		.popup-section.popup-data
+			.h3.chart-popup__position Заведующий отделением
+
+			.chart-controls
+				form.chart-form
+					.clearfix
+						.chart-form__period
+							.chart-form__period-label Укажите период
+
+							.chart-form__period-main
+								.chart-form__period-inputs
+									+input_field({
+										placeholder: "",
+										value: "2016",
+										name: "from",
+										size: "sm",
+										required: false,
+										type: "text"
+									})
+
+									span.chart-form-dash
+
+									+input_field({
+										placeholder: "",
+										value: "2018",
+										name: "to",
+										size: "sm",
+										required: false,
+										type: "text"
+									})
+
+							.chart-form__period-options
+								a(href="javascript:void(0);").chart-form__link.link-dashed.active За 2 года
+								a(href="javascript:void(0);").chart-form__link.link-dashed За 5 лет
+								a(href="javascript:void(0);").chart-form__link.link-dashed За весь период
+
+						.chart-form__city
+							+select({
+								name: "city",
+								placeholder: "",
+								options: ["Санкт-Петербург", "Москва"],
+								search: false,
+								size: "sm"
+							})
+
+			ul.chart-legend
+				li #[span(style="background-color: #1262b3;")] Минимальный уровень
+				li #[span(style="background-color: #1a8cff;")] Средний уровень
+				li #[span(style="background-color: #20cc91;")] Высокий уровень
+
+			.chart-box
+				img(src="upload/hr/chart.png" alt="")/

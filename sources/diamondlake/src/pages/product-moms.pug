@@ -1,0 +1,143 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'Boy With Yellow <br> Sapphires',
+                gallery = [
+                    'img/product-5-1.jpg',
+                    'img/product-5-2.jpg',
+                    'img/product-5-3.jpg',
+                    'img/product-5-4.jpg',
+                ],
+                price = '575',
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Collections', link: '#'},
+                    {title: 'Mom’s Bracelets', link: '#'},
+                    {title: 'Boy', link: '#'},
+                    {title: 'BG14W'}
+                ];
+    +product(title, gallery, breadcrumbs)
+        +product-price(price)
+        +product-options({
+            title: 'Металл:',
+            options: [
+                {
+                    id: 'color-white',
+                    value: '14K Белое золото',
+                    label: '14K Белое золото',
+                    mods: 'color-white',
+                    contents: '14K'
+                },
+                {
+                    id: 'color-yellow',
+                    value: '14K Жёлтое золото',
+                    label: '14K Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '14K'
+                },
+                {
+                    id: 'color-pink',
+                    value: '14K Розовое золото',
+                    label: '14K Розовое золото',
+                    mods: 'color-pink',
+                    contents: '14K'
+                },
+            ],
+            mods: 'color',
+            name: 'color',
+            showValue: true,
+        }, 'color')
+
+        -
+            var options = [
+                {
+                    id: 'bsize-0',
+                    value: '15-15.5 см',
+                    label: 'XS'
+                },
+                {
+                    id: 'bsize-1',
+                    value: '15.5-16 см',
+                    label: 'S'
+                },
+                {
+                    id: 'bsize-2',
+                    value: '16-16.5 см',
+                    label: 'M'
+                },
+                {
+                    id: 'bsize-3',
+                    value: '16.5-17 см',
+                    label: 'L'
+                },
+                {
+                    id: 'bsize-4',
+                    value: '17-17.5 см',
+                    label: 'XL'
+                },
+            ];
+        +product-options({
+            title: 'Размер браслета:',
+            options: options,
+            mods: 'circle',
+            name: 'bsize',
+            showValue: true,
+        }, 'circle')
+
+        +product-details-toggle()
+            .product-details-cols
+                .product-details-cols__inner
+                    +product-details('Центральный бриллиант:', [
+                        {
+                            label: 'Форма',
+                            value: 'Принцесса',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'I',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }, {
+                            label: 'Сертификат',
+                            value: 'GIA <a href="#">(подробнее)</a>',
+                        }
+                    ])
+                    +product-details('Описание:', [
+                        {
+                            label: 'Артикул',
+                            value: 'WB1',
+                        }, {
+                            label: 'Размер',
+                            value: '18 мм',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '3.2 гр',
+                        }, {
+                            label: 'Камни',
+                            value: '16 Голубых сапфиров',
+                        }, {
+                            label: 'Вес кольца (карат)',
+                            value: '0.15 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'Medium Blue',
+                        }, {
+                            label: 'Чистота',
+                            value: 'Eye Clean',
+                        }
+                    ])
+
+        +product-charm()
+
+        +product-buttons()

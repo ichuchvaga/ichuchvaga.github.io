@@ -1,0 +1,22 @@
+//- Industry grid
+
+//- Data
+include ../data/industry_grid
+
+.industry-grid-section.blue-gray-theme
+	.container
+		.industry-grid
+			.industry-grid__in
+				each item in grid_main
+					- var url = "javascript:void(0);";
+					- if (item.url != '') url = item.url;
+					- var img = "upload/industry/icons/" + item.icon;
+
+					- if (industry_link) url = industry_link;
+
+					.industry-grid__item
+						a(href=url class="industry-grid__link")
+							span.icon
+								img(src=img alt=item.title)
+							span.industry-grid__link-text
+								span #{item.title}

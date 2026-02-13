@@ -1,0 +1,27 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-banner)
+
+mixin main-banner(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-banner('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-banner--' + modsList[i].trim();
+            }
+        }
+
+    .main-banner
+        .main-banner__image(style="background-image: url(img/main-gia.png)")
+        .container
+            .main-banner__content
+                .main-banner__title Узнайте больше о бриллиантах
+                .main-banner__text Рассказываем о бриллиантах подробно и интересно, чтобы вы знали, что и зачем покупаете: размер камней и их цвет, чистота и типы огранки, флуоресценция. Расшифровка характеристик в сертификате на бриллиант.
+                a.btn.btn--white-o.main-banner__button Подробнее

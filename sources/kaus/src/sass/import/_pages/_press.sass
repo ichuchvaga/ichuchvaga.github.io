@@ -1,0 +1,297 @@
+// Press center page
+
+.heading-section-type-press
+	.heading-section-with-photo__content
+		padding: 
+			top: 144px
+			bottom: 152px
+
+// Press intro
+.press-intro
+	padding-top: 64px
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		font-size: initial
+
+	&__l
+		padding-right: 54px
+		width: calc(100% - 252px)
+
+		h4
+			margin:
+				top: 3.5em
+				bottom: 1.166666em
+
+	&__r
+		padding-top: 7px
+		width: 252px
+
+		h4
+			margin-bottom: 1.458333em
+
+	p
+		margin: 
+			top: 0
+			bottom: 1.5em
+		font-size: 18px
+		line-height: 1.5em
+
+	.advantages-circles
+		margin:
+			top: 55px
+			bottom: 26px
+
+	.advantages-circle
+		margin-bottom: 20px
+		width: 33.33%
+		padding-right: 25px
+
+		&:last-child
+			padding-right: 0
+
+		&__img
+			position: relative
+			display: inline-block
+			vertical-align: middle
+			font-size: 0
+			z-index: 1
+
+		&__text
+			margin-top: 1.666666em
+			font-size: 18px
+			line-height: 1.5em
+
+.headmaster
+	&__img
+		margin-bottom: 20px
+		img
+			vertical-align: top
+
+	&__name
+		margin-bottom: 2px
+		font-family: $raleway
+
+	&__position
+		margin-bottom: 1.285711em
+		font-size: 14px
+		line-height: 1.4em
+
+.headmaster-list
+	margin: 
+		left: -10px
+		right: -10px
+	> li
+		display: inline-block
+		vertical-align: top
+		margin: 
+			left: 10px
+			right: 10px
+		width: calc(50% - 20px)
+		font-size: initial
+		a
+			margin-right: 5px
+			font-size: 14px
+		span
+			font-size: 10px
+			color: #aaa
+
+// News list
+.news
+	.news-item
+		display: inline-block
+		vertical-align: top
+		padding-right: 30px
+		width: 33.33%
+		font-size: initial
+		&:last-child
+			padding-right: 0
+
+		&__date
+			margin-bottom: 1em
+			color: #aaa
+
+		&__title
+			font-size: 24px
+			font-family: $raleway
+			line-height: 1.4em
+
+		&__descr
+			margin: 
+				top: 0.833333em
+				bottom: 0
+			font-size: 18px
+			line-height: 1.3em
+
+// Press section
+.press-section
+	&__item
+		margin-bottom: 85px
+
+	&__date
+		margin-bottom: 20px
+		color: #aaa
+		time,
+		.press-section__source
+			font-size: 16px
+
+	&__source
+		position: relative
+		margin-left: 22px
+		color: #000
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			right: 100%
+			+size(2px, 100%)
+			margin-right: 11px
+			background: #eaeaea
+
+	&__link
+		line-height: 1.1em
+
+	p
+		margin: 
+			top: 0.777777em
+			bottom: 0 
+		font-size: 18px
+		line-height: 1.3em
+
+// Press releases
+
+.press-releases
+	padding-top: 15px
+
+// Press news
+
+.press-news
+	.news-item
+		margin-bottom: 80px
+
+// Press articles
+.filter-panel
+	&.filter-panel-type-articles
+		padding: 0 30px
+		background: #b9cbe4
+
+		.filter-panel
+
+			&__l,
+			&__r
+				vertical-align: top
+
+			&__l
+				position: relative
+
+			&__r
+				padding: 35px 0
+
+			&__collapse
+				position: absolute
+				top: 22px
+				left: 0
+				width: 100%
+				padding: 
+					top: 37px
+					bottom: 40px
+				z-index: 1
+			&__collapse-link
+				display: inline
+				font-size: 22px 
+				border-color: transparent
+				color: #1a8cff
+				&.collapsed
+					border-bottom: 1px dashed #a5c2e0
+					color: $blue
+					transition: border-color .15s
+					&:hover,
+					&:focus
+						border-color: transparent
+						color: #1a8cff
+
+.categories-list
+	margin: 
+		left: -15px
+		right: -15px
+	padding: 
+		top: 32px
+		left: 30px
+		right: 30px
+		bottom: 
+	> li
+		display: inline-block
+		vertical-align: top
+		margin: 
+			top: 10px
+			left: 15px
+			right: 15px
+		width: calc(50% - 30px)
+		font-size: 18px
+
+.press-article
+	padding-top: 60px
+	.article
+		h1
+			margin: 
+				top: 0
+				bottom: 0.645162em
+		h2
+			margin: 
+				top: 1.894736em
+				bottom: 1.31579em
+		>  p
+			margin: 
+				top: 1.388888em
+				bottom: 1.388888em
+			font-size: 18px
+			line-height: 1.6em
+
+		blockquote
+			&.blockquote-with-lines
+				margin-bottom: 50px
+			&.blockquote-with-line
+				margin-top: 45px
+
+	.share
+		margin-top: 90px
+
+	&__bottom
+		padding: 57px 0
+
+	&__page-links,
+	&__links
+		display: inline-block
+		vertical-align: middle
+		font-size: 18px
+
+	&__page-links
+		width: calc(100% - 306px)
+		.page-link
+			margin-right: 100px
+			&:last-child
+				margin-right: 0
+			&__text
+				display: inline
+				color: $blue
+				border-bottom: 1px solid #a5c2e0
+				transition: color 0.15s, border-color 0.15s
+			&:hover,
+			&:focus
+				.page-control
+					&.prev
+						background-position: -60px -70px
+					&.next
+						background-position: 0px -70px
+				.page-link__text
+					color: #1a8cff
+					border-color: #1a8cff
+
+	&__links
+		padding-left: 30px
+		width: 306px
+		.link
+			margin-right: 100px
+			&:last-child
+				margin-right: 0

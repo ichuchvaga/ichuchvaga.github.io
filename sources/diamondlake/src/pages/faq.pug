@@ -1,0 +1,16 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title FAQ
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('FAQ')
+
+        h1 FAQ
+
+        +faq()
+        +faq-consult()

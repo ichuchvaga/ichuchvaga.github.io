@@ -1,0 +1,208 @@
+// В этом файле должны быть стили для БЭМ-блока works, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.works {
+    $block-name: &; // #{$block-name}__element
+
+    &__filter {
+        margin-bottom: 48px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px 16px;
+    }
+
+    @media (max-width: 1000px) {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 500px) {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.works-filter {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    align-items: center;
+
+    &__types {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__type {
+        position: relative;
+        flex: 1;
+
+        input[type="checkbox"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+
+            & + span {
+                border: 1px solid #1A1A1A;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+                letter-spacing: -0.1px;
+                padding: 9px 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            &:checked + span {
+                background: #1A1A1A;
+                color: #fff;
+            }
+        }
+    }
+
+    .choices {
+        grid-column-end: span 2;
+    }
+
+    .choices__inner {
+        border: 1px solid #1a1a1a;
+        border-radius: 0;
+        background: #fff;
+        padding: 0;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    .choices__list--multiple {
+        color: #8A9199;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        padding: 0 12px;
+    }
+    .choices__list--dropdown.is-active {
+        padding: 0;
+        max-height: 300px;
+        overflow: auto;
+    }
+    .choices__list--dropdown .choices__list {
+        width: 100%;
+    }
+    .choices__list--dropdown .choices__item {
+        padding: 5px 12px;
+        display: block;
+
+        &--disabled {
+            display: none;
+        }
+    }
+    .choices__list--dropdown .choices__item--selectable.is-highlighted {
+        color: inherit;
+    }
+    .choices__list--dropdown .choices__item--selectable::after {
+        display: none;
+    }
+    .choices__input {
+        padding: 0;
+        margin: 0;
+        background: transparent;
+    }
+    .choices__list--multiple .choices__item {
+        display: inline-flex;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: 14px;
+        line-height: 20px;
+        gap: 5px;
+    }
+    .choices__list--multiple .choices__item + .choices__item:before {
+        content: ",";
+    }
+    .choices__list--multiple:not(:empty):before {
+        content: "Выбрано: ";
+        vertical-align: middle;
+    }
+    .choices__list--multiple .choices__item.is-highlighted {
+        background: 0;
+        border: 0;
+    }
+
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 1fr;
+
+        .choices {
+            grid-column-end: span 1;
+        }
+    }
+}
+
+.works-card {
+    position: relative;
+
+    &__image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+
+    &__content {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16.8px;
+        letter-spacing: -0.1px;
+        text-align: left;
+        padding: 14px 19px;
+    }
+
+    &__hover {
+        z-index: 1;
+        top: 100%;
+        background: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.8px;
+        letter-spacing: -0.1px;
+        padding: 19px 19px 32px;
+        display: none;
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &:hover &__hover {
+        display: block;
+    }
+
+    &:hover &__inner {
+        position: absolute;
+        outline: 1px solid #1a1a1a;
+    }
+
+
+    @media (max-width: 1000px) {
+        &__image {
+            max-height: 300px;
+        }
+    }
+}

@@ -1,0 +1,131 @@
+//- Data
+include ../data/industry_main
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Отрасли",
+		pagetitle = "Подбираем эффективных сотрудников в 11 отраслях",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-industry-main(style={"background-color":"#cadaeb"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-wide.btn-primary(href="javascript:void(0);") Заказать подбор
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man2.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			last_title: header_menu_active
+		})
+		//- Section recruitment
+		.section-recruitment.section-recruitment--industry.section-with-border
+			.container
+				.wrapper
+					.section-recruitment__l
+						p.
+							Кадровое агентство уникальных специалистов («КАУС») 
+							работает на рынке труда Москвы и Московской области с 2007 г. 
+						p.
+							Мы специализируемся на отраслевом подборе персонала. 
+							По каждому направлению работают консультанты, имеющие 
+							профильное образование и опыт работы в данной области. 
+							Такой подход гарантирует высокое качество работы и позволяет 
+							в 2 раза сократить стандартные сроки поиска нужного 
+							специалиста. 
+					include ../partials/section_recruitment_r
+		//- Directions section
+		.directions.directions--industry.text-center
+			.container
+				hgroup.hgroup
+					h3 Вам необходимо найти персонал в определенной отрасли?
+					h4 Воспользуйтесь услугами одного из специализированных направлений агентства «КАУС»
+				.directions__subtitle.wrapper
+					.directions__subtitle-item
+						img(src="src/img/icons/kaus.png" alt="")/
+					.directions__subtitle-item
+						b Универсальное агенство:
+						span Подбор персонала во всех отраслях
+				.advantages-circles
+					each item in advantages_circles
+						.advantages-circle
+							.advantages-circle__wrap.valign-wrapper
+								.advantages-circle__img: img(src=`src/img/icons/directions/${item.img}.png` alt="")/
+							.advantages-circle__title #{item.title}
+							.advantages-circle__text !{item.caption}
+		//- Recruitment industry
+		.recruitment-industry(style={"background-image":"url(upload/employers/bg.jpg)"})
+			.section-header.text-center
+				.h1.section-header__title.
+					Специализируемся на подборе персонала 
+					в 11 отраслях
+			.container
+				.section-content
+					ul.list-with-icons.list_type_industry
+						each item in industry_list
+							li
+								.icon-wrapp.text-center
+									img.icon(src=`upload/employers/recruitment/${item.icon}.png` draggable="false")/
+								span.list-with-icons__text
+									a(href="industry.html") #{item.text}
+		//- Recruitment conditions
+		include ../partials/recruitment_conditions
+		//- Recruitment price
+		- var recruitment_price_title = "Стоимость услуг";
+		include ../partials/recruitment_price
+		//- Subscribe
+		include ../partials/subscribe
+		//- Industry features
+		.section-content
+			.industry-features.industry-features-with-recruitment
+				.container
+					.section-header.text-center
+						.h1.section-header__title.
+							Получите самые выгодные условия 
+							сотрудничества по стоимости и гарантии
+					.section-content
+						.wrapper
+							.industry-features__l
+								ul.industry-features-list.wrapper
+									each item in features_left
+										li.industry-features-item
+											.industry-features-item__title.h4 #{item.title}
+											p.industry-features-item__descr #{item.descr}
+							.industry-features__r
+								ul.list.list_type_industry-features
+									each item in features_right
+										li #{item}
+					//- Section with header
+					.section-with-header-compact.blue-gray-theme
+						.wrapper
+							.section-with-header-compact__l
+								.section-with-header-compact__title.section-header__title.h2.
+									Точный подбор
+									сотрудника для отрасли
+									вашего бизнеса
+							.section-with-header-compact__r
+								p.section-with-header-compact__descr.
+									Вы получите только пул лучших кандидатов, 
+									предварительно отобранных специалистом#[br] 
+									в вашей отрасли
+								a.btn.btn-lg.btn-outline.btn-outline-transparent(href="javascript:void(0);") Заказать подбор
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

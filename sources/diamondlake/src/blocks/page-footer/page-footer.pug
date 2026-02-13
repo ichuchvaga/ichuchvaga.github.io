@@ -1,0 +1,116 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-footer)
+
+mixin page-footer(mods)
+
+    //- Принимает:
+    //-   mods  {string} - список модификаторов
+    //- Вызов:
+          +page-footer()
+            p «Подвал»
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' page-footer--' + modsList[i].trim();
+            }
+        }
+
+    footer.page-footer(class=allMods, role='contentinfo')&attributes(attributes)
+        .page-footer__inner.container
+            .page-footer__text
+                if lang === 'ru'
+                    |Совершенство в каждой детали
+                else
+                    |Designed with inspiration and crafted with love
+
+            .page-footer__nav-wrap
+                -
+                    var footerNav = [
+                        {
+                            items: [
+                                ['Engagement Rings', 'Solitaire', 'Accent', 'Halo', 'Three Stone'],
+                                ['Wedding Rings', 'Couples', 'Women', 'Men'],
+                                ['Collections', 'Mom’s Bracelets'],
+                                ['Earrings', 'Studs'],
+                            ],
+                            mods: 'grid'
+                        },
+                        {items: [['Diamond Guide','Carat','Color','Clarity','Cut','Flourescence','GIA Certificate','Shop Diamonds']]},
+                        {items: [['Top 10 Engagement ','Top 10 Wedding','Creat Your Own','Size Guide','Order','Shipping']]},
+                        {items: [['About','Manufacture','FAQ','Reviews','Contact Us']]},
+                    ]
+
+                    if (lang === 'ru') {
+                        var footerNav = [
+                            {
+                                items: [
+                                    ['Помолвочные кольца', 'Солитер', 'Акцент', 'Хало', 'Трио'],
+                                    ['Обручальные кольца', 'Парные', 'Женские', 'Дорожки', 'Мужские'],
+                                    ['Коллекции', 'Браслеты Детки'],
+                                    ['Серьги', 'Пусеты'],
+                                ],
+                                mods: 'grid'
+                            },
+                            {items: [['О Бриллиантах','Карат','Цвет','Чистота','Огранка','Флюоресценция','GIA Сертификат']]},
+                            {items: [['Топ 10 Помолвочных ','Топ 10 Обручальные','Украшения на заказ','Гарантии','Как заказать','Доставка']]},
+                            {items: [['О нас','Производство','FAQ','Блог','Отзывы','Контакты']]},
+                        ]
+                    }
+
+
+                each nav in footerNav
+                    +page-footer-nav(nav.items, nav.mods)
+
+            .page-footer__contacts
+                if lang === 'ru'
+                    a(href="tel:+74951426793").page-footer__phone +7 495 142 67 93
+                else
+                    a(href="tel:+66811705737").page-footer__phone +66 81-170-5737
+                a(href="#").page-footer__address
+                    if lang === 'ru'
+                        |Москва, Большой Тишинский переулок, 8с2
+                    else
+                        |Bangkok, Jewelry Trade Center
+                +social().page-footer__social
+                    +social-link('//instagram.com', 'instagram')(title='Instagram')
+                        svg(width='24', height='24')
+                            use(xlink:href='img/sprite.svg#instagram')
+                    +social-link('//pinterest.com', 'pinterest')(title='Pinterest')
+                        svg(width='24', height='24')
+                            use(xlink:href='img/sprite.svg#pinterest')
+                    +social-link('//facebook.com', 'facebook')(title='Facebook')
+                        svg(width='24', height='24')
+                            use(xlink:href='img/sprite.svg#facebook')
+                +lang-switcher()
+
+            .page-footer__logo
+                img(src="img/logo2.svg")
+
+            .page-footer__copyright 2023 Diamondlake
+
+
+mixin page-footer-nav(items, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' page-footer__nav--' + modsList[i].trim();
+            }
+        }
+    ul.page-footer__nav(class=allMods)&attributes(attributes)
+        each list in items
+            +page-footer-nav-list(list)
+
+
+mixin page-footer-nav-list(items)
+    ul.page-footer__nav-list
+        each item in items
+            li.page-footer__nav-item
+                if (['Collections', 'Earrings'].includes(item))
+                    .page-footer__nav-title= item
+                else
+                    a(href="#").page-footer__nav-link= item

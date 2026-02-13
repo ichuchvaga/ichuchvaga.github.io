@@ -1,0 +1,233 @@
+// В этом файле должны быть стили для БЭМ-блока contacts, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.contacts {
+    $block-name: &; // #{$block-name}__element
+    padding-top: 15px;
+
+    & > .row {
+        align-items: stretch;
+    }
+
+    .col {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        flex-grow: 0;        
+    }
+
+    .contacts__col-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        flex-grow: 0;
+        width: 25%;
+        flex-basis: 25%;
+    }
+
+    .contacts__col-map {
+        width: 50%;
+        flex-basis: 50%;
+    }
+
+    .contacts__col-image {
+        width: 25%;
+        flex-grow: 0;
+        flex-basis: 25%;
+    }
+
+    &__map {
+        border: 0;
+        height: calc(100vh - #{$header-height} - var(--page-heading-height) - 62px);
+        min-height: 100%;
+        width: 100%;
+    }
+
+    &__image {
+        font-size: 0;
+        line-height: 0;
+    }
+
+    &__content {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.00714em;
+        font-weight: 500;
+
+        a {
+            &, &:hover, &:focus {
+                color: inherit;
+            }
+        }
+
+        p {
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__bottom {
+        margin-top: auto;
+    }
+
+    &__phone {
+        a {
+            font-size: 20px;
+            line-height: 1.1em;
+            letter-spacing: -0.0125em;
+            text-decoration: none;
+
+            &:hover {
+                color: rgb(138, 145, 153);
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__group {
+        margin-top: 32px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__group-title {
+        font-size: 20px;
+        line-height: 1.1em;
+        letter-spacing: -0.0125em;
+        margin-bottom: 12px;
+    }
+
+    &__hint {
+        margin-top: 11px;
+    }
+
+    &__buttons {
+        margin-top: 15px;
+        margin-bottom: 0;
+
+        .btn {
+            padding: 11px 8px;
+            display: block;
+            margin-top: 16px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__social.social {
+        margin-top: 16px;
+        gap: 20px;
+
+        .social__link {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &__social-section-text {
+        font-size: 12px;
+        line-height: 1.2em;
+        letter-spacing: -0.0083333333333333em;
+        font-weight: 500;
+        color: #8A9199;
+        margin-top: 16px;
+    }
+
+    @media (max-width: 1000px) {
+        padding-top: 7px;
+
+        & > .row {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        &__image {
+            display: none;
+        }
+
+        &__map {
+            height: calc(100vh - #{$header-height-mobile} - var(--page-heading-height) - 167px);
+            min-height: 344px;
+        }
+
+        .contacts__col-main {
+            width: 100%;
+            flex-basis: 100%;
+        }
+
+        .contacts__col-map {
+            width: 100%;
+            flex-basis: 100%;
+        }
+
+        .contacts__col-image {
+            width: 100%;
+            flex-basis: 100%;
+        }
+
+        &__col-map {
+            order: 2;
+            padding-top: 32px;
+        }
+
+        &__col-main {
+            order: 1;
+        }
+
+        &__content {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        &__bottom {
+            margin-top: 32px;
+        }
+
+        &__hint {
+            margin-top: 7px;
+        }
+
+        &__buttons {
+            flex-direction: column;
+        }
+
+        &__group {
+            margin-top: 24px;
+            
+            &:nth-child(1) {
+                order: 2;
+                margin-top: 24px;
+            }
+            &:nth-child(2) {
+                order: 3;
+            }
+
+            &-title {
+                margin-bottom: 8px;
+            }
+        }
+
+        &__group--phone {
+            order: 1;
+            margin-top: 0;
+        }
+
+        &__social.social {
+            order: -1;
+            margin: 0;
+
+            .social__link {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}

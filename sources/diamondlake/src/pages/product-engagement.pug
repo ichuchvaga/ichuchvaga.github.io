@@ -1,0 +1,260 @@
+extends ../pug/layout-ru.pug
+
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'Помолвочное кольцо <br> ES4 Victoria',
+                gallery = [
+                    'img/product-1-1.jpg',
+                    'img/product-1-2.jpg',
+                    'img/product-1-3.jpg',
+                    'img/product-1-4.jpg',
+                    'img/product-1-5.jpg',
+                    '360',//1-6
+                ],
+                price = '2570',
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Collections', link: '#'},
+                    {title: 'Mom’s Bracelets', link: '#'},
+                    {title: 'Boy', link: '#'},
+                    {title: 'BG14W'}
+                ];
+    +product(title, gallery, breadcrumbs)
+        +product-price(price)
+        +product-options({
+            title: 'Металл:',
+            mainOptions: ['585', '750'],
+            optionsDropdown: false,
+            options: [
+                {
+                    id: 'color-white',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '585'
+                },
+                {
+                    id: 'color-yellow',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '585'
+                },
+                {
+                    id: 'color-pink',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '585'
+                },
+                {
+                    id: 'color-white-750',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '750'
+                },
+                {
+                    id: 'color-yellow-750',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '750'
+                },
+                {
+                    id: 'color-pink-750',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '750'
+                },
+                {
+                    id: 'color-white-950',
+                    value: 'Платина',
+                    label: 'Платина',
+                    mods: 'color-white-dark',
+                    contents: '950'
+                },
+            ],
+            mods: 'color',
+            name: 'color',
+            showValue: true,
+        }, 'color')
+
+        +product-options({
+            title: 'Вес бриллианта:',
+            info: 'test',
+            options: [
+                {
+                    id: 'dsize-0',
+                    value: '0.30 Карат',
+                    label: '0.30 Карат',
+                },
+                {
+                    id: 'dsize-1',
+                    value: '0.40 Карат',
+                    label: '0.40 Карат',
+                },
+                {
+                    id: 'dsize-2',
+                    value: '0.50 Карат',
+                    label: '0.50 Карат',
+                },
+            ],
+            mods: 'square, square-wide',
+            name: 'diamondSize',
+        }, 'square')
+
+        -
+            var options = 'i,h,g,f,e,d';
+            options = options.split(',').map((elem, index) => ({
+                id: 'dcolor-'+index,
+                value: elem.toUpperCase(),
+                label: elem.toUpperCase(),
+                price: index*10,
+            }));
+        +product-options({
+            title: 'Цвет бриллианта:',
+            info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+            options: options,
+            mods: 'circle',
+            name: 'diamondColor',
+        }, 'circle')
+
+        +product-options({
+            title: 'Чистота бриллианта:',
+            info: 'test',
+            options: [
+                {
+                    id: 'dclarity-0',
+                    value: 'SI1',
+                    label: 'SI1',
+                    price: '0',
+                },
+                {
+                    id: 'dclarity-1',
+                    value: 'VS2',
+                    label: 'VS2',
+                    price: '10',
+                },
+                {
+                    id: 'dclarity-2',
+                    value: 'VS1',
+                    label: 'VS1',
+                    price: '20',
+                },
+                {
+                    id: 'dclarity-3',
+                    value: 'VVS2',
+                    label: 'VVS2',
+                    price: '30',
+                },
+                {
+                    id: 'dclarity-4',
+                    value: 'VVS1',
+                    label: 'VVS1',
+                    price: '40',
+                },
+                {
+                    id: 'dclarity-5',
+                    value: 'IF',
+                    label: 'IF',
+                    price: '50',
+                },
+            ],
+            mods: 'circle',
+            name: 'diamondClarity',
+        }, 'circle')
+
+        -
+            var options = ['14.0','14.5','15.0','15.5','16.0','16.5','17.0','17.5','18.0','18.5','19.0','19.5','20.0','20.5'];
+            //for (var i = 14; i <= 19.5; i += 0.3) options.push(i);
+            options = options.map((elem, index) => ({
+                id: 'rsize-' + index,
+                value: elem,
+                label: elem,
+            }));
+        +product-options({
+            title: 'Размер кольца:',
+            info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+            options: options,
+            mods: 'square',
+            name: 'ringSize',
+            showValue: true
+        }, 'square,ringsize')
+
+
+        +product-details-toggle()
+            .product-details-cols
+                .product-details-cols__inner
+                    +product-details('Центральный бриллиант:', [
+                        {
+                            label: 'Форма',
+                            value: 'Принцесса',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'I',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }, {
+                            label: 'Сертификат',
+                            value: 'GIA <a href="#">(подробнее)</a>',
+                        }
+                    ])
+                    +product-details('Описание:', [
+                        {
+                            label: 'Артикул',
+                            value: 'ES4R03',
+                        }, {
+                            label: 'Название',
+                            value: 'VICTORIA',
+                        }, {
+                            label: 'Размер',
+                            value: '16.5',
+                        }, {
+                            label: 'Металл',
+                            value: 'Платина 750',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '2.1 гр',
+                        }
+                    ])
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'F/G',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }
+                    ])
+
+            .product-details__text
+                p Классическое помолвочное кольцо-солитер с одним центральным бриллиантом на 0,5 карата – элегантное и романтичное украшение, которое вы без проблем сможете сочетать с любыми дневными и вечерними образами.
+
+                p Модель построена на доминанте мягких и пластичных форм, женственна и нежна. Шинка с объемным профилем после утолщения изящно сужается по направлению к касту, делая важный визуальный акцент на верхушке кольца. Ее украшает бриллиант с круглой огранкой и безупречной геометрией.
+
+                p Бриллиант помещен в 4-крапановую закрепку – одну из самых лаконичных и неброских среди всех видов закрепок. При обеспечении максимальной плотности посадки она дает полный доступ света ко всем алмазным граням. В таком оформлении бриллиант ярко сияет при любом освещении. А гладкая полированная поверхность кольца дает дополнительную игру света.
+
+                p Помолвочное кольцо с бриллиантом хорошо сочетается с дорожками, кольцами вечности, шайбами и прямыми обручальными кольцами. Универсальность дизайна с сохранением оригинального звучания – одно из ключевых преимуществ модели.
+
+        +product-summary(['date', 'available', 'laser', 'share'])
+        +product-buttons()

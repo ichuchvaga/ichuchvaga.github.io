@@ -1,0 +1,77 @@
+//- Data
+include ../data/about_reviews
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Об агентстве",
+		pagetitle = "Отзывы наших клиентов",
+		subtitle = "Отзывы клиентов кадрового агентства «КАУС»:",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'about.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- About reviews
+		.about-reviews
+			.section-content
+				.container
+					.about-header
+						.h2.about-header__title #{subtitle}
+				.about-reviews-list
+					each item in reviews_list
+						.about-reviews-item
+							.container
+								.wrapper
+									.about-reviews-item__l
+										.about-reviews-item__entity #{item.entity}
+										- if (item.img)
+											.about-reviews-item__img
+												img(src=`upload/about/reviews/${item.img}.jpg` alt=item.name)/
+										.about-reviews-item__name #{item.name},
+										.about-reviews-item__position #{item.position}
+									.about-reviews-item__r
+										.about-reviews-item__head.wrapper
+											.about-reviews-item__title #{item.title}
+											time.about-reviews-item__date.text-right #{item.date}
+										.about-reviews-item__content
+											each el in item.text
+												p.about-reviews-item__text #{el}
+				.about-reviews-button.text-center
+					button.btn.btn-lg.btn-primary(type="button") Показать еще отзывы
+		.about-reviews-bottom
+			.container
+				p.
+					SEO-текст: обратились в агентство с целью поиска инженера-программиста для решения сложных нетипичных технических задач. До 
+					обращения в агентство пытались найти программиста через личные контакты, потратили время, и не добились результата. Нанятый с 
+					помощью агентства сотрудник работает на постоянной основе, справляется с работой.
+
+		//- Subscribe
+		include ../partials/subscribe
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

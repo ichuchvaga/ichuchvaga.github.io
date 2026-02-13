@@ -1,0 +1,64 @@
+// Subscribe styling
+
+.subscribe
+	.row
+		margin: 
+			left: 0
+			right: 0
+	.col-subscribe
+		padding-left: 0
+		padding-right: 0
+
+.subscribe-content
+	position: relative
+	padding: 
+		top: 58px
+		left: 205px
+		bottom: 52px
+	color: #232a32
+.subscribe-icon
+	position: absolute
+	top: 60px
+	left: 0
+	display: block
+	+size(150px, 122px)
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 24px
+		display: block
+		+size(122px)
+		background: transparent url(../img/icons/circle.png) no-repeat 0 0
+		z-index: 0
+.subscribe-img
+	position: relative
+	display: inline-block
+	vertical-align: middle
+	z-index: 1
+.subscribe-title,
+.subscribe-subtitle
+	margin: 0
+	line-height: 1.1em
+.subscribe-subtitle
+	color: #24b5a8
+	strong
+		display: block
+		font-weight: 300
+		line-height: 1.1em
+.subscribe-descr
+	margin:
+		top: 30px
+		bottom: 0
+	font-size: 18px
+
+.subscribe-form
+	margin-left: auto
+	padding: 
+		top: 60px
+		bottom: 60px
+	width: 450px
+	.form-element
+		margin-bottom: 17px
+	.form-button
+		margin-top: 16px

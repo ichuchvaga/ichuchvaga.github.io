@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-radio-box)
+
+mixin field-radio-box(title, helpText, mods)
+
+  //- Принимает:
+  //-   title    {string} - заголовок
+  //-   helpText {string} - текст во всплывающей подсказке
+  //-   mods     {string} - список модификаторов
+  //- Вызов:
+        +field-radio-box('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-radio-box--' + modsList[i].trim();
+      }
+    }
+
+  .field-radio-box(class=allMods)&attributes(attributes)
+    label.field-radio-box__inner
+      input(type='radio', name='type', value='none').field-radio-box__input&attributes(attributes)
+      span.field-radio-box__name= title
+        if (helpText)
+          +tip(helpText)
+      block

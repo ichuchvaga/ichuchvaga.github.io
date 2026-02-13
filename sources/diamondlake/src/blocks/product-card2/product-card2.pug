@@ -1,0 +1,64 @@
+//- Все примеси в этом файле должны начинаться c имени блока (product-card)
+
+mixin product-card2(props, mods)
+    //- Принимает:
+    //-   props   {object} - параметры
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +product-card(
+              {
+                  image: 'cat-p2.jpg',
+                  props: [
+                      'Помолвочное кольцо',
+                      'С одним бриллиантом',
+                      '0.25 карат 4.0 мм',
+                  ],
+                  likes: 123,
+              }
+              , 'some-mod'
+          )
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-card--' + modsList[i].trim();
+            }
+        }
+        props.gallery = ['product-also.jpg', 'product-also-yellow.jpg', 'product-also-red.jpg'];
+
+    .product-card2(href="#", class=allMods)&attributes(attributes)
+        .product-card2__inner
+            .product-card2__slider.swiper
+                .product-card2__images.swiper-wrapper
+                    each image in props.gallery
+                        .product-card2__image.swiper-slide
+                            img(src="img/"+image)
+                .swiper-pagination
+                a(href="#").product-card2__likes
+                    svg(width='24', height='24')
+                        use(xlink:href='img/sprite.svg#heart-bg-white')
+                if props.colors
+                    .product-card2__colors
+                        .product-card2__color.product-card2__color--white
+                        .product-card2__color.product-card2__color--yellow
+                        .product-card2__color.product-card2__color--pink
+                        .product-card2__color.product-card2__color--combined
+
+            .product-card2__heading
+                a(href="#").product-card2__heading-title!=props.title
+                    .span.product-card2__heading-carat 0.30 Карат
+                .product-card2__heading-price от: 156 000 ₽
+
+            .product-card2__info
+                if (props.props)
+                    .product-card2__props.swiper
+                        .swiper-wrapper
+                            each item in props.props
+                                .product-card2__prop.swiper-slide= item
+                        .swiper-button-next
+                        .swiper-button-prev
+
+                a(href="#").btn.btn--main-o.product-card2__button Подробнее

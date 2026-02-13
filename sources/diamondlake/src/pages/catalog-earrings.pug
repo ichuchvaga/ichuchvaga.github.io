@@ -1,0 +1,17 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--catalog';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    +catalog-banner('img/catalog-banner-earrings-left.png', 'img/catalog-banner-earrings-right.png', 'Earring Suds', 'Designed with inspiration and crafted with love')
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Mom’s Bracelets')
+
+    +catalog('earrings')

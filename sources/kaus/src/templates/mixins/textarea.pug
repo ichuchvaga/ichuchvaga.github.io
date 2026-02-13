@@ -1,0 +1,13 @@
+mixin textarea(obj)
+	-
+		var ph = ""; if (obj.placeholder) ph = obj.placeholder;
+		var name = ""; if (obj.name) name = obj.name;
+		var required = obj.required || false;
+
+	.form-element
+		textarea(
+			class="input"
+			placeholder=ph
+			name=name
+			required=required
+		)

@@ -1,0 +1,77 @@
+// В этом файле должны быть стили для БЭМ-блока catalog-banner, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.catalog-banner {
+    $block-name: &; // #{$block-name}__element
+
+    margin-bottom: 16px;
+
+    &__inner {
+        display: flex;
+        height: 500px;
+    }
+
+    img {
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__left {
+        width: 30%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    &__right {
+        width: 70%;
+        background-position: left center;
+        background-size: cover;
+        padding: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 80px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        line-height: 96%;
+
+        .lang-ru & {
+            font-family: Quasimoda;
+            font-size: 60px;
+            font-weight: 500;
+            line-height: 58px;
+            letter-spacing: -3px;
+            text-align: left;
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    &__content {
+        max-width: 600px;
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: -16px;
+
+        &__inner {
+            height: 240px;
+        }
+
+        &__left {
+            width: 100%;
+        }
+
+        &__right {
+            display: none;
+        }
+    }
+}

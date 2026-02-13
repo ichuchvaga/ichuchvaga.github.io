@@ -1,0 +1,43 @@
+// В этом файле должны быть стили для БЭМ-блока page-container, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.page-container {
+    $block-name: &; // #{$block-name}__element
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px 0;
+
+    &__main {
+        flex: 1;
+        background: $white;
+        border-radius: 4px;
+        padding: 45px 60px;
+    }
+
+    &__sidebar {
+        width: 460px;
+        background: $white;
+        border-radius: 4px;
+        padding: 25px 30px;
+    }
+
+    @media (max-width: $screen-xl) {
+        margin: 0 -15px;
+        padding: 30px 16px;
+        flex-direction: column;
+        background: #fff;
+
+        &__main {
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        &__sidebar {
+            width: auto;
+            padding: 0;
+        }
+    }
+}

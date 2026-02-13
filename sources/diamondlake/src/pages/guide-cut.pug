@@ -1,0 +1,16 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title System
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Diamond Guide', '#')
+            +breadcrumbs-item('Cut')
+
+        h1 4c - Cut
+
+    +guide-child(4)

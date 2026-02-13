@@ -1,0 +1,90 @@
+// В этом файле должны быть стили для БЭМ-блока burger, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.burger {
+    $block-name: &; // #{$block-name}__element
+
+    position: relative;
+    z-index: 1;
+    border: none;
+    user-select: none;
+    cursor: pointer;
+
+    width: 40px;
+    height: 40px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__text {
+        display: none;
+    }
+
+    &__icon { // stylelint-disable-line  selector-combinator-blacklist
+        display: block;
+        position: relative;
+        width: 100%;
+        height: $toggler-part-height;
+        font-size: 0;
+        color: transparent;
+        transition: background $transition-time $transition-time, transform $transition-time;
+
+        &, &:before, &:after {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: black;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            transform-origin: 50% 50%;
+            transition: top $transition-time $transition-time, transform $transition-time;
+        }
+
+        &:before {
+            top: -9px;
+        }
+
+        &:after {
+            top: 8px;
+        }
+    }
+
+    &--close {
+        &:before, &:after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: #1A1A1A;
+        }
+
+        &:before {
+            transform: translate(-50%,-50%) rotate(45deg);
+        }
+
+        &:after {
+            transform: translate(-50%,-50%) rotate(-45deg);
+        }
+
+        svg {
+            opacity: 0;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        width: 24px;
+        height: 24px;
+    }
+}

@@ -1,0 +1,61 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-range)
+
+mixin field-range(props)
+
+    //- Принимает:
+    //-   props {object}
+    //-     title: ''         {string} - текст с названием (выводится над полем)
+    //-     helpText: ''      {string} - пояснение под полем
+    //-     mods: ''          {string} - модификаторы блока
+    //-     attrs:            {object} - любые атрибуты для input
+    //-       name:           {string}
+    //- Вызов:
+          +field-range({
+            title: 'Название',
+            helpText: 'Подсказка',
+            mods: '',
+            attrs: {
+              name: 'counter',
+              min: '1',
+              max: '100',
+              step: '1',
+              value: '40',//['40', '100']
+            }
+          })
+
+    -
+        if (typeof (props) === 'undefined') {
+            var props = {};
+        }
+        var allMods = '';
+        if (typeof (props.mods) !== 'undefined' && props.mods) {
+            var modsList = props.mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' field-range--' + modsList[i].trim();
+            }
+        }
+        var values = props.attrs.value.split(',')
+
+    div.field-range(class=allMods)&attributes(attributes)
+        if(typeof (props.title) !== 'undefined' && props.title)
+            span.field-range__name!= props.title
+        input.field-range__input-range&attributes(props.attrs)
+        .field-range__input-range-container
+        span.field-range__input-wrap
+            if (values.length > 1)
+                - props.attrs.name = props.attrs.name + '[]';
+                each val, index in values
+                    - props.attrs.value = val
+
+                    input.field-range__input(type='number')&attributes(props.attrs)
+                    if(typeof (props.helpText) !== 'undefined' && props.helpText)
+                        span.field-range__help-text!= props.helpText
+                    span.field-range__input-separator -
+            else
+                input.field-range__input(type='number')&attributes(props.attrs)
+                if(typeof (props.helpText) !== 'undefined' && props.helpText)
+                    span.field-range__help-text!= props.helpText
+
+            if (modsList.includes('labels'))
+                each val, index in values
+                    .field-range__label=val

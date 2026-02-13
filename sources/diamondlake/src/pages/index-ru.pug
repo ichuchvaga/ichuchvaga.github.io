@@ -1,0 +1,19 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--home';
+    - var lang = 'ru';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    +main-hero()
+    +main-cats()
+    +main-reasons()
+    +main-engagement()
+    +main-products()
+    +main-banner()
+    +main-reviews()
+    +main-made()

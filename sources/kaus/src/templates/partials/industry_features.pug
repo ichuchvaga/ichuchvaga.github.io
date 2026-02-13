@@ -1,0 +1,35 @@
+//- Industry features
+
+//- Data
+include ../data/industry_features
+
+- var class_features = ""; if (recruitmentBlock && recruitmentBlock == true) class_features = " industry-features-with-recruitment";
+
+div(class="industry-features" + class_features)
+	.container
+		.section-header.text-center
+			.h1.section-header__title Вы достигнете цели, используя наши преимущества
+		.section-content
+			.wrapper
+				.industry-features__l
+					ul.industry-features-list.wrapper
+						each item in features_left
+							li.industry-features-item
+								.industry-features-item__title.h4 #{item.title}
+								p.industry-features-item__descr #{item.descr}
+				.industry-features__r
+					ul.list.list_type_industry-features
+						each item in features_right
+							li #{item}
+
+		- if (recruitmentBlock && recruitmentBlock == true)
+			//- Section with header
+			.section-with-header-compact.blue-gray-theme
+				.wrapper
+					.section-with-header-compact__l
+						.section-with-header-compact__title.section-header__title.h2.
+							!{recruitment_title}
+					.section-with-header-compact__r
+						p.section-with-header-compact__descr.
+							Если сотрудник не подойдет, мы бесплатно найдем Вам другого специалиста в качестве замены
+						a.btn.btn-lg.btn-outline.btn-outline-transparent(href="javascript:void(0);") Подобрать специалиста

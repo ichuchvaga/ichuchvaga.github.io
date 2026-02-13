@@ -1,0 +1,117 @@
+// В этом файле должны быть стили для БЭМ-блока catalog-sort, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.catalog-sort {
+    $block-name: &; // #{$block-name}__element
+
+    position: relative;
+    z-index: 10;
+
+    &__content {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border: 1px solid #1a1a1a;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 15px 10px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+
+        &.active {
+            display: flex;
+        }
+    }
+
+    &__title {
+        /*margin-top: -1px;*/
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+    &__item {
+        text-decoration: none;
+
+        &:hover, &:focus {
+            color: #8A9199;
+        }
+    }
+
+    &__close {
+        display: none;
+    }
+
+    @media (min-width: 1001px) {
+        &__title {
+            display: none;
+        }
+
+        &__content {
+            top: 39px;
+            border-top: none;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        &__content.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            z-index: 100;
+            right: 0;
+            bottom: 0;
+            margin: 0!important;
+            width: auto;
+            height: auto;
+            padding: 20px 16px 32px;
+            overflow-y: auto;
+            align-items: stretch;
+            border: 0;
+        }
+
+        .filter-opened & {
+            z-index: 100;
+        }
+
+        &__title {
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 110%;
+            padding-bottom: 13px;
+            border-bottom: 1px solid #000;
+        }
+
+        &__close {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 6L18 18' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+
+        &__item {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 140%;
+            margin-bottom: 24px;
+        }
+    }
+}
+
+
+
+.catalog-sort-button {
+    width: 180px;
+
+    @media (max-width: 1000px) {
+        width: 100%;
+    }
+}

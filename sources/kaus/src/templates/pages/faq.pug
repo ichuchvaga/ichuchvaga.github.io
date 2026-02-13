@@ -1,0 +1,74 @@
+//- Data
+include ../data/faq
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "FAQ",
+		pagetitle = "Частые вопросы",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-faq(style={"background-color":"#dbdce9"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Задать вопрос
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			last_title: header_menu_active
+		})
+		//- FAQ section
+		.faq-section
+			.container
+				.section-content
+					ul.faq-list
+						each item,index in faq_items
+							li.faq-item
+								a.faq-item__link.blue-gray-theme.collapsed(
+									href="javascript:void(0);", 
+									data-toggle="collapse", 
+									data-target=`#faq_item_${index}`, 
+									aria-expanded="false", 
+									aria-controls=`faq_item_${index}`
+								)
+									span.h4.faq-item__text #{item}
+								.collapse(
+									id=`faq_item_${index}`,
+									aria-expanded="false"
+								)
+									.faq-item__content
+										p.
+											Основная цель данных переговоров - снятие профиля должности по вакансии клиента. Только в процессе личного общения с 
+											клиентом возможно получение необходимой точной информации для поиска конкретного специалиста. Ведь существуют нюансы, 
+											на первый взгляд незначительные, но которые могут сыграть решающую роль при поиске и подборе персонала. Грамотно снятый 
+											профиль должности — залог быстрого и качественного удовлетворения потребности клиента в том или ином специалисте.
+										p.
+											Кроме того, наши специалисты по подбору персонала являются экспертами в своей предметной области, смогут ответить на 
+											вопросы, как грамотно и правильно выстраивать отношения с подбираемым для Вас персоналом, проконсультируют относительно 
+											рынка труда данных специалистов, уровня заработной платы. Вы почувствуете уверенность в том, что обратившись в Кадровое 
+											агентство уникальных специалистов, Вы сделали правильный выбор.
+		//- Consult
+		include ../partials/consult
+		//- Clients
+		include ../partials/clients
+		//- Subscribe
+		include ../partials/subscribe
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

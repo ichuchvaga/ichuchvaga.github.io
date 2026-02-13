@@ -1,0 +1,34 @@
+//- Date input styling
+
+.flatpickr
+	position: relative
+	.input-button
+		position: absolute
+		top: 0
+		right: 0
+		display: block
+		+size(50px, 60px)
+		text-decoration: none
+		border: 1px solid #eaeaea
+		border-top-right-radius: 10px
+		border-bottom-right-radius: 10px
+		background-color: #fbfbfb
+		cursor: pointer
+		transition: background-color .15s, border-color .15s
+		&:hover
+			background-color: #aaa
+			border-color: #aaa
+			.icon-date
+				background-position: -46px 0px
+
+.flatpickr-input
+	padding:
+		left: 35px
+		right: 50px
+	&:focus
+		+ .input-button
+				background-color: #aaa
+				border-color: #aaa
+				.icon-date
+					background-position: -46px 0px
+

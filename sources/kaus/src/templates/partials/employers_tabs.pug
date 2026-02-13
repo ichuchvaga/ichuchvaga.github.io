@@ -1,0 +1,183 @@
+//- Employers tabs
+
+//- Mixins
+include ../mixins/input
+include ../mixins/checkbox
+include ../mixins/textarea
+
+.employers-tabs#employers-tabs
+	.container
+		.tabs
+			ul.nav.nav-pills.wrapper(role="tablist")
+				li(class="nav-item active")
+					a(
+						id="form-nav-item_0-tab", 
+						class="nav-link valign-wrapper", 
+						data-toggle="pill", 
+						href="#form-nav-item_0", 
+						role="tab", 
+						aria-controls="form-nav-item_0", 
+						aria-selected="true"
+					)
+						span Быстрая форма
+				li(class="nav-item")
+					a(
+						id="form-nav-item_1-tab", 
+						class="nav-link valign-wrapper" 
+						data-toggle="pill", 
+						href="#form-nav-item_1", 
+						role="tab", 
+						aria-controls="form-nav-item_1", 
+						aria-selected="false"
+					)
+						span Полная форма
+
+	.tab-content
+		div(
+			id="form-nav-item_0",
+			class="tab-pane fade in active",
+			role="tabpanel",
+			aria-labelledby="form-nav-item_0-tab"
+		)
+			.employers-form
+				form.form
+					.form__body
+						.container
+							.fieldset
+								.row
+									.col-md-6
+										+input_field({
+											name: "name",
+											placeholder: "Ваше имя",
+											required: true
+										})
+									.col-md-6
+										+input_field({
+											type: "tel",
+											name: "phone",
+											placeholder: "Телефон для связи",
+											required: true
+										})
+								+textarea({
+									name: "text",
+									placeholder: "Сообщение",
+									required: true
+								})
+							.agreement.text-center
+								+checkbox({
+									name: "agreement",
+									id: "agreement_employers_fast",
+									checked: true
+								})
+								span Нажимая кнопку "Отправить заявку", я #[a.link(href="javascript:void(0);") даю свое согласие] на обработку моих персональных данных
+							.form-button.text-center
+								button.btn.btn-primary(type="submit") Отправить заявку
+
+					input(type="hidden" name="success_title" value="Спасибо за заявку")/
+					input(type="hidden" name="success_message" value="Наши менеджеры свяжутся с вами в ближайшее время!")/
+
+		div(
+			id="form-nav-item_1",
+			class="tab-pane fade",
+			role="tabpanel",
+			aria-labelledby="form-nav-item_1-tab"
+		)
+			.employers-form
+				form.form
+					.form__head
+						.container
+							.form__title.h4 Общая информация
+					.form__body
+						.container
+							.fieldset
+								.row
+									.col-md-6
+										+input_field({
+											name: "name-organization",
+											placeholder: "Название организации*",
+											required: true
+										})
+									.col-md-6
+										+input_field({
+											name: "representative-company",
+											placeholder: "Представитель компании, заказывающей специалиста (Ф.И.О.)*",
+											required: true
+										})
+									.col-md-4
+										+input_field({
+											name: "position",
+											placeholder: "Должность"
+										})
+									.col-md-4
+										+input_field({
+											name: "line-of-business",
+											placeholder: "Направления деятельности компании"
+										})
+									.col-md-4
+										+input_field({
+											name: "address",
+											placeholder: "Адрес"
+										})
+									.col-md-4
+										+input_field({
+											type: "tel",
+											name: "phone",
+											placeholder: "Телефон*",
+											required: true
+										})
+									.col-md-4
+										+input_field({
+											type: "email",
+											name: "email",
+											placeholder: "E-Mail*",
+											required: true
+										})
+									.col-md-4
+										+input_field({
+											name: "website-address",
+											placeholder: "Адрес сайта"
+										})
+					.form__head
+						.container
+							.form__title.h4 Описание вакансии
+					.form__body
+						.container
+							.fieldset
+								.row
+									.col-md-6
+										+input_field({
+											name: "job-title",
+											placeholder: "Название вакансии*",
+											required: true
+										})
+									.col-md-6
+										+input_field({
+											name: "function",
+											placeholder: "Должностные обязанности"
+										})
+									.col-md-6
+										+input_field({
+											name: "requirements",
+											placeholder: "Требования к сотруднику"
+										})
+									.col-md-6
+										+input_field({
+											name: "amount",
+											placeholder: "Размер оплаты труда (оклад), бонусы, премии, проценты"
+										})
+								+textarea({
+									name: "additional-info",
+									placeholder: "Дополнительная информация"
+								})
+							.agreement.text-center
+								+checkbox({
+									name: "agreement",
+									id: "agreement_employers_full",
+									checked: true
+								})
+								span Нажимая кнопку "Отправить заявку", я #[a.link(href="javascript:void(0);") даю свое согласие] на обработку моих персональных данных
+							.form-button.text-center
+								input.btn.btn-primary(type="submit" value="Отправить заявку")/
+
+					input(type="hidden" name="success_title" value="Спасибо за заявку")/
+					input(type="hidden" name="success_message" value="Наши менеджеры свяжутся с вами в ближайшее время!")/

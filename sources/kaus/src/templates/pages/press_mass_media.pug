@@ -1,0 +1,80 @@
+//- Data
+include ../data/press_mass_media
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Пресс-центр",
+		pagetitle = "СМИ о нас"
+		ymap = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--gray
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: "press_center.html"
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Filter panel
+		.filter-panel
+			.container
+				.row
+					.filter-panel__l
+						.radio-buttons.radio-inline
+							+radio({
+								name: 'years',
+								items: [
+									{
+										label: 2018,
+										checked: true
+									},
+									{
+										label: 2017
+									},
+									{
+										label: 2016
+									}
+								]
+							})
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+		//- Press releases
+		.press-releases
+			.press-section
+				.container
+					.section-content
+						each item in releases_items
+							.press-section__item
+								.press-section__date.wrapper
+									time #{item.date}
+									span.press-section__source #{item.source}
+								a.press-section__link.link.h3(href="javascript:void(0);") #{item.title}
+								p #{item.descr}
+						.press-section__button.text-center
+							a.btn.btn-wide.btn-primary(href="javascript:void(0);") Показать еще пресс-релизы
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

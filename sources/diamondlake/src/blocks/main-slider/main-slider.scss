@@ -1,0 +1,13 @@
+// В этом файле должны быть стили для БЭМ-блока main-slider, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-slider {
+    $block-name: &; // #{$block-name}__element
+
+    height: 100%;
+
+    &__slide {
+        background-position: center center;
+        background-size: cover;
+    }
+}

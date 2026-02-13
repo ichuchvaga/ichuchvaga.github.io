@@ -1,0 +1,144 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Наши исследования";
+	var ymap = true;
+	var ymap_center = true;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Библиотека HR",
+					url: "hr.html"
+				}
+			],
+			last_title: "Наши исследования"
+		})
+
+
+		.hr-research-section
+			
+			//- Filter panel
+			.filter-panel
+				.container
+					.row
+						.filter-panel__l
+							.radio-buttons.radio-inline
+								+radio({
+									name: 'years',
+									items: [
+										{
+											label: 2018,
+											checked: true
+										},
+										{
+											label: 2017
+										},
+										{
+											label: 2016
+										}
+									]
+								})
+
+
+						.filter-panel__r
+							.filter-panel__search
+								form.search-form
+									.search.search--md
+										input.search__field(type="text" name="q" placeholder="Поиск")/
+										button.search__button(type="submit")
+											span.icon.icon-search
+
+		
+			include ../data/hr_research
+
+			//- Items List
+			.hr-research
+				.articles-section.section-with-border
+					.container
+						.articles-list-outer
+							ul.articles-list
+								each item in articles_array
+									//- var cat_url = "javascript:void(0);";
+									//- if (item.category_url != '') cat_url = item.category_url;
+
+									- var single_url = "javascript:void(0);";
+									- if (item.elem_url != '') single_url = item.elem_url;
+
+									li.articles-list__item
+										//-.articles-list__category-link
+											a(href=cat_url class="link") #{item.category}
+
+										.h4.articles-list__item-link
+											a(href=single_url class="link") #{item.elem_title}
+
+										.articles-list__descr #{item.descr}
+
+						.hr-research__buttons.text-center
+							a(href="javascript:void(0);" class="btn btn-wide btn-primary") Показать еще исследования
+							
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Сократите затраты #[br] на подбор финансового #[br] персонала
+
+							span.consult-subtitle Не теряйте деньги из-за отсутствия сотрудника
+							
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Получить консультацию		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

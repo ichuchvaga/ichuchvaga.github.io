@@ -1,0 +1,23 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title System
+    meta(name='description', content='')
+
+block content
+    .guide-gia-banner(style="background-image:url(img/guide-gia-banner.jpg)")
+        .container
+            .guide-gia-banner__content
+                .guide-gia-banner__title НОВЫЙ ЦИФРОВОЙ СЕРТИФИКАТ gia
+                .guide-gia-banner__text Рассказываем о бриллиантах подробно и интересно, чтобы вы знали, что и зачем покупаете: размер камней и их цвет, чистота и типы огранки,
+                //-a(href="#").btn.btn--white-o.guide-gia-banner__button Shop Diamonds
+
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Diamond Guide', '#')
+            +breadcrumbs-item('Gia Certificate')
+
+        h1 Gia Certificate
+
+    +guide-child(6)

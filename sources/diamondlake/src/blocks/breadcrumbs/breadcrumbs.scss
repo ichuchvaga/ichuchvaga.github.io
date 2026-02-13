@@ -1,0 +1,59 @@
+// В этом файле должны быть стили для БЭМ-блока breadcrumbs, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.breadcrumbs {
+    color: $gray;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: -0.1px;
+
+    .page--catalog & {
+        margin-bottom: 32px;
+    }
+
+    a {
+        color: $gray;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: inherit;
+            text-decoration: underline;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+
+        li {
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        margin: 0;
+
+        &:not(:last-child):after {
+            content: '/';
+            display: inline-block;
+            margin-left: 3px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        font-size: 12px;
+
+        .page--catalog & {
+            margin-bottom: 8px;
+        }
+    }
+}

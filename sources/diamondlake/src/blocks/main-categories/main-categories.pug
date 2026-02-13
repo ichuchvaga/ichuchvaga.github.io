@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-categories)
+
+mixin main-categories(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-categories('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-categories--' + modsList[i].trim();
+            }
+        }
+        var items = ['ПОмолвочные кольца', 'Обручальные кольца', 'Кольцо дорожка с бриллиантами', 'Пусеты']
+
+    .main-categories(class=allMods)&attributes(attributes)
+        .main-categories__inner.container
+            each item in items
+                a(href="#").main-categories__item
+                    .main-categories__item-title= item
+                    .main-categories__item-image
+                        img(src="img/cat.jpg")
+                    .main-categories__item-button Посмотреть коллекцию

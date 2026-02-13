@@ -1,0 +1,334 @@
+//- Все примеси в этом файле должны начинаться c имени блока (guide-child)
+
+mixin guide-child(index, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +guide-child('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (index == 6) allMods = ' guide-child--gia';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' guide-child--' + modsList[i].trim();
+            }
+        }
+
+        var children = ['Diamond Buying Guide', 'Carat', 'Color', 'Clarity', 'Cut', 'fluorescence', 'GIA Certificate']
+
+    .guide-child(class=allMods)&attributes(attributes)
+        .guide-child__nav
+            .container
+                each item, i in children
+                    a.guide-child__nav-item(href="#", class=(index == i ? 'guide-child__nav-item--active' : ''))=item
+
+        .container
+            .guide-child__row
+                .guide-child__col.guide-child__col--media
+                    if (index === 1)
+                        +guide-carat-vars()
+                    else if ([2, 3, 4, 5].includes(index))
+                        +guide-carat-slider(index)
+                    else if (index === 6)
+                        img(src="img/guide-gia-image.png")
+                .guide-child__col.guide-child__col--content
+                    .guide-child__description
+                        .guide-child__description-body
+                            .guide-child__title
+                                if index === 6
+                                    |4C Diamonds
+                                else
+                                    |Carat size is an essential
+                            .guide-child__text
+                                if index === 6
+                                    p The Gemological Institute of America (GIA) is a non-profit organization that was established in 1931 and is considered to be one of the most respected and well-known organizations in the diamond industry. GIA is renowned for its unbiased and objective grading of diamonds and has set the standard for diamond grading worldwide.
+                                    p The GIA diamond certificate is a report that provides a detailed analysis of a diamond's characteristics, including its carat weight, color, clarity, cut, and other important factors. The certificate is issued by GIA after a diamond has been examined by a team of expert gemologists who use advanced equipment and techniques to assess the diamond's quality.
+                                else
+                                    p Carat size is an essential component when it comes to evaluating the value of a diamond. One carat is equivalent to 0.2 grams, and the weight of a diamond is a significant factor in determining its worth. A larger carat weight is generally more valuable, but it is not the only factor to consider when evaluating a diamond.
+                                    p The cut, color, and clarity of a diamond also play a crucial role in determining its overall value. Ultimately, the perfect diamond is one that strikes the perfect balance between carat weight, cut, color, and clarity, and which speaks to the unique style and preferences of the diamond buyer.
+                        if (index != 6)
+                            a(href="#").btn.btn--main.guide-child__btn Помолвочные кольца
+                    .guide-child__description
+                        .guide-child__description-body
+                            .guide-child__title(class=(index === 6 ? 'guide-child__title--empty' : ''))
+                                if index === 6
+                                    |&nbsp;
+                                else
+                                    |Our recommendations
+                            .guide-child__text
+                                if index === 6
+                                    p The report also includes a diagram that shows the diamond's exact proportions, as well as a detailed description of its characteristics.
+                                        br
+                                        |GIA uses a comprehensive grading system for diamonds that takes into account all of the factors that determine a diamond's quality. The system includes grades for color, clarity, cut, and carat weight, and each grade is assigned a specific rating that ranges from "excellent" to "poor."
+                                    p GIA is known for its strict grading standards and is considered to be one of the most reliable sources for diamond grading. Many buyers and sellers of diamonds insist on GIA certification as a way to ensure the quality and authenticity of their diamonds.
+                                        br
+                                        |In summary, a GIA diamond certificate provides a
+                                else
+                                    p If a large carat weight is important to you, but you are working within a strict budget, consider a diamond with good cut, SI1 clarity, and I or J color.
+                                    p Always try to purchase diamonds with carat weights just below whole and half-carat sizes. For example, instead of a 1.0-carat diamond, consider purchasing a 0.9-carat weight. This will save a significant amount of money, and the small difference in size will never be noticeable.
+
+                        //-if (index != 6)
+                            a(href="#").btn.btn--main.guide-child__btn Shop Diamonds
+
+        if index === 6
+            .guide-child-banner(style="background-image: url(img/guide-gia-inscription.png)")
+                .container
+                    .guide-child-banner__content
+                        .guide-child-banner__title УНИКАЛЬНЫЙ НОМЕР
+                        .guide-child-banner__text Рассказываем о бриллиантах подробно и интересно, чтобы вы знали, что и зачем покупаете: размер камней и их цвет, чистота и типы огранки,
+
+        .guide-child__more.container
+            .guide-child__more-heading Learn more
+            .guide-child__more-items
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-1.png").guide-child__more-image
+                    .guide-child__more-title 1C - Carat
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-2.png").guide-child__more-image
+                    .guide-child__more-title 2C - Color
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-3.png").guide-child__more-image
+                    .guide-child__more-title 3C - Clarity
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-4.png").guide-child__more-image
+                    .guide-child__more-title 4C - Cut
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-5.png").guide-child__more-image
+                    .guide-child__more-title Fluorescence
+                a(href="#").guide-child__more-item
+                    img(src="img/learn-more-6.png").guide-child__more-image
+                    .guide-child__more-title GIA Certificate
+
+
+
+mixin guide-carat-vars
+    -
+        var shapes = {
+            'Круг': {
+                image: 'img/diamond-shape-round.png',
+                minWidth: 18,
+                maxWidth: 34,
+            },
+            'Принцесса': {
+                image: 'img/diamond-shape-princess.png',
+                minWidth: 16,
+                maxWidth: 30,
+            },
+            'Груша': {
+                image: 'img/diamond-shape-pearl.png',
+                minWidth: 24,
+                maxWidth: 43,
+            },
+            'Сердце': {
+                image: 'img/diamond-shape-heart.png',
+                minWidth: 18,
+                maxWidth: 31,
+            },
+            'Ашер': {
+                image: 'img/diamond-shape-asscher.png',
+                minWidth: 16,
+                maxWidth: 27,
+            },
+            'Кушон': {
+                image: 'img/diamond-shape-cushion.png',
+                minWidth: 14,
+                maxWidth: 26,
+            },
+            'Овал': {
+                image: 'img/diamond-shape-oval.png',
+                minWidth: 23,
+                maxWidth: 43,
+            },
+            'Изумруд': {
+                image: 'img/diamond-shape-emerald.png',
+                minWidth: 18,
+                maxWidth: 37,
+            },
+        };
+
+        var start = 0.3,
+            end = 2.0,
+            step = 0.1;
+
+    .guide-carat-vars(data-shapes=JSON.stringify(shapes), data-shape="Круг", data-size=start, data-min=start, data-max=end, data-step=step data-label="карат")
+        .guide-carat-vars__image
+            img(src="img/diamond-shape-round.png", width=18).guide-carat-vars__stone
+        .guide-carat-vars__shapes
+            each data, shape in shapes
+                .guide-carat-vars__shape
+                    input(type="radio", name="guide-carat-shape", value=shape, id="guide-carat-shape-"+shape, checked=(shape === 'Круг'))
+                    label(for="guide-carat-shape-"+shape)
+                        img(src=data.image)
+                        span=shape
+        .guide-carat-vars__slider
+            +slider([start, end], step)
+
+mixin guide-carat-slider(index)
+    -
+        if (index == 2) {
+            var pips = ['D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            var data = [
+                {
+                    images: ['img/guide-color-1-1.png', 'img/guide-color-1-2.png'],
+                    title: 'ЦВЕТ D',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-2-1.png', 'img/guide-color-2-2.png'],
+                    title: 'ЦВЕТ E',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-3-1.png', 'img/guide-color-3-2.png'],
+                    title: 'ЦВЕТ F',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-4-1.png', 'img/guide-color-4-2.png'],
+                    title: 'ЦВЕТ G',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-5-1.png', 'img/guide-color-5-2.png'],
+                    title: 'ЦВЕТ H',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-6-1.png', 'img/guide-color-6-2.png'],
+                    title: 'ЦВЕТ I',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-color-7-1.png', 'img/guide-color-7-2.png'],
+                    title: 'ЦВЕТ J',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+            ]
+        } else if (index == 3) {
+            var pips = ['IF','VVS1','VVS2','VS1','VS2','SI1','SI2'];
+            var data = [
+                {
+                    images: ['img/guide-clarity-1-1.png'],
+                    title: 'Чистота IF',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-2-1.png'],
+                    title: 'Чистота VVS1',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-3-1.png'],
+                    title: 'Чистота VVS2',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-4-1.png'],
+                    title: 'Чистота VS1',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-5-1.png'],
+                    title: 'Чистота VS2',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-6-1.png', 'img/guide-clarity-6-2.png'],
+                    title: 'Чистота SI1',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-clarity-7-1.png', 'img/guide-clarity-7-2.png'],
+                    title: 'Чистота SI2',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+            ]
+        } else if (index == 4) {
+            var pips = ['Poor','Fair','Good','Very Good','Excellent'];
+            var data = [
+                {
+                    images: ['img/guide-cut-1.png'],
+                    title: 'Poor',
+                    text: 'A diamond with a Poor Cut has been cut with incorrect proportions and angles, resulting in reduced sparkle and brilliance. Light entering the diamond will leak out from the sides or bottom.'
+                },
+                {
+                    images: ['img/guide-cut-2.png'],
+                    title: 'Fair',
+                    text: 'A diamond with a Poor Cut has been cut with incorrect proportions and angles, resulting in reduced sparkle and brilliance. Light entering the diamond will leak out from the sides or bottom.'
+                },
+                {
+                    images: ['img/guide-cut-3.png'],
+                    title: 'Good',
+                    text: 'A diamond with a Poor Cut has been cut with incorrect proportions and angles, resulting in reduced sparkle and brilliance. Light entering the diamond will leak out from the sides or bottom.'
+                },
+                {
+                    images: ['img/guide-cut-4.png'],
+                    title: 'Very Good',
+                    text: 'A diamond with a Poor Cut has been cut with incorrect proportions and angles, resulting in reduced sparkle and brilliance. Light entering the diamond will leak out from the sides or bottom.'
+                },
+                {
+                    images: ['img/guide-cut-5.png'],
+                    title: 'Excellent',
+                    text: 'A diamond with a Poor Cut has been cut with incorrect proportions and angles, resulting in reduced sparkle and brilliance. Light entering the diamond will leak out from the sides or bottom.'
+                },
+            ]
+        } else if (index == 5) {
+            var pips = ['None','Faint','Medium','Strong','Very Strong'];
+            var data = [
+                {
+                    images: ['img/guide-fluorescence-1.jpg'],
+                    title: 'None',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-fluorescence-1.jpg'],
+                    title: 'Faint',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-fluorescence-1.jpg'],
+                    title: 'Medium',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-fluorescence-1.jpg'],
+                    title: 'Strong',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+                {
+                    images: ['img/guide-fluorescence-1.jpg'],
+                    title: 'Very Strong',
+                    text: 'When you\'re grading the color of your diamond, of course! D is the highest colorless diamond grade and the ultimate colorless gem.'
+                },
+            ]
+        }
+
+    .guide-carat-slider
+        .guide-carat-slider__carousel
+            each item, i in data
+                -
+                    var classList = '';
+                    if (i === 0) classList += ' active';
+                    if (index !== 3 && item.images.length === 1) classList += ' single';
+                .guide-carat-slider__images(class=classList)
+                    .swiper
+                        .swiper-wrapper
+                            each image, i in item.images
+                                .guide-carat-slider__images-slide.swiper-slide(class=(index == 4 ? ' bg-white ' : ''))
+                                    img(src=image).guide-carat-slider__images-image
+                    .swiper-button-next
+                    .swiper-button-prev
+
+        .guide-carat-slider__slider
+            +slider(pips)
+
+        .guide-carat-slider__content
+            each item, i in data
+                .guide-carat-slider__content-item(class=(i === 0 ? 'active' : ''))
+                    .guide-carat-slider__content-title=item.title
+                    .guide-carat-slider__content-text=item.text

@@ -1,0 +1,97 @@
+//- Data
+include ../data/about
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Об агентстве",
+		pagetitle = "О компании",
+		ymap = true,
+		socials_js = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-about(style={"background-color":"#cbd7da"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Заказать обратный звонок
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			last_title: header_menu_active
+		})
+		//- About intro
+		.about-intro
+			.container
+				.section-content
+					.wrapper
+						.col-about-l
+							.about-intro__l
+								p.
+									Кадровое агентство уникальных специалистов представляет собой группу узкоспециализированных 
+									кадровых агентств и успешно работает в сфере подбора персонала более 10 лет. Отраслевая 
+									специализация кадровых агентств, входящих в Группу «КАУС», и современные технологии поиска, 
+									подбора, оценки и тестирования кандидатов позволяют осуществлять ускоренный и качественный 
+									подбор персонала. 
+								p.
+									Рекрутинговые и кадровые агентства обычно подбирают любой персонал, т.к. являются универсальными. 
+									Каждое кадровое агентство, входящее в Группу «КАУС», специализируется исключительно на 
+									определенной отрасли бизнеса, либо на подборе специалистов какой-либо узкой специализации. Сама 
+									Группа «КАУС» является универсальным кадровым агентством, в котором опытные консультанты по 
+									подбору персонала перенаправят Вас в профильное кадровое агентство либо помогут подобрать 
+									специалистов, не относящихся к профильным направлениям кадровых агентств, входящих в Группу 
+									«КАУС».
+						.col-about-r
+							.about-intro__r
+								span.about-intro__info Более подробно о наших услугах и схеме работе можно узнать в разделе #[a(href="javascript:void(0);" class="link") о наших услугах]
+		//- About features
+		.about-features
+			.container
+				.about-header
+					.h2.about-header__title Что отличает лучшее кадровое агентство в Москве?
+				ul.features-list.wrapper
+					each item in about_list
+						li.features-item
+							.features-item__circle.valign-wrapper
+								.features-item__img
+									img(src=`upload/features/${item.img}.png` draggable="false" alt=item.title)/
+							.features-item__title #{item.title}
+							p.features-item__descr #{item.descr}
+		//- Principles of work
+		.principles-of-work
+			.container
+				.about-header
+					.h2.about-header__title Принципы нашей работы
+				.section-content
+					.wrapper
+						.col-about-l
+							.principles-of-work__l
+								each item in about_items
+									p #{item}
+								//- Share
+								include ../partials/share
+						.col-about-r
+							.principles-of-work__r
+								span В своей работе мы придерживаемся #[a(href="javascript:void(0);" class="link") профессионально-этического кодекса консультантов по подбору персонала,] принятого Ассоциацией консультантов по подбору персонала (АКПП)
+
+		//- Subscribe
+		include ../partials/subscribe
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

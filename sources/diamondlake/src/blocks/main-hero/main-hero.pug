@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-hero)
+
+mixin main-hero(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-hero('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-hero--' + modsList[i].trim();
+            }
+        }
+
+    .main-hero(class=allMods)&attributes(attributes)
+        .main-hero__left(style=(lang === 'ru' ? "background-image: url(img/main-hero.png)" : false))
+            if lang !== 'ru'
+                +main-slider()
+        .main-hero__right
+            .main-hero__image(style="background-image: url(img/slide.png)")
+            .container.main-hero__content
+                .main-hero__title DIAMONDLAKE
+                .main-hero__text=(lang === 'ru' ? 'Совершенство в каждой детали' : 'Designed with inspiration and crafted with love')
+                if lang !== 'ru'
+                    +btn('Shop Wedding Rings')(href='#').main-hero__button.btn.btn--main-o
+            if lang !== 'ru'
+                .main-hero__pagination.swiper-pagination

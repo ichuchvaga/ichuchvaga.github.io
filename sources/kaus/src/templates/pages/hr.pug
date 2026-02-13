@@ -1,0 +1,125 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Библиотека HR";
+	var ymap = true;
+	var ymap_center = true;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-about(style={"background-color":"#e9dbe8"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p !{pagetitle}
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Заказать обратный звонок
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/woman.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			last_title: header_menu_active
+		})
+
+		//- Tabs
+		-
+			var tab_links = [
+				"Должностные инструкции",
+				"Обзор заработных плат",
+				"Статьи о персонале",
+				"Наши исследования"
+			];
+
+
+		.hr-tabs
+			.container
+				.tabs.tabs-theme-sm
+					ul.nav.nav-pills.wrapper(role="tablist")
+						each item, index in tab_links
+							- var activeClass = "";
+							- var activeIndex = 0;
+							- if (index == activeIndex) activeClass = " active";
+							- var tab_id = "hr-nav-item-" + index;
+							- var selected = "false"; if (index == activeIndex) selected = "true";
+
+							li(class="nav-item" + activeClass)
+								a(
+									id=tab_id, 
+									class="nav-link valign-wrapper", 
+									data-toggle="tab", 
+									href="#hr-nav-content-" + index, 
+									role="tab", 
+									aria-controls="hr-nav-content-" + index, 
+									aria-selected=selected
+								)
+									span #{item}
+
+			.hr-tab-content.tab-content
+				div(role="tabpanel" class="tab-pane fade in active" id="hr-nav-content-0")
+					include ../partials/hr/tab1
+
+				div(role="tabpanel" class="tab-pane fade" id="hr-nav-content-1")
+					include ../partials/hr/tab2
+
+				div(role="tabpanel" class="tab-pane fade" id="hr-nav-content-2")
+					include ../partials/hr/tab3
+
+				div(role="tabpanel" class="tab-pane fade " id="hr-nav-content-3")
+					include ../partials/hr/tab4
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Сократите затраты #[br] на подбор финансового #[br] персонала
+
+							span.consult-subtitle Не теряйте деньги из-за отсутствия сотрудника
+							
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Получить консультацию		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

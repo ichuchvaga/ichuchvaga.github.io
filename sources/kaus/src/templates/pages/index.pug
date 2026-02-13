@@ -1,0 +1,198 @@
+//- index.pug
+
+body(style='font-family: sans-serif; padding: 0.64em 1em;' , link='#777' , vlink='#777')
+	-
+		var pages = [
+			{
+				title: 'Kit',
+				url: 'kit.html'
+			},
+			{
+				title: 'Главная',
+				url: 'main.html'
+			},
+			{
+				title: 'О компании',
+				url: 'about.html'
+			},
+			{
+				title: 'О компании - Отзывы клиентов',
+				url: 'about_reviews.html'
+			},
+			{
+				title: 'О компании - Этический кодекс',
+				url: 'about_ethic.html'
+			},
+			{
+				title: 'О компании - Работа у нас',
+				url: 'about_work.html'
+			},
+			{
+				title: 'О компании - Наши книги',
+				url: 'about_books.html'
+			},
+			{
+				title: 'Отрасли - Главная',
+				url: 'industry_main.html'
+			},
+			{
+				title: 'Отрасли',
+				url: 'industry.html'
+			},
+			{
+				title: 'Отрасли видео',
+				url: 'industry_video.html'
+			},
+			{
+				title: 'Конечная отрасль',
+				url: 'final_industry.html'
+			},
+			{
+				title: 'Работодателям',
+				url: 'employers.html'
+			},
+			{
+				title: 'Работодателям - Юридический консалтинг',
+				url: 'employers_consulting.html'
+			},
+			{
+				title: 'Работодателям - Договор',
+				url: 'employers_treaty.html'
+			},
+			{
+				title: 'Работодателям - Подбор персонала',
+				url: 'employers_recruitment.html'
+			},
+			{
+				title: 'Работодателям - Без видео',
+				url: 'employers_without_video.html'
+			},
+			{
+				title: 'Работодателям - С видео',
+				url: 'employers_with_video.html'
+			},
+			{
+				title: 'Соискателям - Советы кандидатам',
+				url: 'applicants_advice.html'
+			},
+			{
+				title: 'Соискателям - Разместить анкету кандидата',
+				url: 'applicants_questionnaire.html'
+			},
+			{
+				title: 'Соискателям - Вакансии агенства',
+				url: 'applicants_vacancies.html'
+			},
+			{
+				title: 'Соискателям - Вакансии агенства отрасль',
+				url: 'applicants_vacancies_industry.html'
+			},
+			{
+				title: 'Соискателям - Вакансия',
+				url: 'applicants_vacancy.html'
+			},
+			{
+				title: 'Резюме',
+				url: 'resume.html'
+			},
+			{
+				title: 'Резюме. Отрасль',
+				url: 'resume_industry.html'
+			},
+			{
+				title: 'Резюме. Специальность',
+				url: 'resume_specialty.html'
+			},
+			{
+				title: "Резюме. Специальность (конечная страница)",
+				url: "resume_single.html"
+			},
+			{
+				title: "FAQ",
+				url: "faq.html"
+			},
+			{
+				title: "Пресс-центр (главная)",
+				url: "press_center.html"
+			},
+			{
+				title: "Пресс-центр - Пресс релизы",
+				url: "press_releases.html"
+			},
+			{
+				title: "Пресс-центр - СМИ о нас",
+				url: "press_mass_media.html"
+			},
+			{
+				title: "Пресс-центр - Новости",
+				url: "press_news.html"
+			},
+			{
+				title: "Пресс-центр - Статьи",
+				url: "press_articles.html"
+			},
+			{
+				title: "Сервис подбора кадров",
+				url: "recruitment_service.html"
+			},
+			{
+				title: "Сервис подбора кадров (форма)",
+				url: "recruitment_service_with_form.html"
+			},
+			{
+				title: "Список кадровых агентств",
+				url: "recruitment_agencies_list.html"
+			},
+			{
+				title: "Рейтинг кадровых агентств",
+				url: "recruitment_agencies_rating.html"
+			},
+			{
+				title: "Статьи",
+				url: "articles.html"
+			},
+			{
+				title: "Контакты",
+				url: "contacts.html"
+			},
+			{
+				title: "Библиотека HR",
+				url: "hr.html"
+			},
+			{
+				title: "Библиотека HR. Обзор заработных плат",
+				url: "hr_salaries.html"
+			},
+			{
+				title: "Библиотека HR. Обзор заработных плат (Отрасль)",
+				url: "hr_salaries_industry.html"
+			},
+			{
+				title: "Библиотека HR. Обзор заработных плат (Конечная страница)",
+				url: "hr_salaries_single.html"
+			},
+			{
+				title: "Библиотека HR. Должностные инструкции",
+				url: "hr_instructions.html"
+			},
+			{
+				title: "Библиотека HR. Должностные инструкции (Отрасль)",
+				url: "hr_instructions_industry.html"
+			},
+			{
+				title: "Библиотека HR. Наши исследования",
+				url: "hr_research.html"
+			},
+			{
+				title: "404 - Страница не найдена",
+				url: "not_found.html"
+			}
+		];
+
+	ol
+		each page in pages
+			- var url = "javascript:void(0);";
+			- if (page.url != '') url = page.url;
+
+			li: h4
+				a(href=url, target="_blank") #{page.title}

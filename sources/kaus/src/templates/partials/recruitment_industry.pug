@@ -1,0 +1,19 @@
+//- Recruitment industry
+
+//- Data
+include ../data/recruitment_industry
+
+.recruitment-industry(style={"background-image":"url(upload/employers/bg.jpg)"})
+	.section-header.text-center
+		.h1.section-header__title.
+			Кадровое агентство «КАУС» оказывает 
+			услуги по подбору персонала в 11 отраслях:
+	.container
+		.section-content
+			ul.list-with-icons.list_type_industry
+				each item in industry_list
+					li
+						.icon-wrapp.text-center
+							img.icon(src=`upload/employers/recruitment/${item.icon}.png` draggable="false")/
+						span.list-with-icons__text
+							a(href="javascript:void(0);") #{item.text}

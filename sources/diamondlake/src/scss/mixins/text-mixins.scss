@@ -1,0 +1,18 @@
+@mixin hide-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+@mixin font-face($fontFamily, $local, $fileName, $fontWeight, $fontStyle) {
+    @font-face {
+        font-family: $fontFamily;
+        src: local($local), url('../fonts/#{$fileName}.woff') format('woff'), url('../fonts/#{$fileName}.ttf') format('truetype');
+        font-weight: $fontWeight;
+        font-style: $fontStyle;
+    }
+}

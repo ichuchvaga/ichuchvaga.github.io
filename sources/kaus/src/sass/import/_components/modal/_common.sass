@@ -1,0 +1,126 @@
+/* Override fancybox zIndex */
+
+$popup_radius: 9px
+
+.fancybox-container
+	z-index: 2000
+
+.fancybox-loading
+	position: fixed
+
+.popup
+	position: relative
+	background-color: transparent
+	padding: 33px 38px 32px
+	font-family: $regular
+	color: #000
+
+	&__wrapper
+		background-color: #fff
+		width: 498px
+		border-radius: $popup_radius
+
+		@media screen and (max-width: 599px)
+			width: 90%
+			margin-left: auto
+			margin-right: auto
+
+	.fancybox-close-small
+		+size(46px)
+		background-color: transparent
+		padding: 0
+		margin: 0
+		color: hsl(255, 100%, 100%)
+		top: -7px
+
+	.agreement
+		margin-top: 9px
+
+	.form-element
+		margin-bottom: 12px
+
+	.dropdown-widget__label
+		color: #727272
+
+
+.popup-section
+	padding-left: 55px
+	padding-right: 55px
+
+	@media screen and (max-width: 599px)
+		padding-left: 15px
+		padding-right: 15px
+
+	&.popup-buttons
+		padding: 25px
+		margin: 0 -12px
+		.btn
+			vertical-align: top
+			margin-left: 12px
+			margin-right: 12px
+			width: calc(50% - 24px)
+			text-align: center
+
+.popup-title
+	background-color: #f4f4f4
+	text-align: center
+	padding-top: 0.7631578947368421em
+	padding-bottom: 0.8421052631578947em
+	margin-top: 0
+	margin-bottom: 0
+	line-height: 1.2em
+	font-family: $regular
+	border-radius: $popup_radius $popup_radius 0 0
+
+.popup-data
+	padding-top: 38px
+	padding-bottom: 38px
+	text-align: left
+	border-radius: 0 0 $popup_radius $popup_radius
+
+	@media screen and (max-width: 599px)
+		padding-left: 15px
+		padding-right: 15px
+
+	&.popup-delivery
+		padding-top: 27px
+
+.popup-submit
+	margin-top: 37px
+
+	.btn
+		width: 100%
+
+.agreement
+	font-size: 12px
+	line-height: 1.2em
+	color: #090909
+	font-family: $regular
+
+.form
+	box-shadow: none
+	border-radius: 0
+	border: 0
+	background-color: transparent
+	background-image: none
+	margin: 0
+	padding: 0
+
+.success-message
+	overflow: hidden
+	font-family: $regular
+	font-size: 16px
+	line-height: 1.5em
+	color: #090909
+	padding-top: 16px
+	padding-bottom: 14px
+
+.popup-title-secondary
+	text-align: center
+	background-color: #e5e5e5
+	padding-top: 1.363636363636364em
+	padding-bottom: 1.590909090909091em
+
+body.fancybox-active
+	.select2-dropdown
+		z-index: 2050

@@ -1,0 +1,98 @@
+/**
+ * Form elements
+ */
+*::-webkit-input-placeholder
+	color: #c0c0c0
+	opacity: 1
+
+*:-moz-placeholder
+	color: #c0c0c0
+	opacity: 1
+
+*::-moz-placeholder
+	color: #c0c0c0
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #c0c0c0
+	opacity: 1
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none
+	margin: 0
+
+input[type='number']
+	-moz-appearance: textfield
+
+input:not([type=checkbox]):not([type=radio]),
+textarea
+	appearance: none
+
+input:focus,
+button:focus,
+a:focus
+	outline: none
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #c0c0c0
+body input:required:valid,
+body textarea:required:valid
+	color: hsl(0, 0%, 0%)
+
+fieldset
+	padding: 0
+	margin: 0
+	border: 0
+
+.form
+	&__head
+		padding: 
+			top: 28px
+			left: 10px
+			right: 10px
+			bottom: 30px
+	&__title
+		font-family: $roboto
+		line-height: 1.2em
+	&__body
+		padding: 41px 68px
+
+.fieldset
+	.form-element
+		margin-bottom: 20px
+
+.agreement
+	font-size: 12px
+	line-height: 1em
+	.checkbox,
+	span
+		display: inline-block
+		vertical-align: middle
+	.checkbox
+		margin-bottom: 0
+	a
+		color: $blue
+		&:hover,
+		&:active,
+		&:focus
+			color: #1a8cff
+
+.form-button
+	margin-top: 30px
+	.btn
+		padding: 
+			left: 3.85em
+			right: 3.85em
+
+
+.radio-buttons-theme-white
+	.radio label
+		background-color: #fff
+
+		&:hover
+		    background-color: #1262b3
+
+	.radio input[type='radio']:checked + label
+		background-color: #1262b3

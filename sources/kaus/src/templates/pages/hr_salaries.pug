@@ -1,0 +1,108 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Обзор заработных плат";
+	var ymap = true;
+	var ymap_center = true;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+		
+		.hr-salaries-content.blue-gray-theme
+			//- Breadcrumb
+			+breadcrumb({
+				nav_items: [
+					{
+						title: "Библиотека HR",
+						url: "hr.html"
+					}
+				],
+				last_title: "Обзор заработных плат"
+			})
+
+
+			.industry-grid-section
+				.container
+
+					//- Instructions grid
+					- var instructions_link = "#";
+					//- Data
+					include ../data/hr_salaries
+
+					.industry-grid
+						.industry-grid__in
+							each item in grid_main
+								- var url = "javascript:void(0);";
+								- if (item.url != '') url = item.url;
+								- var img = "upload/industry/icons/" + item.icon;
+
+								- if (instructions_link) url = instructions_link;
+
+								.industry-grid__item
+									a(href=url class="industry-grid__link")
+										span.icon
+											img(src=img alt=item.title)
+										span.industry-grid__link-text
+											span #{item.title}
+
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Сократите затраты #[br] на подбор финансового #[br] персонала
+
+							span.consult-subtitle Не теряйте деньги из-за отсутствия сотрудника
+							
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Получить консультацию		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

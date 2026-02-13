@@ -1,0 +1,54 @@
+//- Все примеси в этом файле должны начинаться c имени блока (accordion)
+
+mixin accordion(mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +accordion('some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' accordion--' + modsList[i].trim();
+            }
+        }
+
+    .accordion(class=allMods)&attributes(attributes)
+        .accordion__inner
+            block
+
+mixin accordion-item(title, helper, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' accordion__item--' + modsList[i].trim();
+            }
+        }
+    .accordion__item(class=allMods)&attributes(attributes)
+        .accordion__title
+            .accordion__title-text!= title
+            if (helper)
+                .accordion__title-helper!= helper
+            .accordion__icon
+        .accordion__content
+            block
+
+mixin accordion-close(text, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' accordion__item--' + modsList[i].trim();
+            }
+        }
+    a.accordion__close(href="#", class='accordion__close ' + allMods)&attributes(attributes)!= text

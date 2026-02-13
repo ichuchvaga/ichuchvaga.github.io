@@ -1,0 +1,400 @@
+//- Все примеси в этом файле должны начинаться c имени блока (catalog-filter)
+
+mixin catalog-filter(type, mods)
+
+    //- Принимает:
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +catalog-filter('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-filter--' + modsList[i].trim();
+            }
+        }
+        var ringStyles = [
+            {
+                title: lang === 'ru' ? 'Солитер' : 'Solitaire',
+                image: 'img/ring-style-solitaire.svg',
+            },{
+                title: lang === 'ru' ? 'Акцент' : 'Accent',
+                image: 'img/ring-style-accent.svg',
+            },{
+                title: lang === 'ru' ? 'Хало' : 'Halo',
+                image: 'img/ring-style-halo.svg',
+            },{
+                title: lang === 'ru' ? 'Трио' : 'Three Stone',
+                image: 'img/ring-style-three.svg',
+            },
+        ];
+        if (lang !== 'ru') {
+            ringStyles.push({
+                title: lang === 'ru' ? 'Эксклюзив' : 'Exclusive',
+                image: 'img/ring-style-exclusive.svg',
+            })
+        }
+        var diamondShapes = [
+            {
+                title: lang === 'ru' ? 'Круг (15)' : 'Round',
+                image: 'img/diamond-shape-round.svg',
+            },{
+                title: lang === 'ru' ? 'Принцесса (15)' : 'Princess',
+                image: 'img/diamond-shape-princess.svg',
+            },{
+                title: lang === 'ru' ? 'Сердце (15)' : 'Heart',
+                image: 'img/diamond-shape-heart.svg',
+            },{
+                title: lang === 'ru' ? 'Изумруд (15)' : 'Emerald',
+                image: 'img/diamond-shape-emerald.svg',
+            },{
+                title: lang === 'ru' ? 'Кушон (15)' : 'Cushion',
+                image: 'img/diamond-shape-cushion.svg',
+            },{
+                title: lang === 'ru' ? 'Ашер (15)' : 'Asscher',
+                image: 'img/diamond-shape-asscher.svg',
+            },
+        ];
+        var ringTypes = [
+            {
+                title: lang === 'ru' ? 'Парные' : 'Couples',
+                image: 'img/ring-type-couples.svg',
+            },{
+                title: lang === 'ru' ? 'Женские' : 'Women’s',
+                image: 'img/ring-type-women.svg',
+            },{
+                title: lang === 'ru' ? 'Дорожки' : 'Eternity',
+                image: 'img/ring-type-eternity.svg',
+            },{
+                title: lang === 'ru' ? 'Мужские' : 'Men’s',
+                image: 'img/ring-type-men.svg',
+            },
+        ];
+
+    .catalog-filter(class=allMods)&attributes(attributes)
+        .catalog-filter__header
+            =(lang === 'ru' ? 'Фильтры' : 'Filter By')
+            a(href="javascript:void()").catalog-filter__close
+        form.catalog-filter__inner
+            case type
+                when 'engagement'
+                    if lang === 'ru'
+                        +catalog-filter-group({
+                            title: 'Стиль',
+                            type: 'checkbox-image',
+                            items: ringStyles,
+                            name: 'ring-style',
+                            active: true,
+                        })
+                        +catalog-filter-group({
+                            title: 'Дизайн',
+                            type: 'checkbox',
+                            items: [
+                                {title:'Классические', count: 918},
+                                {title:'Необычные', count: 189},
+                                {title:'Эксклюзивные', count: 134},
+                            ],
+                            name: 'design'
+                        })
+                        +catalog-filter-group({
+                            title: 'Металл',
+                            type: 'checkbox',
+                            items: [
+                                {title:'Белое золото (0)'},
+                                {title:'Желтое золото (152)'},
+                                {title:'Розовое золото (152)'},
+                            ],
+                            name: 'color'
+                        })
+                        +catalog-filter-group({
+                            title: 'Вставка',
+                            type: 'checkbox',
+                            items: [
+                                {title:'Белый бриллиант  (115)'},
+                                {title:'Черный бриллиант  (115)'},
+                            ],
+                            name: 'insert'
+                        })
+                        +catalog-filter-group({
+                            title: 'Огранка',
+                            type: 'checkbox',
+                            items: diamondShapes,
+                            name: 'ogranka'
+                        })
+                        +catalog-filter-group({
+                            title: 'Размер',
+                            type: 'checkbox',
+                            items: [
+                                {title:'0.20 Карат (15)'},
+                                {title:'0.30 Карат (15)'},
+                                {title:'0.40 Карат (15)'},
+                                {title:'0.50 Карат (15)'},
+                                {title:'0.70 Карат (15)'},
+                                {title:'1.00 Карат (15)'},
+                            ],
+                            name: 'size'
+                        })
+                        +catalog-filter-group({
+                            title: 'Цена',
+                            type: 'range',
+                            name: 'price'
+                        })
+                    else
+                        +catalog-filter-group({
+                            title: 'Ring Style',
+                            type: 'checkbox-image',
+                            items: ringStyles,
+                            name: 'ring-style'
+                        })
+                        +catalog-filter-group({
+                            title: 'Diamond Shape',
+                            type: 'checkbox-image',
+                            items: diamondShapes,
+                            name: 'diamond-shape'
+                        })
+                        +catalog-filter-group({
+                            title: 'Diamond Size',
+                            type: 'checkbox',
+                            items: [
+                                {title:'0.20 Carat'},
+                                {title:'0.30 Carat'},
+                                {title:'0.40 Carat'},
+                                {title:'0.50 Carat'},
+                                {title:'0.70 Carat'},
+                                {title:'1.00 Carat'}
+                            ],
+                            name: 'diamond-size'
+                        }, 'two-columns')
+                        +catalog-filter-group({
+                            title: 'Metal',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'White Gold'},
+                                {title: 'Yellow Gold'},
+                                {title: 'Rose Gold'}
+                            ],
+                            name: 'metal'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Price',
+                            type: 'range',
+                            name: 'price'
+                        })
+                when 'wedding'
+                    if lang === 'ru'
+                        +catalog-filter-group({
+                            title: 'Тип',
+                            type: 'checkbox-image',
+                            items: ringTypes,
+                            name: 'ring-type',
+                            active: true,
+                        })
+                        +catalog-filter-group({
+                            title: 'Металл',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'Белое золото (12)'},
+                                {title: 'Желтое золото (12)'},
+                                {title: 'Розовое золото (12)'},
+                                {title: 'Комбинированное (12)'}
+                            ],
+                            name: 'metal'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Дизайн',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'Классические (12)'},
+                                {title: 'Современные (12)'},
+                                {title: 'Тройные (12)'},
+                                {title: 'Широкие (12)'}
+                            ],
+                            name: 'design'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Вставка',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'Бриллиант (12)'},
+                                {title: 'Без камней (12)'},
+                            ],
+                            name: 'insert'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Персонализация',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'Гравировка (12)'},
+                                {title: 'Отпечаток (12)'},
+                            ],
+                            name: 'personal'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Цена',
+                            type: 'range',
+                            name: 'price'
+                        })
+                    else
+                        +catalog-filter-group({
+                            title: 'Ring Type',
+                            type: 'checkbox-image',
+                            items: ringTypes,
+                            name: 'ring-type'
+                        })
+                        +catalog-filter-group({
+                            title: 'Metal',
+                            type: 'checkbox-color',
+                            items: [
+                                {color: 'white', title: 'White'},
+                                {color: 'yellow', title: 'Yellow'},
+                                {color: 'rose', title: 'Rose'},
+                                {color: 'mixed', title: 'Mixed'}
+                            ],
+                            name: 'metal'
+                        })
+                        +catalog-filter-group({
+                            title: 'Ring Style',
+                            type: 'checkbox',
+                            items: [
+                                {title: 'Classic'},
+                                {title: 'Trinity'},
+                                {title: 'Modern'},
+                                {title: 'Wide'}
+                            ],
+                            name: 'ring-style'
+                        }, 'two-columns')
+                        +catalog-filter-group({
+                            title: 'Gemstones',
+                            type: 'checkbox',
+                            items: [
+                                {title:'Diamonds'},
+                                {title:'No Diamonds'}
+                            ],
+                            name: 'gemstones'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Personalization',
+                            type: 'checkbox',
+                            items: [
+                                {title:'Engraving'},
+                                {title:'Finger Print'}
+                            ],
+                            name: 'personalization'
+                        }, 'column')
+                        +catalog-filter-group({
+                            title: 'Price',
+                            type: 'range',
+                            name: 'price'
+                        })
+                when 'earrings'
+                    +catalog-filter-group({
+                        title: lang === 'ru' ? 'Золото' : 'Metal',
+                        type: 'checkbox-color',
+                        items: [
+                            {color: 'white', title: lang === 'ru' ? 'Белое' : 'White'},
+                            {color: 'yellow', title: lang === 'ru' ? 'Желтое' : 'Yellow'},
+                            {color: 'rose', title: lang === 'ru' ? 'Розовое' : 'Rose'},
+                        ],
+                        name: 'metal',
+                        active: true,
+                    })
+                when 'moms'
+                    +catalog-filter-group({
+                        title: lang === 'ru' ? 'Золото' : 'Metal',
+                        type: 'checkbox-color',
+                        items: [
+                            {color: 'white', title: lang === 'ru' ? 'Белое' : 'White'},
+                            {color: 'yellow', title: lang === 'ru' ? 'Желтое' : 'Yellow'},
+                            {color: 'rose', title: lang === 'ru' ? 'Розовое' : 'Rose'},
+                        ],
+                        name: 'metal',
+                        active: true,
+                    })
+
+        .catalog-filter__footer
+            .catalog-filter__results=(lang === 'ru' ? 'Результат: 135' : 'Results: 135')
+            +btn((lang === 'ru' ? 'Смотреть' : 'See Your Result'), 'main')(href="#").catalog-filter__submit
+
+mixin catalog-filter-group(props, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (props && props.type)
+            if (!mods) mods = props.type;
+            else mods += ','+props.type;
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-filter-group--' + modsList[i].trim();
+            }
+        }
+
+    .catalog-filter-group(class=allMods)
+        .catalog-filter-group__title(class=(props.active ? 'active' : ''))=props.title
+        case props.type
+            when 'checkbox-image'
+                .catalog-filter-group__input.catalog-filter-group__items(class=(props.active ? 'active' : ''))
+                    each item, index in props.items
+                        +catalog-filter-checkbox({
+                            name: props.name,
+                            id: props.name + '-' + index,
+                            img: item.image,
+                            title: item.title,
+                        }, 'image')
+            when 'checkbox-color'
+                .catalog-filter-group__input.catalog-filter-group__items(class=(props.active ? 'active' : ''))
+                    each item, index in props.items
+                        +catalog-filter-checkbox({
+                            name: props.name,
+                            id: props.name + '-' + index,
+                            color: item.color,
+                            title: item.title,
+                        }, 'color')
+            when 'checkbox'
+                .catalog-filter-group__input.catalog-filter-group__items(class=(props.active ? 'active' : ''))
+                    each item, index in props.items
+                        +catalog-filter-checkbox({
+                            name: props.name,
+                            id: props.name + '-' + index,
+                            title: item.title,
+                            img: item.image,
+                            count: (item.count) ? item.count : ''
+                        })
+            when 'range'
+                .catalog-filter-group__input.catalog-filter-group__price(class=(props.active ? 'active' : ''))
+                    +field-range({
+                        attrs: {
+                            name: 'price',
+                            min: '500',
+                            max: '5000',
+                            step: '100',
+                            value: '500,5000'
+                        },
+                        mods: 'no-inputs,labels'
+                    })
+
+mixin catalog-filter-checkbox(props, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' catalog-filter-checkbox--' + modsList[i].trim();
+            }
+        }
+        var value = props.title.replace(/\(\d+\)$/, '');
+
+    .catalog-filter-checkbox(class=allMods)
+        input(type='checkbox', name=props.name, id=props.id, disabled=(props.title.includes('(0)')), value=value).catalog-filter-checkbox__input
+        label(for=props.id).catalog-filter-checkbox__label
+            if props.img
+                img(src=props.img).catalog-filter-checkbox__image
+            if props.color
+                .catalog-filter-checkbox__color(class="catalog-filter-checkbox__color--" + props.color)
+            .catalog-filter-checkbox__title=props.title
+                if (props.count)
+                    span.catalog-filter-checkbox__count=props.count

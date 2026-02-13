@@ -1,0 +1,49 @@
+// Share styling
+
+.share
+	&__caption,
+	&__init
+		display: inline-block
+		vertical-align: middle
+	&__caption
+		margin-right: 10px
+		color: #060606
+
+.jssocials-shares
+	margin: 0
+.jssocials-share
+	display: inline-block
+	vertical-align: middle
+	margin: 0
+	margin-right: 13px
+
+	&:last-child
+		margin-right: 0
+
+	.fa
+		display: inline-block
+		vertical-align: top
+		background-color: transparent
+		background-repeat: no-repeat
+		background-image: url('../img/icons/sprite_soc.png')
+
+		&.fa-vk
+			+size(25px, 15px)
+			background-position: -45px 0px
+			&:hover,
+			&:focus
+				background-position: 0px 0px
+
+		&.fa-facebook
+			+size(16px, 17px)
+			background-position: 0 -72px
+			&:hover,
+			&:focus
+				background-position: -90px 0
+
+		&.fa-twitter
+			+size(20px, 17px)
+			background-position: -40px -35px
+			&:hover,
+			&:focus
+				background-position: 0 -35px

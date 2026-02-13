@@ -1,0 +1,52 @@
+blockquote
+	position: relative
+	padding: 0 0 0 64px
+	margin: 0
+	font-size: 24px
+	line-height: 1.3333333em
+	font-family: $regular
+	font-weight: 300
+	border: 0
+	color: hsl(0, 0%, 0%)
+
+	&:before
+		content: '“'
+		font-family: $raleway
+		font-weight: bold
+		font-size: 110px
+		line-height: 1em
+		color: #d4dde4
+
+		position: absolute
+		top: -4px
+		left: -5px
+
+	p
+		margin: 1em 0 0 0
+		font-size: 24px
+		line-height: 1.3333333em
+
+		&:first-child
+			margin-top: 0
+	&.blockquote-with-lines
+		padding:
+			top: 34px
+			left: 0
+			bottom: 35px
+		border-top: 2px solid #d4dde4
+		border-bottom: 2px solid #d4dde4
+		&:before
+			display: none
+		p
+			line-height: 1.5em
+	&.blockquote-with-line
+		padding-left: 85px
+		&:before
+			content: ''
+			top: 0
+			left: 52px
+			+size(3px, 100%)
+			background: $blue
+		p
+			font-size: 18px
+			line-height: 1.4em

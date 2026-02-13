@@ -1,0 +1,35 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-reviews)
+
+mixin main-reviews(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-reviews('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-reviews--' + modsList[i].trim();
+            }
+        }
+
+    .main-reviews(class=allMods)&attributes(attributes)
+        .main-reviews__inner.container
+            .main-reviews__title ОТЗЫВЫ
+
+            .horizontal-scroll-container
+                div(class="simplebar-scrollable-x" data-simplebar="true" data-simplebar-auto-hide="false" style="height: 100%; width: 100%")
+                    .main-reviews__items
+                        img(src="img/review1.png").main-reviews__image.main-reviews__image--1
+                        img(src="img/review2.png").main-reviews__image.main-reviews__image--2
+                        img(src="img/review3.png").main-reviews__image.main-reviews__image--3
+                        img(src="img/review4.png").main-reviews__image.main-reviews__image--4
+                        img(src="img/review5.png").main-reviews__image.main-reviews__image--5
+                        img(src="img/review6.png").main-reviews__image.main-reviews__image--6
+                        img(src="img/review7.png").main-reviews__image.main-reviews__image--7
+            a(href="#").btn.btn--main-o.main-reviews__button Подробнее

@@ -1,0 +1,38 @@
+nav.main-menu
+	.container
+		.row
+			ul.main-menu-list
+				each item in header_menu
+					- var activeClass = "";
+					- if (item.title == header_menu_active) activeClass = "active";
+					- var url = "javascript:void(0);"; if (item.url != '') url = item.url;
+
+					li.main-menu-list__item(class=activeClass)
+						if(item.submenu)
+							a(href=url class="main-menu-list__link") #{item.title}
+							ul.sub-menu
+								each el,index in item.submenu
+									- var url = "javascript:void(0);"; if (el.url != '') url = el.url;
+									li.sub-menu-item
+										if(el.items)
+											a.sub-menu-item__link.sub-menu-item__link-collapse.collapsed(
+												href="javascript:void(0);", 
+												data-toggle="collapse", 
+												data-target=`#sub-menu_item_${index}`, 
+												aria-expanded="false", 
+												aria-controls=`sub-menu_item_${index}`
+											) #{el.title}
+											.collapse(
+												id=`sub-menu_item_${index}`,
+												aria-expanded="false"
+											)
+												ul.sub-menu-items
+													each item in el.items
+														- var url = "javascript:void(0);"; if (item.url != '') url = item.url;
+														li
+															a(href=url) #{item.title}
+
+										else
+											a.sub-menu-item__link(href=url) #{el.title}
+						else
+							a(href=url class="main-menu-list__link") #{item.title}

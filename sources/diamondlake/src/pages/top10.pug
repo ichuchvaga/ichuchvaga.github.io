@@ -1,0 +1,15 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title ТОП 10 помолвочных колец
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Главная', '#')
+            +breadcrumbs-item('ТОП 10 помолвочных колец')
+
+        h1 ТОП 10 помолвочных колец
+
+    +top10()

@@ -1,0 +1,41 @@
+// Financial staff
+
+.financial-staff
+	background-color: $blue
+	background-size: cover
+	background-position: top center
+	background-repeat: no-repeat
+	color: hsl(255, 100%, 100%)
+	.section-header
+		padding: 
+			left: 30px
+			right: 30px
+
+.list-with-icons
+	&.list_type_staff
+		.icon-wrapp
+			display: inline-block
+			vertical-align: middle
+			margin-right: 28px
+			width: 44px
+		.icon
+			margin-right: 0
+			+size(auto, 44px)
+		li
+			margin-top: 30px
+			padding:
+				left: 30px
+				right: 20px
+			min-height: 44px
+			&:nth-child(2n)
+				padding-left: 20px
+		.list-with-icons__text
+			font-size: 24px
+		a
+			color: hsl(255, 100%, 100%)
+			transition: color 0.15s, border-color 0.15s
+			&:hover,
+			&:active,
+			&:focus
+				color: $green
+				border-color: $green

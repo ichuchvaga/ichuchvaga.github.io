@@ -1,0 +1,304 @@
+// В этом файле должны быть стили для БЭМ-блока page-footer, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.page-footer2 {
+    $block-name: &; // #{$block-name}__element
+
+    margin-top: 125px;
+    margin-bottom: 46px;
+
+    &__inner {
+        display: flex;
+        gap: 136px;
+    }
+
+    &__content {
+        width: 350px;
+        flex: none;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: -0.1px;
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+
+            &:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__nav-wrap {
+        flex: 1;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: 30px 63px;
+
+        &--mobile {
+            display: none;
+        }
+    }
+
+    &__nav {
+        --flex-base: calc((100% - 4 * var(--gap)) / 5);
+        flex: var(--flex-base);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+        margin: 0;
+        padding: 0;
+
+        &--grid {
+            flex: calc(var(--flex-base) * 2 + var(--gap));
+            column-gap: var(--gap);
+            row-gap: 47px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    &__nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__nav-item {
+        margin-bottom: 4px;
+    }
+
+    &__nav-link {
+        text-decoration: none;
+        word-break: normal;
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+    .lang-switcher {
+        display: none;
+    }
+
+    &__phone {
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+    }
+
+    &__address {
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+        margin: 0 0 16px;
+    }
+
+    &__copyright {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+        align-self: flex-end;
+        grid-column: auto / -1;
+    }
+
+    &__content &__copyright {
+        display: none;
+    }
+
+    &__payment {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: center;
+        align-self: flex-end;
+    }
+
+    &__payment-row {
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__social.social {
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    &__bottom {
+        display: none;
+    }
+
+    @media (min-width: 1300px) and (max-width: 1400px) {
+        &__inner {
+            gap: 30px;
+        }
+
+        &__nav-wrap {
+            grid-template-columns: repeat(4,auto);
+        }
+    }
+
+    @media(min-width: 1000px) and (max-width: 1300px) {
+        &__nav-wrap {
+            grid-template-columns: repeat(3,auto);
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        &__nav-item {
+            margin-bottom: 14px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        //margin-top: 64px;
+        margin-top: 97px;
+        margin-bottom: 24px;//39
+
+        &__inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            flex-direction: column-reverse;
+        }
+
+        &__nav-wrap &__copyright {
+            display: none;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        &__content &__copyright {
+            display: block;
+            margin-top: 50px;
+        }
+
+        &__text {
+            order: 70;
+            margin-bottom: 8px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+
+        &__copyright {
+            order: 80;
+            margin-right: auto;
+        }
+
+        &__logo {
+            display: none;
+        }
+
+        &__nav-wrap {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px 32px;
+            width: 100%;
+            margin-bottom: 41px;
+
+            display: none;
+            &--mobile {
+                display: grid;
+            }
+        }
+
+        &__nav {
+            width: 100%;
+            margin: 0;
+
+            &--grid {
+                display: block;
+            }
+
+            &--grid &-item:not(:first-child) {
+                display: none;
+            }
+        }
+
+        &__nav-item {
+            margin-bottom: 6px !important;
+        }
+
+        &__contacts {
+            position: relative;
+            width: 100%;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+
+            .lang-switcher {
+                display: block;
+                position: absolute;
+                bottom: 12px;
+                right: 0;
+            }
+        }
+
+        &__social {
+            order: -1;
+            margin-bottom: 16px !important;
+            gap: 16px !important;
+
+            .social__link {
+                width: 30px;
+                height: 30px;
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &__address {
+            margin-top: 4px;
+            margin-bottom: 32px;
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: -3px;
+
+            .page-footer2__copyright {
+                margin-top: 0;
+            }
+
+            &-r {
+                font-size: 0;
+                line-height: 0;
+                padding-bottom: 4px;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

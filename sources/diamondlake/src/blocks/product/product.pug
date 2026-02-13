@@ -1,0 +1,350 @@
+//- Все примеси в этом файле должны начинаться c имени блока (product)
+
+mixin product(title, gallery, breadcrumbs, galleryText, mods)
+    //- Принимает:
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +product('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        var isPaired = false;
+        if (gallery.length > 4) {
+            if (typeof (mods) === 'undefined' || !mods ) mods = '';
+            mods += (mods.length ? ',' : '') + 'tall-gallery';
+        }
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            if (modsList.includes('pair')) {
+                isPaired = true;
+            }
+            for (var i = 0; i < modsList.length; i++) {
+                if (modsList[i] === 'pair') continue;
+                allMods = allMods + ' product--' + modsList[i].trim();
+            }
+        }
+
+        var hasGallerySlider = false;
+        if (["Couples wedding <br> rings WB18", "Men’s wedding <br> ring WM18", "WOMen’s wedding <br> ring WM18"].includes(title)) {
+            hasGallerySlider = true;
+        }
+
+    .product(class=allMods)&attributes(attributes)
+        .product__inner.container
+            .product__col.product__col--left
+                +product-gallery(gallery, galleryText).product__gallery.product-gallery--mobile
+                +product-gallery-desktop(gallery, galleryText, hasGallerySlider).product__gallery.product-gallery--desktop
+            .product__col.product__col--right
+                +breadcrumbs()
+                    each item in breadcrumbs
+                        +breadcrumbs-item(item.title, item.link)
+                h1.product__title!=title
+                .product__code Артикул: WB12
+
+                if block
+                    block
+
+        .container
+            //-todo: move these mixins to other
+            +product-made()
+            //-+product-also()
+            +main-products('Похожие украшения', 'also')
+            +product-package()
+            +product-photos()
+        +product-reviews()
+
+mixin product-price(price)
+    .product__price&attributes(attributes)=price + ' €'
+
+mixin product-options(data, mods)
+    //-
+        +product-options({
+            title: '',
+            mainOptions: [],
+            info: '',
+            addPrice: '',
+            options: [
+                {
+                    id: '',
+                    value: '',
+                    label: '',
+                    color: '',
+                }
+            ],
+            mods: '',
+            name: '',
+        })
+    -
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-options--' + modsList[i].trim();
+            }
+        }
+        var addPriceValue = false;
+        var selectedValue = false;
+        var selectedSample = '';
+        data.options.forEach(function (item, index, array) {
+            if (!addPriceValue && index === 0) addPriceValue = item.price;
+            if (!selectedValue && index === 0) selectedValue = item.value;
+            if (!selectedSample && index === 0) selectedSample = item.contents;
+        });
+
+    .product-options(class=allMods)&attributes(attributes)
+        .product-options__heading
+            .product-options__heading-l
+                .product-options__title=data.title
+                if data.mainOptions
+                    if (data.optionsDropdown)
+                        .product-options__main-options
+                            - var values = data.mainOptions.map((v) => ({title: v, attrs: {value: v.replace(/(<([^>]+)>)/gi, "").trim()}}))
+                            +field-select(false, false, values, false, 'inline')
+
+                if data.showValue
+                    .product-options__selected-value #{(selectedValue ? selectedValue : '')} #{(!data.optionsDropdown ? selectedSample : '')}
+
+                if data.info
+                    .product-options__info(data-modal="open" data-modal-target="#modal-product-info-color")
+                        //-.product-options__info-content= data.info
+
+                .product-options__add-price
+
+            .product-options__heading-r
+                a(href="javascript:void(0);").product-options__trigger-mobile.js-option-trigger-mobile #{(selectedValue ? selectedValue : '')} #{(!data.optionsDropdown ? selectedSample : '')}
+
+        .product-options__items-wrapper
+            .product-options__items
+                -
+                    var allMods = 'product-options__item-label';
+                    if (typeof (data.mods) !== 'undefined' && data.mods) {
+                        var modsList = data.mods.split(',');
+                        for (var i = 0; i < modsList.length; i++) {
+                            allMods = allMods + ' product-options__item-label--' + modsList[i].trim();
+                        }
+                    }
+                each option, index in data.options
+                    -
+                        var allOptionMods = '';
+                        if (typeof (option.mods) !== 'undefined' && option.mods) {
+                            var modsList = option.mods.split(',');
+                            for (var i = 0; i < modsList.length; i++) {
+                                allOptionMods = allOptionMods + ' product-options__item-label--' + modsList[i].trim();
+                            }
+                        }
+                    .product-options__item
+                        - var selectedValueText = '';
+                        -
+                            if (data.name == 'color' || data.name == 'wcolor' || data.name == 'mcolor') {
+                                selectedValueText = option.value;
+                            }
+
+                        input(type="radio", name=data.name, value=option.value, id=option.id, class="product-options__item-input", checked=(index === 0), data-price=option.price data-selection-text=selectedValueText)
+                        label(for=option.id, class=allMods+allOptionMods)
+                            if (data.name == 'color' || data.name == 'wcolor' || data.name == 'mcolor')
+                                if (option.contents)
+                                    span= option.contents
+                                else
+                                    span
+                            else
+                                span= option.label
+
+mixin product-details-toggle(title)
+    - if (!title) title = 'Ring details: ';
+    .product-details-toggle
+        .product-details-toggle__heading
+            //-.product-details-toggle__title=title
+            .product-details-toggle__toggler Посмотреть все характеристики украшения
+        .product-details-toggle__content
+            .product-details-toggle__content-in
+                block
+
+
+mixin product-details(title, data, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-details--' + modsList[i].trim();
+            }
+        }
+
+    .product-details(class=allMods)
+        if title
+            .product-details__title!=title
+        .product-details__table
+            each item in data
+                .product-details__row
+                    .product-details__cell=item.label
+                    .product-details__cell!=item.value
+
+mixin product-summary(items)
+    .product-summary
+        each item in items
+            .product-summary__item
+                if (item === 'date')
+                    +icon-svg('calendar').product-summary__icon
+                    .product-summary__text При заказе сегодня, готовность:
+                    .product-summary__select
+                        -
+                            var values = [
+                                {val: '21 июня', label: 'Стандартное (3 недели)'},
+                                {val: '26 июня', label: 'Быстрое (2 недели)'},
+                                {val: '29 июня', label: 'Срочное (7 дней)'},
+                            ]
+                            values = values.map((v) => ({title: v.val + '|||' + v.label, attrs: {value: v.val}}))
+                        +field-select(false, false, values, false, 'inline')
+
+                if (item === 'available')
+                    +icon-svg('check').product-summary__icon
+                    .product-summary__text Доступно для примерке в студии
+
+                if (item === 'laser')
+                    +icon-svg('feather').product-summary__icon
+                    .product-summary__text Лазерная гравировка 2500 ₽
+
+                if (item === 'share')
+                    +icon-svg('message-heart').product-summary__icon
+                    .product-summary__text #[a.copy-link(href="#") Поделиться] этим кольцом
+
+mixin product-buttons()
+    .product-buttons
+        +btn('Добавить в корзину', 'main, submit', true)
+        +btn('', 'main, favorite')(href="#")
+            +icon-svg('heart-o')
+        +btn('Консультация WhatsApp', 'main-o, contact')(href="#")
+        +btn('Записаться на примерку', 'main-o, book')(href="#")
+        +btn('Приобрести в рассрочку', 'main-o, book, wide')(href="#")
+
+mixin product-buttons-pair()
+    .product__buttons.product__buttons--pair
+        +btn('Добавить в корзину', 'main', true)(class="product__button product__button--order")
+        +btn('', 'main')(href="#" class='product__button product__button--favorite')
+            +icon-svg('heart-o-white', 24, 24)
+        +btn('', 'main')(href="#" class='product__button product__button--cart')
+            +icon-svg('cart-circle', 24, 24)
+
+        .product__buttons.product__buttons--second-line
+            +btn('Консультация WhatsApp', 'main-o, contact')(href="#")
+            +btn('Позвонить', 'main-o, contact')(href="tel:+79151999919" target="_blank" class="product__button product__button--consult product__button--mobile-visible")
+            +btn('Записаться на примерку', 'main-o, book')(href="#")
+            +btn('Приобрести в рассрочку', 'main-o, book, wide')(href="#")
+
+mixin product-made()
+    .product-made
+        .product-made__image
+            img(src="img/made-for-you.jpg")
+        .product-made__content
+            .product-made__title СДЕЛАНО ДЛЯ ВАС
+            +product-made-tabs()
+
+mixin product-made-tabs()
+    .product-made-tabs
+        -
+            var tabs = [
+                'Ваше идеальное кольцо',
+                'Качество',
+                'Заказ',
+                'Доставка',
+            ]
+            var texts = [
+                'Стандартные сроки изготовления обручальных колец 3 недели. Возможно срочное изготовление от 1-ой до 2-ух недель. Сроки могут зависеть от сложности колец и текущей загруженности, точные сроки уточняйте у менеджеров.',
+                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam, assumenda consectetur cumque dicta dolore dolorem est ex excepturi facilis, incidunt, nisi perspiciatis placeat quisquam repudiandae sed voluptates. A, error.',
+                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda at autem deleniti dolore earum est ipsam iusto magnam mollitia officia quae quaerat quasi quos ratione sed sunt, tempore voluptatem?',
+                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam aspernatur at ducimus ea, laborum neque porro quia rem reprehenderit sapiente veritatis? Consequuntur debitis maiores officiis quaerat, vero voluptatem! Quam.',
+            ]
+            //-var text = 'A collection of bracelets for mothers is a beautiful and sentimental way to keep her children close to heart. Each bracelet is engraved with the name and date of birth of her kids, creating a unique and personal piece of jewelry that is as special as the bond between a mother and her child.';
+
+        .product-made-tabs__links
+            each tab, index in tabs
+                a(href="#product-made-tab-" + index, class=(index === 0 ? 'active' : '')).product-made-tabs__link=tab
+
+        .product-made-tabs__content
+            each tab, index in tabs
+                a(href="#product-made-tab-" + index, class=(index === 0 ? 'active' : '')).product-made-tabs__link=tab
+                .product-made-tabs__tab(id="product-made-tab-" + index, class=(index === 0 ? 'active' : ''))
+                    .product-made-tabs__tab-inner=texts[index]
+
+mixin product-also()
+    .product-also
+        .product-also__title ПОХОЖИЕ УКРАШЕНИЯ
+        .product-also__items
+            each i in [1, 2, 3, 4]
+                +product-card({
+                    gallery: ['product-also.jpg','product-also.jpg','product-also.jpg','product-also.jpg'],
+                    props: ['Solitaire', 'Diamond 0.3-0.5 Ct']
+                })
+
+
+mixin product-package()
+    .product-package
+        .product-package__image
+            img(src="img/packaging.jpg")
+        .product-package__content
+            .product-package__title СТИЛЬНАЯ УПАКОВКА ДЛЯ УКРАШЕНИЙ
+            .product-package__text
+                p Каждое изделие нашей студии упаковывается в брендированный футляр. Кольца и пусеты размещаются внутри на ложементе из нежнейшей замши цвета шампань. Корпус футляра отделан темно-синей кожей с гладкой матовой текстурой.
+                p Компактность, строгая геометрия, лаконичность упаковки – лучшее сопровождение украшений Diamondlake.
+
+mixin product-photos()
+    .product-photos
+        .product-photos__title Она сказала «ДА!»
+        .product-photos__subtitle @diamondlake.ru
+        .product-photos__slider.swiper
+            .product-photos__items.swiper-wrapper
+                each i in [1,2,3,4,5,6]
+                    .product-photos__item.swiper-slide
+                        img(src="img/photo.jpg")
+
+mixin product-reviews()
+    - var lang = 'ru';
+    .product-reviews
+        .container
+            .product-reviews__inner
+                .product-reviews__col.product-reviews__col--left
+                    .product-reviews__title=(lang === 'ru' ? 'Отзывы' : 'Reviews')
+                    .product-reviews__rating 5.0
+                    .product-reviews__stars
+                        .product-reviews__stars-fill(style="width:90%")
+                    .product-reviews__count=(lang === 'ru' ? '3 отзыва' : '3 Reviews')
+                    a(href="#").product-reviews__leave=(lang === 'ru' ? 'Оставить отзыв' : 'Leave a review')
+
+                .product-reviews__col.product-reviews__col--right
+                    .product-reviews__slider-wrap
+                        .product-reviews__slider.swiper
+                            .product-reviews__images.swiper-wrapper
+                                each i in [1,2,3,4,5,6,7,8,9]
+                                    .product-reviews__image.swiper-slide
+                                        img(src="img/review.jpg")
+                        .swiper-button-prev
+                        .swiper-button-next
+
+                    .product-reviews__items
+                        +product-reviews-card()
+                        +product-reviews-card()
+                        +product-reviews-card(true)
+
+                    +btn((lang === 'ru' ? 'Загрузить еще' : 'Load More'), 'main-o')(href="#").product-reviews__more
+
+mixin product-reviews-card(image)
+    .product-reviews-card
+        .product-reviews-card__heading
+            .product-reviews-card__name Jack
+            .product-reviews-card__date 12.03.2022
+
+        .product-reviews-card__content
+            .product-reviews-card__stars
+                .product-reviews-card__stars-fill(style="width:80%")
+
+            .product-reviews-card__text Such a beautiful setting. Looks so good with my oval diamond. < 3. Such a beautiful setting. Looks so good with my oval diamond. < 3;k;Such a beautiful setting. Looks so good with my oval diamond. < 3. Such a beautiful setting. Looks so good with my oval diamond. < 3;k;
+            if image
+                .product-reviews-card__image
+                    img(src="img/review.jpg")
+
+mixin product-charm()
+    .product-charm
+        +btn('Add a Charm', 'main-o')(href="#").product-charm__button
+        .product-charm__text The price includes a bracelet with one Charm. Press “Add Charm” to add more charms. You will get discount of 100€ for each new charm. It will be automaticly calculated in Bag.You will get discount of 100€ for each new charm. It will be automaticly calculated in Bag.

@@ -1,0 +1,106 @@
+.hr-instrustions-top.container
+	.hr-instrustions-top__heading Популярные инструкции
+
+	.hr-instrustions-top__content
+		.articles-inline
+			ul.list
+				each item in instructions_list
+					li
+						a(href="#") #{item}
+
+
+.hr-instructions-section.blue-gray-theme
+	//- Filter panel
+	.filter-panel
+		.container
+			.row
+				.filter-panel__l
+					.radio-buttons.radio-inline.radio-buttons-theme-white
+						+radio({
+							name: 'instructions_tab_input',
+							items: [
+								{
+									label: "Должностные инструкции",
+									checked: true,
+									value: "categories"
+								},
+								{
+									label: "Инструкции по алфавиту",
+									value: "alphabetical-order"
+								}
+							]
+						})
+				.filter-panel__r
+					.filter-panel__search
+						form.search-form
+							.search.search--sm
+								input.search__field(type="text" name="q" placeholder="Поиск")/
+								button.search__button(type="submit")
+									span.icon.icon-search
+
+
+	.industry-grid-section.blue-gray-theme
+		.container
+
+			.hr-instructions-tabs
+				.hr-instructions-tab.active(data-tab="categories")
+					//- Instructions By category
+
+					//- Instructions grid
+					- var instructions_link = "hr_instructions_industry.html";
+					//- Data
+					include ../../data/instructions_grid
+
+					.industry-grid
+						.industry-grid__in
+							each item in grid_main
+								- var url = "javascript:void(0);";
+								- if (item.url != '') url = item.url;
+								- var img = "upload/industry/icons/" + item.icon;
+
+								- if (instructions_link) url = instructions_link;
+
+								.industry-grid__item
+									a(href=url class="industry-grid__link")
+										span.icon
+											img(src=img alt=item.title)
+										span.industry-grid__link-text
+											span #{item.title}
+
+						.industry-grid-buttons.text-center
+							a(href="hr_instructions.html" class="btn btn-wide btn-outline-transparent") Перейти в раздел должностных инструкций
+
+				.hr-instructions-tab(data-tab="alphabetical-order")
+					//- Instructions in alphabetical order
+					.alphabetical-order-letters
+						.alphabetical-order-letters__in
+							- var current_letter = "А";
+
+							each item in letters
+								- var activeClass = "";
+								- if (item == current_letter) activeClass = " active";
+
+								a(href="#" class="letter" + activeClass) #{item}
+
+					.alphabetical-order-view
+						.alphabetical-order-view__l
+							.letter-circle
+								span A
+
+						.alphabetical-order-view__r
+							.row
+								.col-md-6.col-sm-6.col-xs-12
+									ul.list
+										each item in alphabetical_order_a_column1
+											li
+												a(href="#") #{item}
+
+								.col-md-6.col-sm-6.col-xs-12
+									ul.list
+										each item in alphabetical_order_a_column2
+											li
+												a(href="#") #{item}
+
+						
+						.alphabetical-order-view__buttons.text-center
+							a(href="hr_instructions.html" class="btn btn-wide btn-outline-transparent") Перейти в раздел должностных инструкций

@@ -1,0 +1,14 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title Order
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Create your own')
+
+        h1 Create your own
+        +create()

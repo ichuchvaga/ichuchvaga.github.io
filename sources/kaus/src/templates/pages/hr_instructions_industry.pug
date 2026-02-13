@@ -1,0 +1,139 @@
+//- Data
+include ../data/hr
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/radio
+//- Variables
+-
+	var header_menu_active = "Библиотека HR";
+	var pagetitle = "Должностные инструкции";
+	var ymap = true;
+	var ymap_center = true;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+		
+		.hr-instructions-content.section-with-border
+			//- Breadcrumb
+			+breadcrumb({
+				nav_items: [
+					{
+						title: "Библиотека HR",
+						url: "hr.html"
+					},
+					{
+						title: "Должностные инструкции",
+						url: "hr.html"
+					}
+				],
+				last_title: "Секретариат/ Административный персонал"
+			})
+
+
+			//- Filter panel
+			.filter-panel
+				.container
+					.row
+						.filter-panel__l
+							.filter-panel__link
+								a(href="hr_instructions.html" class="btn btn-wide btn-outline") Каталог отраслей
+						.filter-panel__r
+							.filter-panel__search
+								form.search-form
+									.search.search--md
+										input.search__field(type="text" name="q" placeholder="Поиск")/
+										button.search__button(type="submit")
+											span.icon.icon-search
+
+
+			//- Instructions in alphabetical order
+			.alphabetical-order-letters.blue-gray-theme
+				.container
+					.alphabetical-order-letters__in
+						- var current_letter = "А";
+
+						each item in letters
+							- var activeClass = "";
+							- if (item == current_letter) activeClass = " active";
+
+							a(href="#" class="letter" + activeClass) #{item}
+
+			.container
+				.alphabetical-order-view
+					.h2.alphabetical-order-view__category Секретариат / Административный персонал
+
+					.alphabetical-order-view__l
+						.letter-circle.letter-circle-theme-dark
+							span A
+
+					.alphabetical-order-view__r
+						.row
+							.col-md-6.col-sm-6.col-xs-12
+								ul.list
+									each item in alphabetical_order_a_column1
+										li
+											a(href="#") #{item}
+
+							.col-md-6.col-sm-6.col-xs-12
+								ul.list
+									each item in alphabetical_order_a_column2
+										li
+											a(href="#") #{item}
+
+
+
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Сократите затраты #[br] на подбор финансового #[br] персонала
+
+							span.consult-subtitle Не теряйте деньги из-за отсутствия сотрудника
+							
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Получить консультацию		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

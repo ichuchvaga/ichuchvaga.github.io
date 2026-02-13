@@ -1,0 +1,121 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mobile-menu)
+
+mixin mobile-menu(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +mobile-menu('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' mobile-menu--' + modsList[i].trim();
+            }
+        }
+
+    .mobile-menu(class=allMods)&attributes(attributes)
+        +burger(' ', 'mobile-menu', 'mobile-menu__inner--shown')
+            svg(width='24', height='24')
+                use(xlink:href='img/sprite.svg#align-justify')
+        .mobile-menu__inner#mobile-menu
+            form.main-menu__search
+                +field-text({
+                    attrs: {
+                        name: 's',
+                        placeholder: 'Введите артикул'
+                    }
+                }).main-menu__search-input
+                +btn('Search', '', true).main-menu__search-button
+
+            ul.mobile-menu__nav
+                +mobile-menu-item('Помолвочные кольца')
+                    +mobile-menu-subcats([
+                        {image: 'img/engagement-solitaire.svg', title: 'Солитер'},
+                        {image: 'img/engagement-accent.svg', title: 'Акцент'},
+                        {image: 'img/engagement-halo.svg', title: 'Хало'},
+                        {image: 'img/engagement-three.svg', title: 'Трио'}
+                    ], ['Все кольца', 'Топ 10 Помолвочных '])
+                +mobile-menu-item('Обручальные кольца')
+                    +mobile-menu-subcats([
+                        {image: 'img/wedding-couples.svg', title: 'Парные'},
+                        {image: 'img/wedding-women.svg', title: 'Женские'},
+                        {image: 'img/wedding-track.svg', title: 'Дорожки'},
+                        {image: 'img/wedding-men.svg', title: 'Мужские'}
+                    ], ['Все кольца', 'Топ 10 Обручальных'])
+                +mobile-menu-item('Серьги пусеты')
+                    +mobile-menu-subitem('img/studs.jpg', 'Серьги пусеты')
+                +mobile-menu-item('Браслеты «Детки»')
+                    +mobile-menu-subitem('img/bracelets.jpg', 'Браслеты «Детки»')
+                +mobile-menu-item('Бриллианты')
+                    +mobile-menu-sublist(['О Бриллиантах', 'Карат', 'Цвет', 'Чистота', 'Огранка', 'Флюоресценция', 'GIA Сертификат'])
+                +mobile-menu-item('Как заказать')
+                    +mobile-menu-sublist(['Украшения на заказ', 'Как заказать', 'Гарантии', 'Доставка', 'FAQ'])
+                +mobile-menu-item('О Diamondlake')
+                    +mobile-menu-sublist(['О нас', 'Производство', 'Блог', 'Отзывы', 'Контакты'])
+
+            .mobile-menu__contacts
+                +social().mobile-menu__social
+                    +social-link('//instagram.com', 'instagram')(title='Instagram')
+                        +icon-svg('instagram', 30, 30)
+                    +social-link('//pinterest.com', 'pinterest')(title='Pinterest')
+                        +icon-svg('pinterest', 30, 30)
+                    +social-link('//facebook.com', 'facebook')(title='Facebook')
+                        +icon-svg('facebook', 30, 30)
+
+                a(href="tel:+74951426793").mobile-menu__phone
+                    +icon-svg('phone-o', 22, 22)
+                    |+7 495 142-67-93
+
+                .mobile-menu__buttons
+                    +btn('Консультация ', 'main')(href='#').mobile-menu__button
+                    +btn('Записаться на примерку', 'main')(href='#modal-studio', data-modal="open").mobile-menu__button
+
+                .mobile-menu__address Москва, Большой Тишинский переулок, 8с2
+                //-a(href="#").mobile-menu__lang Ru
+
+mixin mobile-menu-item(item, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' mobile-menu--' + modsList[i].trim();
+            }
+        }
+
+    li.mobile-menu__nav-item(class=allMods)&attributes(attributes)
+        .mobile-menu__nav-heading
+            a.mobile-menu__nav-link(href="#")=item
+            .mobile-menu__nav-link-icon
+        .mobile-menu__nav-subitem
+            block
+
+
+mixin mobile-menu-subcats(items, more)
+    .mobile-menu-subcats
+        .mobile-menu-subcats__list
+            each item in items
+                a.mobile-menu-subcats__item(href="#")
+                    .mobile-menu-subcats__item-title= item.title
+                    .mobile-menu-subcats__item-image
+                        img(src=item.image)
+        each item in more
+            a.mobile-menu-subcats__more(href="#")= item
+
+mixin mobile-menu-subitem(image, title)
+    a.mobile-menu-subitem(href="#")
+        .mobile-menu-subitem__image
+            img(src=image)
+        .mobile-menu-subitem__title= title
+
+mixin mobile-menu-sublist(items)
+    ul.mobile-menu-sublist
+        each item in items
+            li.mobile-menu-sublist__item
+                a.mobile-menu-sublist__link(href="#")= item

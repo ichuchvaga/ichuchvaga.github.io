@@ -1,0 +1,27 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-package)
+
+mixin main-package(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-package('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-package--' + modsList[i].trim();
+            }
+        }
+
+    .main-package(class=allMods)&attributes(attributes)
+        .main-package__inner.container
+            .main-package__content
+                .main-package__title Стильная упаковка для украшения. Бесплатно
+                .main-package__text Lörem ipsum lyra poling, last entropi deska spererade om säsade. Mir spedutt innan marad hexajypasade.
+            .main-package__image
+                img(src="img/package.jpg")

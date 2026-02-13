@@ -1,0 +1,15 @@
+//- Map
+- var offsetClass = "";
+- if (ymap_center && ymap_center == true) offsetClass = "map-center";
+
+.map-container
+	.container
+		.map-controls
+			button(type="button" class="map-control active" data-id="msk") Москва
+			button(type="button" class="map-control" data-id="spb") Санкт-Петербург
+
+		if (!ymap_center)		
+			include ./bottom_form
+
+			
+	#map.map(class=offsetClass)

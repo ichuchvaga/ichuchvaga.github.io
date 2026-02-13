@@ -1,0 +1,158 @@
+//- Все примеси в этом файле должны начинаться c имени блока (product-gallery)
+
+mixin product-gallery(images, galleryText, mods)
+
+    //- Принимает:
+    //-   images  {array}  - массив картинок
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +product-gallery('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-gallery--' + modsList[i].trim();
+            }
+        }
+
+    .product-gallery.swiper(class=allMods)&attributes(attributes)
+        .product-gallery__slides.swiper-wrapper
+            each image, index in images
+                .product-gallery__slide.swiper-slide
+                    if (image === '360')
+                        -
+                            totalImages = 81;
+                            for (var i = 1, images360 = [], index; i <= totalImages; i++) {
+                                index = (i < 10) ? '0' + i : i
+                                images360.push('img/ezgif-frame-' + ('000' + index).slice(-3) + '.jpg')
+                            }
+                        canvas.product-gallery__image.product-gallery__image--360(data-images=images360)
+                    else if (image === 'works')
+                        a(href="#modal-works", data-modal="open").product-gallery__works
+                            img(src=images[0]).product-gallery__image
+                            .product-gallery__works-text Посмотреть еще фотографии
+                    else
+                        img(src=image).product-gallery__image
+
+                    if (false && index === 0 && galleryText)
+                        .product-gallery__labels
+                            each text, type in galleryText
+                                .product-gallery__label(class='product-gallery__label--' + type)=text
+
+        .swiper-pagination
+
+mixin product-gallery-desktop(images, galleryText, hasGallerySlider, mods)
+
+    //- Принимает:
+    //-   images  {array}  - массив картинок
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +product-gallery('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' product-gallery--' + modsList[i].trim();
+            }
+        }
+
+    .product-gallery(class=allMods)&attributes(attributes)
+        .product-gallery__slides
+            - var slidesCount = 4;
+            - if (images.length > 4) slidesCount = 3;
+
+            each image, index in images
+                if (index < slidesCount)
+                    .product-gallery__slide
+                        if (image === '360')
+                            -
+                                totalImages = 81;
+                                for (var i = 1, images360 = [], index; i <= totalImages; i++) {
+                                    index = (i < 10) ? '0' + i : i
+                                    images360.push('img/ezgif-frame-' + ('000' + index).slice(-3) + '.jpg')
+                                }
+                            canvas.product-gallery__image.product-gallery__image--360(data-images=images360)
+                        else if (image === 'works')
+                            a(href="#modal-works", data-modal="open").product-gallery__works
+                                img(src=images[0]).product-gallery__image
+                                .product-gallery__works-text Посмотреть еще фотографии
+                        else
+                            img(src=image).product-gallery__image
+
+                        if (false && index === 0 && galleryText)
+                            .product-gallery__labels
+                                each text, type in galleryText
+                                    .product-gallery__label(class='product-gallery__label--' + type)=text
+
+            if (images.length > 4)
+                if (hasGallerySlider == true)
+                    .product-gallery__slide
+                        .product-inner-gallery
+                            .swiper.js-inner-gallery
+                                .swiper-wrapper
+                                    each image, index in images
+                                        if (index > 2)
+                                            .swiper-slide
+                                                .product-inner-gallery__item
+                                                    if (image === '360')
+                                                        -
+                                                            totalImages = 81;
+                                                            for (var i = 1, images360 = [], index; i <= totalImages; i++) {
+                                                                index = (i < 10) ? '0' + i : i
+                                                                images360.push('img/ezgif-frame-' + ('000' + index).slice(-3) + '.jpg')
+                                                            }
+                                                        canvas.product-gallery__image.product-gallery__image--360(data-images=images360)
+                                                    else if (image === 'works')
+                                                        a(href="#modal-works", data-modal="open").product-gallery__works
+                                                            img(src=images[0]).product-gallery__image
+                                                            .product-gallery__works-text Посмотреть еще фотографии
+                                                    else
+                                                        img(src=image).product-gallery__image
+
+                                                    if (false && index === 0 && galleryText)
+                                                        .product-gallery__labels
+                                                            each text, type in galleryText
+                                                                .product-gallery__label(class='product-gallery__label--' + type)=text
+
+                                .product-gallery-nav
+                                    .product-gallery-nav__prev
+                                        a(href="javascript:void(0);").product-gallery-nav-btn
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 15">
+                                                <path d="M7.5,14.5l-7-7,7-7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                    .product-gallery-nav__dots
+                                        .swiper-pagination
+                                    .product-gallery-nav__next
+                                        a(href="javascript:void(0);").product-gallery-nav-btn
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 15">
+                                                <path d="M.5.5l7,7-7,7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                else
+                    each image, index in images
+                        if (index > 2)
+                            .product-gallery__slide
+                                if (image === '360')
+                                    -
+                                        totalImages = 81;
+                                        for (var i = 1, images360 = [], index; i <= totalImages; i++) {
+                                            index = (i < 10) ? '0' + i : i
+                                            images360.push('img/ezgif-frame-' + ('000' + index).slice(-3) + '.jpg')
+                                        }
+                                    canvas.product-gallery__image.product-gallery__image--360(data-images=images360)
+                                else if (image === 'works')
+                                    a(href="#modal-works", data-modal="open").product-gallery__works
+                                        img(src=images[0]).product-gallery__image
+                                        .product-gallery__works-text Посмотреть еще фотографии
+                                else
+                                    img(src=image).product-gallery__image
+
+                                if (false && index === 0 && galleryText)
+                                    .product-gallery__labels
+                                        each text, type in galleryText
+                                            .product-gallery__label(class='product-gallery__label--' + type)=text

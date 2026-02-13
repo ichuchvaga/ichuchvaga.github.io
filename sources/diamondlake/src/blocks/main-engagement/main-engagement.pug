@@ -1,0 +1,63 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-engagement)
+
+mixin main-engagement(text, mods)
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-engagement('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-engagement--' + modsList[i].trim();
+            }
+        }
+
+    .main-engagement(class=allMods)&attributes(attributes)
+        .main-engagement__inner.container
+            .main-engagement__image(style="background-image:url(img/main-engagement.png)")
+            .main-engagement__content
+                .main-engagement__title ПОМОЛВОЧНЫЕ КОЛЬЦА
+                .main-engagement__text В Diamondlake нет шаблонных украшений со скучным дизайном. Мы уверены, что ваши чувства достойны уникального воплощения. Выбирайте помолвочные кольца и камни любых форм и размеров – создавайте свое украшение мечты!
+                +main-engagement-rings()
+                +btn('Все кольца', 'white-o')(href="#").main-engagement__btn
+
+mixin main-engagement-rings()
+    -
+        var items = [
+            {
+                title: lang === 'ru' ? 'Круг' : 'Round',
+                image: 'img/diamond-shape-round.svg',
+            },{
+                title: lang === 'ru' ? 'Принцесса' : 'Princess',
+                image: 'img/diamond-shape-princess.svg',
+            },{
+                title: lang === 'ru' ? 'Сердце' : 'Heart',
+                image: 'img/diamond-shape-heart.svg',
+            },{
+                title: lang === 'ru' ? 'Изумруд' : 'Emerald',
+                image: 'img/diamond-shape-emerald.svg',
+            },{
+                title: lang === 'ru' ? 'Кушон' : 'Cushion',
+                image: 'img/diamond-shape-cushion.svg',
+            },{
+                title: lang === 'ru' ? 'Ашер' : 'Asscher',
+                image: 'img/diamond-shape-asscher.svg',
+            },
+        ];
+
+    .main-engagement-rings
+        .main-engagement-rings__title Выбрать кольцо по форме бриллианта:
+        .main-engagement-rings__items
+            each item in items
+                +main-engagement-rings-item(item.image, item.title)
+
+mixin main-engagement-rings-item(image, title)
+    .main-engagement-rings-item
+        a(href="#")
+            img(src=image).main-engagement-rings-item__image
+            .main-engagement-rings-item__title=title

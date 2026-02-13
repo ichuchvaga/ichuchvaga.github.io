@@ -1,0 +1,160 @@
+//- Все примеси в этом файле должны начинаться c имени блока (top10)
+
+mixin top10(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +top10('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' top10--' + modsList[i].trim();
+            }
+        }
+        var products = [
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            },
+            {
+                image: 'top10-img.png',
+                props: [
+                    'Помолвочное кольцо',
+                    'С одним бриллиантом',
+                    '0.25 карат 4.0 мм',
+                ],
+                likes: 123,
+            }
+        ]
+
+    .top10(class=allMods)&attributes(attributes)
+        .top10__inner.container
+            .top10__list
+                .top10__list-inner
+                    each product in products
+                        //-+product-card(product)
+                        - var imgUrl = 'img/' + product.image;
+
+                        .top10-product
+                            .top10-product__wrapper
+                                .top10-product__main
+                                    .top10-product__name ES1 Victoriya
+                                    .top10-product__price ОТ: 150 000 #[span.rub ₽]
+                                    .top10-product__btn
+                                        +btn('Подробнее', '')(href="#")
+
+                                .top10-product__image
+                                    a(href="#")
+                                        img(src=imgUrl alt="")
+
+        .top10-choose
+            .container
+                .top10-choose__wrapper
+                    .top10-choose__col.top10-choose__col-left
+                        .top10-choose__title Как выбрать помолвочное кольцо?
+
+                        .top10-choose__text
+                            .row
+                                .top10-choose__text-col1
+                                    p В коллекции ювелирной студии Diamondlake представлены помолвочные кольца разных размеров и форм огранки, как классические так и эксплюзивные.
+                                    p Каждая модель кольца для помолвки – это идеальное сочетание благородного золота и натуральных камней.
+                                    p Где купить помолвочное кольцо в Москве?
+                                    p Конечно же, у нас! Наши дизайнеры создали несколько линеек колец для предложения.
+
+                                .top10-choose__text-col2
+                                    p В коллекции ювелирной студии Diamondlake представлены помолвочные кольца разных размеров и форм огранки, как классические так и эксплюзивные.
+                                    p Каждая модель кольца для помолвки – это идеальное сочетание благородного золота и натуральных камней.
+                                    p Каждая модель кольца для помолвки – это идеальное сочетание благородного золота и натуральных камней.
+                        
+                    .top10-choose__col.top10-choose__col-right
+                        .top10-choose__title Не нашли что искали?
+
+                        .top10-choose__text
+                            p В коллекции ювелирной студии Diamondlake представлены помолвочные кольца разных размеров и форм огранки, как классические так и эксплюзивные.
+
+                        .top10-choose__btn
+                            +btn('Посмотреть все кольца', 'main')(href="#").top10__button
+            

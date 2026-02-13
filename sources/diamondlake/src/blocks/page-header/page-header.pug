@@ -1,0 +1,94 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-header)
+
+mixin page-header(lang, mods)
+
+    //- Принимает:
+    //-   mods  {string} - список модификаторов
+    //- Вызов:
+          +page-header()
+            p «Шапка»
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' page-header--' + modsList[i].trim();
+            }
+        }
+
+        var navItems = [
+            {
+                name: 'Collections',
+                url: '#',
+                dropdown: 'Collections',
+            },
+            {
+                name: 'Engagement',
+                url: '#',
+                dropdown: 'Engagement',
+            },
+            {
+                name: 'Wedding',
+                url: '#',
+                dropdown: 'Wedding',
+            },
+            {
+                name: 'Earrings',
+                url: '#',
+            }
+        ]
+        if (lang =='ru') {
+            navItems = [
+                {
+                    name: 'Помолвочные кольца',
+                    url: '#',
+                    dropdown: 'Engagement',
+                },
+                {
+                    name: 'Обручальные кольца',
+                    url: '#',
+                    dropdown: 'Wedding',
+                },
+                {
+                    name: 'Серьги',
+                    url: '#',
+                },
+                {
+                    name: 'Коллекции',
+                    url: '#',
+                    dropdown: 'Collections',
+                }
+            ]
+        }
+
+    header.page-header(class=allMods, role='banner')&attributes(attributes)
+        .page-header__inner.container
+            +mobile-menu()
+
+            +logo('/').page-header__logo
+                picture.page-header__logo-image
+                    source(media="(max-width: 1000px)", srcset="img/logo-mobile.svg")
+                    img(src="img/logo.svg", alt="DIAMONDLAKE")
+
+            +nav-menu(navItems).page-header__top-menu
+
+
+            .page-header__actions
+                a(href="#").page-header__phone
+                    +icon-svg('phone', 20, 20)
+                    .page-header__phone-text +7 495 142 67 93
+                a(href="#").page-header__address
+                    +icon-svg('placemark', 15, 21)
+                    .page-header__address-text Москва, Большой Тишинский переулок, 8с2
+                a(href="#").page-header__favorite
+                    +icon-svg('heart', 23, 23)
+                a(href="#").page-header__cart
+                    +icon-svg('bag', 18, 21)
+
+            if (lang !== 'ru')
+                a(href="#").page-header__lang Eng
+
+
+            button.page-header__menu-button
+                +icon-svg('align-justify', 24, 24)

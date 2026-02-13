@@ -1,0 +1,167 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'Stud Earrings <br> EA4',
+                gallery = [
+                    'img/product-4-1.jpg',
+                    'img/product-4-2.jpg',
+                    'img/product-4-3.jpg',
+                    'img/product-4-4.jpg',
+                ],
+                price = '1570',
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Collections', link: '#'},
+                    {title: 'Mom’s Bracelets', link: '#'},
+                    {title: 'Boy', link: '#'},
+                    {title: 'BG14W'}
+                ];
+    +product(title, gallery, breadcrumbs)
+        +product-price(price)
+        +product-options({
+            title: 'Металл:',
+            mainOptions: ['585', '750'],
+            options: [
+                {
+                    id: 'color-white',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '585'
+                },
+                {
+                    id: 'color-yellow',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '585'
+                },
+                {
+                    id: 'color-pink',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '585'
+                },
+            ],
+            mods: 'color',
+            name: 'color',
+            showValue: true,
+        }, 'color')
+
+        +product-options({
+            title: 'Diamond Size:',
+            info: 'info',
+            options: [
+                {
+                    id: 'dsize-0',
+                    value: '0.3',
+                    label: '0.30 Ct',
+                },
+            ],
+            mods: 'square,square-wide',
+            name: 'wWidth',
+        }, 'square')
+
+        -
+            var options = 'i,h,g,f,e,d';
+            options = options.split(',').map((elem, index) => ({
+                id: 'dcolor-'+index,
+                value: elem.toUpperCase(),
+                label: elem.toUpperCase(),
+                price: index*10,
+            }));
+        +product-options({
+            title: 'Diamond Color:',
+            info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+            options: options,
+            mods: 'circle',
+            name: 'diamondColor',
+        }, 'circle')
+
+        +product-options({
+            title: 'Diamond Clarity:',
+            info: 'test',
+            options: [
+                {
+                    id: 'dclarity-0',
+                    value: 'SI1',
+                    label: 'SI1',
+                    price: '0',
+                },
+                {
+                    id: 'dclarity-1',
+                    value: 'VS2',
+                    label: 'VS2',
+                    price: '10',
+                },
+                {
+                    id: 'dclarity-2',
+                    value: 'VS1',
+                    label: 'VS1',
+                    price: '20',
+                },
+                {
+                    id: 'dclarity-3',
+                    value: 'VVS2',
+                    label: 'VVS2',
+                    price: '30',
+                },
+                {
+                    id: 'dclarity-4',
+                    value: 'VVS1',
+                    label: 'VVS1',
+                    price: '40',
+                },
+            ],
+            mods: 'circle',
+            name: 'diamondClarity',
+        }, 'circle')
+
+        +product-details-toggle()
+            .product-details-cols
+                .product-details-cols__inner
+                    +product-details('Центральный бриллиант:', [
+                        {
+                            label: 'Форма',
+                            value: 'Принцесса',
+                        }, {
+                            label: 'Вес',
+                            value: '0.30 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'I',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }, {
+                            label: 'Сертификат',
+                            value: 'GIA <a href="#">(подробнее)</a>',
+                        }
+                    ])
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'F/G',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }
+                    ])
+
+        +product-summary(['date', 'available'])
+        +product-buttons()

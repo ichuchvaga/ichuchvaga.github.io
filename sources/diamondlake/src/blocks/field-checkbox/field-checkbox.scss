@@ -1,0 +1,163 @@
+// В этом файле должны быть стили для БЭМ-блока field-checkbox, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-checkbox {
+
+    $block-name: &; // #{$block-name}__element
+
+    display: block;
+    margin-bottom: $typo-margin-vertical;
+
+    &__title {
+        @include field-name;
+    }
+
+    &__input-wrap {
+        &:not(:last-child) {
+            margin-bottom: 13px;
+        }
+
+        &--button {
+            display: inline-block;
+            margin-bottom: 9px;
+            margin-right: 10px;
+
+            & + & {
+                margin-top: 0;
+            }
+
+            #{$block-name}__name {
+                padding-left: 0;
+                font-size: 14px;
+            }
+
+            #{$block-name}__name-text {
+                background: rgba($blue, 0.1);
+                border: 1px solid rgba($blue, 0.1);
+                padding: 0px 6px;
+                color: $blue;
+                transition-property: background-color, border-color, color;
+                transition-duration: $transition-time;
+                cursor: pointer;
+
+                &:before, &:after {
+                    display: none;
+                }
+            }
+
+            #{$block-name}__input:checked ~ #{$block-name}__name-text {
+                background: $blue;
+                border-color: $blue;
+                color: $white;
+            }
+        }
+    }
+
+    @include field-error;
+
+    &__name {
+        display: inline-block;
+        position: relative;
+        padding-left: 28px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        color: #63708A;
+    }
+
+    &__name-text {
+        display: inline-block;
+        line-height: 20px;
+        user-select: none;
+
+        @at-root input:disabled ~ & {
+            cursor: not-allowed;
+        }
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+        }
+
+        &:before {
+            top: 0;
+            left: 0;
+            transition-property: background-color;
+            transition-duration: $transition-time;
+            width: 20px;
+            height: 20px;
+            background: #F5F6F8;
+            border-radius: 2px;
+            border: 0;
+
+            @at-root input:checked ~ & {
+                background: #2A7EF2;
+            }
+        }
+
+        @at-root input:focus ~ &:before {
+            //@include field-focus;
+        }
+
+        @at-root input:disabled ~ &:before {
+            background: $gray;
+        }
+
+        &:after {
+            opacity: 0;
+            width: 14px;
+            height: 11px;
+            transition: opacity $transition-time;
+            background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.49999 8.47501L1.60833 5.58334C1.28333 5.25834 0.758325 5.25834 0.433325 5.58334C0.108325 5.90834 0.108325 6.43334 0.433325 6.75834L3.91666 10.2417C4.24166 10.5667 4.76666 10.5667 5.09166 10.2417L13.9083 1.42501C14.2333 1.10001 14.2333 0.575006 13.9083 0.250006C13.5833 -0.0749939 13.0583 -0.0749939 12.7333 0.250006L4.49999 8.47501Z' fill='white'/%3E%3C/svg%3E%0A");
+            top: 5px;
+            left: 3px;
+
+            @at-root input:checked ~ & {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__input {
+        position: absolute;
+        top: 0.7em;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        transform: translateY(-50%);
+
+        &:focus,
+        &:active {
+            //@include field-focus;
+        }
+
+        // сокрытие инпута в случае использования своего чекбокса
+        opacity: 0;
+    }
+
+    &__help-text-wrap {
+        padding-left: 1.5em;
+    }
+
+    &__help-text {
+        @include field-help-text;
+    }
+
+    .show-more {
+        &__toggle {
+            font-size: 14px;
+            color: $blue;
+        }
+    }
+
+    &--col-2 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px 0;
+
+        #{$block-name}__input-wrap {
+            width: 50%;
+            margin: 0;
+        }
+    }
+}

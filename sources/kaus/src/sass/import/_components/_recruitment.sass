@@ -1,0 +1,104 @@
+// Recruitment styling
+
+.recruitment,
+.recruitment-block
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+.recruitment
+	&__l
+		position: relative
+		width: calc(100% - 298px)
+	&__r
+		width: 298px
+
+.recruitment-content
+	position: relative
+	padding:
+		top: 55px
+		left: 220px
+		right: 65px
+		bottom: 60px
+.recruitment-img
+	position: absolute
+	top: 50%
+	left: 32px
+	margin-top: -64px
+.recruitment-title
+	margin: 0
+	font-size: 28px
+	font-family: $raleway
+	font-weight: 500
+	line-height: 1.2em
+	background: linear-gradient($green, #2e82d8)
+	background-clip: text
+	-webkit-text-fill-color: transparent
+	color: $blue
+
+.recruitment-block
+	padding:
+		top: 55px
+		bottom: 60px
+	.wrapper
+		margin: 
+			left: -15px
+			right: -15px
+	&__l,
+	&__r
+		margin: 
+			left: 15px
+			right: 15px
+	&__l
+		width: calc(39.25% - 30px)
+		padding-right: 40px
+
+	&__r
+		width: calc(60.75% - 30px)
+
+	&__title
+		margin: 0
+		line-height: 1.285714285714286em
+		font-size: 28px
+
+		&:after
+			content: ""
+			display: block
+			width: 90px
+			height: 3px
+			margin-top: 16px
+
+			background-color: #d4dde4
+
+	&__descr
+		display: block
+		margin-bottom: 44px
+		font-size: 18px
+		line-height: 1.333333333333333em
+
+.recruitment-search
+	padding-top: 71px
+	padding-bottom: 83px
+
+.recruitment-search-results
+	margin-top: 58px
+
+	&.empty-results
+		margin-top: 0
+		padding-bottom: 7px
+
+	&__item
+		margin-top: 48px
+
+		&:first-child
+			margin-top: 0
+
+	&__title
+		margin-bottom: 1.09375em
+
+	&__descr
+		font-family: $regular
+		font-weight: 300
+		color: #232a32
+		font-size: 24px
+		line-height: 1.333333333333333em

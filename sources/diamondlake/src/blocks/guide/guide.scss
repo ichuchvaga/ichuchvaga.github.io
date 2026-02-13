@@ -1,0 +1,162 @@
+// В этом файле должны быть стили для БЭМ-блока guide, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.guide {
+    $block-name: &; // #{$block-name}__element
+
+    &__row {
+        margin-bottom: 64px;
+        display: flex;
+        gap: 16px;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+    }
+
+    &__col {
+        flex: 1;
+
+        &--wide {
+            flex: 3;
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &--shapes {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--shapes &-title {
+            margin-bottom: 36px;
+        }
+    }
+
+    &__col-title {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 110%;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    &__shape {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+        text-decoration: none;
+        word-break: normal;
+
+        img {
+            display: block;
+            max-width: 40px;
+            margin: 0 auto auto;
+            transform: translateZ(0);
+        }
+
+        &:hover {
+            color: #8A9199;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px 16px;
+    }
+
+    &__cell {
+        text-decoration: none;
+        transition: $transition-time ease;
+
+        &:hover {
+            color: #8A9199;
+        }
+
+        &:hover &-more {
+            color: #8A9199;
+        }
+    }
+
+    &__cell-title {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 110%;
+        letter-spacing: -0.25px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        align-items: flex-end;
+    }
+
+    &__cell-more {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+        text-transform: none;
+        transition: $transition-time ease;
+    }
+
+    @media screen and (max-width: 1526px) {
+        &__col--shapes {
+            .row {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .col {
+                flex: 0 0 40px;
+            }
+
+            .guide__shape {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    @media (max-width: 1000px) {
+        &__row {
+            display: block;
+            margin-bottom: 48px;
+        }
+
+        &__col-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        &__col {
+            &--shapes {
+                display: none;
+            }
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        &__cell-title {
+            font-size: 20px;
+            line-height: 120%;
+        }
+
+        &__cell-more {
+            font-size: 12px;
+        }
+    }
+}

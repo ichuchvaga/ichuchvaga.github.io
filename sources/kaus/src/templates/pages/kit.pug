@@ -1,0 +1,392 @@
+//- Variables
+-
+	var tabs_js = true,
+		select_js = true,
+		socials_js = true,
+		flatpickr_js = true;
+//- Mixins
+include ../mixins/radio
+include ../mixins/checkbox
+include ../mixins/select
+include ../mixins/input
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		.kit
+			//- Headers
+			.kit-headers(style={"padding-top":"100px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Уровни заголовков
+					.kit-caption.kit-caption--raleway Raleway
+					.kit-headers-item.wrapper
+						.kit-headers-item__l
+							h1 h1
+						.kit-headers-item__r
+							h1 Проблемы подбора 62/68
+					.kit-headers-item.wrapper
+						.kit-headers-item__l
+							h2 h2
+						.kit-headers-item__r
+							h2 Проблемы подбора 38/42
+					.kit-headers-item.wrapper(style={"margin-bottom":"30px"})
+						.kit-headers-item__l
+							h3 h3
+						.kit-headers-item__r
+							h3 Проблемы подбора 32/36
+					.kit-headers-item.wrapper
+						.kit-headers-item__l
+							h4 h4
+						.kit-headers-item__r
+							h4 Проблемы подбора 24/32
+
+					h1(style={"margin-top":"100px","margin-bottom":"50px"}) Основной текст
+					.kit-caption(style={"margin-bottom":"20px"}) Roboto
+					.kit-headers-item.wrapper(style={"margin-bottom":"20px"})
+						.kit-headers-item__l
+							h5 h5
+						.kit-headers-item__r
+							h5 Проблемы подбора 20/24
+					.kit-headers-item.wrapper(style={"margin-bottom":"20px"})
+						.kit-headers-item__l
+							h6 h6
+						.kit-headers-item__r
+							h6 Проблемы подбора 18/28
+					.kit-headers-item.wrapper
+						.kit-headers-item__l
+							.h7 h7
+						.kit-headers-item__r
+							.h7 Проблемы подбора 16/24
+
+			//- Annotation
+			.kit-annotation(style={"padding-top":"100px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Аннотация
+					.kit-caption(style={"margin-bottom":"20px"}) Аннотация #[strong (Raleway 28/36)]
+					.annotation.
+						Сотрудничество с нами сэкономит ваше время#[br]
+						на поиск и отбор кандидатов
+			//- Buttons
+			.kit-buttons(style={"padding-top":"100px"})
+				.container
+					.row
+						.col-md-8
+							h1(style={"margin-bottom":"50px"}) Состояния / виды кнопок
+							.kit-button(style={"margin-bottom":"50px"})
+								button.btn.btn-wide.btn-primary(type="button") Найти сотрудника
+							.kit-button
+								button.btn.btn-wide.btn-outline(type="button") Подробнее о нашей компании
+						.col-md-4
+							h3(style={"margin-top":"45px","margin-bottom":"20px"}) Переключатели-вкладки
+							.h7(style={"margin-bottom":"20px"}) Обычный вид
+							.radio-buttons.radio-inline
+								+radio({
+									name: 'years_1',
+									items: [
+										{
+											label: 2018,
+											checked: true
+										},
+										{
+											label: 2017
+										},
+										{
+											label: 2016
+										}
+									]
+								})
+							.h7(style={"margin-top":"20px","margin-bottom":"20px"}) Переключения на более раниие года
+							.radio-buttons.radio-inline
+								+radio({
+									name: 'years_2',
+									nav_next: true,
+									items: [
+										{
+											label: 2018
+										},
+										{
+											label: 2017
+										},
+										{
+											label: 2016,
+											checked: true
+										}
+									]
+								})
+							.h7(style={"margin-top":"20px","margin-bottom":"20px"}) Года закончились, вперед
+							.radio-buttons.radio-inline
+								+radio({
+									name: 'years_3',
+									nav_prev: true,
+									items: [
+										{
+											label: 2015,
+											checked: true
+										},
+										{
+											label: 2016
+										},
+										{
+											label: 2014
+										}
+									]
+								})
+
+			//- Citations
+			.kit-citations(style={"padding-top":"100px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Цитаты
+					.kit-caption(style={"margin-bottom":"20px"}) Вид цитат, вариант 1 #[strong (Roboto 24/32)]
+					blockquote(style={"margin-bottom":"40px"})
+						p.
+							«Человек, который нервничает, может быть закрытым на#[br]
+							собеседовании, что скажется на неверной интерпретации#[br]
+							оценки данного соискателя на вашу вакансию. Сделайте#[br]
+							максимум для того, чтобы кандидат чувствовал себя#[br]
+							комфортно.»
+					.kit-caption(style={"margin-bottom":"20px"}) Вариант 2 #[strong (Roboto 24/38)]
+					.h6(style={"margin-bottom":"40px"}).
+						Однако чем больше компания, тем меньше времени IT-отдел может посвящать поиску кандидатов. Скорее они готовы интервьюировать и 
+						отбирать интересных кандидатов.
+					blockquote.blockquote-with-lines(style={"margin-bottom":"40px"})
+						p.
+							Кроме того, знать все нюансы профессии технического специалиста человеку, который в этой сфере не 
+							работает, достаточно сложно. Штатный рекрутер может быть вполне эффективен, если он имеет 
+							представление о рынке труда IT-специалистов, а также о том, чем должен заниматься данный человек, 
+							какой уровень заработной платы можно считать приемлемым и устраивающим обе стороны, как можно 
+							развивать данного сотрудника в компании. 
+					.h6(style={"margin-bottom":"60px"}).
+						Но хорошее резюме для соискателя — это 50% успеха. Оно однозначно увеличивает шансы кандидата быть рассмотренным на искомую 
+						позицию. Но все то, что указано в резюме, должно обязательно подкрепляться реальными фактами, иначе оно может сослужить еще и 
+						плохую службу… Таких кандидатов даже могут нанять на искомую позицию.
+					.kit-caption(style={"margin-bottom":"20px"}) Вариант 3 #[strong (Roboto 18/28)]
+					.h6(style={"margin-bottom":"40px"}).
+						Как правило, хорошие сотрудники востребованы и уже имеют постоянное место работы. А многие будущие специалисты начинают свою 
+						карьеру еще во время учебы. Студенты приходят на практику в компании и в будущем продолжают там свою профессиональную 
+						деятельность.
+					blockquote.blockquote-with-line(style={"margin-bottom":"40px"})
+						p.
+							Что же остается в таком случае? Выискивать «алмазы», отслеживать их проектную загрузку, быть в курсе их меняющихся 
+							настроений и профессиональных целей, а также готовности их текущих компаний такие цели и желания удовлетворить  
+							и  т. д. Или «охотиться» на специалиста из другой компании, воспользовавшись так называемым headhunting-методом, при 
+							котором переманивают специалиста, четко определенного компанией-заказчиком.
+
+			//- List
+			.kit-list(style={"padding-top":"100px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Ненумерованный список
+					ul.list(style={"margin-bottom":"100px"})
+						li С уважением относиться к заказчикам, соискателям и коллегам.
+						li Не предпринимать действий, в результате которых может пострадать профессиональная репутация других кадровых агентств.
+						li Постоянно совершенствовать свои знания и профессиональные навыки, в том числе путем обмена опытом со своими коллегами.
+					h1(style={"margin-bottom":"50px"}) Нумерованный список
+					ol
+						li С уважением относиться к заказчикам, соискателям и коллегам.
+						li Не предпринимать действий, в результате которых может пострадать профессиональная репутация других кадровых агентств.
+						li Постоянно совершенствовать свои знания и профессиональные навыки, в том числе путем обмена опытом со своими коллегами.
+			//- Tables
+			.kit-tables(style={"padding-top":"100px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Таблица
+					.table-title.h3 Заголовок таблицы
+				.table-container(style={"margin-bottom":"100px"})
+					.container
+						table.table
+							tbody
+								tr
+									th.table__position Позиция
+									th.table__level.table__min-level Минимальный уровень
+									th.table__level.table__middle-level Средний уровень
+									th.table__level.table__elevated-level Повышенный уровень
+								tr
+									td.table__position
+										a.table__link.link(href="javascript:void(0);") Генеральный директор
+									td.table__level.table__min-level 65 000 - 74 000
+									td.table__level.table__middle-level 74 000 - 89 000
+									td.table__level.table__elevated-level 89 000 - 120 000
+								tr
+									td.table__position
+										a.table__link.link(href="javascript:void(0);") Заведующий отделением	
+									td.table__level.table__min-level 85 000 - 90 000
+									td.table__level.table__middle-level 90 000 - 123 000
+									td.table__level.table__elevated-level 123 000 - 160 000
+								tr
+									td.table__position
+										a.table__link.link(href="javascript:void(0);") Директор
+									td.table__level.table__min-level 85 000 - 90 000
+									td.table__level.table__middle-level 90 000 - 123 000
+									td.table__level.table__elevated-level 123 000 - 160 000
+				.container
+					.table-title.h3 Вариант таблицы 2
+				.table-container
+					.container
+						table.table
+							tbody
+								tr
+									th.table__name Наименование
+									th.table__descr Описание вакансии
+								tr
+									td.table__name Наименование 1
+									td.table__descr.
+										С уважением относиться к заказчикам, соискателям и коллегам. Не предпринимать действий, в 
+										результате которых может пострадать профессиональная репутация других кадровых агентств. Постоянно 
+										совершенствовать свои знания и профессиональные навыки, в том числе путем обмена опытом со 
+										своими коллегами.
+								tr
+									td.table__name Наименование 2
+									td.table__descr.
+										К заказчикам, соискателям и коллегам. Не предпринимать действий, в результате которых может 
+										пострадать профессиональная репутация других кадровых агентств. Постоянно совершенствовать свои 
+										знания и профессиональные навыки, в том числе путем обмена опытом со своими коллегами.
+								tr
+									td.table__name Наименование 3
+									td.table__descr.
+										Не предпринимать действий, в результате которых может пострадать профессиональная репутация 
+										других кадровых агентств. Постоянно совершенствовать свои знания.
+
+			//- Links
+			.kit-links(style={"padding-top":"100px"})
+				.container
+					h2(style={"margin-bottom":"50px"}) Ссылки/вкладки
+					.row
+						.col-md-6
+							a.link(href="javascript:void(0);") Прессрелиз
+						.col-md-6
+							.phones-widget__cities
+								a(href='javascript:void(0);' data-city="msk").phones-widget__city.active Москва
+								a(href='javascript:void(0);' data-city="spb").phones-widget__city Санкт-Петербург
+
+					.tabs(style={"margin-top":"100px"})
+						ul.nav.nav-pills.wrapper(role="tablist")
+							li(class="nav-item active")
+								a(
+									id=`cat-nav-item_0-tab`, 
+									class="nav-link valign-wrapper", 
+									data-toggle="pill", 
+									href=`#cat-nav-item_0`, 
+									role="tab", 
+									aria-controls=`cat-nav-item_0`, 
+									aria-selected="true"
+								)
+									span Быстрая форма
+							li(class="nav-item")
+								a(
+									id=`cat-nav-item_1-tab`, 
+									class="nav-link valign-wrapper" 
+									data-toggle="pill", 
+									href=`#cat-nav-item_1`, 
+									role="tab", 
+									aria-controls=`cat-nav-item_1`, 
+									aria-selected="false"
+								)
+									span Полная форма
+
+			//- Other elements
+			.kit-other(style={"padding-top":"200px"})
+				.container
+					h1(style={"margin-bottom":"50px"}) Другие элементы
+					.row(style={"margin-bottom":"50px"})
+						.col-md-4
+							include ../partials/share
+						.col-md-8
+							.agreement(style={"margin-bottom":"20px"})
+								+checkbox({
+									name: "agreement",
+									id: "agreement1",
+									checked: true
+								})
+								span Нажимая кнопку "Отправить заявку", я #[a(href="javascript:void(0);") даю свое согласие] на обработку моих персональных данных
+							.agreement
+								+checkbox({
+									name: "agreement",
+									id: "agreement2",
+									checked: true
+								})
+								span Я принимаю условия #[a.link(href="javascript:void(0);") передачи информации]
+					.row(style={"margin-bottom":"50px"})
+						.col-md-6
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск по статьям")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+						.col-md-6
+							form.search-form
+								.search.search--sm
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+					form.search-form(style={"margin-bottom":"150px"})
+						.search
+							input.search__field(type="text" name="q" placeholder="Ничего не найдено")/
+							button.search__button(type="submit")
+								span.icon.icon-search
+
+					.row(style={"margin-bottom":"200px"})
+						.col-md-6(style={"padding-right":"100px"})
+							include ../partials/bottom_form
+
+							.kit-section__nav(style={"margin-top":"100px", "margin-bottom":"50px"})
+								.slider-controls.slider-controls--lg(style={"margin-right":"25px"})
+									a(href="javascript:void(0);").slider-control.prev
+									a(href="javascript:void(0);").slider-control.next
+
+								.slider-controls
+									a(href="javascript:void(0);").slider-control.prev
+									a(href="javascript:void(0);").slider-control.next
+
+							.kit-section__select-box(style={"padding-right":"50px"})
+								+select({
+									name: "category",
+									placeholder: "Выберите категории вакансий",
+									options: ["Врач терапевт детский", "Врач кардиолог", "Врач общей практики"],
+									search: true,
+									size: "sm"
+								})
+						.col-md-6
+							.kit-section__select-boxes(style={"padding-right":"135px"})
+
+								.kit-section__select-box(style={"margin-bottom":"50px"})
+									+select({
+										name: "category",
+										placeholder: "Выберите категории вакансий",
+										options: ["Вакансия 1", "Инженер-технолог", "Вакансия 3"]
+									})
+								.kit-section__select-box(style={"margin-bottom":"50px"})
+									+select({
+										name: "category",
+										options: ["Инженер-технолог", "Вакансия 2", "Вакансия 3"],
+										search: true
+									})
+							.row
+								.col-md-6
+									.flatpickr.input-group
+										input(type="text" placeholder="Дата рождения*" value="" data-input="")/
+										a.input-button(data-toggle="")
+											i.icon.icon-date
+								.col-md-6
+									+input_field({
+										name: "citizenship",
+										placeholder: "Гражданство*",
+										required: true
+									})
+
+			.kit-section(style={"margin-bottom":"100px"})
+				include ../partials/subscribe
+			.kit-section(style={"margin-bottom":"100px"})
+				include ../partials/subscribe2
+			.kit-section(style={"margin-bottom":"100px"})
+				include ../partials/recruitment
+			.kit-section(style={"margin-bottom":"100px"})
+					- var recruitment_title = "Получите бухгалтера<br>с гарантией замены";
+					include ../partials/recruitment_block
+			.kit-section(style={"margin-bottom":"100px"})
+				include ../partials/consult
+
+		include ../partials/common/footer
+		include ../partials/common/js

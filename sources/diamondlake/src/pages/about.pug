@@ -1,0 +1,15 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title About
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('About')
+
+        h1 About
+
+        +about()

@@ -1,0 +1,28 @@
+.hr-salaries-section
+	
+	.industry-grid-section.blue-gray-theme
+		.container
+
+			//- Instructions grid
+			- var instructions_link = "#";
+			//- Data
+			include ../../data/hr_salaries
+
+			.industry-grid
+				.industry-grid__in
+					each item in grid_main
+						- var url = "javascript:void(0);";
+						- if (item.url != '') url = item.url;
+						- var img = "upload/industry/icons/" + item.icon;
+
+						- if (instructions_link) url = instructions_link;
+
+						.industry-grid__item
+							a(href=url class="industry-grid__link")
+								span.icon
+									img(src=img alt=item.title)
+								span.industry-grid__link-text
+									span #{item.title}
+
+				.industry-grid-buttons.text-center
+					a(href="hr_salaries.html" class="btn btn-wide btn-outline-transparent") Перейти в раздел обзор заработных плат

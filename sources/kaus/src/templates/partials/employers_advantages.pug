@@ -1,0 +1,17 @@
+//- Employers advantages
+
+//- Data
+include ../data/employers_advantages
+
+.advantages2-section.employers-advantages.section-with-border
+	.container
+		.section-header.text-center
+			.h1.section-header__title Как мы находим#[br]лучших сотрудников для вас?
+		.section-content
+			ul.list-with-icons
+				each item in advantages_list
+					li
+						.icon-wrap
+							img.icon(src="upload/employers/advantages/" + item.icon draggable="false")
+						span.list-with-icons__text
+							span !{item.text}

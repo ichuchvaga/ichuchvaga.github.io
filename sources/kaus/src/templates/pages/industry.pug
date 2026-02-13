@@ -1,0 +1,100 @@
+//- Data
+include ../data/industry
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Отрасли",
+		pagetitle = "Сократите затраты на подбор финансового и банковского персонала",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-industry(style={"background-color":"#a0a1d2"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-wide.btn-primary(href="javascript:void(0);") Заказать подбор
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/woman.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: 'Работодателям',
+					url: ''
+				},
+				{
+					title: 'Наши услуги и схема работы',
+					url: ''
+				}
+			],
+			last_title: 'Бухгалтерия / Финансы / Банки'
+		})
+		//- Industry top
+		.industry-top
+			.container
+				.industry-top-elements
+					.industry-top-element
+						.wrapper
+							.industry-top-element__l
+								.industry-top__title.section-header__title.title_type_h2 #{industry_top_items[0]['title']}
+							.industry-top-element__r
+								ul.industry-top-list.industry-top-list--inline
+									each item in industry_top_items[0]['list']
+										li.industry-top-item
+											.industry-top-item__head
+												span.industry-top-item__head-val #{item.title_value} 
+												span.industry-top-item__head-text #{item.title_text}
+											- if(item.subtitle)
+												.industry-top-item__subtitle.text-uppercase #{item.subtitle}
+											span.industry-top-item__descr #{item.descr}
+					.industry-top-element
+						.wrapper
+							.industry-top-element__l
+								.industry-top__title.section-header__title.title_type_h2 #{industry_top_items[1]['title']}
+							.industry-top-element__r
+								ul.industry-top-list
+									each item in industry_top_items[1]['list']
+										li.industry-top-item #{item}
+		//- Recruitment
+		include ../partials/recruitment
+		//- Industry section
+		include ../partials/industry_section
+		//- Financial staff
+		include ../partials/financial_staff
+		//- Industry features
+		include ../partials/industry_features
+		//- Recruitment
+		.recruitment.recruitment-with-video
+			.container
+				.section-content
+					.wrapper
+						.recruitment-with-video__l
+							.h3.section-header__title.title_type_h2 Получите финансовый персонал#[br]с гарантией замены
+							p.recruitment__descr Если сотрудник не подойдет, вы бесплатно получите другого специалиста!
+							a.btn.btn-lg.btn-outline.btn-outline-transparent(href="javascript:void(0);") Заказать подбор
+						.recruitment-with-video__r
+							.recruitment__video
+								a(href="javascript:void(0);"): img(src="upload/industry/video.jpg" draggable="false")/
+		//- Industry advantages
+		include ../partials/industry_advantages
+		//- Cooperation
+		include ../partials/cooperation
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

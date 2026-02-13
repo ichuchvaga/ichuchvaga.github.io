@@ -1,0 +1,46 @@
+// В этом файле должны быть стили для БЭМ-блока field-text, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-text {
+    $block-name: &; // #{$block-name}__element
+
+    display: block;
+    margin-bottom: $typo-margin-vertical;
+    position: relative;
+
+    &__name {
+        @include field-name;
+        font-size: 14px;
+        line-height: 20px;
+        color: #63708A;
+    }
+
+    &__input {
+        @include field-text;
+
+        @at-root textarea#{&} {
+            $textarea-height: ($line-height * 2) + ($field-padding-vertical * 2);
+
+            height: auto;
+            min-height: 150px;
+            resize: vertical;
+        }
+    }
+
+    &__help-text {
+        @include field-help-text;
+    }
+
+    &--hidden {
+        display: block;
+        position: relative;
+        margin: 0 !important;
+        order: 10;
+        height: 10px;
+        overflow: hidden;
+        z-index: -1;
+        cursor: default;
+    }
+
+    @include field-error;
+}

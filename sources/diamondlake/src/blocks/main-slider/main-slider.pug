@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-slider)
+
+mixin main-slider(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-slider('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-slider--' + modsList[i].trim();
+            }
+        }
+
+    .main-slider.swiper(class=allMods)&attributes(attributes)
+        .main-slider__inner.swiper-wrapper
+            each i in [1, 2, 3, 4, 5]
+                .main-slider__slide.swiper-slide(style="background-image: url(img/main-hero.png)")

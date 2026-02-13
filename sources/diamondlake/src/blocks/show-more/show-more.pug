@@ -1,0 +1,26 @@
+//- Все примеси в этом файле должны начинаться c имени блока (show-more)
+
+mixin show-more(text, text_hide, mods)
+
+    //- Принимает:
+    //-   text         {string} - текст ссылки раскрытия
+    //-   text_hide    {string} - текст ссылки скрытия
+    //-   mods         {string} - список модификаторов
+    //- Вызов:
+          +show-more('Еще', 'Свернуть', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' show-more--' + modsList[i].trim();
+            }
+        }
+
+    .show-more(class=allMods)&attributes(attributes)
+        .show-more__content(data-collapsed="true")
+            block
+        a.show-more__toggle(href='#', data-text-show=text, data-text-hide=text_hide)
+            span.show-more__toggle-text= text

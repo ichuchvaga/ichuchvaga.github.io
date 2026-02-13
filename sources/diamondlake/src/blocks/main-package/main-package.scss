@@ -1,0 +1,60 @@
+// В этом файле должны быть стили для БЭМ-блока main-package, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-package {
+    $block-name: &; // #{$block-name}__element
+
+    margin-top: 100px;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 56px;
+        line-height: 100%;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+    }
+
+    &__image {
+        img {
+            display: block;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: 48px;
+
+        &__inner {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        &__content {
+            display: contents;
+        }
+
+        &__text {
+            order: 9;
+        }
+
+        &__title {
+            font-size: 34px;
+            margin-bottom: 24px;
+        }
+
+        &__image {
+            margin-bottom: 24px;
+        }
+    }
+}

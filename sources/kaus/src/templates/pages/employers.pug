@@ -1,0 +1,51 @@
+//- Data
+include ../data/employers
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Работодателям",
+		pagetitle = "Заявка на подбор персонала",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Кадровое агенство КАУС",
+					url: ''
+				}
+			],
+			last_title: pagetitle
+		})
+		.employers.section-with-border
+			//- Section intro
+			.section-intro
+				.container
+					.section-intro__title.h2 Если Вы заинтересовались нашими услугами, тогда:
+					ul.list
+						each item in list
+							li !{item}
+					p Если Вы хотите уточнить требования по открытой в агенстве вакансии, звоните нашим консультантам по телефону: <b><a href="tel:74956603540">+7 (495) 660-35-40</a></b>
+			//- Employers tabs
+			include ../partials/employers_tabs
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

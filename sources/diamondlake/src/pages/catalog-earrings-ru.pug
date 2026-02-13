@@ -1,0 +1,19 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--catalog';
+    - var lang = 'ru';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    +catalog-banner('img/catalog-banner-earrings-left.png', 'img/catalog-banner-earrings-right.png', 'Серьги<br>Пусеты')
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Главная', '#')
+            +breadcrumbs-item('Каталог', '#')
+            +breadcrumbs-item('Помолвочные кольца')
+
+    +catalog('earrings')

@@ -1,0 +1,86 @@
+//- Все примеси в этом файле должны начинаться c имени блока (blog-single)
+
+mixin blog-single(mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' blog-single--' + modsList[i].trim();
+            }
+        }
+
+    .blog-single(class=allMods)&attributes(attributes)
+        .blog-single__inner
+            +blog-single-block('gray')
+                p Что общего между карандашным грифелем, Короной Британской Империи и древесным углем для барбекю? #[br] Подсказываем: очень много углерода. В случае с Короной Британской Империи углерод представлен в своем наиболее восхитительном облике – алмазном.
+
+            +blog-single-block()
+                .blog-single-block__title 1. Что такое бриллиант?
+                p Из всех форм углерода алмаз – наиболее красивая и дорогая. Этот минерал удивительным образом сочетает самую высокую твердость и хрупкость. Алмаз – желаннейший и ценнейший драгоценный камень в истории, атрибут власти, статуса, могущества. #[br] Им украшали одежду персидские шахи и арабские шейхи. Камень обязательно присутствовал на скипетрах и коронах монарших особ, на украшениях правящей элиты различных государств. Древние воины помещали алмазы на щиты и доспехи, надеясь получить от камня помощь высших сил.
+
+            +blog-single-block('border')
+                p Существует более 300 разновидностей огранки драгоценных камней и неограниченное число фантазийных способов, которыми пользуются опытные ювелиры, чтобы обеспечить максимальное сияние камня и красивое преломление световых лучей.
+
+            +blog-single-block()
+                .blog-single-block__title 2. Что такое бриллиант?
+                p Из всех форм углерода алмаз – наиболее красивая и дорогая. Этот минерал удивительным образом сочетает самую высокую твердость и хрупкость. Алмаз – желаннейший и ценнейший драгоценный камень в истории, атрибут власти, статуса, могущества. #[br] Им украшали одежду персидские шахи и арабские шейхи. Камень обязательно присутствовал на скипетрах и коронах монарших особ, на украшениях правящей элиты различных государств. Древние воины помещали алмазы на щиты и доспехи, надеясь получить от камня помощь высших сил.
+
+            +blog-single-block('simple')
+                p Из всех форм углерода алмаз – наиболее красивая и дорогая. Этот минерал удивительным образом сочетает самую высокую твердость и хрупкость. Алмаз – желаннейший и ценнейший драгоценный камень в истории, атрибут власти, статуса, могущества.
+
+            +blog-single-gallery()
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+
+            +blog-single-gallery('row-2')
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+
+            +blog-single-gallery('row-3')
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+                .swiper-slide
+                    a(href="img/blog-single-image.png").blog-single-gallery__link
+                        img(src="img/blog-single-image.png").blog-single-gallery__image
+
+
+mixin blog-single-block(mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' blog-single-block--' + modsList[i].trim();
+            }
+        }
+
+    .blog-single-block(class=allMods)&attributes(attributes)
+        block
+
+mixin blog-single-gallery(mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' blog-single-gallery--' + modsList[i].trim();
+            }
+        }
+
+    .blog-single-gallery.swiper(class=allMods)&attributes(attributes)
+        .swiper-wrapper
+            block
+        .swiper-pagination

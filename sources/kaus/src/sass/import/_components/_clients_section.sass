@@ -1,0 +1,105 @@
+// Clients
+
+.clients-section
+	.section-content
+		padding-bottom: 60px
+.clients-intro
+	font-family: $raleway
+	font-size: 28px
+	line-height: 1.2857em
+	font-weight: 500
+	color: #232a32
+	margin: 0 55px
+	text-align: center
+	padding-bottom: 10px
+
+.clients-content
+	padding-top: 60px
+.clients-list
+	margin: 
+		left: -20px
+		right: -20px
+.clients-item
+	display: inline-block
+	vertical-align: middle
+	margin: 
+		left: 20px
+		right: 20px
+		bottom: 30px
+	&__link
+		display: block
+		font-size: 0
+
+/*==========  Desktop First  ==========*/
+
+/* Laptop small */
+@media only screen and (max-width : 1260px)
+	.clients-tabs
+		.nav-pills
+			> li
+				width: calc(100% / 6)
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+	.clients-intro
+		margin: 0
+
+	.clients-tabs
+		.nav-pills
+			> li
+				width: 20%
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px)
+	.clients-tabs
+		.nav-pills
+			> li
+				width: 25%
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px)
+	.clients-intro
+		font-size: 25px
+
+	.clients-tabs
+		.nav-pills
+			> li
+				font-size: 16px
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 640px)
+	.clients-tabs
+		.nav-pills
+			> li
+				width: 33.33%
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px)
+	.clients-intro
+		font-size: 20px
+
+	.clients-tabs
+		.nav-pills
+			> li
+				font-size: 14px
+		.nav
+			> li
+				> a
+					height: 45px
+
+	.clients-list
+		margin-left: -10px
+		margin-right: -10px
+
+	.clients-item
+		margin-left: 10px
+		margin-right: 10px
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 400px)
+	.clients-tabs
+		.nav-pills
+			> li
+				width: 50%
+				font-size: 12px

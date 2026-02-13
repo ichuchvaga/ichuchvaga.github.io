@@ -1,0 +1,108 @@
+// В этом файле должны быть стили для БЭМ-блока field-text, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-date {
+
+    $block-name: &; // #{$block-name}__element
+
+    display: block;
+    margin-bottom: $typo-margin-vertical;
+    position: relative;
+
+    &__name {
+        @include field-name;
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+        color: #63708A;
+    }
+
+    &__input {
+        @include field-text;
+        width: 338px;
+        max-width: 100%;
+        border: 0;
+
+        &::placeholder {
+            color: #B7B9BB;
+        }
+
+        &[readonly] {
+            background: #F5F6F8;
+            cursor: pointer;
+        }
+    }
+
+    &__help-text {
+        @include field-help-text;
+    }
+
+    @include field-error;
+
+
+
+
+    &--title-placeholder {
+        #{$block-name}__input {
+            padding: 17px 14px 3px;
+            transition-property: padding;
+            transition-duration: $transition-time;
+
+            &::placeholder {
+                opacity: 0;
+            }
+
+            &:placeholder-shown {
+                padding: 10px 14px;
+
+                & + #{$block-name}__name {
+                    font-size: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+
+        #{$block-name}__name {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-100%);
+            left: 14px;
+            font-size: 13px;
+            color: #9f9e9e;
+            pointer-events: none;
+            transition-property: transform, font-size;
+            transition-duration: $transition-time;
+        }
+    }
+
+    &--sm {
+        #{$block-name}__input {
+            height: 40px;
+            font-size: 14px;
+            padding: 5px 12px;
+        }
+
+        &#{$block-name}--title-placeholder {
+            #{$block-name}__input {
+                padding: 10px 12px 0;
+
+                &:placeholder-shown {
+                    padding: 5px 12px 5px;
+
+                    & + #{$block-name}__name {
+
+                    }
+                }
+            }
+
+            #{$block-name}__name {
+                font-size: 11px;
+            }
+        }
+    }
+
+    &--hidden {
+        display: none;
+    }
+}

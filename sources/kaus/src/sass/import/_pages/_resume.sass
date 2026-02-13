@@ -1,0 +1,264 @@
+// Resume page
+
+// Resume seo text
+.resume-text-section
+	color: #232a32
+	padding-top: 30px
+	padding-bottom: 55px
+
+	&.resume-text-section-padding-top
+		padding-top: 60px
+
+	h4
+		font-weight: 500
+		line-height: 1.3333333333333em
+		margin-top: 2.208333333333333em
+		margin-bottom: 1em
+
+	p
+		font-size: 18px
+		line-height: 1.555555555555556em
+		margin-top: 1.333333333333333em
+		margin-bottom: 1.555555555555556em
+
+	a
+		@extend .link
+
+	.row
+		margin-left: -30px
+		margin-right: -30px
+
+	.col-md-6
+		padding-left: 30px
+		padding-right: 30px
+
+// Top panel
+.filter-panel-industries
+	&.filter-panel
+		padding-top: 71px
+		padding-bottom: 71px
+
+	.filter-panel
+		&__l
+			width: calc(56.9% - 15px)
+			font-size: 0
+			margin-right: 0
+
+			&:before
+				content: ''
+				display: inline-block
+				vertical-align: middle
+				height: 100%
+				width: 0
+				font-size: 0
+				line-height: 0
+
+		&__r
+			width: calc(43.1% - 15px)
+			margin-left: 0
+
+		&__search
+			padding-left: 0
+
+		&__link
+			display: inline-block
+			vertical-align: middle
+			width: 285px
+
+			.btn.btn-wide
+				padding-left: 1em
+				padding-right: 1em
+				width: 100%
+				text-align: center
+
+		&__dropdown
+			display: inline-block
+			vertical-align: middle
+			width: 398px
+			padding-left: 38px
+			padding-right: 38px
+
+.resume-specialties
+	padding-top: 13px
+	padding-bottom: 90px
+
+.specialties-list
+	font-size: 0
+	padding-bottom: 48px
+	color: #232a32
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		padding-right: 30px
+		font-size: 24px
+		line-height: 1.25em
+		font-family: $raleway
+		font-weight: 300
+		margin-bottom: 42px
+
+
+.specialists-list
+	font-size: 0
+	padding-bottom: 86px
+	color: #232a32
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		padding-right: 30px
+		font-size: 24px
+		line-height: 1.25em
+		font-family: $raleway
+		font-weight: 300
+		margin-top: 80px
+
+		&:nth-child(1),
+		&:nth-child(2)
+			margin-top: 0
+
+	&__salary
+		font-family: $roboto
+		font-size: 20px
+		line-height: 1.2em
+		font-weight: 500
+		padding-bottom: 0.9em
+		margin-top: 6px
+
+	&__other-details
+		font-family: $roboto
+		font-weight: 300
+		font-size: 18px
+		line-height: 1.2em
+
+		strong
+			font-weight: 500
+
+	&__other-detail-caption
+		margin-bottom: 5px
+
+	&__other-details-row
+		padding-top: 9px
+
+.resume-single-header
+	padding-top: 25px
+	padding-bottom: 26px
+	margin-top: 19px
+	background-color: #f3f7fa
+	font-family: $roboto
+	font-weight: 300
+	color: #232a32
+
+	&__in
+		font-size: 0
+		margin-left: -15px
+		margin-right: -15px
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			height: 100%
+			width: 0
+			font-size: 0
+			line-height: 0
+
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+		width: 50%
+		padding-left: 15px
+		padding-right: 15px		
+
+	&__l
+		font-size: 18px
+		line-height: 1.2em
+		padding-top: 1px
+
+	&__column
+		display: inline-block
+		vertical-align: middle
+		width: 50%
+		font-size: 18px
+		line-height: 1.2em
+		text-align: left
+		padding-left: 15px
+		padding-right: 15px
+
+	&__text-big
+		font-size: 2.111111111111111em
+		line-height: 1.2em
+		font-weight: 300
+		margin-top: 4px
+
+.resume-single-header-params
+	&__line
+		padding-top: 0.5em
+
+		&:first-child
+			padding-top: 0
+
+
+.resume-single-content
+	color: #000
+	padding-top: 31px
+	padding-bottom: 90px
+
+	&__group
+		border-top: 1px solid #eaeaea
+		padding-top: 54px
+		padding-bottom: 53px
+
+		&:first-child
+			border-top: none
+
+	&__group-title
+		font-family: $raleway
+		font-weight: 500
+		font-size: 28px
+		line-height: 1.2em
+		color: #232a32
+
+		padding-bottom: 0.4285714285714286em
+
+	&__group-table
+
+	&__caption
+		font-size: 18px
+		line-height: 1.555555555555556em
+		font-weight: 300
+		font-family: $roboto
+		color: #232a32
+		
+		display: inline-block
+		vertical-align: top
+		width: 34.25%
+		padding-right: 30px
+
+	&__params
+		display: inline-block
+		vertical-align: top
+		width: 65.75%
+
+		font-size: 18px
+		line-height: 1.555555555555556em
+
+	&__param
+		padding-top: 12px
+
+		&:first-child
+			padding-top: 0
+
+
+.resume-single-content__line
+	font-size: 0
+	padding-top: 46px
+
+	&:first-child
+			padding-top: 0
+
+.resume-single-content-button
+	margin-top: 30px

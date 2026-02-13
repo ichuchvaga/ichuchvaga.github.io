@@ -1,0 +1,58 @@
+//- Data
+include ../data/about_ethic
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Об агентстве",
+		pagetitle = "Этический кодекс",
+		ymap = true,
+		socials_js = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'about.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- About ethic
+		.about-ethic
+			.container
+				.about-ethic__intro
+					.section-content
+						p.
+							В своей работе Кадровое агентство уникальных специалистов руководствуется профессионально-этическим кодексом консультантов 
+							по подбору персонала, принятым Ассоциацией консультантов по подбору персонала.
+				.h2.about-ethic__title Мы придерживаемся следующих этических принципов и норм:
+				ul.list.list_type_ethic
+					each item in ethic_list
+						li #{item}
+				//- Share
+				include ../partials/share
+
+		//- Subscribe
+		include ../partials/subscribe
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

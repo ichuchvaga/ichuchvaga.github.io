@@ -1,0 +1,109 @@
+// В этом файле должны быть стили для БЭМ-блока main-cats, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-cats {
+    $block-name: &; // #{$block-name}__element
+
+    margin: 96px 0;
+
+    &__title {
+        font-family: 'Quasimoda', sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 43px;
+        margin-bottom: 32px;
+    }
+
+    &__items {
+        display: flex;
+        gap: 16px;
+    }
+
+    @media (max-width: 1000px) {
+        margin: 64px 0;
+
+        &__title {
+            font-size: 26px;
+            line-height: 31px;
+            margin-bottom: 16px;
+        }
+
+        &__items {
+            gap: 12px;
+            // overflow-x: auto;
+            // overflow-y: hidden;
+            flex-wrap: nowrap;
+            padding-bottom: 30px;
+        }
+    }
+}
+
+.main-cats-block {
+    position: relative;
+    flex: 1;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-top: 153.84%;
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: cover;
+    }
+
+    &__title {
+        position: absolute;
+        left: 13px;
+        right: 13px;
+        bottom: 84px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 26.4px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    &__button {
+        position: absolute;
+        left: 13px;
+        right: 13px;
+        bottom: 32px;
+    }
+
+    @media (min-width: 1000px) and (max-width: 1500px) {
+        &__title {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        width: 220px;
+        flex: none;
+
+        &__title {
+            display: none;
+        }
+
+        &__button {
+            left: 15px;
+            right: 15px;
+            bottom: 34px;
+            font-size: 0;
+            text-transform: uppercase;
+
+            &:before {
+                content: attr(data-mobile-text);
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 14px;
+                text-transform: none;
+            }
+        }
+    }
+}

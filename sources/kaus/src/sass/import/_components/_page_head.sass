@@ -1,0 +1,67 @@
+// Breadcrumb and page-head styles
+	
+.page-head
+	padding: 
+		top: 50px
+		bottom: 57px
+	background-color: #b8d0f2
+	&--gray
+		background-color: #dfe8ee
+	&--green
+		background-color: #e0f2e7
+	&--purple
+		background-color: #e5dbe9
+		
+	&__title
+		margin: 0
+.page-head-with-link
+	padding: 
+		top: 27px
+		bottom: 47px
+	&__content,
+	&__right
+		display: inline-block
+		vertical-align: top
+	&__content
+		padding:
+			top: 33px
+			right: 20px
+		width: calc(100% - 305px)
+	&__right
+		width: 305px
+		font-size: 16px
+	&__link-caption
+		display: block
+		margin-bottom: 10px
+
+.breadcrumb-container
+	padding: 20px 0
+	color: #aaa
+
+.breadcrumb
+	font-size: 0
+.breadcrumb-item
+	display: inline-block
+	vertical-align: top
+	font-size: 14px
+	line-height: 1em
+	+ .breadcrumb-item:before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		margin:
+			left: 8px
+			right: 8px
+		+size(2px)
+		background: #bebebe
+	&__link
+		text-decoration: none
+		color: $blue
+		border-bottom: 1px solid #a5c2e0
+		&:hover,
+		&:focus,
+		&:active,
+		&.active
+			color: #1a8cff
+			border-color: #1a8cff
+			text-decoration: none

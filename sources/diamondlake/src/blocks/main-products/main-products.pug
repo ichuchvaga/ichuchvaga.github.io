@@ -1,0 +1,34 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-products)
+
+mixin main-products(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-products('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-products--' + modsList[i].trim();
+            }
+        }
+        if (!text) text = 'Новинки';
+        var item = {
+            title: 'Помолвочное кольцо <br> Sophia',
+            gallery: ['product-also.jpg', 'product-also-yellow.jpg', 'product-also-red.jpg'],
+            props: ['Бриллиант 0.30 карат', 'Бриллиант 0.40 карат', 'Бриллиант 0.50 карат', 'Бриллиант 0.60 карат'],
+            colors: true,
+        }
+        var items = [item, item, item, item];
+
+    .main-products(class=allMods)&attributes(attributes)
+        .main-products__inner.container
+            .main-products__title= text
+            .main-products__items
+                each item in items
+                    +product-card2(item).main-products__item

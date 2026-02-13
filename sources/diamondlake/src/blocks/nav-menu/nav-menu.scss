@@ -1,0 +1,319 @@
+// В этом файле должны быть стили для БЭМ-блока nav-menu, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.nav-menu {
+    $block-name: &; // #{$block-name}__element
+
+    // первый уровень
+    &__list {
+        display: flex;
+        gap: 0 39px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+
+        &:hover, &.active {
+            & > #{$block-name}__link {
+                color: $text-color;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        padding: 0;
+
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.2;
+        word-break: normal;
+        color: $text-color;
+        text-decoration: none;
+
+        &:focus {
+            color: $text-color;
+        }
+    }
+/*
+    @media (max-width: $screen-xl) {
+        margin: 30px 0;
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        &__item {
+            &--back {
+                display: none;
+            }
+        }
+
+        &__sublist-wrapper {
+            &--lvl-2 {
+                display: none;
+            }
+        }
+
+        &--submenu {
+            margin-top: 0;
+
+            #{$block-name}__item {
+                display: none;
+
+                &--back {
+                    display: block;
+                }
+
+                &--show-children {
+                    display: block;
+
+                    #{$block-name}__show-children {
+                        display: none;
+                    }
+
+                    #{$block-name}__item {
+                        display: block;
+                    }
+
+                    #{$block-name}__link {
+                        text-align: left;
+                    }
+
+                    & > #{$block-name}__link {
+                        color: white;
+                    }
+
+                    #{$block-name}__sublist-wrapper {
+                        display: block;
+                        position: static;
+                        background: transparent;
+                        box-shadow: none;
+                        padding: 0;
+                        margin: 0;
+                        min-width: auto;
+                    }
+                }
+            }
+
+            #{$block-name}__list--lvl-2 {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+        }
+
+
+
+        &__item--back {
+            width: 100%;
+        }
+
+        &__link {
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 12.5px 36px;
+            height: auto;
+            line-height: 1.5;
+            text-align: center;
+
+            &--back {
+                padding: 11px 36px;
+                font-size: 14px;
+                text-transform: none;
+                font-weight: 400;
+                text-align: left;
+
+                &::before {
+                    content: '';
+                    background: url(data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAMCAMAAACDd7esAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEX///8jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb04jb07///+J/E/xAAAALHRSTlMAPrhwBsfZSs+ttihB0fqPEQRo6+paCQ6I+MMCYefubwU5y/yXFf6/LZneUraQTAEAAAABYktHRACIBR1IAAAAB3RJTUUH5gIVCh8s49tBWQAAAGBJREFUCNc9zkcWg0AMA1DTEobe29CSQICg+5+PB57g1X9aSCZNN0xSZwGPp7INATiuMnk+gjBiU5ykyHI2USQQFOyyqtFcuWw79MN4+vXGZ5q554tl5f4Nv/2/K9f7hQMCzAfJrgga6AAAAABJRU5ErkJggg==);
+                    background-size: 6px 7px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    width: 7px;
+                    height: 7px;
+                    display: block;
+                    transform: scaleX(-1);
+                    position: absolute;
+                    left: 15px;
+                    top: 50%;
+                    margin-top: -2px;
+                }
+            }
+
+            &--lvl-2 {
+                padding: 6px 36px;
+                font-size: 16px;
+                font-weight: 400;
+                text-transform: none;
+                text-align: left;
+            }
+        }
+
+        &__item--show-children  > &__link {
+            color: white;
+            background: #a0a0a0;
+            padding: 12px 36px;
+            margin-bottom: 15px;
+        }
+
+        &__list {
+            align-items: normal;
+
+            &--lvl-2 {
+                gap: 0;
+                align-items: normal;
+            }
+        }
+
+        &--submenu {
+            margin-bottom: 30px;
+
+            & + .mobile-menu__contacts {
+                display: none;
+            }
+        }
+    }*/
+}
+
+.nav-menu-dropdown {
+    display: none;
+    position: fixed;
+    top: $header-height-inner;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background: white;
+    padding-top: 28px;
+    padding-bottom: 48px;
+
+    &.active {
+        display: block;
+    }
+
+    img {
+        display: block;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    &__title {
+        font-family: 'Sukothai';
+        font-size: 50px;
+        line-height: 70%;
+        margin-bottom: 24px;
+
+        .lang-ru & {
+            font-family: Quasimoda;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 31px;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+    }
+
+    &__button {
+        margin-top: auto;
+    }
+
+    &__row {
+        display: flex;
+        gap: 40px;
+    }
+
+    &__col {
+        &--styles {
+            width: 40%;
+            flex: none;
+        }
+
+        &--filters {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 20px;
+            flex: 1;
+        }
+
+        &--image {
+            width: 25%;
+            flex: none;
+
+            img {
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__styles {
+        margin-top: 9px;
+        display: flex;
+        gap: 8px;
+    }
+
+    &__style-image {
+        margin-top: 9px;
+        overflow: hidden;
+
+        img {
+            height: 244px;
+            object-fit: cover;
+            transition: 0.5s transform;
+        }
+    }
+
+    &__style:hover img {
+        transform: scale(1.2);
+    }
+
+    &__filter {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &--tall {
+            grid-row: span 2;
+        }
+    }
+
+    &__filter-title {
+        margin-bottom: 5px;
+
+        a {
+            font-weight: 400;
+        }
+    }
+
+    a {
+        text-decoration: none;
+
+        &:not(.btn):hover {
+            color: #8A9199;
+        }
+    }
+}

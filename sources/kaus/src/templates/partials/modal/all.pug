@@ -1,0 +1,9 @@
+//- Modals
+//- mixins
+
+.modals-wrap(style={"display":"none"})
+	include ./_callback.pug
+	include ./_success.pug	
+
+	if (chart_modal && chart_modal == true)
+		include ./_chart.pug

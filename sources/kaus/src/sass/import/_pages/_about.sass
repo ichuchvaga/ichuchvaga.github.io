@@ -1,0 +1,299 @@
+// About page
+
+.heading-section-type-about
+	.heading-section-with-photo__content
+		padding: 
+			top: 144px
+			bottom: 152px
+
+.col-about-l,
+.col-about-r
+	display: inline-block
+	vertical-align: top
+	font-size: initial
+.col-about-l
+	width: calc(100% - 306px)
+.col-about-r
+	margin-left: 54px
+	width: 252px
+
+// About intro
+.about-intro
+	padding-top: 64px
+	p
+		margin:
+			top: 0
+			bottom: 30px
+		font-size: 18px
+		&:last-child
+			margin-bottom: 0
+	&__r
+		padding-top: 5px
+	&__info
+		position: relative
+		display: block
+		padding: 
+			top: 14px
+			left: 64px
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			display: block
+			@include size(46px)
+			background: transparent url("../img/icons/info.png") no-repeat 0 0
+
+.about-header
+	padding-top: 85px
+	margin-bottom: 55px
+	&__title
+		margin-top: 0
+
+// About features
+.about-features,
+.principles-of-work
+	border-top: 1px solid #eaeaea
+.about-features
+	padding-bottom: 15px
+
+// Principles of work
+.principles-of-work
+	.about-header
+		margin-bottom: 50px
+	p
+		margin:
+			top: 0
+			bottom: 30px
+		font-size: 18px
+	&__r
+		position: relative
+		padding-left: 30px
+		&::after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			@include size(3px, 100%)
+			background: $blue
+
+// About reviews
+
+.about-reviews
+	.about-header
+		padding-top: 65px
+		margin-bottom: 0
+		&__title
+			margin-bottom: 0
+
+.about-reviews-list
+
+.about-reviews-item
+	padding: 
+		top: 85px
+		bottom: 85px
+	border-bottom: 1px solid #eaeaea
+	&:last-child
+		border-bottom: none
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		font-size: initial
+	&__l
+		padding-right: 30px
+		width: 440px
+		color: #232a32
+	&__r
+		width: calc(100% - 440px)
+	&__entity
+		font-size: 28px
+		font-family: $raleway
+		font-weight: 500
+		line-height: 1.3em
+	&__img
+		margin-top: 28px
+		margin-bottom: 30px
+	&__name,
+	&__position,
+	&__title,
+	&__date,
+	&__text
+		font-size: 18px
+	&__name
+		margin-top: 20px
+	&__head
+		margin-bottom: 30px
+	&__title,
+	&__date
+		display: inline-block
+		vertical-align: top
+	&__title
+		width: calc(100% - 100px)
+		font-weight: 700
+	&__date
+		width: 100px
+		color: #aaa
+	&__text
+		margin-top: 0
+		margin-bottom: 30px
+		&:last-child
+			margin-bottom: 0
+
+.about-reviews-bottom
+	padding: 87px 0
+	border-top: 1px solid #eaeaea
+	p
+		margin: 0
+		font-size: 18px
+
+// About ethic
+
+.about-ethic
+	padding-bottom: 85px
+	&__intro
+		padding-top: 64px
+		p
+			padding-right: 50px
+			margin: 0
+			font-size: 18px
+	&__title
+		margin:
+			top: 0
+			bottom: 50px
+
+.list
+	&.list_type_ethic
+		margin-bottom: 75px
+
+// About work
+
+.about-work
+	&__intro
+		padding:
+			top: 62px
+			bottom: 85px
+		p
+			margin: 
+				top: 0
+				bottom: 30px
+			font-size: 18px
+			&:last-child
+				margin-bottom: 0
+
+.about-work-item
+	&__link
+		display: block
+		padding: 
+			top: 40px
+			left: 40px
+			right: 40px
+			bottom: 34px
+		min-height: 285px
+		border: 2px solid #f3f7fa
+		border-radius: 10px
+		transition: background-color 0.15s
+		&:hover,
+		&:focus
+			background-color: #f3f7fa
+	&__img
+		margin-bottom: 26px
+		height: 109px
+		img
+			display: inline-block
+			vertical-align: middle
+			max-height: 100%
+			font-size: 0
+	&__title
+		font-size: 20px
+		font-family: $raleway
+		font-weight: 500
+		line-height: 1.2em
+		color: #232a32
+
+// About books
+
+.about-books
+	padding-top: 70px
+
+.about-books-item
+	padding: 
+		top: 90px
+		bottom: 55px
+	border-bottom: 1px solid #eaeaea
+	color: #232a32
+	&:first-child
+		padding-top: 0
+	&__top
+		margin-bottom: 85px
+	&__img,
+	&__content
+		position: relative
+		display: inline-block
+		vertical-align: top
+	&__img
+		width: 530px
+	&__content
+		padding-left: 85px
+		width: calc(100% - 530px)
+		font-size: 18px
+	&__name
+		position: relative
+		margin:
+			top: -10px
+			bottom: 25px
+		line-height: 1.1em
+		&::after
+			content: ''
+			display: block
+			@include size(108px, 3px)
+			background-color: #d4dde4
+			margin-top: 0.57895em
+	&__descr
+		p
+			margin-top: 0
+			&:last-child
+				margin-bottom: 0
+	&__caption
+		margin-bottom: 52px
+		font-weight: 500
+	&__citations
+		blockquote
+			margin-bottom: 30px
+
+	&:nth-child(even)
+		.about-books-item
+			&__img
+				left: calc(100% - 530px)
+			&__content
+				right: 530px
+				padding:
+					left: 0
+					right: 85px
+
+// About author
+.about-author
+	padding: 
+		top: 90px
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: middle
+	&__l
+		width: 279px
+	&__r
+		padding-left: 60px
+		width: calc(100% - 279px)
+		font-size: 18px
+		color: #232a32
+
+	&__title
+		margin-bottom: 20px
+	&__name
+		margin-bottom: 28px
+		font-size: 24px
+	&__descr
+		margin: 0
+
+	.share
+		margin-top: 60px

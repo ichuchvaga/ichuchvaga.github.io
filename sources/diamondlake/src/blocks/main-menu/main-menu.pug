@@ -1,0 +1,204 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-menu)
+
+mixin main-menu(lang, mods)
+    //- Принимает:
+    //-   lang    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-menu('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-menu--' + modsList[i].trim();
+            }
+        }
+
+    .main-menu(class=allMods)&attributes(attributes)
+        .main-menu__inner.container
+            .main-menu__image(style="background-image: url('img/main-menu.jpg');")
+            .main-menu__content
+                form.main-menu__search
+                    +field-text({
+                        attrs: {
+                            name: 's',
+                            placeholder: (lang === 'ru' ? 'Введите артикул' : 'Search Diamondlake')
+                        }
+                    }).main-menu__search-input
+                    +btn((lang === 'ru' ? 'Поиск' : 'Search'), '', true).main-menu__search-button
+
+                .main-menu__nav-wrap
+                    -
+                        var mainMenuNavs = [
+                            {
+                                title: 'Catalogue',
+                                items: [
+                                    {
+                                        title: 'Engagement rings',
+                                        items: ['Solitaire', 'Accent', 'Halo', 'Three Stone']
+                                    }, {
+                                        title: 'Wedding rings',
+                                        items: ['Couples', 'Women', 'Men']
+                                    }, {
+                                        title: 'Mom’s Bracelets',
+                                    }, {
+                                        title: 'Studs',
+                                    }
+                                ],
+                                mods: 'catalog',
+                            }, {
+                                title: 'Diamonds',
+                                items: [
+                                    'Diamond Guide',
+                                    'Carat',
+                                    'Color',
+                                    'Clarity',
+                                    'Cut',
+                                    'Flourescence',
+                                    'GIA Certificate',
+                                    'Shop Diamonds',
+                                ],
+                            }, {
+                                title: 'Discover',
+                                items: [
+                                    'Top 10 Engagement',
+                                    'Top 10 Wedding',
+                                    'Creat Your Own',
+                                    'Size Guide',
+                                    'Order',
+                                    'Shipping',
+                                ],
+                            }, {
+                                title: 'Our Company',
+                                items: [
+                                    'About',
+                                    'Manufacture',
+                                    'FAQ',
+                                    'Reviews',
+                                    'Contact Us',
+                                ],
+                            }
+                        ]
+
+                        if (lang === 'ru') {
+                            mainMenuNavs = [
+                                {
+                                    title: 'Каталог',
+                                    items: [
+                                        {
+                                            title: 'Помолвочные кольца',
+                                            items: ['Солитер', 'Акцент', 'Хало', 'Трио']
+                                        }, {
+                                            title: 'Обручальные кольца',
+                                            items: ['Парные', 'Женские', 'Дорожки', 'Мужские']
+                                        }, {
+                                            title: 'Браслеты «Детки»',
+                                        }, {
+                                            title: 'Пусеты',
+                                        }
+                                    ],
+                                    mods: 'catalog',
+                                }, {
+                                    title: 'Бриллианты',
+                                    items: [
+                                        'О Бриллиантах',
+                                        'Карат',
+                                        'Цвет',
+                                        'Чистота',
+                                        'Огранка',
+                                        'Флюоресценция',
+                                        'GIA Сертификат',
+                                    ],
+                                }, {
+                                    title: 'Узнать Больше',
+                                    items: [
+                                        'Топ 10 Помолвочных',
+                                        'Топ 10 Обручальных',
+                                        'Украшения на заказ',
+                                        'Гарантии',
+                                        'Как заказать',
+                                        'Доставка',
+                                    ],
+                                }, {
+                                    title: 'Diamondlake',
+                                    items: [
+                                        'О нас',
+                                        'Производство',
+                                        'FAQ',
+                                        'Блог',
+                                        'Отзывы',
+                                        'Контакты',
+                                    ],
+                                }
+                            ]
+                        }
+
+
+                    each mainMenuNav in mainMenuNavs
+                        +main-menu-nav(mainMenuNav.title, mainMenuNav.items, mainMenuNav.mods)
+
+                .main-menu__info
+                    +social().main-menu__social
+                        if lang === 'ru'
+                            +social-link('//vk.com', 'vk')(title='vk')
+                                svg(width='41', height='41')
+                                    use(xlink:href='img/sprite.svg#vk')
+                            +social-link('//telegram.org', 'telegram')(title='telegram')
+                                svg(width='41', height='41')
+                                    use(xlink:href='img/sprite.svg#telegram')
+                        else
+                            +social-link('//instagram.com', 'instagram')(title='Instagram')
+                                svg(width='41', height='41')
+                                    use(xlink:href='img/sprite.svg#instagram')
+                            +social-link('//pinterest.com', 'pinterest')(title='Pinterest')
+                                svg(width='41', height='41')
+                                    use(xlink:href='img/sprite.svg#pinterest')
+                            +social-link('//facebook.com', 'facebook')(title='Facebook')
+                                svg(width='41', height='41')
+                                    use(xlink:href='img/sprite.svg#facebook')
+
+                    .main-menu__info-workhours
+                        if lang === 'ru'
+                            | Пн-Пт: 12:00 - 20:00 #[br]
+                            | Сб: 12:00 - 19:00   Вс: Закрыто #[br]
+                            | Для посещения студии требуется запись.
+                        else
+                            |Mon - Fri: 11:00am - 7:00pm #[br]
+                            |Sat: 12:00am - 6:00pm#[br]
+                            |Jewelry Trade Center, Silom, Bangkok
+
+                .main-menu__buttons
+                    +btn((lang === 'ru' ? 'Консультация' : 'Book an Appointment'))(href='#modal-studio', data-modal="open").main-menu__button
+                    +btn((lang === 'ru' ? 'Записаться на примерку' : 'Contact a Client Advisor'))(href='#').main-menu__button
+
+mixin main-menu-nav(title, items, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-menu__nav--' + modsList[i].trim();
+            }
+        }
+    .main-menu__nav(class=allMods)&attributes(attributes)
+        .main-menu__nav-title=title
+        +main-menu-nav-list(items)
+
+mixin main-menu-nav-list(items, mods)
+    ul.main-menu__nav-list
+        each item in items
+            if typeof item === 'string'
+                +main-menu-nav-item(item)
+            else if typeof item === 'object'
+                +main-menu-nav-item(item.title, item.items)
+
+mixin main-menu-nav-item(title, items, mods)
+    li.main-menu__nav-item
+        a(href="#").main-menu__nav-link=title
+
+        if items
+            +main-menu-nav-list(items)

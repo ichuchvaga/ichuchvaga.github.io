@@ -1,0 +1,23 @@
+include ../../data/articles
+
+//- Items List
+.hr-articles
+	.articles-section.section-with-border
+		.container
+			.articles-list-outer
+				ul.articles-list
+					each item in articles_array
+						- var cat_url = "javascript:void(0);";
+						- if (item.category_url != '') cat_url = item.category_url;
+
+						- var single_url = "javascript:void(0);";
+						- if (item.elem_url != '') single_url = item.elem_url;
+
+						li.articles-list__item
+							.articles-list__category-link
+								a(href=cat_url class="link") #{item.category}
+
+							.h4.articles-list__item-link
+								a(href=single_url class="link") #{item.elem_title}
+
+							.articles-list__descr #{item.descr}

@@ -1,0 +1,182 @@
+//- Data
+include ../data/applicants_questionnaire
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/input
+include ../mixins/checkbox
+//- Variables
+-
+	var header_menu_active = "Соискателям",
+		pagetitle = "Разместить анкету кандидата",
+		ymap = true,
+		steps_js = true,
+		flatpickr_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--green
+			.container
+				h1.page-head__title #{pagetitle}
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'applicants_advice.html'
+				}
+			],
+			last_title: pagetitle
+		})
+
+		//- Section intro
+		.section-intro.applicants-intro
+			.container
+				.section-intro__title.h2 Есть несколько способов передать Ваше резюме в наше агенство:
+				ul.list
+					each item in list
+						li !{item}
+				p.
+					Если Вы хотите уточнить требования по открытой в агентстве вакансии, звоните нашим консультантам по телефонам:#[br]
+					<b><a href="tel:74952416402">+7 (495) 241-64-02</a>, <a href="tel:748124218576">+7 (812) 421-85-76</a>.</b>
+
+		//- Applicants questionnaire
+		.applicants-questionnaire#applicants-questionnaire
+			.container
+				.applicants-form
+					form#questionnaire-form(action="#")
+						div
+							h3 Общая информация
+							section.fieldset
+								.row
+									.col-md-6.col-field
+										+input_field({
+											name: "position-apply",
+											placeholder: "На какую должность Вы претендуете*",
+											required: true
+										})
+									.col-md-6.col-field
+										+input_field({
+											name: "fullname",
+											placeholder: "ФИО*",
+											required: true
+										})
+									.col-md-3.col-field
+										.form-element
+											.flatpickr.input-group
+												input(type="text" placeholder="Дата рождения*" value="" data-input="" required="")/
+												a.input-button(data-toggle="")
+													i.icon.icon-date
+									.col-md-3.col-field
+										+input_field({
+											name: "citizenship",
+											placeholder: "Гражданство*",
+											required: true
+										})
+									.col-md-6.col-field
+										+input_field({
+											name: "career-objective",
+											placeholder: "Желаемая должность*",
+											required: true
+										})
+									.col-md-3.col-field
+										+input_field({
+											name: "city",
+											placeholder: "Прописка (город)*",
+											required: true
+										})
+									.col-md-3.col-field
+										+input_field({
+											name: "city",
+											placeholder: "Ближайшее метро"
+										})
+									.col-md-6.col-field
+										+input_field({
+											name: "min-salary",
+											placeholder: "Минимальная заработная плата (руб.)*",
+											required: true
+										})
+								.form-button.text-center
+									a.btn-next.btn.btn-wide.btn-primary(href="javascript:void(0);") Продолжить
+									.form-steps #[span.form-step.form-step--current 1] шаг из 4
+							h3 Образование
+							section.fieldset
+								.row
+									.col-md-6.col-field
+										+input_field({
+											name: "education",
+											placeholder: "Укажите ваше образование*",
+											required: true
+										})
+									.col-md-6.col-field
+										+input_field({
+											name: "institute",
+											placeholder: "Где учились*",
+											required: true
+										})
+								.form-button.text-center
+									a.btn-next.btn.btn-wide.btn-primary(href="javascript:void(0);") Продолжить
+									.form-steps #[span.form-step.form-step--current 2] шаг из 4
+							h3 Опыт работы
+							section.fieldset
+								.row
+									.col-md-6.col-field
+										+input_field({
+											name: "experience",
+											placeholder: "Место работы*",
+											required: true
+										})
+									.col-md-6.col-field
+										+input_field({
+											name: "experience-position",
+											placeholder: "Должность*",
+											required: true
+										})
+								.form-button.text-center
+									a.btn-next.btn.btn-wide.btn-primary(href="javascript:void(0);") Продолжить
+									.form-steps #[span.form-step.form-step--current 3] шаг из 4
+							
+							h3 Контактная информация
+							section.fieldset
+								.row
+									.col-md-6.col-field
+										+input_field({
+											type: "tel",
+											name: "phone",
+											placeholder: "Телефон для связи*",
+											required: true
+										})
+									.col-md-6.col-field
+										+input_field({
+											type: "email",
+											name: "email",
+											placeholder: "E-mail*",
+											required: true
+										})
+								+input_field({
+									name: "about-us",
+									placeholder: "Откуда Вы о нас узнали"
+								})
+								.agreement.text-center
+									+checkbox({
+										name: "agreement",
+										id: "agreement_questionnaire",
+										checked: true,
+										required: true
+									})
+									span Нажимая кнопку "Отправить заявку", я #[a.link(href="javascript:void(0);") даю свое согласие] на обработку моих персональных данных
+								.form-submit.text-center
+									input.btn.btn-wide.btn-primary(id="placeProfile" type="submit" value="Разместить анкету")/
+									.form-steps #[span.form-step.form-step--current 4] шаг из 4
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

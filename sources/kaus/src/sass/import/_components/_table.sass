@@ -1,0 +1,88 @@
+// Table styles
+
+.table-title
+	margin: 
+		top: 0
+		bottom: 0.875em	
+.table-container
+	position: relative
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		+size(100%, 60px)
+		background: #f3f7fa
+		z-index: 0
+
+.table
+	position: relative
+	width: 100%
+	font-size: 18px
+	z-index: 1
+	tbody
+		> tr
+			> th
+				vertical-align: middle
+				padding: 
+					top: 17px
+					bottom: 18px
+				font-family: $raleway
+				font-weight: 500
+				background: #f3f7fa
+				text-align: left
+			> td
+				vertical-align: top
+				padding: 
+					top: 31px
+					bottom: 30px
+				border-bottom: 1px solid #f3f7fa
+				line-height: 1.4em
+				&.table
+					&__level
+						font-size: 24px
+					&__descr
+						line-height: 1.5em
+			&:last-child
+				> td
+					border-bottom: none
+	&__position,
+	&__min-level,
+	&__middle-level
+		padding-right: 30px
+		width: 25.7%
+	&__elevated-level
+		width: 22.9%
+
+	&__position
+		.tooltip
+			margin-left: 14px
+
+		.icon
+			vertical-align: baseline			
+
+	&__name
+		padding-right: 30px
+		width: 308px
+	&__descr
+		width: calc(100% - 308px)
+		
+
+.treaty-table
+	margin-bottom: 76px
+	.table
+		font-size: 16px
+		tbody
+			> tr
+				> td
+					padding: 
+						top: 3px
+						bottom: 3px
+					border-bottom: none
+
+		&__name
+			padding-right: 30px
+			width: 160px
+			color: #aaa
+		&__val
+			width: calc(100% - 160px)

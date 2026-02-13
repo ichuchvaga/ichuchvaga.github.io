@@ -1,0 +1,21 @@
+// В этом файле должны быть стили для БЭМ-блока search, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.search {
+    $block-name: &; // #{$block-name}__element
+
+    &__form {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto 30px;
+    }
+
+    &__form-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50px;
+        padding: 0;
+    }
+}

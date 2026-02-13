@@ -1,0 +1,83 @@
+//- Data
+include ../data/employers_consulting
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Работодателям",
+		pagetitle = "Юридический консалтинг",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-without-link(style={"background-color":"#b0ced6"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/woman.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Кадровое агенство КАУС",
+					url: ''
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Employers consulting
+		.employers-consulting
+			.container
+				p.
+					Кадровое агентство уникальных специалистов предлагает юридические услуги высокого качества в сфере трудового права и связанных с 
+					ним отношений. Наши специалисты окажут Вам специализированную квалифицированную помощь в области применения трудового права, 
+					что позволит Вам:
+				ul.list
+					each item in employers_top_list
+						li #{item}
+				p.
+					Специалисты, оказывающие услуги в области трудового права — высококвалифицированные профессиональные юристы, имеющие не 
+					только многолетний опыт консультирования и большой практический опыт в области применения трудового права, но и научные работы и 
+					публикации по данной тематике. Также наши специалисты имеют опыт консультирования как работодателей, так и работников по трудовым 
+					вопросам по радио и телевидению, опыт преподавания трудового права, чтения лекций, проведения семинаров.
+				h2 Перечень оказываемых услуг в сфере трудового права
+				ul.employers-consulting-list
+					each item,index in employers_main_list
+						- var curr_index = index + 1;
+						li.employers-consulting-item
+							.employers-consulting-item__title.h4 #{curr_index}. #{item.title}
+							- if(item.items)
+								ul.list
+									each el in item.items
+										li #{el}
+				h2.
+					В зависимости от объема и сложности работы, стоимость услуг
+					в области трудового права определяется либо:
+				ul.list
+					each item in employers_bottom_list
+						li #{item}
+				p.
+					Для того чтобы определить необходимость получения юридических услуг в той или иной ситуации и сориентироваться, какие именно 
+					услуги Вам нужны, звоните нам по телефонам: <b><a href="tel:74952665083">(495) 266-50-83</a>, <a href="tel:78124218523">(812) 421-85-23</a>.</b>
+		//- Consult
+		include ../partials/consult
+		//- Clients
+		include ../partials/clients
+		//- Subscribe
+		include ../partials/subscribe
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

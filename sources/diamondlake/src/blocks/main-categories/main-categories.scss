@@ -1,0 +1,95 @@
+// В этом файле должны быть стили для БЭМ-блока main-categories, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-categories {
+    $block-name: &; // #{$block-name}__element
+
+    margin-top: 100px;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 64px 16px;
+        align-items: flex-end;
+    }
+
+    &__item {
+        text-decoration: none;
+
+        &:hover &-button {
+            background: #66A9CB;
+            color: #FFFFFF;
+        }
+    }
+
+    &__item-title {
+        font-weight: 500;
+        font-size: 56px;
+        line-height: 100%;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        margin-top: auto;
+        padding-right: 20%;
+        word-break: normal;
+        color: #1A1A1A;
+    }
+
+    &__item-image {
+        display: block;
+        position: relative;
+        margin-bottom: 16px;
+
+        &:before {
+            content: '';
+            display: block;
+            padding-top: 70.54%;
+        }
+
+        img {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__item-button {
+        background: #1A1A1A;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 0;
+        padding: 12px;
+        height: 41px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+        color: white;
+        text-transform: none;
+        transition: 0.3s background-color, 0.3s color;
+
+        &:hover, &:focus {
+            background: #66A9CB;
+            color: #FFFFFF;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: 38px;
+
+        &__inner {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        &__item-title {
+            font-size: 34px;
+            padding: 0;
+        }
+    }
+}

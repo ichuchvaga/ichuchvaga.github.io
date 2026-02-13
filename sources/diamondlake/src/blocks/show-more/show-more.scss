@@ -1,0 +1,23 @@
+// В этом файле должны быть стили для БЭМ-блока show-more, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.show-more {
+
+    $block-name: &; // #{$block-name}__element
+
+    &__content {
+        overflow: hidden;
+        transition: height $transition-time ease-out;
+        height: auto;
+
+        &[data-collapsed='true'] {
+            height: 0;
+        }
+    }
+
+    &__toggle-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 15px;
+    }
+}

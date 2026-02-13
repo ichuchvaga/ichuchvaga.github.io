@@ -1,0 +1,25 @@
+//- Все примеси в этом файле должны начинаться c имени блока (gallery)
+
+mixin gallery(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +gallery('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' gallery--' + modsList[i].trim();
+            }
+        }
+
+    .gallery.swiper(class=allMods)&attributes(attributes)
+        .gallery__inner.swiper-wrapper
+            each i in [1,2,3,4]
+                .gallery__slide.swiper-slide
+                    img(src="img/cat-p5.jpg").gallery__image

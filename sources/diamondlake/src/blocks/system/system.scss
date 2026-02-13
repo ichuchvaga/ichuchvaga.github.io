@@ -1,0 +1,51 @@
+// В этом файле должны быть стили для БЭМ-блока system, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.system {
+    $block-name: &; // #{$block-name}__element
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid black;
+
+    &__item {
+        border-bottom: 1px solid black;
+        padding: 32px 0;
+
+        &:nth-child(even) {
+            padding-left: 8px;
+        }
+
+        &:nth-child(odd) {
+            padding-right: 8px;
+        }
+    }
+
+    &__title {
+        font-size: 32px;
+        line-height: 110%;
+        margin-bottom: 24px;
+    }
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 1fr;
+
+        &__item {
+            padding: 16px 0;
+
+            &:nth-child(odd), &:nth-child(even) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        &__title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+    }
+}

@@ -1,0 +1,322 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'Couples wedding <br> rings WB18',
+                gallery = [
+                    'img/product-2-1.jpg',
+                    'img/product-2-2.jpg',
+                    'img/product-2-3.jpg',
+                    'img/product-2-4.jpg',
+                    'img/product-2-1.jpg',
+                    'img/product-2-2.jpg',
+                    'img/product-2-3.jpg',
+                    'img/product-2-4.jpg',
+                ],
+                price = ['575', '675'],
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Wedding rings', link: '#'},
+                    {title: 'WB18'}
+                ];
+                galleryText = {
+                    women: 'Women’s ring width 5.5 mm',
+                    men: 'Men’s ring width 5.5 mm',
+                }
+
+    +product(title, gallery, breadcrumbs, galleryText)
+        .product__pair
+            .product__pair-col
+                .product__pair-col-heading
+                    +product-price(price[0])
+                    .product__pair-title Женское кольцо
+
+                +product-options({
+                    title: 'Металл:',
+                    mainOptions: ['585', '750'],
+                    optionsDropdown: true,
+                    options: [
+                        {
+                            id: 'wcolor-white',
+                            value: 'Белое золото',
+                            label: 'Белое золото',
+                            mods: 'color-white',
+                            contents: '585'
+                        },
+                        {
+                            id: 'wcolor-yellow',
+                            value: 'Жёлтое золото',
+                            label: 'Жёлтое золото',
+                            mods: 'color-yellow',
+                            contents: '585'
+                        },
+                        {
+                            id: 'wcolor-pink',
+                            value: 'Розовое золото',
+                            label: 'Розовое золото',
+                            mods: 'color-pink',
+                            contents: '585'
+                        },
+                        {
+                            id: 'wcolor-white-yellow',
+                            value: 'Комбинированное',
+                            label: 'Комбинированное',
+                            mods: 'color-white-yellow',
+                            contents: '585'
+                        },
+                    ],
+                    mods: 'color',
+                    name: 'wcolor',
+                    showValue: true,
+                }, 'color')
+
+                //-
+                    +product-options({
+                        title: 'Width:',
+                        options: [
+                            {
+                                id: 'wwidth-0',
+                                value: '5.5 mm',
+                                label: '5.5',
+                            },
+                        ],
+                        mods: 'circle',
+                        name: 'wWidth',
+                        showValue: true,
+                    }, 'circle')
+
+                -
+                    var options = ['14.0','14.5','15.0','15.5','16.0','16.5','17.0','17.5','18.0','18.5','19.0','19.5','20.0'];
+                    options = options.map((elem, index) => ({
+                        id: 'wrsize-' + index,
+                        value: elem,
+                        label: elem,
+                    }));
+                +product-options({
+                    title: 'Размер кольца:',
+                    info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+                    options: options,
+                    mods: 'square',
+                    name: 'wringSize',
+                    showValue: true
+                }, 'square')
+
+                +product-details-toggle()
+                    +product-details('Описание: ', [
+                        {
+                            label: 'Артикул',
+                            value: 'ES4R03',
+                        }, {
+                            label: 'Ширина',
+                            value: '5 мм',
+                        }, {
+                            label: 'Размер',
+                            value: '16.5',
+                        }, {
+                            label: 'Металл',
+                            value: 'Платина 750',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '2.1 гр',
+                        }
+                    ], 'desktop')
+
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16 шт',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: '3',
+                        }, {
+                            label: 'Чистота',
+                            value: '5',
+                        }
+                    ], 'desktop')
+
+                    .product-details-cols
+                        +product-details(false, [{
+                                label: 'Ширина кольца',
+                                value: '5 мм',
+                            }, {
+                                label: 'Вес кольца',
+                                value: '4.3 гр',
+                            }, {
+                                label: 'Бриллианты',
+                                value: '12 шт',
+                            }, {
+                                label: 'Вес камней',
+                                value: '0.04 карат',
+                            }, {
+                                label: 'Цвет/Чистота',
+                                value: '3/5',
+                            }
+                        ], 'mobile')
+
+            .product__pair-col
+                .product__pair-col-heading
+                    +product-price(price[1])
+                    .product__pair-title Мужское кольцо
+
+                +product-options({
+                    title: 'Металл:',
+                    mainOptions: ['585', '750'],
+                    optionsDropdown: true,
+                    options: [
+                        {
+                            id: 'mcolor-white',
+                            value: 'Белое золото',
+                            label: 'Белое золото',
+                            mods: 'color-white',
+                            contents: '585'
+                        },
+                        {
+                            id: 'mcolor-yellow',
+                            value: 'Жёлтое золото',
+                            label: 'Жёлтое золото',
+                            mods: 'color-yellow',
+                            contents: '585'
+                        },
+                        {
+                            id: 'mcolor-pink',
+                            value: 'Розовое золото',
+                            label: 'Розовое золото',
+                            mods: 'color-pink',
+                            contents: '585'
+                        },
+                        {
+                            id: 'mcolor-white-yellow',
+                            value: 'Комбинированное',
+                            label: 'Комбинированное',
+                            mods: 'color-white-yellow',
+                            contents: '585'
+                        },
+                    ],
+                    mods: 'color',
+                    name: 'mcolor',
+                    showValue: true,
+                }, 'color')
+
+                //-
+                    +product-options({
+                        title: 'Width:',
+                        options: [
+                            {
+                                id: 'mwidth-0',
+                                value: '5.5 mm',
+                                label: '5.5',
+                                price: '0',
+                            },
+                            {
+                                id: 'mwidth-1',
+                                value: '6 mm',
+                                label: '6',
+                                price: '15',
+                            },
+                            {
+                                id: 'mwidth-2',
+                                value: '6.5 mm',
+                                label: '6.5',
+                                price: '25',
+                            },
+                            {
+                                id: 'mwidth-3',
+                                value: '7 mm',
+                                label: '7',
+                                price: '35',
+                            },
+                            {
+                                id: 'mwidth-4',
+                                value: '7.5 mm',
+                                label: '7.5',
+                                price: '45',
+                            },
+                        ],
+                        mods: 'circle',
+                        name: 'mWidth',
+                        showValue: true,
+                    }, 'circle')
+
+                -
+                    var options = ['17.0','17.5','18.0','18.5','19.0','19.5','20.0','20.5','21.0','21.5','22.0','22.5','23.0','23.5'];
+                    options = options.map((elem, index) => ({
+                        id: 'mrsize-' + index,
+                        value: elem,
+                        label: elem,
+                    }));
+                +product-options({
+                    title: 'Размер кольца:',
+                    info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+                    options: options,
+                    mods: 'square',
+                    name: 'mringSize',
+                    showValue: true
+                }, 'square')
+
+                +product-details-toggle()
+                    +product-details('Описание: ', [
+                        {
+                            label: 'Артикул',
+                            value: 'ES4R03',
+                        }, {
+                            label: 'Ширина',
+                            value: '5 мм',
+                        }, {
+                            label: 'Размер',
+                            value: '16.5',
+                        }, {
+                            label: 'Металл',
+                            value: 'Платина 750',
+                        }, {
+                            label: 'Вес кольца',
+                            value: '2.1 гр',
+                        }
+                    ], 'desktop')
+
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16 шт',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: '3',
+                        }, {
+                            label: 'Чистота',
+                            value: '5',
+                        }
+                    ], 'desktop')
+
+                    .product-details-cols
+                        +product-details(false, [{
+                                label: 'Ширина кольца',
+                                value: '5 мм',
+                            }, {
+                                label: 'Вес кольца',
+                                value: '4.3 гр',
+                            }, {
+                                label: 'Бриллианты',
+                                value: '12 шт',
+                            }, {
+                                label: 'Вес камней',
+                                value: '0.04 карат',
+                            }, {
+                                label: 'Цвет / Чистота',
+                                value: '3/5',
+                            }
+                        ], 'mobile')
+
+        +product-summary(['date', 'available', 'laser', 'share'])
+        +product-buttons-pair()

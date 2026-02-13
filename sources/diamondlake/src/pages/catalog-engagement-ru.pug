@@ -1,0 +1,18 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--catalog';
+    - var lang = 'ru';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    +catalog-banner('img/catalog-banner-engagement-left.png', 'img/catalog-banner-engagement-right.png', 'Помолвочные кольца')
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Mom’s Bracelets')
+
+    +catalog('engagement')

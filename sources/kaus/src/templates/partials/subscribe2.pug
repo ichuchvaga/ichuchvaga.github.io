@@ -1,0 +1,61 @@
+//- Subscribe
+
+//- Mixins
+include ../mixins/select
+include ../mixins/input
+include ../mixins/checkbox
+
+.subscribe.blue-gray-theme
+	.container
+		.row
+			.col-md-6.col-subscribe
+				.subscribe-content
+					.subscribe-icon.valign-wrapper
+						.subscribe-img
+							img(src="src/img/icons/frames.png" draggable="false" alt="")/
+					.subscribe-title.h2.
+						Если Вы не нашли
+						нужные кадры,
+						заполните форму,
+					.subscribe-subtitle.h2
+						strong.
+							мы Вам обязательно 
+							поможем!
+					p.subscribe-descr.
+						Пример описания текста: мониторинг зарплат: 
+						увеличьте эффективность подбора персонала и 
+						сэкономьте ФОТ Вашей Организации.
+			.col-md-6.col-subscribe
+				.subscribe-form.text-center
+					form.form
+						.fieldset
+							.form-element
+								+select({
+									name: "specialty",
+									placeholder: "Выберите специальность",
+									options: ["Врач терапевт детский", "Врач кардиолог", "Врач общей практики"]
+								})
+							+input_field({
+								name: "name",
+								placeholder: "Ваше имя",
+								required: true
+							})
+							+input_field({
+								type: "email",
+								name: "email",
+								placeholder: "E-mail",
+								required: true
+							})
+
+						input(type="hidden" name="success_title" value="Спасибо за подписку")/
+						input(type="hidden" name="success_message" value="Вы подписаны на свежие обзоры зарплат!")/
+
+						.agreement
+							+checkbox({
+								name: "agreement",
+								id: "agreement_subscribe2",
+								checked: true
+							})
+							span Я принимаю условия #[a.link(href="javascript:void(0);") передачи информации]
+						.form-button
+							input.btn.btn-block.btn-primary(type="submit" value="Подписаться")/

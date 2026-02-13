@@ -1,0 +1,128 @@
+extends ../pug/layout-ru.pug
+
+block variables
+    - var pageClass = 'page--product';
+
+block meta
+    title Main
+    meta(name='description', content='')
+
+block content
+    -
+        var title = 'Eternity Ring <br> WWE18',
+                gallery = [
+                    'img/product-3-1.jpg',
+                    'img/product-3-2.jpg',
+                    'img/product-3-3.jpg',
+                    'img/product-3-4.jpg',
+                ],
+                price = '575',
+                breadcrumbs = [
+                    {title: 'Home', link: '#'},
+                    {title: 'Collections', link: '#'},
+                    {title: 'Mom’s Bracelets', link: '#'},
+                    {title: 'Boy', link: '#'},
+                    {title: 'BG14W'}
+                ];
+    +product(title, gallery, breadcrumbs)
+        +product-price(price)
+        +product-options({
+            title: 'Металл:',
+            mainOptions: ['585', '750'],
+            options: [
+                {
+                    id: 'color-white',
+                    value: 'Белое золото',
+                    label: 'Белое золото',
+                    mods: 'color-white',
+                    contents: '585'
+                },
+                {
+                    id: 'color-yellow',
+                    value: 'Жёлтое золото',
+                    label: 'Жёлтое золото',
+                    mods: 'color-yellow',
+                    contents: '585'
+                },
+                {
+                    id: 'color-pink',
+                    value: 'Розовое золото',
+                    label: 'Розовое золото',
+                    mods: 'color-pink',
+                    contents: '585'
+                },
+            ],
+            mods: 'color',
+            name: 'color',
+            showValue: true,
+        }, 'color')
+
+        +product-options({
+            title: 'Carat:',
+            options: [
+                {
+                    id: 'carat-0',
+                    value: '50%',
+                    label: '50%',
+                },
+                {
+                    id: 'carat-1',
+                    value: 'Eternity',
+                    label: 'Eternity',
+                },
+            ],
+            mods: 'square,square-wide',
+            name: 'wWidth',
+            showValue: true,
+        }, 'square')
+
+        -
+            var options = ['14.0','14.3','14.6','15.0','15.3','15.6','15.9','16.2','16.5','16.8','17.2','17.5','17.8','18.1','18.4','18.8','19.1','19.4'];
+            options = options.map((elem, index) => ({
+                id: 'rsize-' + index,
+                value: elem,
+                label: elem,
+            }));
+        +product-options({
+            title: 'Ring Size:',
+            info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur cumque dolores eius, eligendi in iure minima modi nam necessitatibus praesentium provident repudiandae voluptates! Ab facilis impedit porro quos recusandae?',
+            options: options,
+            mods: 'square',
+            name: 'ringSize',
+            showValue: true
+        }, 'square')
+
+        +product-details-toggle()
+            .product-details-cols
+                .product-details-cols__inner
+                    +product-details('Боковые бриллианты:', [
+                        {
+                            label: 'Количество',
+                            value: '16',
+                        }, {
+                            label: 'Вес',
+                            value: '0.17 карат',
+                        }, {
+                            label: 'Цвет',
+                            value: 'F',
+                        }, {
+                            label: 'Чистота',
+                            value: 'SI1',
+                        }
+                    ])
+
+                    +product-details('&nbsp;', [
+                        {
+                            label: 'Металл',
+                            value: '14K Белое золото',
+                        }, {
+                            label: 'Ширина',
+                            value: '6 мм',
+                        }, {
+                            label: 'Вес',
+                            value: '3.6 гр',
+                        }
+                    ])
+
+        +product-summary(['date', 'available', 'laser'])
+        +product-buttons()

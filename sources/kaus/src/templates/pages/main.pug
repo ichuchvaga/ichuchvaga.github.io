@@ -1,0 +1,253 @@
+//- Data
+include ../data/main
+//- Variables
+-
+	var header_menu_active = "",
+		ymap = true,
+		swiper_js = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo(style={"background-color":"#cbd7da"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p Подберем эффективных сотрудников в вашу<br> компанию с гарантией замены<br> в срок от 3 дней
+						a(href="javascript:void(0);").btn.btn-primary Найти сотрудника
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man.png" draggable="false" alt="")/
+
+
+		//- Services
+		.services-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title Наши услуги
+
+				.section-content
+					.row
+						.col-md-7
+							.services-decorated-list
+								each item in services_decorated_list
+									- var url = 'javascript:void(0);';
+									- if (item.url != '') url = item.url;
+
+									.services-decorated-list__item
+										.services-decorated-list__icon.icon(class=item.icon)
+										a(href=url).services-decorated-list__link.h3 #{item.title}
+										.services-decorated-list__descr #{item.descr}
+
+						.col-md-5
+							.content-box.content-box-grey
+								ul.services-list
+									each item in services_sb_list
+										- var url = 'javascript:void(0);';
+										- if (item.url != '') url = item.url;
+
+										li
+											a(href=url) #{item.title}
+								.text-center
+									a(href="javascript:void(0);").btn.btn-outline Заказать подбор кадров
+
+		//- Advantages numbers
+		.advantage-numbers-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title Кадровое агентство «Каус» – это
+
+				.section-content
+					.advantages-circles
+						each item in advantages_circles
+							.advantages-circle
+								.advantages-circle__number-wrap
+									.advantages-circle__number #{item.value}
+								.advantages-circle__text !{item.caption}
+
+						.codex-circle
+							.codex-circle__in
+								.codex-circle__icon
+									img(src="src/img/icons/codex.png" draggable="false" alt="")/
+								a(href="javascript:void(0);" class="codex-circle__link") Этический кодекс агентства «Каус»
+
+		//- Recruitment
+		.recruitment-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title Специализируемся на подборе персонала высшего и среднего звена в 11 отраслях
+
+				.section-content
+					form.search-form
+						.search.search_color_white
+							input(type="text" name="q" placeholder="Какой сотрудник Вам нужен?" class="search__field")/
+							button.search__button(type="submit")
+								span.icon.icon-search
+
+
+					.recruitment-section__content-wrap.clearfix
+						.recruitment-industries
+							ul.list
+								each item in recruitment_categories
+									li
+										a(href="javascript:void(0);") #{item.title}
+
+						.recruitment-industry-categories
+							ul
+								each item in recruitment_categories[0]['subitems']
+									li
+										a(href="javascript:void(0);") #{item.title}
+
+
+		//- Advantages 2
+		.advantages2-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title Сократие время на поиск лучших кандидатов в 4 раза
+
+				.section-content
+					.advantages-intro Сотрудничество с кадровым агентством «КАУС» сэкономит ваше время на поиск и отбор кандидатов и исключит ошибки, связанные с оценкой персонала
+
+					ul.list-with-icons
+						each item in advantages_list
+							li
+								img.icon(src="src/img/icons/" + item.icon draggable="false")
+								span.list-with-icons__text
+									span !{item.text}
+
+		//- About
+		.about-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title О нашей компании
+
+				.section-content
+					.row
+						.col-md-6.col-sm-6.col-xs-12.about-section__quote
+							blockquote
+								p Агентство является участником Ассоциации консультантов по подбору персоналу (АКПП) и в своей работе придерживается профессионально-этического кодекса
+
+						.col-md-6.col-sm-6.col-xs-12.about-section__text
+							p «Кадровое агентство уникальных специалистов» («КАУС») работает на рынке труда Москвы с 2007 г.
+							p Накопленный опыт позволяет нам подбирать для клиентов самых эффективных сотрудников и закрывать вакансии в срок от 5 дней до 3 недель.
+
+							a(href="about.html" class="btn btn-outline btn-wide") Подробнее о нашей компании
+
+			.about-slider
+				.swiper-container.about-container
+					.swiper-wrapper
+						- var n = 1;
+						while n < 4
+							.swiper-slide(style={"background-image":`url(upload/main/about_slides/img${n++}.jpg)`})
+					.swiper-pagination
+
+		//- Photo section
+
+		//- Directions
+		.directions-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title 6 специализированных направлений для решения отраслевых задач
+
+				.section-content.directions-content
+					.row
+						.directions-content__l.col-md-4
+							.subheading Мы выделили самые востребованные области в отдельные направления
+							p Подбором в каждой сфере занимаются консультанты с образованием и опытом, соответствующим профилю деятельности.
+
+							a(href="javascript:void(0);" class="btn btn-outline btn-wide") Заказать подбор кадров
+
+						.directions-content__r.col-md-8
+							.directions-list
+								each item in directions
+									- var url = "src/img/icons/directions/" + item.img;
+									.directions-list__item
+										img(src=url alt="").directions-list__logo
+										.directions-list__text #{item.text}
+
+
+		//- Vacancies
+		.vacancies-section
+			.container
+				.section-header.text-center
+					.h1.section-header__title Свежие вакансии
+
+				.section-content
+					.vacancies-of-the-day
+						.vacancies-of-the-day__header.h3 Вакансии дня
+							span.vacancies-of-the-day__header-date 08.05.18
+
+							.slider-controls
+								a(href="javascript:void(0);").slider-control.prev
+								a(href="javascript:void(0);").slider-control.next
+
+						.vacancies-of-the-day__slider.swiper-container
+							.swiper-wrapper
+								each item in vacancies_of_the_day
+									.swiper-slide
+										.vacancy.vacancy-layout-detailed
+											a(href="javascript:void(0);").vacancy__title.h4 #{item.title}
+											.vacancy__description #{item.descr}
+
+					.vacancies-list
+						.row
+							.vacancies-column.col-md-4
+								each item in vacancies_col1
+									.vacancy.vacancy-layout-default
+										a(href="javascript:void(0);" class="vacancy__title h4") #{item.title}
+										.vacancy__date #{item.date}
+
+							.vacancies-column.col-md-4
+								each item in vacancies_col2
+									.vacancy.vacancy-layout-default
+										a(href="javascript:void(0);" class="vacancy__title h4") #{item.title}
+										.vacancy__date #{item.date}
+
+							.vacancies-column.col-md-4
+								each item in vacancies_col3
+									.vacancy.vacancy-layout-default
+										a(href="javascript:void(0);" class="vacancy__title h4") #{item.title}
+										.vacancy__date #{item.date}
+
+								a(href="javascript:void(0;)" class="btn btn-outline btn-wide") Все вакансии агентства
+
+		//- Articles
+		.articles-section
+			.wrapper
+				.articles-section__l(style={"background-image":"url(upload/main/articles/bg.jpg)"})
+					.articles-section__content
+						.articles-section__title.h2 Полезные статьи для клиентов кадрового агентства Каус
+						ul.list-with-icons
+							each item in articles_list
+								li
+									img.icon(src="src/img/icons/" + item.icon draggable="false")
+									span.list-with-icons__text
+										a(href="javascript:void(0);") #{item.text}
+				.articles-section__r
+					.articles-section__content
+						.articles-section__slider.swiper-container
+							.swiper-wrapper
+								each slide in books_slides
+									.swiper-slide
+										.articles-section__title.h2 #{slide.title}
+										.articles-section__introtext #{slide.introtext}
+										.wrapper
+											.articles-section__img
+												img(src=`upload/main/articles/${slide.img}` draggable="false" alt=slide.title)/
+											p.articles-section__descr #{slide.descr}
+							.swiper-pagination
+
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

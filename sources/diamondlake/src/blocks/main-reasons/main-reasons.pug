@@ -1,0 +1,78 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-reasons)
+
+mixin main-reasons(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +main-reasons('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' main-reasons--' + modsList[i].trim();
+            }
+        }
+        var items = [
+            {
+                title: 'РУЧНАЯ РАБОТА',
+                text: 'Украшения Diamondlake уникальны и неповторимы. Все кольца создаются вручную с вниманием к каждой детали.',
+            },{
+                title: 'ИНДИВИДУАЛЬНО',
+                text: 'Любое украшение из нашего каталога может быть изменено по вашим пожеланиям, а так же дополнено гравировкой или отпечатками пальцев.',
+            },{
+                title: 'Гарантии',
+                text: 'На каждое ювелирное украшение предоставляется сертификат, в котором указаны все характеристики изделия, а так же гарантийные обязательства.',
+            },{
+                title: 'ЭКСКЛЮЗИВНО',
+                text: 'Воплощаем в реальность самые смелые и сложные идеи клиентов. Изготавливаем украшения с авторским дизайном по фото и эскизам.',
+            },
+        ]
+        var items2 = [
+            {
+                title: 'СЕРТИФИКАТ GIA',
+                text: 'Мы используем только проверенные бриллианты, сертифицированные в самой авторитетной международной лаборатории GIA.',
+            },{
+                title: 'ЛЮБЫЕ БРИЛЛИАНТЫ',
+                text: 'Бриллиант для кольца вы можете выбрать любого размера и формы с учетом личных предпочтений и бюджета.',
+            },{
+                title: 'Отзывы',
+                text: 'Мы учитываем пожелания клиентов, не упуская никакой мелочи. Лучшее доказательство уровня нашей работы – отзывы наших клиентов.',
+            },{
+                title: 'Доставка',
+                text: 'Заказать украшения Diamondlake вы можете с доставкой в любой регион России и СНГ. Курьер лично вручит вам изделие в фирменной упаковке.',
+            },
+        ]
+
+    .main-reasons(class=allMods)&attributes(attributes)
+        .main-reasons__inner.container
+            .main-reasons__title 8 ПРИЧИН ВЫБРАТЬ #[br] DIAMONDLAKE
+
+            .horizontal-scroll-container
+                .main-reasons__content
+                    .main-reasons__items
+                        each item in items
+                            +main-reasons-item(item)
+                    .main-reasons__image
+                        img(src="img/reasons.png")
+                    .main-reasons__items
+                        each item in items2
+                            +main-reasons-item(item)
+
+                    .main-reasons__slider.swiper
+                        .swiper-wrapper
+                            each item in items2
+                                .swiper-slide
+                                    +main-reasons-item(item)
+                        .swiper-scrollbar
+
+
+
+mixin main-reasons-item(item)
+    .main-reasons-item
+        .main-reasons-item__title=item.title
+        .main-reasons-item__text=item.text

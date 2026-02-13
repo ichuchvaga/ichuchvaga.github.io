@@ -1,0 +1,217 @@
+//- Все примеси в этом файле должны начинаться c имени блока (nav-menu)
+//- Структура меню — в nav-menu.data.pug
+
+mixin nav-menu(menu, selectedID)
+    //- Принимает:
+    //-   menu {array} - массив меню
+            name {string} - текст ссылки
+            url  {string} - ссылка
+    //-   selectedID {string} - id пункта меню
+    //- Вызов:
+          +nav-menu([{name: 'Main', url: '/'}], '0')
+
+    nav.nav-menu&attributes(attributes)
+        .nav-menu__inner
+            ul.nav-menu__list
+                each menuItem in menu
+                    +nav-menu-item(selectedID, menuItem, 1)
+                        if (typeof (menuItem.childs) !== 'undefined' && menuItem.childs)
+                            +nav-menu-sublist-wrapper(2)
+                                each menuItem2 in menuItem.childs
+                                    +nav-menu-item(selectedID, menuItem2, 2)
+
+mixin nav-menu-item(selectedID, item, level)
+    -
+        var thisItemClass = 'nav-menu__item';
+        var thisLinkClass = 'nav-menu__link';
+        if (selectedID === item.id) {
+            thisItemClass += '  nav-menu__item--active';
+        }
+        if (item.childs || item.dropdown) {
+            thisItemClass += '  nav-menu__item--has-child';
+        }
+        if (level > 1) {
+            thisItemClass += '  nav-menu__item--lvl-' + level;
+            thisLinkClass += '  nav-menu__link--lvl-' + level;
+        }
+
+        if (typeof (item.mods) !== 'undefined' && item.mods) {
+            var allMods = '';
+            var modsList = item.mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' nav-menu__item--' + modsList[i].trim();
+            }
+            thisItemClass += allMods;
+        }
+
+    li(class= thisItemClass, data-dropdown=item.dropdown)
+        a(class= thisLinkClass, href=item.url)
+            if (item.icon)
+                img(src=item.icon, alt='').nav-menu__icon
+            = item.name
+        block
+
+mixin nav-menu-sublist-wrapper(level)
+    -
+        var divClass = 'nav-menu__sublist-wrapper  nav-menu__sublist-wrapper--lvl-' + level;
+        var innerClass = 'nav-menu__sublist-inner  nav-menu__sublist-inner--lvl-' + level;
+        var listClass = 'nav-menu__list  nav-menu__list--lvl-' + level;
+    div(class= divClass)
+        div(class= innerClass)
+            ul(class= listClass)
+                block
+
+mixin nav-menu-dropdown(lang)
+    .nav-menu-dropdown(data-dropdown="Collections")
+        .container
+            .row
+                if lang == 'ru'
+                    .col
+                .col
+                    img(src="img/nav-collections.png")
+                .col
+                    .nav-menu-dropdown__content
+                        .nav-menu-dropdown__title= (lang == 'ru' ? 'БРАСЛЕТЫ «ДЕТКИ»' : 'Mom’s Bracelets')
+                        .nav-menu-dropdown__text
+                            if lang == 'ru'
+                                |Каждое изделие нашей студии упаковывается в бренди рованный футляр. Кольца и пусеты размещаются внутри на ложементе из нежнейшей замши цвета шампань.
+                            else
+                                |A collection of bracelets for mothers is a beautiful and sentimental way to keep her children close to heart. Each bracelet is engraved with the name and date of birth of her kids, creating a unique and personal piece of jewelry that is as special as the bond between a mother and her child.
+                        +btn((lang == 'ru' ? 'Подробнее' : 'Shop Collection'), 'main-o').nav-menu-dropdown__button
+                .col
+                if lang !== 'ru'
+                    .col
+
+    .nav-menu-dropdown(data-dropdown="Engagement")
+        .container
+            .nav-menu-dropdown__row
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--styles
+                    .nav-menu-dropdown__filter-title
+                        =(lang === 'ru' ? 'Стиль' : 'By Style')
+                        |
+                        | | #[a(href='#')=(lang === 'ru' ? 'Все' : 'View All')]
+                    +nav-menu-dropdown-styles([
+                        {
+                            title: lang === 'ru' ? 'Солитер' : 'Solitaire',
+                            image: 'img/engagement-solitaire.jpg'
+                        },
+                        {
+                            title: lang === 'ru' ? 'Акцент' : 'Accent',
+                            image: 'img/engagement-accent.jpg'
+                        },
+                        {
+                            title: lang === 'ru' ? 'Хало' : 'Halo',
+                            image: 'img/engagement-halo.jpg'
+                        },
+                        {
+                            title: lang === 'ru' ? 'Трио' : 'Three Stone',
+                            image: 'img/engagement-three.jpg'
+                        },
+                    ])
+
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--filters
+                    -
+                        var filters = [
+                            ['By Metal', false, ['White Gold', 'Yellow Gold', 'Rose Gold']],
+                            ['By Price', true, ['$500-1500', '$1500-2500', '$2500-5000']],
+                            ['Diamond Guide', false, ['Carat', 'Color', 'Clarity', 'Cut', 'Flourescence', 'GIA Certificate', 'Shop Diamonds'], 'tall'],
+                            ['By Carat', true, ['0.30 Carat', '0.40 Carat', '0.50 Carat', '0.70 Carat']],
+                            ['by Shape', true, ['Round', 'Princess', 'Pear', 'Heart']],
+                        ]
+                        if (lang === 'ru') {
+                            filters = [
+                                ['Размер', true, ['0.20 Карат', '0.30 Карат', '0.40 Карат', '0.50 Карат', '0.70 Карат', '1.00 Карат']],
+                                ['Форма', true, ['Круг', 'Принцесса', 'Сердце', 'Изумруд', 'Кушон', 'Ашер']],
+                                ['О бриллиантах', false, ['Размер', 'Цвет', 'Чистота', 'Огранка', 'Флюоресценция', 'GIA Сертификат']],
+                                ['Материал', false, ['Белое золото', 'Желтое золото', 'Розовое золото']],
+                                ['Цена', true, ['до 100 000 ₽', '100 000 - 250 000 ₽', 'от 250 000 ₽']],
+                            ]
+                        }
+                    each filter in filters
+                        +nav-menu-dropdown-filter(filter[0], filter[1], filter[2], filter[3])
+
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--image
+                    img(src="img/nav-dropdown.png")
+
+    .nav-menu-dropdown(data-dropdown="Wedding")
+        .container
+            .nav-menu-dropdown__row
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--styles
+                    .nav-menu-dropdown__filter-title
+                        =(lang === 'ru' ? 'Тип' : 'By Style')
+                        |
+                        || #[a(href='#')=(lang === 'ru' ? 'Все' : 'View All')]
+                    +nav-menu-dropdown-styles([
+                        {
+                            title: lang === 'ru' ? 'Парные' : 'Couples',
+                            image: 'img/wedding-couples.jpg',
+                        },{
+                            title: lang === 'ru' ? 'Женские' : 'Women',
+                            image: 'img/wedding-women.jpg',
+                        },{
+                            title: lang === 'ru' ? 'Мужские' : 'Men',
+                            image: 'img/wedding-men.jpg',
+                        },
+                    ])
+
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--filters
+                    -
+                        var filters = [
+                            ['By Metal', false, ['White Gold', 'Yellow Gold', 'Rose Gold', 'Two Tone Gold']],
+                            ['By Price', true, ['$500-1000', '$1000-2000', '$2000-3000']],
+                            ['Discover', false, ['Size Guide', 'Create Your Own', 'Top 10 Rings']],
+                            ['By Design', true, ['Classic', 'Modern', 'Trinity', 'Wide', 'Eternity Rings']],
+                            ['By Gemstones', true, ['Diamonds', 'No Gemstones']],
+                            ['By Personalization', false, ['Engraving', 'Finger Print']],
+                        ]
+                        if (lang === 'ru') {
+                            filters = [
+                                ['Дизайн', true, ['Классические', 'Современные', 'Широкие', 'Тройные']],
+                                ['Материал', false, ['Белое золото', 'Желтое золото', 'Розовое золото', 'Комбинированное']],
+                                ['Цена', true, ['до 70 000 ₽', '70 000 - 150 000 ₽', 'от 150 000 ₽']],
+                                ['Вставки', true, ['Бриллиант', 'Без камней']],
+                                ['Персонализация', true, ['Гравировка', 'Отпечаток']],
+                            ]
+                        }
+                    each filter in filters
+                        +nav-menu-dropdown-filter(filter[0], filter[1], filter[2], filter[3])
+
+                .nav-menu-dropdown__col.nav-menu-dropdown__col--image
+                    img(src="img/nav-dropdown.png")
+
+mixin nav-menu-dropdown-filter(title, showAll, items, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + 'nav-menu-dropdown__filter--' + modsList[i].trim();
+            }
+        }
+        var linkAll = (lang === 'ru' ? 'Все' : 'View All')
+
+    .nav-menu-dropdown__filter(class=allMods)&attributes(attributes)
+        .nav-menu-dropdown__filter-title!=title
+            if showAll
+                |
+                || #[a(href='#')=linkAll]
+        each item in items
+            a(href="#")!=item
+
+mixin nav-menu-dropdown-styles(items, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + 'nav-menu-dropdown__styles--' + modsList[i].trim();
+            }
+        }
+    .nav-menu-dropdown__styles(class=allMods)&attributes(attributes)
+        each item in items
+            a.nav-menu-dropdown__style(href="#")
+                =item.title
+                .nav-menu-dropdown__style-image
+                    img(src=item.image)

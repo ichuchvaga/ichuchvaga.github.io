@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (faq)
+
+mixin faq(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +faq('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' faq--' + modsList[i].trim();
+            }
+        }
+
+    .faq(class=allMods)&attributes(attributes)
+        +faq-item('How can I place an order?', 'Orders are placed at our studio. You can learn more about the order process here. If you are unable to visit our studio, we can also process orders remotely.')
+        +faq-item('What kind of warranty do you provide for jewelry?', 'All jewelry undergoes testing and hallmarking in the Russian State Assay Chamber, which guarantees the gold assay in the jewelry. We also provide an unlimited warranty for hidden defects.')
+        +faq-item('How is payment made?', 'We require a 30% prepayment. You can make payment by any convenient method. We accept cash, bank cards, online banking, or transfer to the company\'s account. The remaining 70% is paid upon receipt of the finished jewelry item.')
+        +faq-item('How is delivery carried out?', 'If you are unable to pick up your rings at our studio, we can send them to you via a courier service. Delivery to other regions is carried out by the courier service "SDEK" or the Federal State Unitary Enterprise "Main Center for Special Communication". Please check with our managers for delivery cost details.')
+        +faq-item('What is the production time?', 'The standard production time for engagement and wedding rings is 15 days. More compressed timelines depend on current workload, but we always strive to accommodate our clients\' needs.')
+        +faq-item('What is the jewelry packaged in?', 'Our jewelry is packaged in an elegant box, which is designed to protect and showcase the beauty of the piece. The box is also suitable for gift giving.')
+        +faq-item('What certificates/documents do you provide for your jewelry items?', 'Orders are processed at our studio. You can find more detailed information on the order process here. If you are unable to visit our studio, we can process your order remotely.')
+        +faq-item('You can order a custom-designed jewelry piece based on your individual design/sketch.', 'Yes, it is possible. You can find more information about it here.')
+
+mixin faq-item(title, text, mods)
+    .faq-item
+        .faq-item__title=title
+        .faq-item__text
+            p!=text
+
+mixin faq-consult()
+    .faq-consult
+        .faq-consult__title Если у вас остались вопросы, обращайтесь за консультацией
+        .faq-consult__buttons
+            +btn('Консультация в WhatsApp', 'main, consult')(href="#")
+            +btn('Позвонить', 'main, call')(href="#")

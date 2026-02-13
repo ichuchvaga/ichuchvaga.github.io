@@ -1,0 +1,53 @@
+.form-element
+	/**/
+	&.error
+		.help-block
+			display: block
+
+	.help-block
+		margin-top: 3px
+
+div.error
+	margin-top: 0.5em
+	color: #8a1f11
+	font-size: 14px
+
+.input
+	display: block
+	padding: 0 35px
+	margin: 0
+	+size(100%, 60px)
+	font-size: 16px
+	font-weight: 300
+	line-height: 58px
+	border-radius: 10px
+	border: 1px solid #eaeaea
+	background-color: #fff
+	color: hsl(0, 0%, 0%)
+	transition: border-color 0.3s
+	&.input-size-sm
+		padding: 0 18px
+		height: 47px
+		line-height: 45px
+
+	&::placeholder
+		color: #c0c0c0
+
+	&:focus
+		border-color: #aaa
+
+textarea.input
+	padding:
+		top: 20px
+		bottom: 20px
+	height: 226px
+	line-height: 1em
+	resize: none
+	outline: none
+
+.help-block
+	display: none
+	color: hsl(0, 0%, 0%)
+	font-size: 10px
+	line-height: 1.2em
+	padding-left: 18px

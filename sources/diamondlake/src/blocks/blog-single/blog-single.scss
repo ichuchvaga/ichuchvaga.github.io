@@ -1,0 +1,109 @@
+// В этом файле должны быть стили для БЭМ-блока blog-single, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.blog-single {
+    $block-name: &; // #{$block-name}__element
+
+    &__inner {
+        width: 1134px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+.blog-single-block {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    margin-bottom: 31px;
+
+    &__title {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 26.4px;
+        letter-spacing: -0.25px;
+        text-transform: uppercase;
+        margin-bottom: 21px;
+    }
+
+    & > :last-child {
+        margin-bottom: 0;
+    }
+
+    &--gray {
+        font-weight: 500;
+        color: #8A9199;
+    }
+
+    &--border {
+        border-left: 4px solid #66A9CB;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 22px;
+        padding-left: 14px;
+    }
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        margin-bottom: 40px;
+        line-height: 19.6px;
+
+        &__title {
+            font-size: 20px;
+            line-height: 22px;
+            letter-spacing: 0;
+            margin-bottom: 34px;
+        }
+
+        &--border {
+            font-size: 16px;
+            line-height: 17.6px;
+        }
+    }
+}
+
+.blog-single-gallery {
+    margin: 32px 0;
+
+    &__image {
+        display: block;
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &:not(.swiper-initialized) .swiper-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    &--row-2:not(.swiper-initialized) .swiper-wrapper {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &--row-3:not(.swiper-initialized) .swiper-wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1000px) {
+        &__image {
+            height: 250px;
+            margin-bottom: 18px;
+        }
+
+        .swiper-slide {
+            width: 250px;
+        }
+
+        .swiper-pagination-horizontal.swiper-pagination-bullets {
+            position: absolute;
+            bottom: 0;
+            line-height: 0;
+
+            .swiper-pagination-bullet {
+                margin: 0 2px;
+            }
+        }
+    }
+}

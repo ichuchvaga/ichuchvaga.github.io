@@ -1,0 +1,22 @@
+//- Все примеси в этом файле должны начинаться c имени блока (lang-switcher)
+
+mixin lang-switcher(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +lang-switcher('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' lang-switcher--' + modsList[i].trim();
+            }
+        }
+
+    .lang-switcher(class=allMods)&attributes(attributes)
+        .lang-switcher__current Eng

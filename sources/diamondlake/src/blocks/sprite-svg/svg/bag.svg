@@ -1,0 +1,14 @@
+<svg width="100%" height="100%" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+     fill="currentColor"
+     stroke="transparent"
+     d="m 8.7683652,1.2 c -1.6016,0 -2.9,1.29838 -2.9,2.9 v 3.5 c 0,0.3314 -0.2686,0.6 -0.6,0.6 -0.3314,0 -0.60001,-0.2686 -0.60001,-0.6 V 4.1 c 0,-2.26437 1.83561,-4.1 4.10001,-4.1 2.2643998,0 4.0999998,1.83563 4.0999998,4.1 v 3.5 c 0,0.3314 -0.2686,0.6 -0.6,0.6 -0.3314,0 -0.6,-0.2686 -0.6,-0.6 V 4.1 c 0,-1.60162 -1.2984,-2.9 -2.8999998,-2.9 z" />
+  <path
+      stroke-linejoin="round"
+      stroke-linecap="round"
+     stroke-width="1.2"
+     stroke="currentColor"
+     d="M 1.7666652,5.26807 H 15.766665 l 1.1667,15.16663 H 0.59999523 Z"
+     clip-rule="evenodd"
+     fill-rule="evenodd" />
+</svg>

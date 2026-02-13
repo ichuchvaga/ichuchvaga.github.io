@@ -1,0 +1,16 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title System
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Diamond Guide', '#')
+            +breadcrumbs-item('Fluorescence')
+
+        h1 Fluorescence
+
+    +guide-child(5)

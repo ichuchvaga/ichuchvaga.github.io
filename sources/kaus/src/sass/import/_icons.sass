@@ -1,0 +1,102 @@
+/**
+ * Icons
+ */
+
+.icon
+	display: inline-block
+	vertical-align: top
+	background-repeat: no-repeat
+	background-color: transparent
+
+	&.icon-svc1
+		+size(84px)
+		background-image: url("../img/icons/svc1.png")
+		background-position: 0 0
+
+	&.icon-svc2
+		+size(84px, 83px)
+		background-image: url("../img/icons/svc2.png")
+		background-position: 0 0
+
+	&.icon-svc3
+		+size(86px, 60px)
+		background-image: url("../img/icons/svc3.png")
+		background-position: 0 0
+
+	&.icon-scheme
+		+size(21px, 16px)
+		background-image: url("../img/icons/sprite_scheme.png")
+		background-position: -41px 0px
+
+	&.icon-arrows-l,
+	&.icon-arrows-r
+		+size(12px, 15px)
+		background-image: url("../img/icons/sprite_arrows.png")
+	&.icon-arrows-l
+		background-position: -64px 0px
+	&.icon-arrows-r
+		background-position: 0px 0px
+
+	&.icon-date
+		position: absolute
+		top: 50%
+		left: 50%
+		margin-top: -13px
+		margin-left: -13px
+		+size(26px, 27px)
+		background-image: url("../img/icons/sprite_select.png")
+		background-position: 0px 0px
+
+	&.icon-chart
+		+size(16px, 16px)
+		background-image: url("../img/icons/chart.png")
+		background-position: 0 0
+
+.slider-controls
+	height: 19px
+	&--lg
+		height: 50px
+		.slider-control
+			+size(26px, 50px)
+			&.prev
+				background-position: -138px 0px
+				&:hover,
+				&:focus
+					background-position: -92px 0px
+			&.next
+				margin-left: 45px
+				background-position: -46px 0px
+				&:hover,
+				&:focus
+					background-position: 0px 0px
+.slider-control,
+.page-control
+	display: inline-block
+	background-repeat: no-repeat
+	background-color: transparent
+	background-image: url("../img/icons/sprite_nav.png")
+	+size(10px, 19px)
+	outline: none
+	&.prev
+		background-position: -90px -70px
+	&.next
+		background-position: -30px -70px
+
+.slider-control
+	vertical-align: top
+	&.prev
+		&:hover,
+		&:focus
+			background-position: -60px -70px
+	&.next
+		margin-left: 19px
+		&:hover,
+		&:focus
+			background-position: 0px -70px
+
+.page-control
+	vertical-align: middle
+	&.prev
+		margin-right: 22px
+	&.next
+		margin-left: 22px

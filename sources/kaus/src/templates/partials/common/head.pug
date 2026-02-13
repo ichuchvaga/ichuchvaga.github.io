@@ -1,0 +1,29 @@
+//- head.pug
+- var version = 8;
+
+meta(charset="utf-8")/
+meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+meta(name="viewport" content="width=device-width, initial-scale=1")/
+//-meta(name="viewport" content="width=1366")/
+// disable safari phone number detection
+meta(name="format-detection" content="telephone=no")/
+
+title KAUS
+link(rel="icon" type="image/x-icon" href="src/img/favicon.ico")/
+if (swiper_js && swiper_js == true)
+    link(href="src/css/swiper.min.css" rel="stylesheet")/
+if (tabs_js && tabs_js == true)
+    link(href="src/css/tabs.min.css" rel="stylesheet")/
+if (select_js && select_js == true)
+    link(href="src/css/select2.min.css" rel="stylesheet")/
+if (flatpickr_js && flatpickr_js == true)
+    link(href="src/css/flatpickr.min.css" rel="stylesheet")/
+    <!--[if IE 9]>
+        link(href="src/css/flatpickr_ie.css" type="text/css" rel="stylesheet")/
+    <![endif]-->
+if (socials_js && socials_js == true)
+    link(href="src/css/jssocials.min.css" rel="stylesheet")/
+    link(href="src/css/jssocials-theme-minima.min.css" rel="stylesheet")/
+link(href="src/css/style.css?v=" + version rel="stylesheet")/
+if (ymap && ymap == true)
+    script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript")

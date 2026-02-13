@@ -1,0 +1,38 @@
+// В этом файле должны быть стили для БЭМ-блока form, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.form {
+
+    &__fieldset {
+        min-width: 0;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        margin-bottom: 37px;
+
+        &:not(:last-child) {
+            margin-bottom: $typo-margin-vertical;
+        }
+
+        & + & {
+            border-top: 1px solid #EFF0F4;
+            margin-top: 37px;
+            padding-top: 33px;
+        }
+    }
+
+    &__legend {
+        display: block;
+        width: 100%;
+        max-width: 100%; // Привет IE
+        margin-top: 0;
+        font-family: $font-family;
+        white-space: normal; // Привет IE
+        color: currentColor;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 25px;
+        padding: 0;
+    }
+}

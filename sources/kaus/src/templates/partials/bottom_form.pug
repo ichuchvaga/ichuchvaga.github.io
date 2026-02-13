@@ -1,0 +1,40 @@
+//- Bottom form
+
+//- Mixins
+include ../mixins/input
+include ../mixins/checkbox
+
+.bottom-form.text-center
+	form.form
+		.form__head.dark-gray-theme
+			.form__title.h4.
+				Остались вопросы?#[br]
+				Получите бесплатную консультацию!
+		.form__body
+			.fieldset
+				+input_field({
+					name: "name",
+					placeholder: "Ваше имя",
+					size: "sm",
+					required: true
+				})
+				+input_field({
+					type: "tel",
+					name: "phone",
+					placeholder: "Телефон",
+					size: "sm",
+					required: true
+				})
+	
+			input(type="hidden" name="success_title" value="Спасибо за обращение")/
+			input(type="hidden" name="success_message" value="Наши менеджеры свяжутся с вами в ближайшее время!")/
+
+			.agreement
+				+checkbox({
+					name: "agreement",
+					id: "agreement",
+					checked: true
+				})
+				span Я принимаю условия #[a.link(href="javascript:void(0);") передачи информации]
+			.form-button
+				input.btn.btn-primary(type="submit" value="Заказать звонок")/

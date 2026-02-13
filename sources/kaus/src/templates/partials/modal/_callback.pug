@@ -1,0 +1,38 @@
+//- Mixins
+include ../../mixins/input
+include ../../mixins/checkbox
+
+//- Callback modal
+.popup(id="popup-callback")
+	.popup__wrapper
+		.popup-section.popup-title.h2 Обратный звонок
+
+		.popup-section.popup-data
+			form.form(data-is-modal="")
+				.fieldset
+					+input_field({
+						name: "name",
+						placeholder: "Ваше имя",
+						size: "sm",
+						required: true
+					})
+					+input_field({
+						type: "tel",
+						name: "phone",
+						placeholder: "Телефон",
+						size: "sm",
+						required: true
+					})
+
+				input(type="hidden" name="success_title" value="Спасибо за обращение")/
+				input(type="hidden" name="success_message" value="Наши менеджеры свяжутся с вами в ближайшее время!")/
+				.agreement.text-center
+					+checkbox({
+						name: "agreement",
+						id: "callback_agreement",
+						checked: true
+					})
+					span Я принимаю условия #[a.link(href="javascript:void(0);") передачи информации]
+
+				.form-button.text-center
+					input.btn.btn-primary(type="submit" value="Заказать звонок")/

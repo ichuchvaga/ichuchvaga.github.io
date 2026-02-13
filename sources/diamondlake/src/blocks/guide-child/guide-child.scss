@@ -1,0 +1,563 @@
+// В этом файле должны быть стили для БЭМ-блока guide-child, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.guide-child {
+    $block-name: &; // #{$block-name}__element
+
+    margin-top: -16px;
+
+    &__nav {
+        margin-bottom: 64px;
+        border-top: 1px solid #8A9199;
+        border-bottom: 1px solid #8A9199;
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__nav-item {
+        position: relative;
+        padding: 17px 35px 17px 47px;
+        //font-size: 26px;
+        font-size: 14px;
+        //line-height: 60%;
+        line-height: 1em;
+        font-weight: 400;
+        //text-transform: capitalize;
+        text-transform: uppercase;
+        //font-family: 'Sukothai';
+        font-family: $font-family--quasimoda;
+        text-decoration: none;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:after {
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            right: -12px;
+            content: '';
+            width: 12px;
+            background: transparent url("../img/guide-nav-icon.svg") no-repeat 0 0;
+            background-size: contain;
+        }
+
+        &:last-child:after {
+            content: unset;
+            display: none;
+        }
+
+        &--active {
+            background: #66A9CB;
+            color: white;
+
+            &:hover, &:focus {
+                color: white;
+            }
+
+            &:before, &:after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 25px 0 25px 10px;
+            }
+
+            &:before {
+                left: 0;
+                border-color: transparent transparent transparent #fff;
+            }
+
+            &:after {
+                left: 100%;
+                border-color: transparent transparent transparent #66a9cb;
+            }
+
+            &:last-child:after {
+                content: '';
+                display: block;
+            }
+        }
+    }
+
+    &__row {
+        display: flex;
+        gap: 16px;
+    }
+
+    &__col {
+        flex: 1;
+
+        &--content {
+            display: flex;
+            gap: 16px;
+            align-self: flex-start;
+        }
+
+        &--media {
+            overflow: hidden;
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 110%;
+        letter-spacing: -0.25px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+    }
+
+    &__description {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__btn {
+        margin-top: auto;
+    }
+
+    &__more {
+        margin-top: 48px;
+        display: none;
+    }
+
+    &__more-heading {
+        font-weight: 400;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    &__more-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    &__more-item {
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: -0.1px;
+        text-decoration: none;
+    }
+
+    &__more-image {
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: 0;
+
+        &__nav {
+            display: none;
+        }
+
+        &__row {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        &__col {
+            &--content {
+                display: contents;
+            }
+
+            &--media {
+                order: 2;
+            }
+        }
+
+        &--gia &__row {
+            display: block;
+        }
+
+        &--gia &__col--media {
+            margin-bottom: 32px;
+        }
+
+        &__description {
+            display: contents;
+        }
+
+        &__description:first-child &__description-body{
+            order: 1;
+        }
+        &__description:last-child &__description-body {
+            order: 3;
+        }
+
+        &__btn {
+            order: 99;
+        }
+
+        &__title--empty {
+            display: none;
+        }
+
+        &__more {
+            display: block;
+        }
+    }
+}
+
+
+
+.guide-carat-vars {
+    width: 66.66%;
+    margin: 0 auto;
+
+    &__image {
+        height: 350px;
+        background: transparent url(../img/guide-carat-hand.jpg) center center no-repeat;
+        margin-bottom: 32px;
+        position: relative;
+    }
+
+    &__stone {
+        position: absolute;
+        top: 50%;
+        margin-top: 42px;
+        left: 50%;
+        margin-left: -40px;
+        transform: translate3d(-50%,-50%, 0);
+    }
+
+    &__shapes {
+        display: flex;
+        margin-bottom: 21px;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__shape {
+        cursor: pointer;
+
+        input {
+            position: absolute;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 140%;
+            letter-spacing: -0.1px;
+
+            img {
+                margin-bottom: auto;
+                height: 40px;
+                transform: translate3d(0,0,0);
+            }
+        }
+
+        &:hover label, :checked + label {
+            color: #8A9199;
+        }
+    }
+
+    &__slider {
+        .slider__current:after {
+            content: ' Карат';
+        }
+    }
+
+    @media (max-width: 1526px) {
+        &__shapes {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        &__shape {
+            flex-shrink: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+            white-space: nowrap;
+
+            label {
+                align-items: center;
+            }
+        }
+    }
+
+    @media (max-width: 1000px) {
+        width: 100%;
+        margin-bottom: 78px;
+
+        &__shapes {
+            gap: 20px;
+            font-size: 0;
+            letter-spacing: -0.1px;
+            //white-space: nowrap;
+        }
+
+        &__shape {
+            label {
+                position: relative;
+
+                span {
+                    display: none;
+                    color: #1A1A1A;
+                }
+            }
+
+            input:checked+label span {
+                display: block;
+                position: absolute;
+                top: 100%;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+            /*
+            &:first-child input:checked+label span {
+                left: 0;
+            }
+            &:last-child input:checked+label span {
+                right: 0;
+            }
+            */
+        }
+    }
+}
+
+
+
+.guide-carat-slider {
+    &__carousel {
+        margin-bottom: 30px;
+    }
+
+    &__images {
+        display: none;
+        width: 548px;
+        padding: 0 28px;
+        max-width: 100%;
+
+        &.active {
+            display: block;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        &.single {
+            width: 627px;
+            padding: 0;
+        }
+
+        &.single &-slide {
+            background: white;
+        }
+    }
+
+    &__images-slide {
+        background: #ACADAE;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 352px;
+    }
+
+    .swiper-button-prev,.swiper-button-next {
+        width: 10px;
+        height: 18px;
+        left: 0;
+        margin-top: -8px;
+
+        &:after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1L1 9L9 17' stroke='%238A9199' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+        }
+    }
+
+    .swiper-button-next {
+        left: auto;
+        right: 0;
+        transform: rotate(180deg);
+    }
+
+    &__slider {
+        margin: 0 auto 50px;
+        width: 480px;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    &__content {
+        background: #66A9CB;
+        color: white;
+        width: 628px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 22px 69px 29px;
+        font-weight: 400;
+        // line-height: 140%;
+        line-height: 20px;
+        letter-spacing: -0.1px;
+    }
+
+    &__content-item {
+        display: none;
+    }
+
+    &__content-item.active {
+        display: block;
+    }
+
+    &__content-title {
+        //font-family: 'Sukothai';
+        font-family: $font-family--quasimoda;
+        //font-size: 26px;
+        //line-height: 60%;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        margin-bottom: 9px;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 1000px) {
+        &__images {
+            padding: 0 22px;
+
+            &.single &-slide {
+                height: auto;
+            }
+        }
+
+        &__carousel {
+            margin-bottom: 24px;
+        }
+
+        &__images-slide {
+            height: 300px;
+        }
+
+        &__content {
+            padding: 15px 24px;
+            margin-bottom: 36px;
+        }
+    }
+}
+
+.guide-gia-banner {
+    height: 550px;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 183px;
+    margin-bottom: 16px;
+
+    &__content {
+        color: white;
+        //max-width: 537px;
+        max-width: 700px;
+    }
+
+    &__title {
+        //font-family: 'Sukothai';
+        font-family: $font-family--quasimoda;
+        font-size: 36px;
+        line-height: 1.2em;
+        letter-spacing: -1.25px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+        margin-bottom: 24px;
+        max-width: 537px;
+    }
+
+    &__button {
+        width: 362px;
+        max-width: 100%;
+    }
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.guide-child-banner {
+    margin-top: 96px;
+    background-color: #66A9CB;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 35% 100%;
+
+    &__content {
+        color: white;
+        padding: 67px 0 76px;
+        max-width: 524px;
+        margin-left: 150px;
+        margin-right: 35%;
+    }
+
+    &__title {
+        //font-family: 'Sukothai';
+        font-family: $font-family--quasimoda;
+        // font-size: 80px;
+        // line-height: 60%;
+        font-size: 36px;
+        line-height: 1.2em;
+        font-weight: 400;
+        letter-spacing: -1.25px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: 48px;
+        background-position: center top;
+        background-size: 100% 150px;
+        background-size: 100% 40vw;
+
+        &__content {
+            padding: 47% 0 26px;
+            margin: 0;
+        }
+
+        &__title {
+            font-size: 60px;
+
+            .lang-ru & {
+                font-size: 36px;
+            }
+        }
+    }
+}

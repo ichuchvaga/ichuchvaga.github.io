@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (making)
+
+mixin making(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +making('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' making--' + modsList[i].trim();
+            }
+        }
+
+        var item = {
+            image: 'img/making1.png',
+            title: '1 Design',
+            text: 'Diamond\'s quality. The system includes grades for color, clarity, cut, and carat weight, and each grade is assigned a specific rating that ranges from "excellent" to "poor."',
+        };
+
+    .making(class=allMods)&attributes(attributes)
+        each i in [1,2,3,4,5,6,7,8]
+            .making__item
+                .making__title=item.title
+                .making__image
+                    img(src=item.image)
+                .making__text=item.text

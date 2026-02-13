@@ -1,0 +1,53 @@
+//- Все примеси в этом файле должны начинаться c имени блока (create)
+
+mixin create(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +create('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' create--' + modsList[i].trim();
+            }
+        }
+
+    .create(class=allMods)&attributes(attributes)
+        .create__content
+            .row
+                .col
+                    p You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used. We make a preliminary calculation for the production of this jewelry item.
+                .col
+                    p After final approval of the model, we begin the production of the jewelry item. The production time varies from two to four weeks depending on the complexity of the piece. We make a preliminary calculation for the production of this jewelry item.
+
+        .create__gallery.swiper
+            .swiper-wrapper.create__gallery-inner
+                .create__image.swiper-slide
+                    img(src="img/create-image.png")
+                .create__image.swiper-slide
+                    img(src="img/create-image.png")
+                .create__image.swiper-slide
+                    img(src="img/create-image.png")
+                .create__image.swiper-slide
+                    img(src="img/create-image.png")
+            .swiper-pagination
+
+        .create__list
+            .create__list-title How to order custom jewelry
+            .create__list-items
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+                .create__list-item You send us a photo or sketch of a jewelry item that you like. You specify your requirements, such as the gold fineness and color, the surface texture of the gold, and the gemstones to be used.
+
+            .create__list-buttons
+                a(href="#").btn.btn--main.create__list-button Contact a Client Advisor
+                a(href="#").btn.btn--main.create__list-button Book an Appointment

@@ -1,0 +1,17 @@
+//- Cooperation
+
+//- Data
+include ../data/cooperation
+
+.cooperation.section-with-border
+	.container
+		.section-header.text-center
+			.h1.section-header__title Стоимость подбора и условия сотрудничества
+		.section-content
+			ul.cooperation-list.wrapper
+				each item in cooperation_items
+					li.cooperation-item.equalize(style={"border-color":item.color})
+						.cooperation-item__title.h3 #{item.title}
+						p.cooperation-item__descr #{item.descr}
+						.cooperation-item__value !{item.value}
+						span.cooperation-item__caption #{item.caption}

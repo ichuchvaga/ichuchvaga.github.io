@@ -1,0 +1,62 @@
+// Tabs styling
+
+.nav
+	padding: 0
+	margin-top: 0
+	> li
+		letter-spacing: 0
+		font-weight: normal
+		font-style: normal
+		font-stretch: normal
+		> a
+			display: block
+			height: 65px
+			padding: 0
+			line-height: 1.2em
+			border-bottom: 2px solid #fafafa
+			transition: color .15s, border-color .15s
+			&:hover,
+			&:focus
+				background-color: transparent
+			span
+				display: inline-block
+				vertical-align: middle
+		&:hover,
+		&:focus,
+		&.active
+			> a
+				color: $blue
+				border-color: $blue
+.nav-pills
+	margin-bottom: 8px
+	> li
+		float: none
+		display: inline-block
+		vertical-align: middle
+		width: calc(100% / 7)
+		font-size: 20px
+		+ li
+			margin: 0
+		> a
+			border-radius: 0
+			color: #aaa
+			background-color: transparent
+		&.active>a,
+		&.active>a:hover,
+		&.active>a:focus
+			color: $blue
+			background-color: transparent
+
+.tabs
+	.nav-pills
+		border-bottom: 2px solid #fafafa
+		> li
+			width: auto
+			font-size: 32px
+			font-family: $raleway
+			> a
+				margin-bottom: -2px
+				padding: 
+					left: 44px
+					right: 44px
+				height: 70px

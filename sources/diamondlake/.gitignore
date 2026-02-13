@@ -1,0 +1,15 @@
+build/*
+
+src/pug/mixins.pug
+src/js/entry.js
+src/scss/style.scss
+
+src/blocks/sprite-svg/img/sprite.svg
+src/blocks/sprite-png/sprite-png.scss
+src/blocks/sprite-png/img/sprite-*.png
+
+node_modules/
+*.log
+.idea
+.vscode/
+package-lock.json

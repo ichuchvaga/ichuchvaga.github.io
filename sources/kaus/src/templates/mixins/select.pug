@@ -1,0 +1,29 @@
+mixin select(obj)
+	-
+		var name = obj.name || "";
+		var placeholder = obj.placeholder || "";
+		var options = ["Опция 1", "Опция 2", "Опция 3"]; if (obj.options) options = obj.options;
+		var size = obj.size || "";
+		var search = obj.search || "";
+
+		var size_class = ""; if (size != "") size_class = ` select-size-${size}`;
+		var search_class = ""; if (search == "") search_class = " select-without-search";
+
+	div(class="select-box" + size_class)
+		.select-control
+			if placeholder != ""
+				select(
+					class="select" + search_class + size_class,
+					name=name,
+					data-placeholder=placeholder
+				)
+					option
+					each el in options
+						option(value=el) #{el}
+			else
+				select(
+					class="select" + search_class + size_class,
+					name=field_name
+				)
+					each el in options
+						option(value=el) #{el}

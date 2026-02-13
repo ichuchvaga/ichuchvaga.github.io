@@ -1,0 +1,12 @@
+//- Section bottom
+
+//- Data
+include ../data/section_bottom
+
+.section-bottom
+	.container
+		ul
+			each item in list
+				li
+					each el in item.items
+						p #{el}

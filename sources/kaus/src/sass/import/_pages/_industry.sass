@@ -1,0 +1,225 @@
+// Industry page
+
+.heading-section-type-industry
+	.heading-section-with-photo
+		&__content
+			padding: 
+				top: 64px
+				bottom: 80px
+			font-size: 62px
+			p
+				margin-bottom: 13px
+		&__img
+			right: -30px
+	.btn.btn-wide
+		padding: 
+			left: 3.727em
+			right: 3.727em
+
+// Industry-top
+.industry-top
+	padding-top: 10px
+	&__title
+		font-size: 28px
+		font-family: $raleway
+		font-weight: 500
+		line-height: 1.2em
+.industry-top-element
+	padding: 
+		top: 56px
+		bottom: 22px
+	border-bottom: 1px solid #d4dde4
+	&:last-child
+		border-bottom: none
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+		font-size: 18px
+	&__l
+		padding-right: 70px
+		width: 494px
+	&__r
+		width: calc(100% - 494px)
+
+.industry-top-list
+	&--inline
+		font-size: 0
+		.industry-top-item
+			display: inline-block
+			vertical-align: top
+			padding-right: 30px
+			width: 50%
+
+.industry-top-item
+	display: block
+	position: relative
+	margin-bottom: 34px
+	padding:
+		left: 52px
+		right: 10px
+	font-size: 18px
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		+size(3px, 100%)
+		background: $blue
+		background: linear-gradient($green, #2e82d8)
+	&__head,
+	&__subtitle
+		color: $blue
+		font-weight: 700
+	&__head
+		margin-top: -3px
+		letter-spacing: -0.15em
+		&-val,
+		&-text
+			line-height: .8em
+		&-val
+			font-size: 84px
+		&-text
+			font-size: 60px
+	&__subtitle
+		margin:
+			top: 5px
+			bottom: 18px
+		font-size: 16px
+	&__descr
+		display: block
+		line-height: 1em
+		margin-top: 12px
+
+// Industry section
+.industry-section
+	padding-top: 90px
+	&__subtitle
+		margin:
+			top: 36px
+			bottom: 0
+.industry-section-list
+	margin: 
+		left: -25px
+		right: -25px
+.industry-section-item
+	position: relative
+	display: inline-block
+	vertical-align: top
+	padding-left: 54px
+	margin: 
+		left: 25px
+		right: 25px
+		bottom: 20px
+	width: 310px
+	font-size: 18px
+	text-align: left
+	cursor: default
+	&__circle
+		position: absolute
+		top: 0
+		left: 0
+		+size(122px)
+		background: transparent url(../img/icons/circle.png) no-repeat 0 0
+		z-index: 0
+		&::after
+			content: '?'
+			position: absolute
+			top: 0
+			left: -19px
+			display: block
+			font-size: 110px
+			font-weight: 400
+			line-height: 1em
+			color: $blue
+			transition: color .25s
+	&__wrapp
+		position: relative
+		height: 122px
+		z-index: 1
+	&__text
+		display: inline-block
+		vertical-align: middle
+		line-height: 1.3em
+	&:hover
+		.industry-section-item
+			&__circle
+				&::after
+					color: $green
+
+// Recruitment with video
+.recruitment-with-video
+	padding-top: 90px
+	&__l,
+	&__r
+		display: inline-block
+		vertical-align: top
+
+	&__l
+		padding-right: 30px
+		width: 423px
+		font-size: 16px
+	&__r
+		width: calc(100% - 423px)
+
+	.section-header__title
+		margin-bottom: 20px
+		font-weight: 500
+		line-height: 1.15em
+		color: #232a32
+
+	.recruitment
+		&__descr
+			margin: 
+				top: 0
+				bottom: 45px
+			font-size: 18px
+			color: #232a32
+
+// Final industry
+
+// Industry-top
+.industry-top-item
+	&__title
+		margin-bottom: 15px
+		font-size: 26px
+		font-family: $raleway
+		font-weight: 400
+		line-height: 1em
+
+// Industry annotation
+.industry-annotation
+	.annotation
+		padding: 
+			top: 80px
+			left: 11%
+			right: 11%
+			bottom: 81px
+		border-bottom: 1px solid #d4dde4
+
+// Video industry
+
+.industry-advantages
+	&--video
+		border-top: 1px solid #eaeaea
+
+// Industry main
+
+.heading-section
+	&.heading-section-type-industry-main
+		.heading-section-with-photo
+			&__content
+				padding:
+					top: 99px
+					bottom: 114px
+				width: 65%
+				font-size: 62px
+				p
+					margin-bottom: 0.19355em
+
+.section-recruitment
+	&--industry
+		padding:
+			top: 60px
+			bottom: 56px
+

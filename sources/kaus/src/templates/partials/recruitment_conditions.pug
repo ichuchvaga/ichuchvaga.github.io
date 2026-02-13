@@ -1,0 +1,14 @@
+//- Recruitment conditions
+
+//- Data
+include ../data/recruitment_conditions
+
+.recruitment-conditions.blue-gray-theme
+	.container
+		.section-header.text-center
+			.h1.section-header__title Выгодные условия сотрудничества
+		ul.recruitment-conditions-list.wrapper
+			each item in conditions_list
+				li.recruitment-conditions-item
+					.recruitment-conditions-item__title.annotation !{item.title}
+					p.recruitment-conditions-item__descr #{item.descr}

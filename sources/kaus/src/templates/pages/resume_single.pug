@@ -1,0 +1,190 @@
+//- Data
+include ../data/resume
+//- Mixins
+include ../mixins/breadcrumb
+include ../mixins/select
+//- Variables
+-
+	var header_menu_active = "Резюме";
+	var pagetitle = "Бухгалтер со знаем французского";
+	var ymap = true;
+	var tabs_js = true;
+	var select_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--purple
+			.container
+				h1.page-head__title #{pagetitle}
+
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Резюме",
+					url: "resume.html"
+				},
+				{
+					title: "Бухгалтерия / Экономисты",
+					url: "resume_industry.html"
+				},
+				{
+					title: "Бухгалтер",
+					url: "resume_specialty.html"
+				}
+			],
+			last_title: header_menu_active
+		})
+
+		//- Top
+
+		//- Filter panel
+		.filter-panel.filter-panel-industries
+			.container
+				.row
+					.filter-panel__l
+						.filter-panel__link
+							a(href="resume.html" class="btn btn-wide btn-outline") Каталог отраслей
+
+						.filter-panel__dropdown
+							+select({
+								name: "specialty",
+								placeholder: "",
+								options: ["Бухгалтер"],
+								search: true,
+								size: "sm"
+							})
+						
+					.filter-panel__r
+						.filter-panel__search
+							form.search-form
+								.search.search--md
+									input.search__field(type="text" name="q" placeholder="Поиск")/
+									button.search__button(type="submit")
+										span.icon.icon-search
+		//- Resume details
+
+		.resume-single
+			.resume-single-header
+				.container
+					.resume-single-header__in
+						.resume-single-header__l
+							.resume-single-header-params
+								.resume-single-header-params__line
+									strong Пол: 
+									| Женский
+
+								.resume-single-header-params__line
+									strong Возраст: 
+									| 28 лет
+
+								.resume-single-header-params__line
+									strong Семейное положение: 
+									| замужем, детей нет
+
+								.resume-single-header-params__line
+									strong Проживание: 
+									| г. Москва
+
+						.resume-single-header__r
+							.resume-single-header
+								.resume-single-header__column
+									strong Опыт работы:
+									.resume-single-header__text-big 10 лет
+
+								.resume-single-header__column
+									strong Зарплата:
+									.resume-single-header__text-big от 75 000 Р
+
+
+			.resume-single-content
+				.container
+					//- Group 1
+					.resume-single-content__group
+						.resume-single-content__group-title Образование
+
+						.resume-single-content__group-table
+							each item in resume_education
+								.resume-single-content__line
+									.resume-single-content__caption #{item.caption}
+
+									.resume-single-content__params
+										.resume-single-content__param
+											strong Название учебного(-ых) заведения(-ий):
+											br
+											|#{item.content}
+
+					//- Group 2
+					.resume-single-content__group
+						.resume-single-content__group-title Опыт работы
+
+						.resume-single-content__group-table
+							each item in resume_experience
+								.resume-single-content__line
+									.resume-single-content__caption #{item.caption}
+
+									.resume-single-content__params
+										.resume-single-content__param
+											strong Информация об организации:
+											br
+											|#{item.company}
+
+										.resume-single-content__param
+												strong Занимаемая должность:
+												br
+												|#{item.position}
+
+										.resume-single-content__param
+												strong Должностные обязанности:
+												br
+												|#{item.duties}
+
+					//- Group 3
+					.resume-single-content__group
+						.resume-single-content__group-title Дополнительная<br/>информация
+
+						.resume-single-content__group-table
+							each item in resume_additional
+								.resume-single-content__line
+									.resume-single-content__caption #{item.caption}
+
+									.resume-single-content__params
+										.resume-single-content__param #{item.value}
+
+					.resume-single-content-button.text-center
+						a(class="btn btn-wide btn-primary" href="javascript:void(0);") Нанять специалиста
+
+
+
+		//- Search
+		.consult.blue-gray-theme
+			.container
+				.wrapper
+					.consult__l
+						.consult-content
+							.consult-img
+								img(src="src/img/icons/time.png" draggable="false" alt="")/
+							.consult-title.h2 Поиск соискателей#[br]по резюме за 3 дня
+							span.consult-subtitle Вы получите пул лучших кандидатов<br/> из базы нашего агентства в 140 тыс. резюме
+					.consult__r.text-center
+						a.btn.btn-outline.btn-outline-transparent.btn-block.consult-link(href="javascript:void(0);") Заказать поиск		
+		
+		//- Clients
+		include ../partials/clients
+
+		//- Subscribe
+		include ../partials/subscribe
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

@@ -1,0 +1,118 @@
+//- Data
+include ../data/resume
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Контакты";
+	var pagetitle = "Контакты агентства";
+	var ymap = true;
+	var ymap_center = false;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--blue
+			.container
+				h1.page-head__title #{pagetitle}
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+			],
+			last_title: header_menu_active
+		})
+
+		.contact-info.section
+			.container
+				.section-content
+					.contact-info-group
+						.contact-info-group__circle
+							.contact-info-group__icon.ct-icon-address
+
+						.contact-info-group__heading Адреса агентства
+						.contact-info-group__text
+							.contact-info-group__text-line 1. Москва, Шлюзовая наб., д. 6, стр. 4, эт. 3, оф. 15
+							.contact-info-group__text-line 2. Санкт-Петербург, Воронежская ул., д. 76, оф. 12 
+
+
+					.contact-info-group
+						.contact-info-group__circle
+							.contact-info-group__icon.ct-icon-phone
+
+						.contact-info-group__heading Телефоны
+						.contact-info-group__text
+							.contact-info-group__text-line <a href="tel:84956603540">8 (495) 660-35-40</a>  (Москва)
+							.contact-info-group__text-line <a href="tel:88126158039">8 (812) 615-80-39</a>  (Санкт-Петербург)
+
+
+					.contact-info-group
+						.contact-info-group__circle
+							.contact-info-group__icon.ct-icon-mail
+
+						.contact-info-group__heading E-mail
+						.contact-info-group__text
+							.contact-info-group__text-line <a href="mailto:mail@kaus-group.ru">mail@kaus-group.ru</a>
+
+
+					.contact-info-group
+						.contact-info-group__circle
+							.contact-info-group__icon.ct-icon-clock
+
+						.contact-info-group__heading Часы работы
+						.contact-info-group__text
+							.contact-info-group__text-line Пн-пт: 9.00 - 19.00
+
+		.contact-directions.section
+			.container
+				h3
+					a(href='javascript:void(0);' class='js-contact-directions-trigger contact-directions-trigger link link-dashed') Как проехать к московскому офису агентства
+
+				.directions-tabs(style="display: none;")
+					.directions-links
+						a(href="javascript:void(0);" class="link link-dashed directions-link active" data-target="#directions-content_tab1") Общественным транспортом
+						a(href="javascript:void(0);" class="link link-dashed directions-link") На автомобиле
+
+					.directions-content
+						.directions-content-box.active(id="directions-content_tab1")
+
+							-
+								var images = [
+									"img1.png",
+									"img2.png",
+									"img3.png",
+									"img4.png",
+									"img5.png",
+									"img6.png"
+								];
+
+							.directions-images
+								.directions-images__in
+									each item in images
+										- var url = "upload/contacts/directions_on_foot/" + item;
+										.directions-image
+											img(src=url alt="")/
+
+							.directions-text
+								ol
+									li М. Павелецкая (радиальная), первый вагон из центра, выход в город к аэроэкспрессу (после эскалатора первый выход слева).
+									li Выйдя на улицу, поворачиваете направо и идете вдоль улицы Кожевническая (с трамвайными путями) до первого пешеходного перехода без светофора (идти 1-2 минуты). На нем переходите на противоположную сторону и поворачиваете направо. Идете вдоль Салона цветов, магазина обуви «ТЕРВОЛИНА», салона связи «МТС» до пешеходного перехода. На нем переходите дорогу и поворачиваете налево на Кожевнический проезд.
+									li Идете прямо, с правой стороны будет ТЦ «Кожевники» и бизнес - центры.
+									li Доходите до Шлюзовой набережной и поворачиваете направо.
+									li Проходите несколько метров до ворот со шлагбаумом с правой стороны.
+									li Заходите во внутренний двор, чуть прямо и левее – вход в БЦ - стеклянное крыльцо с раздвижными дверями. На охране предъявляете паспорт, говорите, что пришли в кадровое агентство «КАУС» (офис №15). С левой стороны лифт, поднимаетесь на 3-ий этаж. Выйдя из лифта, поворачиваете направо, проходите прямо и еще раз направо – попадаете в длинный коридор. По нему идете прямо, до офиса №15 – дверь будет с правой стороны. Нажимаете на кнопочку звонка и дожидаетесь ответа секретаря.
+
+		
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

@@ -1,0 +1,22 @@
+//- Libs
+script(src="src/js/scripts.min.js")
+if (swiper_js && swiper_js == true)
+    script(src="src/js/libs/swiper.min.js")
+if (tabs_js && tabs_js == true)
+    script(src="src/js/libs/tabs.min.js")
+if (tooltip_js && tooltip_js == true)
+    script(src="src/js/libs/tippy.all.min.js")
+if (select_js && select_js == true)
+    script(src="src/js/libs/select2.min.js")
+if (flatpickr_js && flatpickr_js == true)
+    script(src="src/js/libs/flatpickr.min.js")
+    script(src="src/js/flatpickr_ru.js")
+if (socials_js && socials_js == true)
+    script(src="src/js/libs/jssocials.min.js")
+if (steps_js && steps_js == true)
+    script(src="src/js/libs/jquery.steps.min.js")
+if (ymap && ymap == true)
+    script(src="src/js/ymap.js")
+
+//- User scripts
+script(src="src/js/common.js?v=" + version)

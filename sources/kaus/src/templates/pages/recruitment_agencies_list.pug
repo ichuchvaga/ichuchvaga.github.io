@@ -1,0 +1,83 @@
+//- Data
+include ../data/recruitment_agencies
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Список кадровых агентств";
+	var pagetitle = "Список кадровых агентств";
+	var ymap = true;
+	var ymap_center = false;
+	var tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Page head
+		.page-head.page-head--blue
+			.container
+				h1.page-head__title #{pagetitle}
+
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: "Сервис подбора кадров",
+					url: "recruitment_service.html"
+				}
+			],
+			last_title: header_menu_active
+		})
+
+		//- Agencies
+		.recruitment-agencies.section-with-border
+			.recruitment-agencies-list
+				each item in agencies_list
+					- var url = "javascript:void(0);";
+					- if (item.url != '') url = item.url;
+
+					.recruitment-agencies-list__element
+						.container
+							.recruitment-agencies-list__element-wrap
+								.h4.recruitment-agencies-list__title
+									a(href=url class="link") #{item.title}
+
+								.recruitment-agencies-list__city #{item.city}
+
+
+
+			.recruitment-agencies-buttons.container.text-center
+				a(class="btn btn-lg btn-primary" href="javascript:void(0);") Показать еще агентства
+
+		//- Seo text
+		.resume-text-section.resume-text-section-padding-top
+			.container
+				.row
+					.col-md-6
+						p Текст для примера: опытный бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Пример описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+
+					.col-md-6
+						p Бухгалтер – это четкий контроль всех финансовых операций и полная лояльность к Вашему предприятию со стороны фискальных и контролирующих органов. Для многих незнание английского как раз и является препятствующим фактором, что в свою очередь сужает круг возможных кандидатов.
+
+						p Описания: для многих незнание английского как раз и является препятствующим фактором, что в свою очередь/
+
+		//- Consult
+		include ../partials/consult
+
+
+		//- Clients
+		include ../partials/clients
+
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

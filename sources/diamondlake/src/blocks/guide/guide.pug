@@ -1,0 +1,95 @@
+//- Все примеси в этом файле должны начинаться c имени блока (guide)
+
+mixin guide(text, mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +guide('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' guide--' + modsList[i].trim();
+            }
+        }
+
+    .guide(class=allMods)&attributes(attributes)
+        .guide__row
+            .guide__col.guide__col--wide
+                .guide__col-title How to buy a diamond
+                .row
+                    .col
+                        p 1. Determine your budget: Diamonds can vary greatly in price, so it’s important to set a budget before you begin shopping. Consider how much you’re willing to spend and what you hope to get for that amount.
+                        p 2. Learn about the 4Cs: The 4Cs are the carat weight, cut, clarity, and color of the diamond. Educate yourself on what each
+                    .col
+                        p 3. Decide on the shape: Diamonds come in many different shapes, including round, princess, emerald, and pear. Choose a shape that you like and that fits within your budget.
+                        p 4. Consider the setting: The setting can affect the overall appearance and security of the diamond. Choose a setting that complements the diamond and is.
+                    .col
+                        p 5. Inspect the diamond: Once you have found a diamond that meets your requirements, inspect it closely to ensure that it is authentic and in good condition.
+                        p 6. Get a certificate: A diamond certificate, also known as a grading report, will provide detailed information about the diamond’s 4Cs and authenticity. diam ond’s 4Csdfdfds and authenticity.
+            .guide__col.guide__col--shapes
+                .guide__col-title Diamond shape
+                .row
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-round.png")
+                            |Round
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-princess.png")
+                            |Princess
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-heart.png")
+                            |Heart
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-emerald.png")
+                            |Emerald
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-asscher.png")
+                            |Asscher
+                    .col
+                        a(href="#").guide__shape
+                            img(src="img/diamond-shape-cushion.png")
+                            |Cushion
+
+                a(href="#").btn.btn--main.guide__button Shop Diamonds
+
+        .guide__grid
+            a(href="#").guide__cell
+                .guide__cell-title 1C - Carat
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-carat.jpg")
+            a(href="#").guide__cell
+                .guide__cell-title 2C - Color
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-color.jpg")
+            a(href="#").guide__cell
+                .guide__cell-title 3c - clarity
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-clarity.jpg")
+            a(href="#").guide__cell
+                .guide__cell-title 4c - CUt
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-cut.jpg")
+            a(href="#").guide__cell
+                .guide__cell-title Fluorescence
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-fluorescence.jpg")
+            a(href="#").guide__cell
+                .guide__cell-title GIA Certificate
+                    .guide__cell-more Learn more
+                .guide__cell-image
+                    img(src="img/guide-gia.png")

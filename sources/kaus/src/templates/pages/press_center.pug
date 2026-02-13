@@ -1,0 +1,131 @@
+//- Data
+include ../data/press
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Пресс-центр",
+		ymap = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-press(style={"background-color":"#b0ced6"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{header_menu_active}
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Заказать обратный звонок
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			last_title: header_menu_active
+		})
+		//- Press intro
+		.press-intro
+			.container
+				.section-content
+					.wrapper
+						.press-intro__l
+							p.
+								Пресс-центр Кадрового агентства уникальных специалистов приветствует вас на нашем сайте. В данном 
+								разделе вы можете ознакомиться с новостями, пресс-релизами и публикациями агентства.
+							p.
+								Аналитики Кадрового агентства уникальных специалистов регулярно проводят количественные 
+								и качественные исследования рынка, отражающие:
+							.advantages-circles
+								each item in advantages_circles
+									.advantages-circle
+										.advantages-circle__wrap.valign-wrapper
+											.advantages-circle__img
+												img(src=`upload/press/main/${item.img}.png` alt="")/
+										.advantages-circle__text !{item.caption}
+							p.
+								Мы открыты к сотрудничеству и будем рады поделиться с представителями СМИ результатами 
+								исследований рынка труда Москвы и Московской области, экспертными комментариями по 
+								актуальным проблемам трудоустройства и подбора персонала.
+							h4 Контактная информация
+							ul.contact-list.wrapper
+								li #[b Телефон:] #[a(href="tel:+74952416402") +7 (495) 241-64-02]
+								li #[b Почта:] #[a(href="mailto:pr@kaus-group.ru") pr@kaus-group.ru]
+						.press-intro__r
+							h4 Для прессы
+							.attachments
+								each item in attachments
+									.attachment
+										.attachment__img
+											img(src=`src/img/icons/${item.img}` draggable="false" alt=item.format)/
+										.attachment__text
+											a.attachment__link.link(href="javascirpt:void(0);") #{item.title}
+											span.attachment__caption #{item.format} 8Мб
+							hr
+							.headmaster
+								.headmaster__img
+									img(src="upload/press/main/director.jpg" alt="")/
+								.headmaster__name.h5 Крупина Екатерина
+								.headmaster__position.
+									Генеральный директор кадрового 
+									агентства «КАУС»
+								ul.headmaster-list.wrapper
+									li
+										a.link(href="javascript:void(0);") Фото
+										span (1200 x 1800 px)
+									li
+										a.link(href="javascript:void(0);") Фото
+										span (2534 x 3948 px)
+		//- Last news
+		.last-news.news.blue-gray-theme
+			.container
+				.section-heading.section-heading-with-link
+					.section-heading__title.h2 Последние новости
+					.section-heading__link.text-right
+						a.link(href="javascript:void(0);") Все новости
+				.section-content
+					ul.news-list.wrapper
+						each item in news
+							li.news-item
+								.news-item__date: time #{item.date}
+								.news-item__title
+									a.news-item__link.link(href="javascript:void(0);") #{item.title}
+								p.news-item__descr #{item.descr}
+		//- Press section
+		.press-section.section-with-border
+			.container
+				.section-heading.section-heading-with-link
+					.section-heading__title.h2 Пресс-релизы компании
+					.section-heading__link.text-right
+						a.link(href="javascript:void(0);") Все пресс-релизы
+				.section-content
+					.press-section__date: time 08.05.16
+					a.press-section__link.link.h3(href="javascript:void(0);") Зарплаты в строительной отрасли растут не у всех специалистов
+					p.
+						Кадровое агентство «КАУС-Строитель» проанализировало зарплаты персонала в области строительства. По итогам II квартала 2013 года 
+						средний уровень заработных плат больше всех вырос у инженеров-геодезистов (29,4%), инженеров технадзора (26,4%), прорабов (24,7%)
+		//- Press section
+		.press-section
+			.container
+				.section-heading.section-heading-with-link
+					.section-heading__title.h2 СМИ о кадровом агентстве «КАУС»
+					.section-heading__link.text-right
+						a.link(href="javascript:void(0);") Все СМИ компании
+				.section-content
+					.press-section__date.wrapper
+						time 08.05.16 
+						span.press-section__source RB.ru
+					a.press-section__link.link.h3(href="javascript:void(0);") По каким критериям соискатели выбирают кадровые агентства
+					p.
+						Кадровое агентство уникальных специалистов «КАУС» провело исследование, по каким критериям соискатели обращаются в кадровые 
+						агентства.
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

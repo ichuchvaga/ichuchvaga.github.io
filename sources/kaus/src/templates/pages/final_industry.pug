@@ -1,0 +1,116 @@
+//- Data
+include ../data/final_industry
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Отрасли",
+		pagetitle = "Поиск грамотного бухгалтера за 3 дня",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-industry(style={"background-color":"#a0a1d2"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p #{pagetitle}
+						a.btn.btn-wide.btn-primary(href="javascript:void(0);") Заказать подбор
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/woman.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: 'Работодателям',
+					url: ''
+				},
+				{
+					title: 'Наши услуги и схема работы',
+					url: ''
+				}
+			],
+			last_title: 'Бухгалтерия / Финансы / Банки'
+		})
+		//- Industry top
+		.industry-top
+			.container
+				.industry-top-elements
+					.industry-top-element
+						.wrapper
+							.industry-top-element__l
+								.industry-top__title.section-header__title.title_type_h2 #{industry_top_items[0]['title']}
+							.industry-top-element__r
+								ul.industry-top-list
+									each item in industry_top_items[0]['list']
+										li.industry-top-item
+											.industry-top-item__title #{item.title} 
+											span.industry-top-item__text #{item.descr}
+		//- Recruitment
+		include ../partials/recruitment
+		//- Industry annotation
+		.industry-annotation.text-center
+			.container
+				.annotation.
+					Опытный бухгалтер – это четкий контроль всех финансовых 
+					операций и полная лояльность к вашему предприятию со стороны 
+					фискальных и контролирующих органов
+		//- Section conformity
+		.section-conformity
+			.container
+				.section-header.text-center
+					.h1.section-header__title Вы получите бухгалтера, который точно соответствует вашему запросу
+				.section-content
+					.advantages-circles
+						each item in advantages_circles
+							.advantages-circle
+								.advantages-circle__wrap.valign-wrapper
+									.advantages-circle__img
+										img(src=`upload/industry/final/${item.img}.png` alt="")/
+								.advantages-circle__text !{item.caption}
+		//- Industry features
+		-
+			var recruitmentBlock = true,
+				recruitment_title = "Наймите бухгалтера<br>с гарантией замены";
+		include ../partials/industry_features
+		//- Industry advantages
+		include ../partials/industry_advantages
+		//- Recruitment
+		.recruitment.recruitment-with-video
+			.container
+				.section-content
+					.wrapper
+						.recruitment-with-video__l
+							.h3.section-header__title.title_type_h2.
+								Ищете опытного
+								бухгалтера для
+								бесперебойной работы
+								вашего бизнеса?
+							p.recruitment__descr.
+								Эксперты кадрового агентства «КАУС» 
+								проверят профессиональные компетенции 
+								и личностные качества специалиста, 
+								чтобы ваше совместное сотрудничество 
+								было успешным.
+							a.btn.btn-lg.btn-outline.btn-outline-transparent(href="javascript:void(0);") Заказать подбор
+						.recruitment-with-video__r
+							.recruitment__video
+								a(href="javascript:void(0);"): img(src="upload/industry/video.jpg" draggable="false")/
+		//- Cooperation
+		include ../partials/cooperation
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

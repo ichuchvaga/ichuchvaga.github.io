@@ -1,0 +1,15 @@
+extends ../pug/layout-ru.pug
+
+block meta
+    title Gallery
+    meta(name='description', content='')
+
+block content
+    .container
+        +breadcrumbs()
+            +breadcrumbs-item('Home', '#')
+            +breadcrumbs-item('Gallery')
+
+        h1 Галерея Выполненных Работ
+
+        +works()

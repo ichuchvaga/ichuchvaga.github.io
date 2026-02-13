@@ -1,0 +1,19 @@
+//- Recruitment price
+
+//- Variables
+- var title = recruitment_price_title || "Стоимость подбора персонала";
+//- Data
+include ../data/recruitment_price
+
+.recruitment-price
+	.container
+		.section-header.text-center
+			.h1.section-header__title #{title}
+		.section-content
+			ul.cooperation-list.wrapper
+				each item in price_list
+					li.cooperation-item.equalize(style={"border-color":item.color})
+						.cooperation-item__title.h3 !{item.title}
+						p.cooperation-item__descr #{item.descr}
+						.cooperation-item__value !{item.value}
+						span.cooperation-item__caption #{item.caption}

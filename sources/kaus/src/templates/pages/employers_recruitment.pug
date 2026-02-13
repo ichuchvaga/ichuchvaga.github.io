@@ -1,0 +1,100 @@
+//- Data
+include ../data/employers_recruitment
+//- Mixins
+include ../mixins/breadcrumb
+//- Variables
+-
+	var header_menu_active = "Работодателям",
+		pagetitle = "Подбор персонала",
+		ymap = true,
+		tabs_js = true;
+
+doctype html
+html(lang="ru")
+	head
+		include ../partials/common/head
+
+	body
+		include ../partials/common/header
+
+		//- Heading
+		.heading-section.heading-section-with-photo.heading-section-type-recruitment(style={"background-color":"#cadaeb"})
+			.container
+				.heading-section-with-photo__in
+					.heading-section-with-photo__content
+						p.
+							Подбор персонала#[br]
+							для решения бизнес-задач
+							за 3 дня
+						a.btn.btn-lg.btn-primary(href="javascript:void(0);") Заказать подбор
+
+					.heading-section-with-photo__img
+						img(src="upload/heading_photos/man2.png" draggable="false" alt="")/
+		//- Breadcrumb
+		+breadcrumb({
+			nav_items: [
+				{
+					title: header_menu_active,
+					url: 'employers.html'
+				}
+			],
+			last_title: pagetitle
+		})
+		//- Employers recruitment
+		.employers-recruitment
+			//- Recruitment features
+			.recruitment-features.section-with-border
+				.container
+					.section-header.text-center
+						.h1.section-header__title Работая с нами, вы получаете
+					ul.features-list.wrapper
+						each item in features_list
+							li.features-item
+								.features-item__circle.valign-wrapper
+									.features-item__img
+										img(src=`upload/features/${item.img}.png` draggable="false" alt=item.title)/
+								.features-item__title #{item.title}
+								p.features-item__descr #{item.descr}
+			//- Section recruitment
+			.section-recruitment
+				.container
+					.section-header.text-center
+						.h1.section-header__title Наши услуги
+					.wrapper
+						.section-recruitment__l
+							p.
+								Кадровое агентство уникальных специалистов («КАУС») 
+								оказывает услуги по подбору персонала с 2007 г. Среди наших 
+								клиентов есть представители крупного, среднего и малого 
+								бизнеса, с которыми реализовано уже более 1000 проектов. 
+							.section-recruitment__annotation.h4.
+									Если вы нацелены на создание команды 
+									профессионалов, мы предлагаем вам 
+									сотрудничество с нами.
+						include ../partials/section_recruitment_r
+			//- Recruitment industry
+			include ../partials/recruitment_industry
+			//- Recruitment scheme
+			.recruitment-scheme
+				include ../partials/recruitment_scheme
+			//- Recruitment application
+			.recruitment-application
+				.container
+					.section-header.text-center
+						.h1.section-header__title Заявка на подбор персонала
+					//- Employers tabs
+					include ../partials/employers_tabs
+			//- Recruitment conditions
+			include ../partials/recruitment_conditions
+			//- Recruitment price
+			include ../partials/recruitment_price
+		
+		//- Subscribe
+		include ../partials/subscribe
+		//- Clients
+		include ../partials/clients
+		//- Map
+		include ../partials/map
+
+		include ../partials/common/footer
+		include ../partials/common/js

@@ -1,0 +1,40 @@
+// В этом файле должны быть стили для БЭМ-блока pagination, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 100px 0;
+    justify-content: center;
+    gap: 25px;
+
+    &__item {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: $text-color;
+        font-size: 14px;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $text-color;
+        }
+
+        @at-root span#{&} {
+            cursor: default;
+        }
+
+        &--prev, &--next {
+            color: #848484;
+        }
+
+        &--prev {
+            transform: scaleX(-1);
+        }
+    }
+
+    @media (max-width: $screen-xl) {
+        margin: 50px 0;
+    }
+}

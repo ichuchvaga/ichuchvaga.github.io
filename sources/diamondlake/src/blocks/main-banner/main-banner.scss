@@ -1,0 +1,91 @@
+// В этом файле должны быть стили для БЭМ-блока main-banner, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.main-banner {
+    $block-name: &; // #{$block-name}__element
+
+    position: relative;
+    background-color: #66A9CB;
+    margin: 96px 0;
+
+    &__image {
+        width: 39%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-size: cover;
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+
+    &__content {
+        color: white;
+        padding: 64px 0;
+        max-width: 636px;
+        margin-left: 0;
+        margin-right: 39%;
+    }
+
+    &__title {
+        margin-bottom: 32px;
+        font-family: Quasimoda, sans-serif;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 25px;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-bottom: 64px;
+    }
+
+    &__button {
+        width: 260px;
+        max-width: 100%;
+    }
+
+    @media (min-width: 1000px) and (max-width: 1500px) {
+        &__title {
+            line-height: 1.2;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        //background-position: center top;
+
+        //background-size: 100% 70vw;
+        margin: 80px 0;
+        background-color: #fff;
+
+        &__image {
+            position: relative;
+            width: 100%;
+            height: 260px;
+        }
+
+        &__content {
+            padding: 48px 31px;
+            background: #66a9cb;
+            margin: 0 -15px;
+            max-width: unset;
+        }
+
+        &__title {
+            font-size: 26px;
+            line-height: 31px;
+            margin-bottom: 16px;
+        }
+
+        &__text {
+            margin-bottom: 48px;
+        }
+
+        &__button {
+            width: 100%;
+        }
+    }
+}

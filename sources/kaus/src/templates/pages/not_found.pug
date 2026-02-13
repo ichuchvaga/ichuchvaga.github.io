@@ -1,0 +1,24 @@
+//- Variables
+- var pagetitle = "Страница не найдена";
+
+doctype html
+html(lang="ru")
+head
+	include ../partials/common/head
+
+body
+	
+	include ../partials/common/header
+
+	.section-error.text-center
+		.container-fluid
+			.section-error__img
+				img.main__error(src="upload/404/error.png" alt=pagetitle)/
+		.container
+			p.section-error__text.
+				К сожалению такой страницы не найдено,#[br]
+				либо она была удалена
+			a.btn.btn-primary.btn-sm.btn-wide(href='main.html') Перейти на главную страницу
+
+	include ../partials/common/footer
+	include ../partials/common/js

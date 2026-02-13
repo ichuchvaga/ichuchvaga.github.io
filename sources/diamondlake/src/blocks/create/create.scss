@@ -1,0 +1,128 @@
+// В этом файле должны быть стили для БЭМ-блока create, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.create {
+    $block-name: &; // #{$block-name}__element
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 39px 16px;
+    grid-template-rows: auto 1fr;
+
+    &__content {
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+    }
+
+    &__gallery {
+        grid-row-end: span 2;
+        width: 100%;
+        position: relative;
+        padding-bottom: 18px;
+
+        .swiper-pagination {
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            border: 1px solid #B2B2B2;
+            background: transparent;
+            border-radius: 50%;
+            margin: 0 2px!important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #B2B2B2;
+        }
+    }
+
+    &__gallery-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        height: auto;
+    }
+
+    &__list-title {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 110%;
+        letter-spacing: -0.25px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    &__list-items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: -0.1px;
+        margin-bottom: 48px;
+    }
+
+    &__list-item {
+        position: relative;/*
+        padding-left: 24px;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #1A1A1A;
+            position: absolute;
+            top: 6px;
+            left: 0;
+        }*/
+    }
+
+    &__list-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 1fr;
+        gap: 8px;
+
+        &__content .row {
+            display: block;
+        }
+
+        &__gallery {
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        &__gallery-inner {
+            display: flex;
+            gap: 0;
+            height: 100%;
+        }
+
+        &__image {
+            width: 250px;
+        }
+
+        &__list-title {
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        &__list-items {
+            grid-template-columns: 1fr;
+        }
+
+        &__list-buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+}

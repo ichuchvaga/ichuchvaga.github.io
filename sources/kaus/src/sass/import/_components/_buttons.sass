@@ -1,0 +1,100 @@
+/**
+ * Buttons styles
+ */
+
+button
+	padding: 0
+	border: none
+	outline: none
+	cursor: pointer
+
+.btn
+	position: relative
+	display: inline-block
+	vertical-align: baseline
+	font-size: 16px
+	line-height: 1.2em
+	font-family: $regular
+	font-weight: 300
+	text-decoration: none
+	border-radius: 10px
+	border: 0
+	padding: 1.3125em 2em 1.25em
+
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s
+
+	&:before
+		content: ''
+		display: inline-block
+		vertical-align: middle
+		height: 100%
+		width: 0
+		font-size: 0
+
+	&:hover,
+	&:active,
+	&:focus
+		text-decoration: none
+
+	&.btn-primary
+		/* Blue button */
+		color: hsl(255, 100%, 100%)
+		background-color: #1262b3
+
+		&:hover,
+		&:active,
+		&:focus
+			background-color: #1a8cff
+
+	&.btn-outline
+		/* White button with blue border */
+		color: #1262b3
+		background-color: #fff
+		border: 1px solid #1262b3
+
+		&:hover,
+		&:active,
+		&:focus
+			color: #1a8cff
+			border-color: #1a8cff
+			background-color: #fff
+
+	&.btn-outline-transparent
+		color: #1262b3
+		border: 1px solid #1262b3
+		background-color: transparent
+		&:hover,
+		&:active,
+		&:focus
+			background-color: transparent
+			color: #1a8cff
+			border-color: #1a8cff
+
+	//&.btn-default
+		//color: #fff
+		//background-color: #aaaaaa
+
+		//&:hover,
+		//&:active,
+		//&:focus
+			//background-color: #9c9c9c
+
+	&.btn-wide
+		padding-left: 4.75em
+		padding-right: 4.75em
+	&.btn-lg
+		padding-left: 5.65em
+		padding-right: 5.65em
+
+.btn-block
+	width: 100%
+
+@media screen and (max-width: 767px)
+	.btn
+		padding-left: 24px
+		padding-right: 24px
+
+@media screen and (max-width: 479px)
+	.btn
+		padding-left: 15px
+		padding-right: 15px

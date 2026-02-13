@@ -1,0 +1,47 @@
+//- Clients
+
+//- Data
+include ../data/clients
+
+.clients-section
+	.container
+		.section-header.text-center
+			.h1.section-header__title 700 компаний уже выбрали наше агентство
+
+		.section-content
+			.clients-intro.
+				Наши клиенты – компании разного уровня и масштаба из различных отраслей.
+				Но для нас все они – любимые партнеры. Присоединяйтесь и вы!
+			.clients-tabs
+				- var tab_active = "Медицина";
+				ul.nav.nav-pills.wrapper.text-center(role="tablist")
+					each item,index in clients_tabs
+						- var active_class = ""; if (tab_active == item) active_class = " active";
+						- var aria_selected = "false"; if (tab_active == item) aria_selected = "true";
+						li(class="nav-item" + active_class)
+							a(
+								id=`clients-nav-item_${index}-tab`, 
+								class="nav-link valign-wrapper", 
+								data-toggle="pill", 
+								href=`#clients-nav-item_${index}`, 
+								role="tab", 
+								aria-controls=`clients-nav-item_${index}`, 
+								aria-selected=aria_selected
+							)
+								span #{item}
+				.tab-content
+					each item,index in clients_tabs
+						- var active_class = ""; if (tab_active == item) active_class = " in active";
+						div(
+							id=`clients-nav-item_${index}`,
+							class="tab-pane fade" + active_class,
+							role="tabpanel",
+							aria-labelledby=`clients-nav-item_${index}-tab`
+						)
+							.clients-content
+								ul.clients-list.text-center.wrapper
+									- var n = 1;
+									while n < 13
+										li.clients-item
+											a.clients-item__link(href="javascript:void(0);")
+												img(src=`upload/main/clients/img${n++}.png` alt="")/

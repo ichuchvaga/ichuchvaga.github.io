@@ -1,0 +1,15 @@
+mixin breadcrumb(data)
+	-
+		var last_title = data.last_title || "";
+		var nav_items = data.nav_items || "";
+	.breadcrumb-container
+		.container
+			ul.breadcrumb
+				li.breadcrumb-item
+					a.breadcrumb-item__link(href="main.html") Главная
+				if (nav_items != "")
+					each item in nav_items
+						- var url = "javascript:void(0);"; if (item.url != '') url = item.url;
+						li.breadcrumb-item
+							a.breadcrumb-item__link(href=url) #{item.title} 
+				li.breadcrumb-item #{last_title}

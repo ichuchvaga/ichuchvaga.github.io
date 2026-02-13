@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока (list-leaders)
+
+mixin list-leaders(mods)
+
+    //- Принимает:
+    //-   text    {string} - текст
+    //-   mods    {string} - список модификаторов
+    //- Вызов:
+          +list-leaders('Текст', 'some-mod')
+
+    -
+        // список модификаторов
+        var allMods = '';
+        if (typeof (mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' list-leaders--' + modsList[i].trim();
+            }
+        }
+
+    ul.list-leaders(class=allMods)&attributes(attributes)
+        block
+
+
+mixin list-leaders-item(label, value)
+    li.list-leaders__item.list-leaders-item(class=allMods)&attributes(attributes)
+        .list-leaders-item__label!= label
+        .list-leaders-item__value!= value
